@@ -6,6 +6,7 @@ Sloan Lipman: Developer\
 Moffett McKenna: Product Owner\
 Andrew Neary: Developer\
 David Santos: Developer
+Emad Vaid: Developer
 
 Product backlog
 >https://trello.com/b/Mn5Ftara/6733team2project
