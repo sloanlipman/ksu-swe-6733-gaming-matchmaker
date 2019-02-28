@@ -5,7 +5,7 @@ Team Roster for SWE 6733 Team #2
 Sloan Lipman: Developer\
 Moffett McKenna: Product Owner\
 Andrew Neary: Developer\
-David Santos: Developer
+David Santos: Developer\
 Emad Vaid: Developer
 
 Product backlog
