@@ -10,6 +10,8 @@ Emad Vaid: Developer
 
 Product backlog
 >https://trello.com/b/Mn5Ftara/6733team2project
->SLACK account: https://swe6733.slack.com/
->github account: https://github.com/sloanlipman/ksu-swe-6733-gaming-matchmaker
+SLACK account
+>https://swe6733.slack.com/
+github account
+>https://github.com/sloanlipman/ksu-swe-6733-gaming-matchmaker
 
