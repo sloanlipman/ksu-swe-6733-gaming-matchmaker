@@ -1,5 +1,5 @@
 {
-  "name": "matchmaker",
+  "name": "team-cats-matchmaker",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -44,5 +44,7 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~3.2.2"
-  }
+  },
+
+  "description": "A gaming matchmaker service made by Team Cats for SWE 6733"
 }
