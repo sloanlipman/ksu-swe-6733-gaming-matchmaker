@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { SplashPageComponent } from '../splash-page/splash-page.component';
 
 @Component({
   selector: 'login-page',
@@ -9,12 +10,14 @@ import { Location } from '@angular/common';
   encapsulation: ViewEncapsulation.None
 
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent extends SplashPageComponent implements OnInit {
 
   constructor(
-    private router: Router,
-    private location: Location
-  ) { }
+    protected router: Router,
+    protected location: Location,
+  ) {
+    super(router, location);
+  }
 
   ngOnInit() {
   }
@@ -22,4 +25,5 @@ export class LoginPageComponent implements OnInit {
   goHome() {
     this.router.navigateByUrl('/home');
   }
+
 }

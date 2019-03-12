@@ -2,7 +2,10 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Location } from '@angular/common';
 import { RouterModule, Routes, Router } from '@angular/router';
 
-
+/**
+ * This page can hold both user and admin views. Shared functionality will always be visible.
+ * Admin-specific tools will be restricted by *ngIf statements in the html
+ */
 @Component({
   selector: 'home',
   templateUrl: 'home-page.component.html',
@@ -18,7 +21,14 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
   }
-  goToLogin() {
-    this.router.navigateByUrl('/login-page');
+  logOut() {
+   this.router.navigateByUrl('/splash-page');
+  }
+
+  editProfile() {
+    this.router.navigateByUrl('edit-profile');
+  }
+  viewMatchmaking(){
+    this.router.navigateByUrl('/matchmaking');
   }
 }
