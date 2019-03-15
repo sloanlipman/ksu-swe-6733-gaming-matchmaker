@@ -1,26 +1,53 @@
-
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>Login Page</span>
+    <span *ngIf="!newUser">Login Page</span>
+    <span *ngIf="newUser">Register</span>
   </mat-toolbar-row>
 </mat-toolbar>
 
 
-<mat-card id="login-card">
+<mat-card *ngIf="!newUser" id="login-card">
   <mat-card-title>
-    <div>Log in or Register</div>
+    <div>Log in</div>
   </mat-card-title>
   <mat-card-content>
-      <mat-form-field>
-          <input matInput placeholder="Username" type="text" class="example-right-align">
-        </mat-form-field>
-      <mat-form-field>
-          <input matInput placeholder="Enter your password!" [type]="hide ? 'password' : 'text'">
-          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Username" type="text" class="example-right-align">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Enter your password!" [type]="hide ? 'text' : 'password'">
+      <mat-icon matSuffix  (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+    </mat-form-field>
   </mat-card-content>
   <mat-card-footer>
-      <button mat-raised-button (click)="goBack()" color="warn">Cancel</button>
-    <button mat-raised-button (click)="goHome()">Submit</button>
+      <button mat-raised-button color="primary" (click)="toggleCard()">New user? Click here to register</button>
   </mat-card-footer>
+  <mat-card-actions>
+      <button mat-raised-button (click)="goBack()" color="warn">Cancel</button>
+      <button mat-raised-button (click)="goHome()">Log In</button>
+  
+</mat-card-actions>
 </mat-card>
+
+<mat-card *ngIf="newUser" id="register-card">
+    <mat-card-title>
+      <div>Register</div>
+    </mat-card-title>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput placeholder="Username" type="text" class="example-right-align">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Enter your password!" [type]="hide ? 'text' : 'password'">
+        <mat-icon matSuffix  (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-footer>
+        <button mat-raised-button color="primary" (click)="toggleCard()">Already have an account? Click here to log in</button>
+    </mat-card-footer>
+    <mat-card-actions>
+        <button mat-raised-button (click)="goBack()" color="warn">Cancel</button>
+        <button mat-raised-button (click)="goHome()">Register</button>
+    
+  </mat-card-actions>
+  </mat-card>

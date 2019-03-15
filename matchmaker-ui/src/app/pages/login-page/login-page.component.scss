@@ -1,5 +1,12 @@
-#login-card {
-    width: 20rem;
-    background-color:rgb(204, 167, 2);
-    align-content: center;
+mat-card {
+  width: fit-content;
+  align-content: center;
+}
+
+#login-card  {
+  background:rgb(204, 167, 2);
+}
+
+#register-card {
+  background:rgb(49, 204, 2);
 }

@@ -11,12 +11,13 @@ import { SplashPageComponent } from '../splash-page/splash-page.component';
 
 })
 export class LoginPageComponent extends SplashPageComponent implements OnInit {
-
+  newUser: boolean;
   constructor(
     protected router: Router,
     protected location: Location,
   ) {
     super(router, location);
+   this.newUser = false;
   }
 
   ngOnInit() {
@@ -26,4 +27,7 @@ export class LoginPageComponent extends SplashPageComponent implements OnInit {
     this.router.navigateByUrl('/home');
   }
 
+  toggleCard() {
+   this.newUser = !this.newUser;
+    }
 }

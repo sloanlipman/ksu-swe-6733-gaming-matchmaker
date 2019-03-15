@@ -18,10 +18,6 @@ const routes: Routes = [
     component: LoginPageComponent
   },
   {
-    path: 'register',
-    component: SignUpPageComponent
-  },
-  {
     path: 'edit-profile',
     component: EditProfilePageComponent
   },
