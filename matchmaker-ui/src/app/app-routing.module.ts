@@ -32,7 +32,7 @@ const routes: Routes = [
   {
     path: 'matchmaking',
     component: MatchmakeViewPageComponent
-  }
+  },
 ];
 
 @NgModule({

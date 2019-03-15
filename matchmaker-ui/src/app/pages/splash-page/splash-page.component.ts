@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'splash-page',
   templateUrl: './splash-page.component.html',
-  styleUrls: ['./splash-page.component.css']
+  styleUrls: ['./splash-page.component.scss']
 })
 export class SplashPageComponent implements OnInit {
 

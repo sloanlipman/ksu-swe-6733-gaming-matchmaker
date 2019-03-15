@@ -6,7 +6,7 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-edit-profile-page',
   templateUrl: './edit-profile-page.component.html',
-  styleUrls: ['./edit-profile-page.component.css']
+  styleUrls: ['./edit-profile-page.component.scss']
 })
 export class EditProfilePageComponent extends SplashPageComponent implements OnInit {
 

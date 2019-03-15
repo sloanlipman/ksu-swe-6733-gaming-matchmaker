@@ -6,7 +6,7 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'matchmaking',
   templateUrl: './matchmake-view-page.component.html',
-  styleUrls: ['./matchmake-view-page.component.css']
+  styleUrls: ['./matchmake-view-page.component.scss']
 })
 export class MatchmakeViewPageComponent extends SplashPageComponent implements OnInit {
 
