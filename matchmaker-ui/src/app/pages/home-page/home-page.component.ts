@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'home',
   templateUrl: 'home-page.component.html',
-  styleUrls: ['home-page.component.css'],
+  styleUrls: ['home-page.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class HomePageComponent implements OnInit {

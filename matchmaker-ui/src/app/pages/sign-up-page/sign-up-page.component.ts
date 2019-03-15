@@ -6,7 +6,7 @@ import { SplashPageComponent } from '../splash-page/splash-page.component';
 @Component({
   selector: 'register',
   templateUrl: './sign-up-page.component.html',
-  styleUrls: ['./sign-up-page.component.css']
+  styleUrls: ['./sign-up-page.component.scss']
 })
 export class SignUpPageComponent extends SplashPageComponent implements OnInit {
 
