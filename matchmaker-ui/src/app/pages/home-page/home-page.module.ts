@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
-import { HomePageComponent } from './home-page.component';
+import { HomePage } from './home-page.component';
 import { RouterModule } from '@angular/router';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler/src/core';
 
 
 @NgModule({
   declarations: [
-    HomePageComponent
+    HomePage
   ],
   imports: [
     RouterModule.forChild([
       {
         path: '',
-        component: HomePageComponent
+        component: HomePage
       }
     ])
   ],
   exports: [
-    HomePageComponent
+    HomePage
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

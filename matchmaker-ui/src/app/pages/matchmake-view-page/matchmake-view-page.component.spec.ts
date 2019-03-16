@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MatchmakeViewPageComponent } from './matchmake-view-page.component';
+import { MatchmakeViewPage } from './matchmake-view-page.component';
 
-describe('MatchmakeViewPageComponent', () => {
-  let component: MatchmakeViewPageComponent;
-  let fixture: ComponentFixture<MatchmakeViewPageComponent>;
+describe('MatchmakeViewPage', () => {
+  let component: MatchmakeViewPage;
+  let fixture: ComponentFixture<MatchmakeViewPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MatchmakeViewPageComponent ]
+      declarations: [ MatchmakeViewPage ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MatchmakeViewPageComponent);
+    fixture = TestBed.createComponent(MatchmakeViewPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

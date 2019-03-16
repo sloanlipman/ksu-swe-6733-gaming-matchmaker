@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SplashPageComponent } from '../splash-page/splash-page.component';
+import { LandingPage } from '../landing-page/landing-page.component';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -8,7 +8,7 @@ import { Location } from '@angular/common';
   templateUrl: './edit-profile-page.component.html',
   styleUrls: ['./edit-profile-page.component.scss']
 })
-export class EditProfilePageComponent extends SplashPageComponent implements OnInit {
+export class EditProfilePage extends LandingPage implements OnInit {
 
   constructor(
     protected router: Router,

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { LandingPage } from '../landing-page/landing-page.component';
 
 /**
  * This page can hold both user and admin views. Shared functionality will always be visible.
@@ -12,17 +13,16 @@ import { Router } from '@angular/router';
   styleUrls: ['home-page.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class HomePageComponent implements OnInit {
+export class HomePage extends LandingPage implements OnInit {
 
   constructor(
-    private location: Location,
-    private router: Router
-  ) { }
+    protected router: Router,
+    protected location: Location,
+  ) {
+    super(router, location);
+  }
 
   ngOnInit() {
-  }
-  logOut() {
-   this.router.navigateByUrl('/splash-page');
   }
 
   editProfile() {

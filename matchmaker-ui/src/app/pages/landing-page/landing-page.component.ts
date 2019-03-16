@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'splash-page',
-  templateUrl: './splash-page.component.html',
-  styleUrls: ['./splash-page.component.scss']
+  selector: 'landing-page',
+  templateUrl: './landing-page.component.html',
+  styleUrls: ['./landing-page.component.scss']
 })
-export class SplashPageComponent implements OnInit {
+export class LandingPage implements OnInit {
 
   constructor(
     protected router: Router,
@@ -23,8 +23,12 @@ export class SplashPageComponent implements OnInit {
   }
 
   register() {
-    this.router.navigateByUrl('/register');
+    this.router.navigateByUrl('/register-page');
   }
+
+  logOut() {
+    this.router.navigateByUrl('/landing-page');
+   }
 
   goBack() {
     this.location.back();

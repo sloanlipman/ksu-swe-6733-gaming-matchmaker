@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
-import { SplashPageComponent } from './splash-page.component';
+import { LandingPage } from './landing-page.component';
 import { RouterModule } from '@angular/router';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler/src/core';
 
 
 @NgModule({
   declarations: [
-    SplashPageComponent
+    LandingPage
   ],
   imports: [
     RouterModule.forChild([
       {
         path: '',
-        component: SplashPageComponent
+        component: LandingPage
       }
     ])
   ],
   exports: [
-    SplashPageComponent
+    LandingPage
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

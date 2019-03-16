@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { SplashPageComponent } from '../splash-page/splash-page.component';
+import { LandingPage } from '../landing-page/landing-page.component';
 
 @Component({
   selector: 'login-page',
@@ -10,14 +10,12 @@ import { SplashPageComponent } from '../splash-page/splash-page.component';
   encapsulation: ViewEncapsulation.None
 
 })
-export class LoginPageComponent extends SplashPageComponent implements OnInit {
-  newUser: boolean;
+export class LoginPageComponent extends LandingPage implements OnInit {
   constructor(
     protected router: Router,
     protected location: Location,
   ) {
     super(router, location);
-   this.newUser = false;
   }
 
   ngOnInit() {}
@@ -25,8 +23,4 @@ export class LoginPageComponent extends SplashPageComponent implements OnInit {
   goHome() {
     this.router.navigateByUrl('/home');
   }
-
-  toggleCard() {
-   this.newUser = !this.newUser;
-    }
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-/**This page will be the launch point of the app. We can use it as a splash page,
+/**This page will be the launch point of the app. We can use it as a landing page,
 * or we can use it to initialize and send the user on their way
 */
  @Component({
@@ -20,7 +20,7 @@ export class AppComponent {
 
   private showHome() {
    const url = this.router.url;
-   if (url === '/splash-page' || url === '/login-page') {
+   if (url === '/landing-page' || url === '/login-page' || url === '/register-page') {
      return false;
    } else {
      return true;

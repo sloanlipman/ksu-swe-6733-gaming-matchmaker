@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
-import { EditProfilePageComponent } from './edit-profile-page.component';
+import { EditProfilePage } from './edit-profile-page.component';
 import { RouterModule } from '@angular/router';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler/src/core';
 
 
 @NgModule({
   declarations: [
-    EditProfilePageComponent
+    EditProfilePage
   ],
   imports: [
     RouterModule.forChild([
       {
         path: '',
-        component: EditProfilePageComponent
+        component: EditProfilePage
       }
     ])
   ],
   exports: [
-    EditProfilePageComponent
+    EditProfilePage
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
