@@ -42,15 +42,15 @@ export class AppComponent {
 
   private showAbout() {
     this.dialog.open(AboutPage, {
-      height: '400px',
-      width: '600px',
+      height: '40rem',
+      width: '60rem',
     });
   }
 
   private showContact() {
     this.dialog.open(ContactPage, {
-      height: '400px',
-      width: '600px',
+      height: '40rem',
+      width: '60rem',
     });
   }
 }

@@ -1,0 +1,19 @@
+// TODO decide whether or not to have a single color
+// TODO add more spacing in between cards
+.profile-card {
+  background: magenta;
+  margin-right: 5rem;
+}
+
+.genres {
+  background: lightcoral;
+}
+.interests {
+  background: lightgrey;
+}
+.games-played {
+  background: brown;
+}
+mat-grid-list {
+  margin: 5rem;
+}
