@@ -6,6 +6,8 @@ import { RegisterPage } from './pages/register-page/register-page.component';
 import { LandingPage } from './pages/landing-page/landing-page.component';
 import { EditProfilePage } from './pages/edit-profile-page/edit-profile-page.component';
 import { MatchmakeViewPage } from './pages/matchmake-view-page/matchmake-view-page.component';
+import { AboutPage } from './pages/about/about.component';
+import { ContactPage } from './pages/contact-page/contact-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing-page', pathMatch: 'full' },
@@ -33,6 +35,14 @@ const routes: Routes = [
     path: 'matchmaking',
     component: MatchmakeViewPage
   },
+  {
+    path: 'about',
+    component: AboutPage
+  },
+  {
+    path: 'contact-page',
+    component: ContactPage
+  }
 ];
 
 @NgModule({

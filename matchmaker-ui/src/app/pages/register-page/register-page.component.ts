@@ -9,7 +9,7 @@ import { LandingPage } from '../landing-page/landing-page.component';
   styleUrls: ['./register-page.component.scss']
 })
 export class RegisterPage extends LandingPage implements OnInit {
-
+  
   constructor(
     protected router: Router,
     protected location: Location,

@@ -12,6 +12,8 @@ import { LandingPage } from './pages/landing-page/landing-page.component';
 import { MatchmakeViewPage } from './pages/matchmake-view-page/matchmake-view-page.component';
 import { RegisterPage } from './pages/register-page/register-page.component';
 import { PlayerCardComponent } from './shared/components/player-card/player-card.component';
+import { AboutPage } from './pages/about/about.component';
+import { ContactPage } from './pages/contact-page/contact-page.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { PlayerCardComponent } from './shared/components/player-card/player-card
     LandingPage,
     MatchmakeViewPage,
     RegisterPage,
-    PlayerCardComponent
+    PlayerCardComponent,
+    AboutPage,
+    ContactPage
   ],
   imports: [
     BrowserModule,

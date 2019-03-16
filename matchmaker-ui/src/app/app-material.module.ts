@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 
 @NgModule({
@@ -12,14 +13,16 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
         MatToolbarModule, // Any angular materials we use need to be imported here!
         MatButtonModule,
         MatCardModule,
+        MatDialogModule,
         MatFormFieldModule,
         MatInputModule,
-        MatIconModule
+        MatIconModule,
     ],
     exports: [
         MatToolbarModule, // Must export as well
         MatButtonModule,
         MatCardModule,
+        MatDialogModule,
         MatFormFieldModule,
         MatInputModule,
         MatIconModule
