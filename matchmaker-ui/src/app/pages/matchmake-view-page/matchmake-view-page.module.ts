@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
-import { MatchmakeViewPage } from './matchmake-view-page.component';
-import { RouterModule } from '@angular/router';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler/src/core';
-
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { MatchmakeViewPage } from './matchmake-view-page.component';
 
 @NgModule({
   declarations: [

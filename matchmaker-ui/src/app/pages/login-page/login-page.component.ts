@@ -1,6 +1,6 @@
+import { Location } from '@angular/common';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { Location } from '@angular/common';
 import { LandingPage } from '../landing-page/landing-page.component';
 
 @Component({

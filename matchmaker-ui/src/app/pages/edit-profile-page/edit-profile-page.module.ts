@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
-import { EditProfilePage } from './edit-profile-page.component';
-import { RouterModule } from '@angular/router';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler/src/core';
-
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { EditProfilePage } from './edit-profile-page.component';
 
 @NgModule({
   declarations: [

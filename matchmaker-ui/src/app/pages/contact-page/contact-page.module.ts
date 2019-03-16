@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
-import { ContactPage } from './contact-page.component';
-import { RouterModule } from '@angular/router';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler/src/core';
-
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { ContactPage } from './contact-page.component';
 
 @NgModule({
   declarations: [

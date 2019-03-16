@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { LandingPage } from '../landing-page/landing-page.component';
-import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LandingPage } from '../landing-page/landing-page.component';
 
 @Component({
   selector: 'matchmaking',
