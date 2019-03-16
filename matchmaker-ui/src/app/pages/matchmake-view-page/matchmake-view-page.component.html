@@ -1,3 +1,9 @@
-  <nav>
+<!--Use service to get # of cards to display, use *ngFor to actually display the right # of cards as we see fit-->
+<mat-card (class)="getColor()" ><player-card></player-card></mat-card><br>
+<mat-card (class)="getColor()" ><player-card></player-card></mat-card><br>
+<mat-card (class)="getColor()" ><player-card></player-card></mat-card><br>
+<mat-card (class)="getColor()" ><player-card></player-card></mat-card><br>
+
+<nav>
     <button mat-raised-button (click)="goBack()" color="warn">Go Back</button>
   </nav>

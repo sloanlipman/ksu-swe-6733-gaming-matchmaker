@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { LandingPage } from '../landing-page/landing-page.component';
 
 @Component({
-  selector: 'login-page',
+  selector: 'login',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],
   encapsulation: ViewEncapsulation.None

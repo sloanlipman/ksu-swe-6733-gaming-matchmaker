@@ -20,7 +20,7 @@ export class AppComponent {
 
   private showHome() {
    const url = this.router.url;
-   if (url === '/landing-page' || url === '/login-page' || url === '/register-page') {
+   if (url === '/landing-page' || url === '/login' || url === '/register') {
      return false;
    } else {
      return true;

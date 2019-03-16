@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { LandingPage } from '../landing-page/landing-page.component';
 
 @Component({
-  selector: 'register-page',
+  selector: 'register',
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.scss']
 })

@@ -19,11 +19,11 @@ export class LandingPage implements OnInit {
   }
 
   login() {
-    this.router.navigateByUrl('/login-page');
+    this.router.navigateByUrl('/login');
   }
 
   register() {
-    this.router.navigateByUrl('/register-page');
+    this.router.navigateByUrl('/register');
   }
 
   logOut() {
@@ -32,5 +32,16 @@ export class LandingPage implements OnInit {
 
   goBack() {
     this.location.back();
+  }
+
+  goHome() {
+    this.router.navigateByUrl('/home');
+  }
+
+  editProfile() {
+    this.router.navigateByUrl('/edit-profile');
+  }
+  viewMatchmaking(){
+    this.router.navigateByUrl('/matchmaking');
   }
 }

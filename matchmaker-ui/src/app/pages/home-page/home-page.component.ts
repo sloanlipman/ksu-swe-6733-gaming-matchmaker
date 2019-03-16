@@ -14,7 +14,6 @@ import { LandingPage } from '../landing-page/landing-page.component';
   encapsulation: ViewEncapsulation.None
 })
 export class HomePage extends LandingPage implements OnInit {
-
   constructor(
     protected router: Router,
     protected location: Location,
@@ -25,10 +24,5 @@ export class HomePage extends LandingPage implements OnInit {
   ngOnInit() {
   }
 
-  editProfile() {
-    this.router.navigateByUrl('edit-profile');
-  }
-  viewMatchmaking(){
-    this.router.navigateByUrl('/matchmaking');
-  }
+
 }

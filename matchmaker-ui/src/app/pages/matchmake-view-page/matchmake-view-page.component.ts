@@ -18,6 +18,23 @@ export class MatchmakeViewPage extends LandingPage implements OnInit {
   }
 
   ngOnInit() {
+  // Hardcoded for loop for demo purposes only. Once there is a backend connection, we might just need to do this once
+  // Or we'll need to find a different way to do this if iterating over *ngFor messes with random colors
+  // Random colors might not even look good later. This is just a POC
+    for (let i = 0; i < 4; ++i) {
+    document.getElementsByTagName('mat-card')[i].setAttribute('style', 'background-color:' + this.getColor());
+    }
   }
 
+  getColor() {
+    const color = Math.floor((Math.random() * 3 + 1));
+    switch (color) {
+      case 1:
+        return 'red';
+      case 2:
+        return 'blue';
+      case 3:
+        return 'yellow';
+    }
+  }
 }

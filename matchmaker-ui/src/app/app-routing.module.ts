@@ -14,11 +14,11 @@ const routes: Routes = [
     component: LandingPage
   },
   {
-    path: 'login-page',
+    path: 'login',
     component: LoginPageComponent
   },
   {
-    path: 'register-page',
+    path: 'register',
     component: RegisterPage
   },
   {
