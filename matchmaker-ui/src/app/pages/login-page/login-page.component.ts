@@ -20,8 +20,7 @@ export class LoginPageComponent extends SplashPageComponent implements OnInit {
    this.newUser = false;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   goHome() {
     this.router.navigateByUrl('/home');

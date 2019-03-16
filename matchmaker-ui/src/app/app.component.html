@@ -1,4 +1,13 @@
 <!--The content below is only a placeholder and can be replaced.-->
- 
+<mat-toolbar>
+    <mat-toolbar-row> <!--We can use *ngIf="someFunctionOrVariable" to make these buttons or future buttons visible/hidden-->
+      <button mat-flat-button class="header-button" disableRipple>GAME MATCH</button>
+      <button mat-flat-button class="header-button" *ngIf="showHome()" (click)="goHome()">Home</button>
+      <button mat-flat-button class="header-button">About</button>
+      <button mat-flat-button class="header-button">Contact Us</button>
+      </mat-toolbar-row>
+  </mat-toolbar>
 
+<!--Anything above the router-outlet will be displayed DIRECTLY above the page content-->
 <router-outlet></router-outlet>
+<!--Anything below the router-outlet will be displayed DIRECTLY below the page content-->

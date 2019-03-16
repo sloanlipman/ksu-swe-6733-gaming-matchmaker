@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 /**This page will be the launch point of the app. We can use it as a splash page,
 * or we can use it to initialize and send the user on their way
@@ -9,6 +11,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'matchmaker';
-  constructor(){}
+
+  constructor(
+    protected router: Router,
+    protected location: Location
+    ){
+    }
+
+  private showHome() {
+   const url = this.router.url;
+   if (url === '/splash-page' || url === '/login-page') {
+     return false;
+   } else {
+     return true;
+   }
+  }
+
+  private goHome() {
+    this.router.navigateByUrl('/home');
+  }
 }

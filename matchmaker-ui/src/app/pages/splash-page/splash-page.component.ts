@@ -15,6 +15,7 @@ export class SplashPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
   }
 
   login() {
