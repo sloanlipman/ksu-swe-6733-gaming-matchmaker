@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialogRef, MatDialog} from '@angular/material/';
-import { AppComponent } from 'src/app/app.component';
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { MatDialogRef } from '@angular/material/';
 
 @Component({
   selector: 'contact-page',
