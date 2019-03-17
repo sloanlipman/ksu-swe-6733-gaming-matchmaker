@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ContactPage } from './contact-page.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { AppMaterialModule } from 'src/app/app-material.module';
+import { MatDialogRef } from '@angular/material';
 
 describe('ContactPageComponent', () => {
   let component: ContactPage;
@@ -8,7 +10,12 @@ describe('ContactPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContactPage ]
+      imports: [ AppMaterialModule ],
+      declarations: [ ContactPage ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [
+        { provide: MatDialogRef, useValue: {}} // TODO this is a workaround. It needs MatDialogRef because it's in the constructor
+      ]
     })
     .compileComponents();
   }));

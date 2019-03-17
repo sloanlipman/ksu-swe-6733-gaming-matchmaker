@@ -1,19 +1,21 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
 import { Router } from '@angular/router';
-import { LandingPage } from '../landing-page/landing-page.component';
-import { Tile } from '../../shared/interfaces/tiles';
+import { AppComponent } from 'src/app/app.component';
+import { MatDialog } from '@angular/material';
 @Component({
   selector: 'app-edit-profile-page',
   templateUrl: './edit-profile-page.component.html',
   styleUrls: ['./edit-profile-page.component.scss']
 })
-export class EditProfilePage extends LandingPage implements OnInit {
+export class EditProfilePage extends AppComponent implements OnInit {
   constructor(
     protected router: Router,
-    protected location: Location
+    protected location: Location,
+    protected injector: Injector,
+    protected dialog: MatDialog
   ) {
-    super(router, location);
+    super(injector, dialog);
   }
 
   ngOnInit() {}

@@ -1,7 +1,8 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler/src/core';
+/* import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AboutPage } from './about.component';
+
 
 @NgModule({
   declarations: [
@@ -21,4 +22,4 @@ import { AboutPage } from './about.component';
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class HomePageModule{}
+export class AboutPageModule{} */

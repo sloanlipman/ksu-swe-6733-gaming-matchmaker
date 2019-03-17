@@ -1,24 +1,24 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { EditProfilePage } from './edit-profile-page.component';
+import { RouterModule, Router } from '@angular/router';
+import { RegisterPage } from './register-page.component';
 
 @NgModule({
   declarations: [
-    EditProfilePage
+    RegisterPage
   ],
   imports: [
     RouterModule.forChild([
       {
         path: '',
-        component: EditProfilePage
+        component: RegisterPage
       }
     ])
   ],
   exports: [
-    EditProfilePage
+    RegisterPage
   ],
-  providers: [],
+  providers: [Router],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class HomePageModule{}
+export class LoginPageModule{}

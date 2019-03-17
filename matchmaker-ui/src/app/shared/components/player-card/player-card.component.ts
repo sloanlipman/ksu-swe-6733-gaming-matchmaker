@@ -6,8 +6,8 @@ import { Component, OnInit, ViewEncapsulation} from '@angular/core';
   styleUrls: ['./player-card.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class PlayerCardComponent implements OnInit {
+export class PlayerCardComponent {
 
   constructor() { }
-  ngOnInit() {  }
+
 }

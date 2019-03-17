@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler/src/core';
+/* import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ContactPage } from './contact-page.component';
@@ -21,4 +21,4 @@ import { ContactPage } from './contact-page.component';
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class HomePageModule{}
+export class ContactPageModule{} */

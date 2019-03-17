@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginPageComponent } from './login-page.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { AppMaterialModule } from 'src/app/app-material.module';
+import { RouterTestingModule } from '@angular/router/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 describe('LoginPageComponent', () => {
   let component: LoginPageComponent;
@@ -8,7 +13,9 @@ describe('LoginPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginPageComponent ]
+      imports: [AppMaterialModule, RouterTestingModule, BrowserAnimationsModule],
+      declarations: [ LoginPageComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));

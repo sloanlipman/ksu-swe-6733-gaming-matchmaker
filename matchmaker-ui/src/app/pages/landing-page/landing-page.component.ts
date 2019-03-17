@@ -1,47 +1,22 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss']
 })
-export class LandingPage implements OnInit {
+export class LandingPage extends AppComponent {
 
   constructor(
     protected router: Router,
-    protected location: Location
-  ) { }
-
-  ngOnInit() {
-
-  }
-
-  login() {
-    this.router.navigateByUrl('/login');
-  }
-
-  register() {
-    this.router.navigateByUrl('/register');
-  }
-
-  logOut() {
-    this.router.navigateByUrl('/landing-page');
+    protected location: Location,
+    protected injector: Injector,
+    protected dialog: MatDialog
+  ) {
+    super(injector, dialog);
    }
-
-  goBack() {
-    this.location.back();
-  }
-
-  goHome() {
-    this.router.navigateByUrl('/home');
-  }
-
-  editProfile() {
-    this.router.navigateByUrl('/edit-profile');
-  }
-  viewMatchmaking(){
-    this.router.navigateByUrl('/matchmaking');
-  }
 }
