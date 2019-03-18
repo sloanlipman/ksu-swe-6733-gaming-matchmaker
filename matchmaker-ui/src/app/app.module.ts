@@ -1,32 +1,40 @@
+import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppMaterialModule } from './app-material.module';
-import { HomePageComponent } from './pages/home-page/home-page.component';
+
+import { AboutPage } from './pages/about/about.component';
+import { ContactPage } from './pages/contact-page/contact-page.component';
+import { EditProfilePage } from './pages/edit-profile-page/edit-profile-page.component';
+import { HomePage } from './pages/home-page/home-page.component';
+import { LandingPage } from './pages/landing-page/landing-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
-import { EditProfilePageComponent } from './pages/edit-profile-page/edit-profile-page.component';
-import { SplashPageComponent } from './pages/splash-page/splash-page.component';
-import { MatchmakeViewPageComponent } from './pages/matchmake-view-page/matchmake-view-page.component';
+import { MatchmakeViewPage } from './pages/matchmake-view-page/matchmake-view-page.component';
+import { PlayerCardComponent } from './shared/components/player-card/player-card.component';
+import { RegisterPage } from './pages/register-page/register-page.component';
 
 
 @NgModule({
   declarations: [
+    AboutPage,
     AppComponent,
-    HomePageComponent,
+    ContactPage,
+    EditProfilePage,
+    HomePage,
+    LandingPage,
     LoginPageComponent,
-    SignUpPageComponent,
-    EditProfilePageComponent,
-    SplashPageComponent,
-    MatchmakeViewPageComponent
+    MatchmakeViewPage,
+    PlayerCardComponent,
+    RegisterPage,
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
     AppMaterialModule,
+    AppRoutingModule,
+    BrowserModule,
     BrowserAnimationsModule
   ],
   providers: [],

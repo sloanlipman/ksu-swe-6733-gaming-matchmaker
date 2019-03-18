@@ -1,11 +1,24 @@
+<mat-grid-list cols="6" rowHeight="25rem">
+  <mat-grid-tile colspan="2" rowspan="1" class="profile-card">
+    <mat-grid-tile-header>General Info</mat-grid-tile-header>
+    <mat-form-field appearance="outline">
+        <mat-label>Zipcode</mat-label>
+        <input matInput>
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile class="genres" colspan="3" rowspan="1">
+    <mat-grid-tile-header>Game Genres</mat-grid-tile-header>
+  </mat-grid-tile>
+  <mat-grid-tile class="interests" colspan="2" rowspan="1">
+    <mat-grid-tile-header>Interests</mat-grid-tile-header>
+  </mat-grid-tile>
+  <mat-grid-tile class="games-played" colspan="3" rowspan="1">
+    <mat-grid-tile-header>Games Played</mat-grid-tile-header>
+  </mat-grid-tile>
+</mat-grid-list>
 
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>Edit Profile Page</span>
-  </mat-toolbar-row>
-  </mat-toolbar>
-  
-  <nav>
-    <button mat-raised-button color="warn" (click)="goBack()">Cancel</button>
+<nav>
+    <button mat-raised-button class="cancel" (click)="goBack()">Cancel</button>
     <button mat-raised-button (click)="submitChanges()" color="primary">Submit Changes</button>
   </nav>

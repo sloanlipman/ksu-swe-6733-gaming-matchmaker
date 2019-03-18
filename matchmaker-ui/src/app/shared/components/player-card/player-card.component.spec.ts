@@ -1,25 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomePage } from './home-page.component';
+import { PlayerCardComponent } from './player-card.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { AppMaterialModule } from 'src/app/app-material.module';
-import { RouterTestingModule } from '@angular/router/testing';
 
-describe('HomePage', () => {
-  let component: HomePage;
-  let fixture: ComponentFixture<HomePage>;
+
+describe('PlayerCardComponent', () => {
+  let component: PlayerCardComponent;
+  let fixture: ComponentFixture<PlayerCardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [AppMaterialModule, RouterTestingModule],
-      declarations: [ HomePage ],
+      declarations: [ PlayerCardComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomePage);
+    fixture = TestBed.createComponent(PlayerCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

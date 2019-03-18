@@ -1,2 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/pink-bluegrey.css';
+
+html {
+  background: rgb(119, 116, 116);
+  font-size: 62.5%;
+  
+}
+.cancel {
+  background-color: royalblue;
+}
+
+.credentials-card {
+  align-content: center;
+  margin-left: 30rem;
+  font-size: 1.5rem;
+}

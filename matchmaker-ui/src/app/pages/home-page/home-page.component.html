@@ -1,12 +1,10 @@
-
-<mat-toolbar color="primary">
-<mat-toolbar-row>
-  <span>Home Page</span>
-</mat-toolbar-row>
-</mat-toolbar>
+<mat-card id="user">
+  <player-card></player-card>
+</mat-card>
+<!--TODO look into using grid instead of card-->
 
 <nav>
-  <button mat-raised-button (click)="logOut()" color="warn">Log out</button>
+  <button mat-raised-button (click)="logOut()" class="cancel">Log out</button>
   <button mat-raised-button (click)="editProfile()" color="primary">Edit Profile</button>
   <button mat-raised-button (click)="viewMatchmaking()" color="accent">Matchmaking</button>
 </nav>

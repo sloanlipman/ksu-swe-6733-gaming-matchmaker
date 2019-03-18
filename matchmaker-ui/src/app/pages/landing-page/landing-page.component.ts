@@ -3,12 +3,14 @@ import { Component, OnInit, Injector } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { MatDialog } from '@angular/material';
+
 @Component({
-  selector: 'app-edit-profile-page',
-  templateUrl: './edit-profile-page.component.html',
-  styleUrls: ['./edit-profile-page.component.scss']
+  selector: 'landing-page',
+  templateUrl: './landing-page.component.html',
+  styleUrls: ['./landing-page.component.scss']
 })
-export class EditProfilePage extends AppComponent implements OnInit {
+export class LandingPage extends AppComponent {
+
   constructor(
     protected router: Router,
     protected location: Location,
@@ -16,10 +18,5 @@ export class EditProfilePage extends AppComponent implements OnInit {
     protected dialog: MatDialog
   ) {
     super(injector, dialog);
-  }
-
-  ngOnInit() {}
-  submitChanges() {
-    this.router.navigateByUrl('/home');
-  }
+   }
 }

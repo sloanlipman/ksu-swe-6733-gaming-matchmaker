@@ -1,10 +1,9 @@
-
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>Matchmaking Page</span>
-  </mat-toolbar-row>
-  </mat-toolbar>
-  
-  <nav>
-    <button mat-raised-button (click)="goBack()" color="warn">Go Back</button>
+<!--Use service to get # of cards to display, use *ngFor to actually display the right # of cards as we see fit-->
+<mat-card (class)="getColor()" ><player-card></player-card></mat-card><br>
+<mat-card (class)="getColor()" ><player-card></player-card></mat-card><br>
+<mat-card (class)="getColor()" ><player-card></player-card></mat-card><br>
+<mat-card (class)="getColor()" ><player-card></player-card></mat-card><br>
+<!--TODO look into using grid instead of card-->
+<nav>
+    <button mat-raised-button (click)="goBack()" class="cancel">Go Back</button>
   </nav>

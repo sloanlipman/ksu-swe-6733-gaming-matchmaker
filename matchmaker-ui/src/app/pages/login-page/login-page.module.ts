@@ -1,8 +1,7 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NgModule } from '@angular/core';
-import { LoginPageComponent } from './login-page.component';
 import { RouterModule } from '@angular/router';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler/src/core';
-
+import { LoginPageComponent } from './login-page.component';
 
 @NgModule({
   declarations: [

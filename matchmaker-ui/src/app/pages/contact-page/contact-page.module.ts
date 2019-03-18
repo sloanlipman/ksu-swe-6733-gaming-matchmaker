@@ -1,25 +1,24 @@
+/* import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NgModule } from '@angular/core';
-import { SignUpPageComponent } from './sign-up-page.component';
 import { RouterModule } from '@angular/router';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler/src/core';
-
+import { ContactPage } from './contact-page.component';
 
 @NgModule({
   declarations: [
-    SignUpPageComponent
+    ContactPage
   ],
   imports: [
     RouterModule.forChild([
       {
         path: '',
-        component: SignUpPageComponent
+        component: ContactPage
       }
     ])
   ],
   exports: [
-    SignUpPageComponent
+    ContactPage
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class LoginPageModule{}
+export class ContactPageModule{} */
