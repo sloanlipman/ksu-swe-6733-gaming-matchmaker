@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LandingPage } from '../landing-page/landing-page.component';
 import { AppComponent } from 'src/app/app.component';
 import { MatDialog } from '@angular/material';
+import { LoginService } from 'src/app/shared/services/login-service/login.service';
 
 @Component({
   selector: 'login',
@@ -13,6 +14,7 @@ import { MatDialog } from '@angular/material';
 
 })
 export class LoginPageComponent extends AppComponent implements OnInit {
+  loginService: LoginService;
   constructor(
     protected router: Router,
     protected location: Location,
@@ -22,5 +24,11 @@ export class LoginPageComponent extends AppComponent implements OnInit {
     super(injector, dialog);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authenticateCredentials('', '');
+  }
+
+  authenticateCredentials(email, password) {
+    this.loginService['login'](email, password);
+  }
 }
