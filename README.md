@@ -12,6 +12,7 @@ Project URLs
 >Product Backlog: https://trello.com/b/Mn5Ftara/6733team2project \
 Slack Channel: https://swe6733.slack.com/ \
 Github repository: https://github.com/sloanlipman/ksu-swe-6733-gaming-matchmaker \
+Recordings: https://kennesawedu-my.sharepoint.com/:f:/r/personal/sherchen_students_kennesaw_edu/Documents/6733Team2CATS?csf=1&e=ZkthNI \
 
 Product Vision
 >Short-term: we are building a web application that takes user inputs to facilitate the gaming matchmaking process by matching gamers of equal skill, style, and interests. \
