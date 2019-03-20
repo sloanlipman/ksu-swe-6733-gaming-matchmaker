@@ -18,12 +18,16 @@ public class ZipCalc {
 	
 	/**
 	 * Need to create a function which takes in a second zipcode and calculates the distance. 
+<<<<<<< HEAD
 	 * TODO Should we cache the result in the DB - which is quicker, the DB read or the local calc?
 	 */
 
 	/**
 	 * 
 	 * @param z
+=======
+	 * Should we cache the result in the DB - which is quicker, the DB read or the local calc?
+>>>>>>> fixing PEBKAC moment
 	 */
 	public ZipCalc() {
 	}

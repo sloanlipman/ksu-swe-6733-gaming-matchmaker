@@ -6,5 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.gamingMatchMaker.gamingMatchMaker.model.Location;
 
 public interface LocationRepository extends JpaRepository<Location, UUID> {
+<<<<<<< HEAD
 	Optional<Location> findByZip(String zipCode);
 }
+=======
+ 
+}
+>>>>>>> 40876ae Adding Attribution info
+>>>>>>> fixing PEBKAC moment
