@@ -8,4 +8,3 @@ import com.gamingMatchMaker.gamingMatchMaker.model.Location;
 public interface LocationRepository extends JpaRepository<Location, UUID> {
 	Optional<Location> findByZip(String zipCode);
 }
-
