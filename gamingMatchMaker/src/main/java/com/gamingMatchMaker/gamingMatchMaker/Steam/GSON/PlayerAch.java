@@ -4,7 +4,7 @@ public class PlayerAch {
 	public String name;
 	public int achieved;
 	
-	//GSON contructor
+	//GSON contructor 
 	public PlayerAch() {
 		//do nothign?
 	}

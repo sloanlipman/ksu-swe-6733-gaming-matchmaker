@@ -6,7 +6,7 @@ public class PlayerStats {
 	public PlayerAch[] achievements;
 	public PlayerStat[] stats;
 	
-	//GSON contructor
+	//GSON contructor 
 	public PlayerStats() {
 		//do nothing
 	}

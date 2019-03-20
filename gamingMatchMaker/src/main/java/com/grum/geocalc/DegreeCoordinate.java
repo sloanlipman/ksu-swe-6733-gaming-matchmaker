@@ -39,7 +39,7 @@ package com.grum.geocalc;
 
 /**
  * Represents coordinates given in
- * decimal-degrees (d) format
+ * decimal-degrees (d) format 
  *
  * @author rgallet
  */

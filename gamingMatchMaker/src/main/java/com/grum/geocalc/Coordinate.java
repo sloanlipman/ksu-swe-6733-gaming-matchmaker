@@ -44,7 +44,7 @@ import java.math.RoundingMode;
 import static java.lang.Math.*;
 
 /**
- * Abstraction of coordinate systems (degrees, radians, dms and gps)
+ * Abstraction of coordinate systems (degrees, radians, dms and gps) 
  *
  * @author rgallet
  */

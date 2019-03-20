@@ -41,7 +41,7 @@ package com.grum.geocalc;
 import java.io.Serializable;
 
 /**
- * Represent a point in spherical system
+ * Represent a point in spherical system 
  *
  * @author rgallet
  */
