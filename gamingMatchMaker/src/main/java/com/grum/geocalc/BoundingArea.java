@@ -41,7 +41,7 @@ import java.util.Objects;
 
 /**
  * Represents an area (viewed rectangular shaped projected onto Earth), defined by its top left and bottom right
- * coordinates
+ * coordinates 
  *
  * @author rgallet
  */

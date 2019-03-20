@@ -5,7 +5,7 @@ public class GameEntry {
 	public String gameVersion;
 	public GameStats availableGameStats;
 	
-	//GSON constructor
+	//GSON constructor 
 	public GameEntry() {
 		//do nothing
 	}

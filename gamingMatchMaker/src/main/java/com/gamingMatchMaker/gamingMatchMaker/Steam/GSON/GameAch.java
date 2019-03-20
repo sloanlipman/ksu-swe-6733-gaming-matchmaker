@@ -5,7 +5,7 @@ public class GameAch {
 	public int defaultvalue;
 	public String displayName;
 	
-	//GSON constructor
+	//GSON constructor 
 	public GameAch() {
 		//do nothing
 	}

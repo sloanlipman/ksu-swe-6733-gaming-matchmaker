@@ -40,7 +40,7 @@ package com.grum.geocalc;
 
 /**
  * Represents coordinates given in
- * radian-degrees (r) format
+ * radian-degrees (r) format 
  *
  * @author rgallet
  */

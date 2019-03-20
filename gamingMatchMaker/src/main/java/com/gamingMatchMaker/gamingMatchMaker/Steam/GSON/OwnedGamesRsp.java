@@ -4,7 +4,7 @@ public class OwnedGamesRsp {
 	public int game_count;
 	public GameOwned[] games;
 	
-	// GSON Constructor
+	// GSON Constructor 
 	public OwnedGamesRsp() {
 		//do nothing
 	}

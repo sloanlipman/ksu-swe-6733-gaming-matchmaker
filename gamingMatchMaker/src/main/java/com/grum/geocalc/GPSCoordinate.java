@@ -40,7 +40,7 @@ package com.grum.geocalc;
 
 /**
  * Represents coordinates given in
- * Degrees decimal-minutes (D m) format
+ * Degrees decimal-minutes (D m) format 
  *
  * @author rgallet
  */

@@ -41,7 +41,7 @@ import static java.lang.Math.abs;
 
 /**
  * Represents coordinates given in
- * Degrees Minutes decimal-seconds (D M s) format
+ * Degrees Minutes decimal-seconds (D M s) format 
  *
  * @author rgallet
  */

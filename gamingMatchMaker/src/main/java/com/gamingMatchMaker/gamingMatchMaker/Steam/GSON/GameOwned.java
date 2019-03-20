@@ -5,7 +5,7 @@ public class GameOwned {
 	public long playtime_2weeks;
 	public long playtime_forever;
 	
-	// GSON Constructor
+	// GSON Constructor 
 	public GameOwned() {
 		//do nothing
 	}

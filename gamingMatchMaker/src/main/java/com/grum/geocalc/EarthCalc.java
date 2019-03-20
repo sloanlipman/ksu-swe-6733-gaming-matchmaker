@@ -41,7 +41,7 @@ package com.grum.geocalc;
 import static java.lang.Math.*;
 
 /**
- * Earth related calculations.
+ * Earth related calculations. 
  *
  * @author rgallet
  */
