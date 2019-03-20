@@ -1,8 +1,5 @@
 node_modules
 .DS_Store
 Thumbs.db
-<<<<<<< HEAD
 /localCopyMatchmaker
-=======
->>>>>>> 0bce0c036e19afa536da316e96cec9ccbc1b8792
 .project
