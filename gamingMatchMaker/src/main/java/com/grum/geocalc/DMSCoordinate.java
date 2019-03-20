@@ -51,10 +51,14 @@ import static java.lang.Math.abs;
 /**
  * Represents coordinates given in
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Degrees Minutes decimal-seconds (D M s) format 
 =======
  * Degrees Minutes decimal-seconds (D M s) format
 >>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
+=======
+ * Degrees Minutes decimal-seconds (D M s) format 
+>>>>>>> fixing PEBKAC moment
  *
  * @author rgallet
  */

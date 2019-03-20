@@ -54,10 +54,14 @@ import static java.lang.Math.*;
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Abstraction of coordinate systems (degrees, radians, dms and gps) 
 =======
  * Abstraction of coordinate systems (degrees, radians, dms and gps)
 >>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
+=======
+ * Abstraction of coordinate systems (degrees, radians, dms and gps) 
+>>>>>>> fixing PEBKAC moment
  *
  * @author rgallet
  */

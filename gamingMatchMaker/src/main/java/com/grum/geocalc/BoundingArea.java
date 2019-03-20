@@ -51,10 +51,14 @@ import java.util.Objects;
 /**
  * Represents an area (viewed rectangular shaped projected onto Earth), defined by its top left and bottom right
 <<<<<<< HEAD
+<<<<<<< HEAD
  * coordinates 
 =======
  * coordinates
 >>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
+=======
+ * coordinates 
+>>>>>>> fixing PEBKAC moment
  *
  * @author rgallet
  */

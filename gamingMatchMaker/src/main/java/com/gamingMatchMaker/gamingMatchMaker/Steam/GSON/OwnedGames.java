@@ -4,10 +4,14 @@ public class OwnedGames {
 	public OwnedGamesRsp response;
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	//GSON Constructor 
 =======
 	//GSON Constructor
 >>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
+=======
+	//GSON Constructor 
+>>>>>>> fixing PEBKAC moment
 	public OwnedGames() {
 		//do nothing
 	}

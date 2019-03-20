@@ -50,10 +50,14 @@ package com.grum.geocalc;
 /**
  * Represents coordinates given in
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Degrees decimal-minutes (D m) format 
 =======
  * Degrees decimal-minutes (D m) format
 >>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
+=======
+ * Degrees decimal-minutes (D m) format 
+>>>>>>> fixing PEBKAC moment
  *
  * @author rgallet
  */

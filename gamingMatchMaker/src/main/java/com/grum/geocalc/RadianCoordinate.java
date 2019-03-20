@@ -50,10 +50,14 @@ package com.grum.geocalc;
 /**
  * Represents coordinates given in
 <<<<<<< HEAD
+<<<<<<< HEAD
  * radian-degrees (r) format 
 =======
  * radian-degrees (r) format
 >>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
+=======
+ * radian-degrees (r) format 
+>>>>>>> fixing PEBKAC moment
  *
  * @author rgallet
  */

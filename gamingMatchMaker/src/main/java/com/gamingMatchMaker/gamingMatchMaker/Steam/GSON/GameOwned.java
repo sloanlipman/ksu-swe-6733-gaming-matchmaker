@@ -6,10 +6,14 @@ public class GameOwned {
 	public long playtime_forever;
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	// GSON Constructor 
 =======
 	// GSON Constructor
 >>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
+=======
+	// GSON Constructor 
+>>>>>>> fixing PEBKAC moment
 	public GameOwned() {
 		//do nothing
 	}

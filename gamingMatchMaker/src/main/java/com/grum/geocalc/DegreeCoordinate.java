@@ -49,10 +49,14 @@ package com.grum.geocalc;
 /**
  * Represents coordinates given in
 <<<<<<< HEAD
+<<<<<<< HEAD
  * decimal-degrees (d) format 
 =======
  * decimal-degrees (d) format
 >>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
+=======
+ * decimal-degrees (d) format 
+>>>>>>> fixing PEBKAC moment
  *
  * @author rgallet
  */

@@ -51,10 +51,14 @@ import java.io.Serializable;
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Represent a point in spherical system 
 =======
  * Represent a point in spherical system
 >>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
+=======
+ * Represent a point in spherical system 
+>>>>>>> fixing PEBKAC moment
  *
  * @author rgallet
  */

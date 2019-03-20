@@ -36,7 +36,7 @@ public class ZipCalc {
 	private com.grum.geocalc.Point pt;
 	
 	/**
-	 * Need to create a function which takes in a second zipcode and calculates the distance.
+	 * Need to create a function which takes in a second zipcode and calculates the distance. 
 	 * Should we cache the result in the DB - which is quicker, the DB read or the local calc?
 	 */
 >>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.

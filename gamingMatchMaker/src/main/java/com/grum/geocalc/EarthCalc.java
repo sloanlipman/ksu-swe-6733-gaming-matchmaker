@@ -51,10 +51,14 @@ import static java.lang.Math.*;
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Earth related calculations. 
 =======
  * Earth related calculations.
 >>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
+=======
+ * Earth related calculations. 
+>>>>>>> fixing PEBKAC moment
  *
  * @author rgallet
  */
