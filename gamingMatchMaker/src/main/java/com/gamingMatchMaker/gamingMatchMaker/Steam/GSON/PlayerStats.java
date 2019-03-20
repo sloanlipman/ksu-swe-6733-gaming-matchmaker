@@ -6,7 +6,11 @@ public class PlayerStats {
 	public PlayerAch[] achievements;
 	public PlayerStat[] stats;
 	
+<<<<<<< HEAD
 	//GSON contructor 
+=======
+	//GSON contructor
+>>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
 	public PlayerStats() {
 		//do nothing
 	}

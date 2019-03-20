@@ -1,5 +1,6 @@
 package com.gamingMatchMaker.gamingMatchMaker;
 
+<<<<<<< HEAD
 
 import org.junit.*;
 <<<<<<< HEAD
@@ -182,12 +183,47 @@ public class ZipCalcTest {
 		//TODO implement the real test
 		Assert.assertTrue(true);
 >>>>>>> Working on the Unit Tests.  Focus is on ZipCalcTests, but Chimney
+=======
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class ZipCalcTest {
+
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
+	}
+
+	@AfterAll
+	static void tearDownAfterClass() throws Exception {
+	}
+
+	@BeforeEach
+	void setUp() throws Exception {
+	}
+
+	@AfterEach
+	void tearDown() throws Exception {
+	}
+
+	/**
+	 * Tests when the two zip codes are valid.  
+	 */
+	@Test
+	void test_GD_Normal() {
+		fail("Not yet implemented");
+>>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
 	}
 
 	/**
 	 * Test for the other zip code being invalid.
 	 */
 	@Test
+<<<<<<< HEAD
 	public void test_GD_InvalidOther() {
 <<<<<<< HEAD
 		//TODO should really split this one up
@@ -245,4 +281,17 @@ public class ZipCalcTest {
 		
 	}
 	
+=======
+	void test_GD_InvalidOther() {
+		fail("Not yet implemented");
+	}
+	
+	/**
+	 * Tests for attempting to create a new zip code object with a bad value.
+	 */
+	@Test
+	void test_ZC_Invalid() {
+		
+	}
+>>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
 }

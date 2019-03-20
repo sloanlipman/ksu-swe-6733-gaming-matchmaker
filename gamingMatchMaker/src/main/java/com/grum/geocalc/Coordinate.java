@@ -30,11 +30,14 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+<<<<<<< HEAD
 /**
  * Attribution: Grum Limited
  * https://github.com/grumlimited
  * Version: 0.5.8, downloaded 3/17/19
  */
+=======
+>>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
 package com.grum.geocalc;
 
 import java.io.Serializable;
@@ -44,7 +47,11 @@ import java.math.RoundingMode;
 import static java.lang.Math.*;
 
 /**
+<<<<<<< HEAD
  * Abstraction of coordinate systems (degrees, radians, dms and gps) 
+=======
+ * Abstraction of coordinate systems (degrees, radians, dms and gps)
+>>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
  *
  * @author rgallet
  */

@@ -30,17 +30,24 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+<<<<<<< HEAD
 /**
  * Attribution: Grum Limited
  * https://github.com/grumlimited
  * Version: 0.5.8, downloaded 3/17/19
  */
 
+=======
+>>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
 package com.grum.geocalc;
 
 /**
  * Represents coordinates given in
+<<<<<<< HEAD
  * Degrees decimal-minutes (D m) format 
+=======
+ * Degrees decimal-minutes (D m) format
+>>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
  *
  * @author rgallet
  */

@@ -1,5 +1,8 @@
 node_modules
 .DS_Store
 Thumbs.db
+<<<<<<< HEAD
 /localCopyMatchmaker
+=======
+>>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
 .project

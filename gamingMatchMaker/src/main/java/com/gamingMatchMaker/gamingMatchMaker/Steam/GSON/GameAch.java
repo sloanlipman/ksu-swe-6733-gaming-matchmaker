@@ -5,7 +5,11 @@ public class GameAch {
 	public int defaultvalue;
 	public String displayName;
 	
+<<<<<<< HEAD
 	//GSON constructor 
+=======
+	//GSON constructor
+>>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
 	public GameAch() {
 		//do nothing
 	}
