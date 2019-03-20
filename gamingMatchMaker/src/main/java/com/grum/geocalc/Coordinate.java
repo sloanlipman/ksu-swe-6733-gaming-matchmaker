@@ -30,6 +30,11 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/**
+ * Attribution: Grum Limited
+ * https://github.com/grumlimited
+ * Version: 0.5.8, downloaded 3/17/19
+ */
 package com.grum.geocalc;
 
 import java.io.Serializable;
