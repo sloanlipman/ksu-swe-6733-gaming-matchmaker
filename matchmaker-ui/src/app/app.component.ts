@@ -55,7 +55,7 @@ ngOnInit() {
   protected closeDialog() {
     this.dialog.closeAll();
   }
-  login() {
+  goToLoginPage() {
     this.router.navigateByUrl('/login');
   }
 

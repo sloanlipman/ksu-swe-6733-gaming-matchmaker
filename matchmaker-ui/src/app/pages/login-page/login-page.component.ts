@@ -13,7 +13,7 @@ import { LoginService } from 'src/app/shared/services/login-service/login.servic
   encapsulation: ViewEncapsulation.None
 
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent extends AppComponent implements OnInit {
 
   constructor(
     protected router: Router,
@@ -22,7 +22,7 @@ export class LoginPageComponent implements OnInit {
     protected dialog: MatDialog,
     protected loginService: LoginService
   ) {
-    // super(injector, dialog);
+     super(injector, dialog);
   }
 
   ngOnInit() {

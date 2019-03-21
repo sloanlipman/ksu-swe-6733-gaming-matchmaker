@@ -4,7 +4,6 @@ export class User {
   email: string;
   firstName: string;
   lastName: string;
-  password: string;
   age: number;
   active: boolean;
   type: string;
@@ -14,7 +13,6 @@ export class User {
     this.email = obj && obj.email;
     this.firstName = obj && obj.first_name;
     this.lastName = obj && obj.last_name;
-    this.password = obj && obj.password;
     this.age = obj && obj.age;
     this.active = obj && obj.active;
     this.type = obj && obj.type;

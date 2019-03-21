@@ -61,26 +61,26 @@ export class LoginService /* extends HttpService */ { // TODO decide if there ne
     }, this.httpOptions).pipe(map((resp: any) => {
       if (resp) {
         console.log(resp);
-        console.log(resp.data.active);
           // if the user is not active then deny the login
-        if (resp.data.active === 'active') {
-        // TODO check if resp.data.someProperty matches to its source from the backend
-        //  this.authToken = resp.auth.accessToken; // TODO see if this is the right declaration
-     //     this.currUser.id = resp.data.id;
-      }
-          this.currUser.email = resp.data.email;
-          this.currUser.firstName = resp.data.first_name;
-          this.currUser.lastName = resp.data.last_name;
-          this.currUser.age = resp.data.age;
-          this.currUser.active = this.activeToBoolean(resp.data.active);
-          this.currUser.type = this.typeToString(resp.data.type);
+        if (resp.detail.is_active) {
+        // TODO check if resp.detail.someProperty matches to its source from the backend
+          this.authToken = resp.auth.accessToken;
+          this.currUser.id = resp.detail.id;
+          this.currUser.email = resp.detail.email;
+          this.currUser.firstName = resp.detail.first_name;
+          this.currUser.lastName = resp.detail.last_name;
+          this.currUser.age = resp.detail.age;
+          this.currUser.active = resp.detail.is_active;
+          this.currUser.type = this.typeToString(resp.detail.user_type);
 
           localStorage.setItem('access-token', this.authToken);
           localStorage.setItem('user', JSON.stringify(this.currUser));
+          console.log(this.currUser);
           return Object.assign({}, this.currUser);
         }
-          return null
-      })) //.pipe(catchError(err => this.handleError(err)));
+      }
+        return null;
+      })); // .pipe(catchError(err => this.handleError(err)));
     }
     protected logout() {
       this.currUser = null;
