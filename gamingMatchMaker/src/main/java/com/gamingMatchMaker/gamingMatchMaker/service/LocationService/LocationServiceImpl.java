@@ -22,7 +22,11 @@ public class LocationServiceImpl implements LocationService {
 	 */
 	@Override
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public Location GetLocation(String zipCode) {
+=======
+	public Location GetLocation(int zipCode) {
+>>>>>>> Worked up Spring Framework classes for ZipCalc.
 =======
 	public Location GetLocation(int zipCode) {
 >>>>>>> Worked up Spring Framework classes for ZipCalc.
