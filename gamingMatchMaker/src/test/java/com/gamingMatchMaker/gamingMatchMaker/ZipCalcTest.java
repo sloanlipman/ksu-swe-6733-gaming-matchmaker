@@ -25,6 +25,21 @@ class ZipCalcTest {
 	@AfterEach
 	void tearDown() throws Exception {
 	}
+	
+	/**
+	 * Verify normal creation of good zip codes.
+	 */
+	@Test
+	void test_ZC_Valid() {
+		/*
+		 * 30318	33.78	-84.44
+		 * 30040	34.20	-84.13
+		 * 30052	33.83	-83.89
+		 * 30084	33.85	-84.22
+		*/
+		
+		
+	}
 
 	/**
 	 * Tests when the two zip codes are valid.  
