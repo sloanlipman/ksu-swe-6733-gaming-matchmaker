@@ -21,7 +21,11 @@ public class LocationServiceImpl implements LocationService {
 	 * @param 
 	 */
 	@Override
+<<<<<<< HEAD
 	public Location GetLocation(String zipCode) {
+=======
+	public Location GetLocation(int zipCode) {
+>>>>>>> Worked up Spring Framework classes for ZipCalc.
 		Optional<Location> place = atlas.findByZip(zipCode);
 		
 		if(place.isPresent()) return place.get();

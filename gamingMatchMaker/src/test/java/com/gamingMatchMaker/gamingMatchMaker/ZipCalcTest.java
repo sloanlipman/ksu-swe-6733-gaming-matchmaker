@@ -93,6 +93,23 @@ public class ZipCalcTest {
 		}
 	}
 	
+<<<<<<< HEAD
+=======
+	/**
+	 * Verify normal creation of good zip codes.
+	 */
+	@Test
+	void test_ZC_Valid() {
+		/*
+		 * 30318	33.78	-84.44
+		 * 30040	34.20	-84.13
+		 * 30052	33.83	-83.89
+		 * 30084	33.85	-84.22
+		*/
+		
+		
+	}
+>>>>>>> Worked up Spring Framework classes for ZipCalc.
 
 	/**
 	 * Verify the distance is calculated when the set is done via GetDistance.
