@@ -20,9 +20,9 @@ export class LoginPageComponent implements OnInit {
     protected location: Location,
     protected injector: Injector,
     protected dialog: MatDialog,
-    protected   loginService: LoginService
+    protected loginService: LoginService
   ) {
-    //super(injector, dialog);
+    // super(injector, dialog);
   }
 
   ngOnInit() {

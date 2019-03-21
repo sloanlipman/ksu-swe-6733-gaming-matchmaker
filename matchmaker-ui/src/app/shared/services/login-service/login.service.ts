@@ -31,7 +31,7 @@ export class LoginService /* extends HttpService */ { // TODO decide if there ne
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
-      'Access-Contro': 'Access-Control-Allow-Headers'
+      'Access-Control': 'Access-Control-Allow-Headers'
     })
   };
 
