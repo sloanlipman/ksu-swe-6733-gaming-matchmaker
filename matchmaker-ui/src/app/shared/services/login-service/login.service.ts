@@ -20,17 +20,21 @@ export class LoginService /* extends HttpService */ { // TODO decide if there ne
     active: null,
     type: null
   });
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Authorization': 'my-auth-token'
-    })
-  };
+
   constructor(
     protected http: HttpClient
     ) {
       // super(http);
     }
+
+
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Access-Contro': 'Access-Control-Allow-Headers'
+    })
+  };
+
 
 // TODO catch an error with an else statment?
   protected typeToString(type: number): string {
@@ -50,11 +54,10 @@ export class LoginService /* extends HttpService */ { // TODO decide if there ne
     }
   }
 
-  protected login(username, password): Observable<User> {
-    // Call this.logout() to log out of current user?
+  public login(email, password): Observable<User> {
     return this.http.post('/api/authorizeUser', { // TODO need the correct call
-      username: username,
-      password: password
+      email,
+      password
     }, this.httpOptions).pipe(map((resp: any) => {
       if (resp) {
         console.log(resp);
@@ -64,6 +67,7 @@ export class LoginService /* extends HttpService */ { // TODO decide if there ne
         // TODO check if resp.data.someProperty matches to its source from the backend
         //  this.authToken = resp.auth.accessToken; // TODO see if this is the right declaration
      //     this.currUser.id = resp.data.id;
+      }
           this.currUser.email = resp.data.email;
           this.currUser.firstName = resp.data.first_name;
           this.currUser.lastName = resp.data.last_name;
@@ -75,10 +79,8 @@ export class LoginService /* extends HttpService */ { // TODO decide if there ne
           localStorage.setItem('user', JSON.stringify(this.currUser));
           return Object.assign({}, this.currUser);
         }
-      } else {
-          return null;
-        }
-      })); // .pipe(catchError(err => this.handleError(err)));
+          return null
+      })) //.pipe(catchError(err => this.handleError(err)));
     }
     protected logout() {
       this.currUser = null;

@@ -17,6 +17,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MatchmakeViewPage } from './pages/matchmake-view-page/matchmake-view-page.component';
 import { PlayerCardComponent } from './shared/components/player-card/player-card.component';
 import { RegisterPage } from './pages/register-page/register-page.component';
+import {LoginService} from './shared/services/login-service/login.service';
+import { from } from 'rxjs';
 
 
 @NgModule({
@@ -39,7 +41,7 @@ import { RegisterPage } from './pages/register-page/register-page.component';
     BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -13,22 +13,27 @@ import { LoginService } from 'src/app/shared/services/login-service/login.servic
   encapsulation: ViewEncapsulation.None
 
 })
-export class LoginPageComponent extends AppComponent implements OnInit {
-  loginService: LoginService;
+export class LoginPageComponent implements OnInit {
+
   constructor(
     protected router: Router,
     protected location: Location,
     protected injector: Injector,
-    protected dialog: MatDialog
+    protected dialog: MatDialog,
+    protected   loginService: LoginService
   ) {
-    super(injector, dialog);
+    //super(injector, dialog);
   }
 
   ngOnInit() {
-    this.authenticateCredentials('', '');
+    this.authenticateCredentials('admin@aaa.com', 'admin');
   }
 
+
   authenticateCredentials(email, password) {
-    this.loginService['login'](email, password);
+    this.loginService.login(email, password).subscribe(data => {
+    console.log(data);
+    });
   }
 }
+
