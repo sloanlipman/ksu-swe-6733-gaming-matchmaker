@@ -24,7 +24,6 @@ export class AppComponent implements OnInit {
       this.location = this.injector.get(Location);
     }
 ngOnInit() {
-  console.log(this.dialog);
 }
   private showHome() {
    const url = this.router.url;
@@ -63,7 +62,7 @@ ngOnInit() {
     this.router.navigateByUrl('/register');
   }
 
-  logOut() {
+  goToLogout() {
     this.router.navigateByUrl('/landing-page');
    }
 

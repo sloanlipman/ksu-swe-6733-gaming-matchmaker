@@ -1,4 +1,3 @@
-
 export class User {
   id: string; // TODO string or number?
   email: string;

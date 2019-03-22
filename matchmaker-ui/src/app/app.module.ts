@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,8 +18,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MatchmakeViewPage } from './pages/matchmake-view-page/matchmake-view-page.component';
 import { PlayerCardComponent } from './shared/components/player-card/player-card.component';
 import { RegisterPage } from './pages/register-page/register-page.component';
-import {LoginService} from './shared/services/login-service/login.service';
-import { from } from 'rxjs';
+
+import { LoginService } from './shared/services/login-service/login.service';
 
 
 @NgModule({
@@ -39,7 +40,9 @@ import { from } from 'rxjs';
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent],

@@ -8,9 +8,9 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService /* extends HttpService */ { // TODO decide if there needs to be a parent class to encapsulate http calls
+export class LoginService {
   private authToken: string = null;
-  private currUser: User = new User({
+  public currUser: User = new User({
     id: null,
     email: null,
     firstName: null,
@@ -23,10 +23,7 @@ export class LoginService /* extends HttpService */ { // TODO decide if there ne
 
   constructor(
     protected http: HttpClient
-    ) {
-      // super(http);
-    }
-
+    ) {}
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -34,7 +31,6 @@ export class LoginService /* extends HttpService */ { // TODO decide if there ne
       'Access-Control': 'Access-Control-Allow-Headers'
     })
   };
-
 
 // TODO catch an error with an else statment?
   protected typeToString(type: number): string {
@@ -45,25 +41,14 @@ export class LoginService /* extends HttpService */ { // TODO decide if there ne
     }
   }
 
-// TODO catch an error with an else statment?
-  protected activeToBoolean(active: string): boolean {
-    if (active === 'active') {
-      return true;
-    } else if (active === 'not_active') {
-      return false;
-    }
-  }
-
   public login(email, password): Observable<User> {
-    return this.http.post('/api/authorizeUser', { // TODO need the correct call
+    return this.http.post('/api/authorizeUser', {
       email,
       password
     }, this.httpOptions).pipe(map((resp: any) => {
       if (resp) {
         console.log(resp);
-          // if the user is not active then deny the login
         if (resp.detail.is_active) {
-        // TODO check if resp.detail.someProperty matches to its source from the backend
           this.authToken = resp.auth.accessToken;
           this.currUser.id = resp.detail.id;
           this.currUser.email = resp.detail.email;
@@ -82,7 +67,7 @@ export class LoginService /* extends HttpService */ { // TODO decide if there ne
         return null;
       })); // .pipe(catchError(err => this.handleError(err)));
     }
-    protected logout() {
+    protected Logout() {
       this.currUser = null;
       this.authToken = null;
       localStorage.clear();
