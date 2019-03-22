@@ -1,33 +1,17 @@
 package com.gamingMatchMaker.gamingMatchMaker.Steam;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.*;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
-class ChimneyTest {
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class ChimneyTest {
 	private static final String DEFAULT_STEAMID = "76561197995016920";
 	private static final int DEFAULT_GAMEID = 440;
-
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-	}
-
-	@BeforeEach
-	void setUp() throws Exception {
-		
-	}
-
-	@AfterEach
-	void tearDown() throws Exception {
-	}
 
 /*******************************************************\
  *                     GetAchLevel                     *
@@ -37,7 +21,7 @@ class ChimneyTest {
 	 * Tests the GetAchLevel when both the user and the game exists.
 	 */
 	@Test
-	void test_GAL_UserGame() {
+	public void test_GAL_UserGame() {
 		Chimney vent = new Chimney();
 		try {
 			assertTrue(vent.GetAchLevel(DEFAULT_STEAMID, DEFAULT_GAMEID) > 0);
@@ -54,36 +38,45 @@ class ChimneyTest {
 	 * Tests the GetAchLevel when the game does not exist.
 	 */
 	@Test
-	void test_GAL_User() {
+	public void test_GAL_User() {
 		Chimney vent = new Chimney();
-		assertThrows(
-				InvalidGameException.class, 
-				() -> vent.GetAchLevel(DEFAULT_STEAMID, 0)
-		);
+		try {
+			vent.GetAchLevel(DEFAULT_STEAMID, 0);
+		} 
+		catch (InvalidPlayerrException e) {
+			fail("Unexpected Exception " + e.getMessage());
+		} 
+		catch (InvalidGameException e) { }
 	}
 	
 	/**
 	 * Tests the GetAchLevel when the user id does not exist.
 	 */
 	@Test
-	void test_GAL_Game() {
+	public void test_GAL_Game() {
 		Chimney vent = new Chimney();
-		assertThrows(
-			InvalidPlayerrException.class, 
-			() -> vent.GetAchLevel(DEFAULT_STEAMID.substring(1), DEFAULT_GAMEID)
-		);
+		try {
+			vent.GetAchLevel(DEFAULT_STEAMID.substring(1), DEFAULT_GAMEID);
+		} 
+		catch (InvalidPlayerrException e) { } 
+		catch (InvalidGameException e) {
+			fail("Unexpected Exception " + e.getMessage());
+		}
 	}
 
 	/**
 	 * Tests the GetAchLevel when the user id and game id are invalid.
 	 */
 	@Test
-	void test_GAL_NONE() {
+	public void test_GAL_NONE() {
 		Chimney vent = new Chimney();
-		assertThrows(
-			InvalidPlayerrException.class, 
-			() -> vent.GetAchLevel(DEFAULT_STEAMID.substring(1), 0)
-		);
+		try {
+			vent.GetAchLevel(DEFAULT_STEAMID.substring(1), DEFAULT_GAMEID);
+		} 
+		catch (InvalidPlayerrException e) { } 
+		catch (InvalidGameException e) {
+			fail("Unexpected Exception " + e.getMessage());
+		}
 	}
 
 /*******************************************************\
@@ -94,7 +87,7 @@ class ChimneyTest {
 	 * Tests the normal actions taken to link a steam account to the user
 	 */
 	@Test
-	void test_LP_Normal() {
+	public void test_LP_Normal() {
 		//TODO clear Player from DB (test DB)
 		Chimney vent = new Chimney();
 		try {
@@ -110,7 +103,7 @@ class ChimneyTest {
 	 * Tests creating the user -> steam account link when some of the games are already in the DB.
 	 */
 	@Test
-	void test_LP_PartialGames() {
+	public void test_LP_PartialGames() {
 		//TODO clear Player from DB (test DB)
 		//TODO clear some games from the DB and ensure others are there
 		Chimney vent = new Chimney();
@@ -127,39 +120,43 @@ class ChimneyTest {
 	 * Verify handling the error when the user id is truncated.
 	 */
 	@Test
-	void test_LP_ShortUID() {
+	public void test_LP_ShortUID() {
 		//TODO clear Player from DB (test DB)
 		Chimney vent = new Chimney();
-		assertThrows(
-				InvalidGameException.class, 
-				() -> vent.LoadPlayer(DEFAULT_STEAMID.substring(1))
-		);
+		try {
+			vent.LoadPlayer(DEFAULT_STEAMID.substring(1));
+			fail("Completed LoadPlayer with steamID " + DEFAULT_STEAMID.substring(1) + " unexpectedly.");
+		}
+		//pass in the catch
+		catch (InvalidPlayerrException ipe) { }
 	}
 	
 	/**
 	 * Tests the error handling when the user id is too long.
 	 */
 	@Test
-	void test_LP_LongUID() {
+	public void test_LP_LongUID() {
 		//TODO clear Player from DB (test DB)
 		Chimney vent = new Chimney();
-		assertThrows(
-				InvalidPlayerrException.class, 
-				() -> vent.LoadPlayer(DEFAULT_STEAMID.concat("1234"))
-		);
+		try {
+			vent.LoadPlayer(DEFAULT_STEAMID.concat("1234"));
+			fail("Completed LoadPlayer with steamID " + DEFAULT_STEAMID.concat("1234") + " unexpectedly.");
+		}
+		catch (InvalidPlayerrException ipe) { }
 	}
 	
 	/**
 	 * Tests the error handling when the user id is empty.
 	 */
 	@Test
-	void test_LP_Empty() {
+	public void test_LP_Empty() {
 		//TODO clear Player from DB (test DB)
 		Chimney vent = new Chimney();
-		assertThrows(
-				InvalidPlayerrException.class, 
-				() -> vent.LoadPlayer("")
-		);
+		try {
+			vent.LoadPlayer("");
+			fail("Completed LoadPlayer with empty steamID");
+		}
+		catch (InvalidPlayerrException ipe) { }
 	}
 	
 /*******************************************************\
@@ -170,7 +167,7 @@ class ChimneyTest {
 	 * Verify the normal steam game creation works.
 	 */
 	@Test
-	void test_LG_Normal() {
+	public void test_LG_Normal() {
 		//TODO clear Game from DB (test DB)
 		Chimney vent = new Chimney();
 		try {
@@ -186,38 +183,45 @@ class ChimneyTest {
 	 * Test the failure expected when a game id is used which is greater than steam has.
 	 */
 	@Test
-	void test_LG_MaxGID() {
+	public void test_LG_MaxGID() {
 		//TODO clear Player from DB (test DB)
 		Chimney vent = new Chimney();
-		assertThrows(
-				InvalidPlayerrException.class, 
-				() -> vent.LoadGame(2147483647) //max int - don't expect this to be a steam game
-		);
+		try {
+			vent.LoadGame(2147483647);
+			fail("Completed LoadGame with MAX_INT as game id");
+		}
+		//pass on exception
+		catch (InvalidGameException e) { } //max int - don't expect this to be a steam game
 	}
 	
 	/**
 	 * Test the failure when 0 is used as the game id.
 	 */
 	@Test
-	void test_LG_ZeroGID() {
+	public void test_LG_ZeroGID() {
 		//TODO clear Player from DB (test DB)
 		Chimney vent = new Chimney();
-		assertThrows(
-				InvalidPlayerrException.class, 
-				() -> vent.LoadGame(0)
-		);
+		try {
+			vent.LoadGame(0);
+			fail("Completed LoadGame with 0 as game id");
+		}
+		//pass on exception
+		catch (InvalidGameException e) { } //max int - don't expect this to be a steam game
 	}
 	
 	/**
 	 * Test catching the failure when a negative number is used for the game id.
 	 */
-	@Test
-	void test_LG_NegGID() {
-		//TODO clear Player from DB (test DB)
-		Chimney vent = new Chimney();
-		assertThrows(
-				InvalidPlayerrException.class, 
-				() -> vent.LoadGame(DEFAULT_GAMEID * -1)
-		);
+	@Test(expected = InvalidPlayerrException.class)
+	public void test_LG_NegGID() {
+		//TODO clear Game from DB (test DB)
+		Chimney vent = new Chimney();		
+		try {
+			vent.LoadGame(DEFAULT_GAMEID * -1);
+			fail("Completed LoadGame with negative number as game id");
+		}
+		//pass on exception
+		catch (InvalidGameException e) { } //max int - don't expect this to be a steam game
 	}
-}
+
+} //end class ChimneyTest
