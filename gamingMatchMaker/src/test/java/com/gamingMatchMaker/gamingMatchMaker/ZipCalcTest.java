@@ -1,11 +1,6 @@
 package com.gamingMatchMaker.gamingMatchMaker;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
 import org.junit.*;
-<<<<<<< HEAD
-<<<<<<< HEAD
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,55 +92,7 @@ public class ZipCalcTest {
 		}
 	}
 	
-<<<<<<< HEAD
-=======
-=======
-import org.junit.Assert.*;
-=======
->>>>>>> Getting rebase results repaired
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class ZipCalcTest {
-
->>>>>>> Working on the Unit Tests.  Focus is on ZipCalcTests, but Chimney
 	/**
-	 * Verify normal creation of good zip codes.
-	 */
-	@Test
-	public void test_ZC_Valid() {
-		/*
-		 * 30318	33.78	-84.44
-		 * 30040	34.20	-84.13
-		 * 30052	33.83	-83.89
-		 * 30084	33.85	-84.22
-		*/
-		
-		ZipCalc zc1 = new ZipCalc(30318);
-		Assert.assertEquals(33.78, zc1.GetStartingLat(), 0);
-		Assert.assertEquals(-84.44, zc1.GetStartingLong(), 0);
-		
-		ZipCalc zc2 = new ZipCalc(30040);
-		Assert.assertEquals(34.20, zc2.GetStartingLat(), 0);
-		Assert.assertEquals(-84.13, zc2.GetStartingLong(), 0);
-		
-		
-		ZipCalc zc3 = new ZipCalc(30052);
-		Assert.assertEquals(33.78, zc3.GetStartingLat(), 0);
-		Assert.assertEquals(-83.89, zc3.GetStartingLong(), 0);
-		
-		
-		ZipCalc zc4 = new ZipCalc(30084);
-		Assert.assertEquals(33.78, zc4.GetStartingLat(), 0);
-		Assert.assertEquals(-84.22, zc4.GetStartingLong(), 0);
-	}
->>>>>>> Worked up Spring Framework classes for ZipCalc.
-
-	/**
-<<<<<<< HEAD
 	 * Verify the distance is calculated when the set is done via GetDistance.
 	 */
 	@Test
@@ -175,84 +122,13 @@ public class ZipCalcTest {
 		} catch (UnsetStartingPointException e) {
 			fail("Unexpected exception(UnsetStartingPointException): " + e.getMessage());
 		}
-		
-=======
-	 * Tests the distance calculation when the two zip codes are valid.  
-	 */
-	@Test
-	public void test_GD_Normal() {
-		//TODO implement the real test
-		Assert.assertTrue(true);
->>>>>>> Working on the Unit Tests.  Focus is on ZipCalcTests, but Chimney
-=======
-import static org.junit.jupiter.api.Assertions.*;
-=======
->>>>>>> Working on the Unit Tests.  Focus is on ZipCalcTests, but Chimney
-
-import org.junit.*;
-import org.junit.Assert.*;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class ZipCalcTest {
-
-	/**
-	 * Verify normal creation of good zip codes.
-	 */
-	@Test
-	public void test_ZC_Valid() {
-		/*
-		 * 30318	33.78	-84.44
-		 * 30040	34.20	-84.13
-		 * 30052	33.83	-83.89
-		 * 30084	33.85	-84.22
-		*/
-		
-		ZipCalc zc1 = new ZipCalc(30318);
-		Assert.assertEquals(33.78, zc1.GetStartingLat(), 0);
-		Assert.assertEquals(-84.44, zc1.GetStartingLong(), 0);
-		
-		ZipCalc zc2 = new ZipCalc(30040);
-		Assert.assertEquals(34.20, zc2.GetStartingLat(), 0);
-		Assert.assertEquals(-84.13, zc2.GetStartingLong(), 0);
-		
-		
-		ZipCalc zc3 = new ZipCalc(30052);
-		Assert.assertEquals(33.78, zc3.GetStartingLat(), 0);
-		Assert.assertEquals(-83.89, zc3.GetStartingLong(), 0);
-		
-		
-		ZipCalc zc4 = new ZipCalc(30084);
-		Assert.assertEquals(33.78, zc4.GetStartingLat(), 0);
-		Assert.assertEquals(-84.22, zc4.GetStartingLong(), 0);
-	}
-
-	/**
-	 * Tests the distance calculation when the two zip codes are valid.  
-	 */
-	@Test
-<<<<<<< HEAD
-	void test_GD_Normal() {
-		fail("Not yet implemented");
->>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
-=======
-	public void test_GD_Normal() {
-		//TODO implement the real test
-		Assert.assertTrue(true);
->>>>>>> Working on the Unit Tests.  Focus is on ZipCalcTests, but Chimney
 	}
 
 	/**
 	 * Test for the other zip code being invalid.
 	 */
 	@Test
-<<<<<<< HEAD
-<<<<<<< HEAD
 	public void test_GD_InvalidOther() {
-<<<<<<< HEAD
 		//TODO should really split this one up
 		zc.SetZip("30318");
 		
@@ -277,17 +153,12 @@ public class ZipCalcTest {
 		}
 		//this is the passing case
 		catch (BadZipException e) {}
-=======
-		//TODO implement the real test
-		Assert.assertTrue(true);
->>>>>>> Working on the Unit Tests.  Focus is on ZipCalcTests, but Chimney
 	}
 
 	/**
 	 * Verify the GetDistance function throws an exception when the starting point is not provided.
 	 */
 	@Test
-<<<<<<< HEAD
 	public void test_GD_NoStart() {
 	
 		//invalid - not SetZip and only 1 param 
@@ -300,32 +171,12 @@ public class ZipCalcTest {
 		}
 		//this is the passing case
 		catch (UnsetStartingPointException e) {	}
-=======
-	public void test_ZC_Invalid() {
-		//TODO implement the real test
-		Assert.assertTrue(true);
->>>>>>> Working on the Unit Tests.  Focus is on ZipCalcTests, but Chimney
 		
 	}
 	
-=======
-	void test_GD_InvalidOther() {
-		fail("Not yet implemented");
-=======
 	public void test_GD_InvalidOther() {
 		//TODO implement the real test
 		Assert.assertTrue(true);
->>>>>>> Working on the Unit Tests.  Focus is on ZipCalcTests, but Chimney
 	}
-	
-	/**
-	 * Tests for attempting to create a new zip code object with a bad value.
-	 */
-	@Test
-	public void test_ZC_Invalid() {
-		//TODO implement the real test
-		Assert.assertTrue(true);
-		
-	}
->>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
+
 }
