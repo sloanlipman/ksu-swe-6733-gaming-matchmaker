@@ -2,10 +2,7 @@ package com.gamingMatchMaker.gamingMatchMaker;
 
 
 import org.junit.*;
-<<<<<<< HEAD
-=======
 import org.junit.Assert.*;
->>>>>>> 0bce0c036e19afa536da316e96cec9ccbc1b8792
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
