@@ -3,6 +3,7 @@ package com.gamingMatchMaker.gamingMatchMaker;
 
 import org.junit.*;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,6 +99,8 @@ public class ZipCalcTest {
 =======
 =======
 import org.junit.Assert.*;
+=======
+>>>>>>> Getting rebase results repaired
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
