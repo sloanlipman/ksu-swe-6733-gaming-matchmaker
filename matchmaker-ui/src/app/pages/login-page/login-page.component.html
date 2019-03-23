@@ -1,26 +1,30 @@
 <mat-grid-list cols="12" rowHeight="25rem">
-  <mat-grid-tile id="login-card" class="credentials-card" colspan="6" rowspan="1">
+  <mat-grid-tile id="login-card" class="credentials-card" colspan="6" rowspan="1.5">
     <mat-grid-tile-header>Log In</mat-grid-tile-header>
     <mat-form [formGroup]="userLoginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <mat-form-field id="email">
         <input matInput type="text" formControlName="email" placeholder="E-mail Address" type="text" required
-        class="form-control" [ngClass]=" { 'is-invalid': submitted && f.email.errors}" />
-      </mat-form-field><br>
-      </div>
-      <div class="form-group">
+        class="form-control" [ngClass]=" { 'is-invalid': submitted && f.email.errors}" 
+        (keyup.enter)="onSubmit()"/>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
       <mat-form-field>
         <input matInput formControlName="password" placeholder="Password" [type]="hide ? 'text' : 'password'" required
-        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" 
+        (keyup.enter)="onSubmit()"/>
         <mat-icon matSuffix  (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
       </mat-form-field>
     </div>
+    <div>
+      <button mat-raised-button id="loginButton" (click)="onSubmit()">Log In</button>
+    </div>
     </mat-form>
     <mat-grid-tile-footer>
-      <!--TODO align buttons better in the card-->
+    <!--TODO align buttons better in the card-->
       <div class="buttons">
         <button mat-raised-button (click)="goToLogout()" class="cancel">Cancel</button>
-        <button mat-raised-button (click)="onSubmit()">Log In</button>
         <button mat-raised-button color="primary" (click)="register()">Register</button>
       </div>
     </mat-grid-tile-footer>

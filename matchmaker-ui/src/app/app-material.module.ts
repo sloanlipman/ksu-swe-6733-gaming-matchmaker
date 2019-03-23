@@ -2,11 +2,12 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 
 import { MatButtonModule} from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule, MatDialog, MatDialogRef } from '@angular/material/';
+import { MatDialogModule } from '@angular/material/';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
@@ -19,7 +20,8 @@ import { MatToolbarModule} from '@angular/material/toolbar';
         MatGridListModule,
         MatInputModule,
         MatIconModule,
-        MatToolbarModule, // Any angular materials we use need to be imported here!
+        MatSnackBarModule,
+        MatToolbarModule,
     ],
     exports: [
         MatButtonModule,
@@ -29,7 +31,8 @@ import { MatToolbarModule} from '@angular/material/toolbar';
         MatGridListModule,
         MatInputModule,
         MatIconModule,
-        MatToolbarModule, // Must export as well
+        MatSnackBarModule,
+        MatToolbarModule,
     ],
     providers: [],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AboutPage } from './pages/about/about.component';
 import { ContactPage } from './pages/contact-page/contact-page.component';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { MatDialog } from '@angular/material';
+import { User } from './shared/models/user';
 
 /**This page will be the launch point of the app. We can use to initialize and send the user on their way
   Any HTML associated with this component will be persistent throughout the app
@@ -16,6 +17,7 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 export class AppComponent implements OnInit {
   protected router: Router;
   protected location: Location;
+  protected currentUser: User;
   constructor(
     protected injector: Injector,
     protected dialog: MatDialog
@@ -53,6 +55,12 @@ ngOnInit() {
 
   protected closeDialog() {
     this.dialog.closeAll();
+  }
+
+  getUser() {
+    this.currentUser = new User(JSON.parse(localStorage.getItem('user')));
+    console.log('current user is');
+    console.log(this.currentUser);
   }
   goToLoginPage() {
     this.router.navigateByUrl('/login');

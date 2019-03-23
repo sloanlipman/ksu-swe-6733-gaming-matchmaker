@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnInit, ViewEncapsulation, Injector } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Injector, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
 import { LandingPage } from '../landing-page/landing-page.component';
 import { AppComponent } from 'src/app/app.component';
@@ -29,15 +29,17 @@ export class LoginPageComponent extends AppComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
      super(injector, dialog);
+     this.loginService.logout();
+
   }
 
   ngOnInit() {
     this.userLoginForm = this.formBuilder.group({
-      email: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required])
-    });
-   // this.authenticateCredentials('admin@aaa.com', 'admin');
+    email: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required])
+  });
   }
+
 
   get f() { return this.userLoginForm.controls; }
 
@@ -49,13 +51,12 @@ export class LoginPageComponent extends AppComponent implements OnInit {
 
       // stop here if form is invalid
       if (this.userLoginForm.invalid) {
-          return;
+        console.log('invalid');
+        return;
       }
       this.loginService.login(this.f.email.value, this.f.password.value).subscribe(data => {
         if (data) {
           this.goHome();
-        } else {
-          console.log('Error');
         }
         });
       }

@@ -1,6 +1,10 @@
 <mat-card id="user">
   <player-card></player-card>
 </mat-card>
+
+<mat-card  *ngIf="showAdminTools()">
+  Hi, this is an admin view. Not much to see here yet!
+</mat-card>
 <!--TODO look into using grid instead of card-->
 
 <nav>

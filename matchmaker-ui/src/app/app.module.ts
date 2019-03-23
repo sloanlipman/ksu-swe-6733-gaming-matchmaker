@@ -44,7 +44,9 @@ import { LoginService } from './shared/services/login-service/login.service';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [LoginService],
+  providers: [
+    LoginService
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

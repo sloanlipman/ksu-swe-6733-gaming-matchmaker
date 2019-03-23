@@ -26,7 +26,13 @@ export class HomePage extends AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getUser();
   }
 
+  showAdminTools(){
+    if (this.currentUser.type === 'admin') {
+      return true;
+    }
+  }
 
 }

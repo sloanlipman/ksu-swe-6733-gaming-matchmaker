@@ -1,5 +1,5 @@
 export class User {
-  id: string; // TODO string or number?
+  id: number; // TODO string or number?
   email: string;
   firstName: string;
   lastName: string;
