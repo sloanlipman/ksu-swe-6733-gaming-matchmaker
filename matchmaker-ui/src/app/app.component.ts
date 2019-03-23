@@ -93,7 +93,7 @@ ngOnInit() {
   editProfile() {
     this.router.navigateByUrl('/edit-profile');
   }
-  
+
   viewMatchmaking(){
     this.router.navigateByUrl('/matchmaking');
   }
