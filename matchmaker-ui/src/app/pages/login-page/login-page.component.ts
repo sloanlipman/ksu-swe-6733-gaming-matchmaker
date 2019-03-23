@@ -1,7 +1,6 @@
 import { Location } from '@angular/common';
-import { Component, OnInit, ViewEncapsulation, Injector, DoCheck } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Injector } from '@angular/core';
 import { Router } from '@angular/router';
-import { LandingPage } from '../landing-page/landing-page.component';
 import { AppComponent } from 'src/app/app.component';
 import { MatDialog } from '@angular/material';
 import { LoginService } from 'src/app/shared/services/login-service/login.service';
@@ -47,11 +46,8 @@ export class LoginPageComponent extends AppComponent implements OnInit {
     if (this.userLoginForm.valid) {
       this.submitted = true;
 
-      // TODO add a loading indicator
-
-      // stop here if form is invalid
       if (this.userLoginForm.invalid) {
-        console.log('invalid');
+        console.log('invalid'); // TODO add a snackbar or something
         return;
       }
       this.loginService.login(this.f.email.value, this.f.password.value).subscribe(data => {

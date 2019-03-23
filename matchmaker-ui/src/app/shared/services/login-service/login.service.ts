@@ -12,7 +12,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class LoginService {
   private authToken: string = null;
-  public currUser: User = null;
+  public currUser: User;
 
   constructor(
     protected http: HttpClient,
@@ -26,7 +26,6 @@ export class LoginService {
     })
   };
 
-// TODO catch an error with an else statment?
   protected typeToString(type: number): string {
     if (type === 1) {
       return 'admin';
@@ -36,13 +35,12 @@ export class LoginService {
   }
 
   public login(email, password): Observable<User> {
+
     return this.http.post('/api/authorizeUser', {
       email,
       password
     }, this.httpOptions).pipe(map((resp: any) => {
       if (resp) {
-        console.log(resp);
-        console.log(resp.detail.id);
         if (resp.detail.is_active) {
           this.authToken = resp.auth.accessToken;
           this.currUser = new User({
@@ -51,16 +49,25 @@ export class LoginService {
             firstName: resp.detail.first_name,
             lastName: resp.detail.last_name,
             age: resp.detail.age,
-            active: resp.detail.is_active,
+            isActive: resp.detail.is_active,
             type: this.typeToString(resp.detail.user_type)
           });
-
+        if (this.currUser.isActive) {
           localStorage.setItem('access-token', this.authToken);
           localStorage.setItem('user', JSON.stringify(this.currUser));
           return Object.assign({}, this.currUser);
+        } else { // TODO this block is untested. Need an inactive user in the database to actually verify its functionality.
+              console.log('target');
+              this.currUser = null;
+              const err = {
+                error: 'inactive account'
+              };
+           this.handleError(err);
+           return null;
+          }
         }
       } else {
-          return null;
+            return null;
         }
       })).pipe(catchError(err => this.handleError(err)));
     }
@@ -69,14 +76,25 @@ export class LoginService {
       this.authToken = null;
       localStorage.clear();
     }
-    private handleError(err: any): Observable<User> {
-      console.log('authentication failed: err =', err);
-      if (err.error.message.includes('UserRec not found') || err.error.message.includes('Password not match')) {
-        this.snackBar.open('Invalid credentials. Please try again.', '', {
-          duration: 3000,
-          verticalPosition: 'top',
-        });
+    private handleError(err: any): Observable<any> {
+      let errorMessage;
+      if (err.error) {
+        if (err.error.message) {
+          if (err.error.message.includes('UserRec not found') || err.error.message.includes('Password not match')) {
+           errorMessage = 'Invalid credentials. Please try again.';
+          }
+      } else if (err.error){
+          if (err.error.includes('Error occured while trying to proxy to')) {
+           errorMessage = 'Server error. Please try again later.';
+          } else if (err.error === 'inactive account') {
+            errorMessage = 'Your account is inactive';
+          }
+        }
       }
+      this.snackBar.open(errorMessage, '', {
+        duration: 3000,
+        verticalPosition: 'top',
+      });
       return of(null);
   }
 }

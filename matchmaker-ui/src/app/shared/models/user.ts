@@ -1,19 +1,19 @@
 export class User {
-  id: number; // TODO string or number?
+  id: number;
   email: string;
   firstName: string;
   lastName: string;
   age: number;
-  active: boolean;
+  isActive: boolean;
   type: string;
 
   constructor(obj?: any){
     this.id = obj && obj.id;
     this.email = obj && obj.email;
-    this.firstName = obj && obj.first_name;
-    this.lastName = obj && obj.last_name;
+    this.firstName = obj && obj.firstName;
+    this.lastName = obj && obj.lastName;
     this.age = obj && obj.age;
-    this.active = obj && obj.active;
+    this.isActive = obj && obj.isActive;
     this.type = obj && obj.type;
 
   }
