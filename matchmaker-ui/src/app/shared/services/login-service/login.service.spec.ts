@@ -87,7 +87,7 @@ describe('LoginService', () => {
       httpMock.verify();
     }));
 // TODO need to finish testing error for inactive user
- it('should return an error for an inactive user', inject(
+  xit('should return an error for an inactive user', inject(
     [HttpTestingController, LoginService], (httpMock: HttpTestingController, loginService: LoginService) => {
       detail = {
         email: 'rob@students.kennesaw.edu',
