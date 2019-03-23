@@ -41,6 +41,7 @@ export class LoginService {
       password
     }, this.httpOptions).pipe(map((resp: any) => {
       if (resp) {
+        console.log(resp);
         if (resp.detail.is_active) {
           this.authToken = resp.auth.accessToken;
           this.currUser = new User({
@@ -52,24 +53,24 @@ export class LoginService {
             isActive: resp.detail.is_active,
             type: this.typeToString(resp.detail.user_type)
           });
+          console.log(this.currUser);
         if (this.currUser.isActive) {
           localStorage.setItem('access-token', this.authToken);
           localStorage.setItem('user', JSON.stringify(this.currUser));
           return Object.assign({}, this.currUser);
-        } else { // TODO this block is untested. Need an inactive user in the database to actually verify its functionality.
-              console.log('target');
-              this.currUser = null;
-              const err = {
-                error: 'inactive account'
-              };
-            return this.handleError(err);
-          }
         }
       } else {
-            return null;
+            console.log('target');
+            this.currUser = null;
+            const err = {
+              error: 'inactive account'
+            };
+          this.handleError(err);
         }
-      })).pipe(catchError(err => this.handleError(err)));
-    }
+      }
+      return null;
+    })).pipe(catchError(err => this.handleError(err)));
+  }
     public logout() {
       this.currUser = null;
       this.authToken = null;
@@ -90,6 +91,7 @@ export class LoginService {
           }
         }
       }
+      console.log(errorMessage);
       this.snackBar.open(errorMessage, '', {
         duration: 3000,
         verticalPosition: 'top',

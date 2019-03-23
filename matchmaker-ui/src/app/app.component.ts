@@ -78,7 +78,7 @@ ngOnInit() {
     this.router.navigateByUrl('/register');
   }
 
-  goToLogout() {
+  goToLanding() {
     this.router.navigateByUrl('/landing-page');
    }
 
@@ -93,6 +93,7 @@ ngOnInit() {
   editProfile() {
     this.router.navigateByUrl('/edit-profile');
   }
+  
   viewMatchmaking(){
     this.router.navigateByUrl('/matchmaking');
   }
