@@ -1,10 +1,18 @@
-<mat-card id="user">
-  <player-card></player-card>
+<h1>Welcome back, {{ this.currentUser.firstName }}</h1>
+  <mat-card id="user">
+  <h1>User information</h1>
+    <h2>Name: {{ this.currentUser.firstName }} {{ this.currentUser.lastName}}<br>
+    Age: {{ this.currentUser.age }}
+    </h2>
+</mat-card>
+
+<mat-card  *ngIf="showAdminTools()">
+  Hi, this is an admin view. Not much to see here yet!
 </mat-card>
 <!--TODO look into using grid instead of card-->
 
 <nav>
-  <button mat-raised-button (click)="logOut()" class="cancel">Log out</button>
+  <button mat-raised-button (click)="goToLogout()" class="cancel">Log out</button>
   <button mat-raised-button (click)="editProfile()" color="primary">Edit Profile</button>
   <button mat-raised-button (click)="viewMatchmaking()" color="accent">Matchmaking</button>
 </nav>
