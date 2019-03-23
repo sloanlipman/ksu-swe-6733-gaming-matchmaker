@@ -18,7 +18,7 @@ import { LoadingIndicator } from './shared/components/loading-indicator/loading-
 export class AppComponent implements OnInit {
   protected router: Router;
   protected location: Location;
-  protected currentUser: User;
+  public currentUser: User;
   constructor(
     protected injector: Injector,
     protected dialog: MatDialog

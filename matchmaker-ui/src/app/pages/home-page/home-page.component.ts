@@ -26,6 +26,7 @@ export class HomePage extends AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.closeDialog();
     this.getUser();
   }
 

@@ -1,5 +1,9 @@
-<mat-card id="user">
-  <player-card></player-card>
+<h1>Welcome back, {{ this.currentUser.firstName }}</h1>
+  <mat-card id="user">
+  <h1>User information</h1>
+    <h2>Name: {{ this.currentUser.firstName }} {{ this.currentUser.lastName}}<br>
+    Age: {{ this.currentUser.age }}
+    </h2>
 </mat-card>
 
 <mat-card  *ngIf="showAdminTools()">

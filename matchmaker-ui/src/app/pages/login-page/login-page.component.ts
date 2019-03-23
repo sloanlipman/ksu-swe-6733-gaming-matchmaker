@@ -15,9 +15,6 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 export class LoginPageComponent extends AppComponent implements OnInit {
   userLoginForm: FormGroup;
-  loading = false;
-  submitted = false;
-  returnUrl: string;
 
   constructor(
     protected router: Router,
@@ -43,15 +40,15 @@ export class LoginPageComponent extends AppComponent implements OnInit {
   get f() { return this.userLoginForm.controls; }
 
   onSubmit(): void {
-    this.submitted = true;
     if (this.userLoginForm.invalid) {
       return;
     }
     this.showLoading();
     this.loginService.login(this.f.email.value, this.f.password.value).subscribe(data => {
-      this.closeDialog();
       if (data) {
         this.goHome();
+      } else {
+          this.closeDialog();
       }
    });
   }
