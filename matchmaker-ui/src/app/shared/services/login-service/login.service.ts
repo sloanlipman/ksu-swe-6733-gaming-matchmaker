@@ -62,8 +62,7 @@ export class LoginService {
               const err = {
                 error: 'inactive account'
               };
-           this.handleError(err);
-           return null;
+            return this.handleError(err);
           }
         }
       } else {

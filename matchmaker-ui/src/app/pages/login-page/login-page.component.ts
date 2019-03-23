@@ -43,19 +43,16 @@ export class LoginPageComponent extends AppComponent implements OnInit {
   get f() { return this.userLoginForm.controls; }
 
   onSubmit(): void {
-    if (this.userLoginForm.valid) {
-      this.submitted = true;
-
-      if (this.userLoginForm.invalid) {
-        console.log('invalid'); // TODO add a snackbar or something
-        return;
-      }
-      this.loginService.login(this.f.email.value, this.f.password.value).subscribe(data => {
-        if (data) {
-          this.goHome();
-        }
-        });
-      }
+    this.submitted = true;
+    if (this.userLoginForm.invalid) {
+      return;
     }
+    this.showLoading();
+    this.loginService.login(this.f.email.value, this.f.password.value).subscribe(data => {
+      this.closeDialog();
+      if (data) {
+        this.goHome();
+      }
+   });
   }
-
+}

@@ -20,6 +20,7 @@ import { PlayerCardComponent } from './shared/components/player-card/player-card
 import { RegisterPage } from './pages/register-page/register-page.component';
 
 import { LoginService } from './shared/services/login-service/login.service';
+import { LoadingIndicator } from './shared/components/loading-indicator/loading-indicator.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { LoginService } from './shared/services/login-service/login.service';
     EditProfilePage,
     HomePage,
     LandingPage,
+    LoadingIndicator,
     LoginPageComponent,
     MatchmakeViewPage,
     PlayerCardComponent,
@@ -48,6 +50,7 @@ import { LoginService } from './shared/services/login-service/login.service';
     LoginService
   ],
   bootstrap: [AppComponent],
+  entryComponents: [LoadingIndicator],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

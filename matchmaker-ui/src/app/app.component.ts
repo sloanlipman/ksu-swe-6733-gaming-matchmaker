@@ -5,6 +5,7 @@ import { AboutPage } from './pages/about/about.component';
 import { ContactPage } from './pages/contact-page/contact-page.component';
 import { MatDialog } from '@angular/material';
 import { User } from './shared/models/user';
+import { LoadingIndicator } from './shared/components/loading-indicator/loading-indicator.component';
 
 /**This page will be the launch point of the app. We can use to initialize and send the user on their way
   Any HTML associated with this component will be persistent throughout the app
@@ -39,17 +40,24 @@ ngOnInit() {
      return true;
    }
   }
-  private showAbout() {
+  protected showAbout() {
     this.dialog.open(AboutPage, {
       height: '40rem',
       width: '60rem',
     });
   }
 
-  private showContact() {
+  protected showContact() {
     this.dialog.open(ContactPage, {
       height: '40rem',
       width: '60rem',
+    });
+  }
+
+  protected showLoading() {
+    this.dialog.open(LoadingIndicator, {
+      height: '20rem',
+      width: '60rem'
     });
   }
 
