@@ -18,7 +18,6 @@ import { ViewProfilePage } from './view-profile-page.component';
   exports: [
     ViewProfilePage
   ],
-  providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ViewProfilePageModule{}

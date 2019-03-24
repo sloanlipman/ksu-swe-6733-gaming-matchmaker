@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, Injector } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
-import { LandingPage } from '../landing-page/landing-page.component';
 import { AppComponent } from 'src/app/app.component';
 import { MatDialog } from '@angular/material';
 
@@ -25,5 +24,4 @@ export class ViewProfilePage extends AppComponent  implements OnInit {
     this.closeDialog();
     this.getUser();
   }
-
 }

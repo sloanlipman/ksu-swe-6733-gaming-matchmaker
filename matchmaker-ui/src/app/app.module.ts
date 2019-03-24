@@ -22,8 +22,6 @@ import { ViewProfilePage } from './pages/view-profile-page/view-profile-page.com
 import { LoginService } from './shared/services/login-service/login.service';
 import { LoadingIndicator } from './shared/components/loading-indicator/loading-indicator.component';
 
-
-
 @NgModule({
   declarations: [
     AboutPage,

@@ -32,8 +32,7 @@ ngOnInit() {
    const url = this.router.url;
    if (url === '/landing-page' ||
        url === '/login' ||
-       url === '/register' ||
-       url === '/edit-profile'
+       url === '/register'
       ) {
      return false;
    } else {
