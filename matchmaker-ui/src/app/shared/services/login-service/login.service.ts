@@ -35,13 +35,12 @@ export class LoginService {
   }
 
   public login(email, password): Observable<User> {
-
     return this.http.post('/api/authorizeUser', {
       email,
       password
     }, this.httpOptions).pipe(map((resp: any) => {
       if (resp) {
-        if (resp.detail.is_active) {
+        if (resp.detail.is_active) { // If the user is active, store it as the current user
           this.authToken = resp.auth.accessToken;
           this.currUser = new User({
             id: resp.detail.id,
@@ -52,24 +51,20 @@ export class LoginService {
             isActive: resp.detail.is_active,
             type: this.typeToString(resp.detail.user_type)
           });
-        if (this.currUser.isActive) {
           localStorage.setItem('access-token', this.authToken);
           localStorage.setItem('user', JSON.stringify(this.currUser));
           return Object.assign({}, this.currUser);
-        } else { // TODO this block is untested. Need an inactive user in the database to actually verify its functionality.
-              console.log('target');
-              this.currUser = null;
-              const err = {
-                error: 'inactive account'
-              };
-            return this.handleError(err);
-          }
+      } else { // If the user is not active, return an error
+            this.currUser = null;
+            const err = {
+              error: 'inactive account'
+            };
+          this.handleError(err);
         }
-      } else {
-            return null;
-        }
-      })).pipe(catchError(err => this.handleError(err)));
-    }
+      }
+      return null;
+    })).pipe(catchError(err => this.handleError(err))); // Catch server errors
+  }
     public logout() {
       this.currUser = null;
       this.authToken = null;
@@ -78,11 +73,11 @@ export class LoginService {
     private handleError(err: any): Observable<any> {
       let errorMessage;
       if (err.error) {
-        if (err.error.message) {
+        if (err.error.message) { // Login error
           if (err.error.message.includes('UserRec not found') || err.error.message.includes('Password not match')) {
            errorMessage = 'Invalid credentials. Please try again.';
           }
-      } else if (err.error){
+      } else if (err.error){ // Server error
           if (err.error.includes('Error occured while trying to proxy to')) {
            errorMessage = 'Server error. Please try again later.';
           } else if (err.error === 'inactive account') {
@@ -90,7 +85,7 @@ export class LoginService {
           }
         }
       }
-      this.snackBar.open(errorMessage, '', {
+      this.snackBar.open(errorMessage, '', { // Display error to the user
         duration: 3000,
         verticalPosition: 'top',
       });

@@ -1,10 +1,8 @@
 import { TestBed, inject } from '@angular/core/testing';
-
 import { LoginService } from './login.service';
-import { User } from '../../models/user';
-import { HttpClient, HttpHandler } from '@angular/common/http';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // TODO structure the mock data to match how the response from the server is going to be
 
@@ -22,7 +20,8 @@ describe('LoginService', () => {
     TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        BrowserAnimationsModule
       ],
       providers: [
         LoginService,
@@ -86,21 +85,20 @@ describe('LoginService', () => {
       });
       httpMock.verify();
     }));
-// TODO need to finish testing error for inactive user
-  xit('should return an error for an inactive user', inject(
+
+  it('should return an error for an inactive user', inject(
     [HttpTestingController, LoginService], (httpMock: HttpTestingController, loginService: LoginService) => {
-      detail = {
-        email: 'rob@students.kennesaw.edu',
-        first_name: 'Rob',
-        last_name: 'Bert',
-        age: 19,
-        is_active: false,
-        user_type: 2,
-        id: 3
+    handleErrorSpy = spyOn<any>(loginService, 'handleError').and.callThrough();
+    detail = {
+      email: 'rob@students.kennesaw.edu',
+      first_name: 'Rob',
+      last_name: 'Bert',
+      age: 19,
+      is_active: false,
+      user_type: 2,
+      id: 3
     };
-    handleErrorSpy = spyOn<any>(loginService, 'handleError').and.stub();
     loginService.login('rob@students.kennesaw.edu', 'myPassword').subscribe(data => {
-      console.log('data is', data);
       expect(handleErrorSpy).toHaveBeenCalled();
     });
     const mockReq = httpMock.expectOne('/api/authorizeUser');
