@@ -6,7 +6,7 @@ import { AppMaterialModule } from 'src/app/app-material.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, FormBuilder } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 
 

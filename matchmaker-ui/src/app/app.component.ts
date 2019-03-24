@@ -32,8 +32,7 @@ ngOnInit() {
    const url = this.router.url;
    if (url === '/landing-page' ||
        url === '/login' ||
-       url === '/register' ||
-       url === '/edit-profile'
+       url === '/register'
       ) {
      return false;
    } else {
@@ -92,6 +91,9 @@ ngOnInit() {
 
   editProfile() {
     this.router.navigateByUrl('/edit-profile');
+  }
+  viewProfile(id: any){
+    this.router.navigateByUrl('/view-profile/' + id);
   }
 
   viewMatchmaking(){

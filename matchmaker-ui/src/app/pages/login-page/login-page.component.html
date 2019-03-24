@@ -1,12 +1,14 @@
 <mat-grid-list cols="12" rowHeight="25rem">
   <mat-grid-tile id="login-card" class="credentials-card" colspan="6" rowspan="1.5">
-    <mat-grid-tile-header>Log In</mat-grid-tile-header>
+    <mat-grid-tile-header id="login-title">Log In</mat-grid-tile-header>
     <mat-form [formGroup]="userLoginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <mat-form-field id="email">
         <input matInput type="text" formControlName="email" placeholder="E-mail Address" type="text" required
         class="form-control" [ngClass]=" { 'is-invalid': submitted && f.email.errors}" 
         (keyup.enter)="onSubmit()"/>
+        <mat-icon matSuffix> </mat-icon>
+
       </mat-form-field>
     </div>
     <div class="form-group">
@@ -24,8 +26,8 @@
     <mat-grid-tile-footer>
     <!--TODO align buttons better in the card-->
       <div class="buttons">
-        <button mat-raised-button (click)="goToLanding()" class="cancel">Cancel</button>
-        <button mat-raised-button color="primary" (click)="register()">Register</button>
+        <button mat-raised-button (click)="goToLogout()" class="cancel">Cancel</button>
+        <button mat-raised-button color="primary" (click)="register()" id="register-button">Register</button>
       </div>
     </mat-grid-tile-footer>
   </mat-grid-tile>
