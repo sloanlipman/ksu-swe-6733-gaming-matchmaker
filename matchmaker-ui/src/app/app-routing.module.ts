@@ -9,6 +9,7 @@ import { LandingPage } from './pages/landing-page/landing-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MatchmakeViewPage } from './pages/matchmake-view-page/matchmake-view-page.component';
 import { RegisterPage } from './pages/register-page/register-page.component';
+import { ViewProfilePage } from './pages/view-profile-page/view-profile-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing-page', pathMatch: 'full' },
@@ -44,6 +45,10 @@ const routes: Routes = [
       path: 'register',
       component: RegisterPage
     },
+    {
+      path: 'view-profile/:id',
+      component: ViewProfilePage
+    }
 ];
 
 @NgModule({

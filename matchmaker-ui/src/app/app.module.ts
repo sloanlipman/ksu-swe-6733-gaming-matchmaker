@@ -17,9 +17,11 @@ import { LandingPage } from './pages/landing-page/landing-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MatchmakeViewPage } from './pages/matchmake-view-page/matchmake-view-page.component';
 import { RegisterPage } from './pages/register-page/register-page.component';
+import { ViewProfilePage } from './pages/view-profile-page/view-profile-page.component';
 
 import { LoginService } from './shared/services/login-service/login.service';
 import { LoadingIndicator } from './shared/components/loading-indicator/loading-indicator.component';
+
 
 
 @NgModule({
@@ -34,6 +36,7 @@ import { LoadingIndicator } from './shared/components/loading-indicator/loading-
     LoginPageComponent,
     MatchmakeViewPage,
     RegisterPage,
+    ViewProfilePage,
   ],
   imports: [
     AppMaterialModule,

@@ -1,24 +1,24 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MatchmakeViewPage } from './matchmake-view-page.component';
+import { ViewProfilePage } from './view-profile-page.component';
 
 @NgModule({
   declarations: [
-    MatchmakeViewPage
+    ViewProfilePage
   ],
   imports: [
     RouterModule.forChild([
       {
         path: '',
-        component: MatchmakeViewPage
+        component: ViewProfilePage
       }
     ])
   ],
   exports: [
-    MatchmakeViewPage
+    ViewProfilePage
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class MatchmakeViewPageModule{}
+export class ViewProfilePageModule{}

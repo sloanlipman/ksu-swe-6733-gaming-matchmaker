@@ -93,6 +93,9 @@ ngOnInit() {
   editProfile() {
     this.router.navigateByUrl('/edit-profile');
   }
+  viewProfile(id: any){
+    this.router.navigateByUrl('/view-profile/' + id);
+  }
 
   viewMatchmaking(){
     this.router.navigateByUrl('/matchmaking');
