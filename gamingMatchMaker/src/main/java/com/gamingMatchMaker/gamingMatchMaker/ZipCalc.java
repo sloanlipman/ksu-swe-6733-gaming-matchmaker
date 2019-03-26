@@ -32,30 +32,50 @@ public class ZipCalc {
 =======
 =======
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.gamingMatchMaker.gamingMatchMaker.model.Location;
+<<<<<<< HEAD
 import com.gamingMatchMaker.gamingMatchMaker.service.LocationService.LocationService;
 >>>>>>> Worked up Spring Framework classes for ZipCalc.
+=======
+import com.gamingMatchMaker.gamingMatchMaker.service.LocationService.*;
+>>>>>>> ZipCalc completed and ready to go.
 import com.grum.geocalc.*;
 
+@Component
 public class ZipCalc {
-	private int zip;
+	private String zip;
 	private com.grum.geocalc.Point pt;
 	
+	//this is here for unit testing- might be removed once matchmaking app is built
 	@Autowired
-	private LocationService service;
+	public LocationService service;
 	
 	/**
 	 * Need to create a function which takes in a second zipcode and calculates the distance. 
 	 * TODO Should we cache the result in the DB - which is quicker, the DB read or the local calc?
 	 */
+<<<<<<< HEAD
 >>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
+=======
+
+	/**
+	 * 
+	 * @param z
+	 */
+	public ZipCalc() {
+	}
+>>>>>>> ZipCalc completed and ready to go.
 	
 	/**
 	 * 
 	 * @param z
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ZipCalc completed and ready to go.
 	public ZipCalc(String code) {
 		this.SetZip(code);
 	}
@@ -66,6 +86,7 @@ public class ZipCalc {
 	 */
 	public void SetZip(String zcode) {
 		this.zip = zcode;
+<<<<<<< HEAD
 		
 		//read the information from the DB
 		Location spot = service.GetLocation(zcode);
@@ -129,25 +150,43 @@ public class ZipCalc {
 =======
 	public ZipCalc(int code) {
 		this.zip = code;
+=======
+>>>>>>> ZipCalc completed and ready to go.
 		
 		//read the information from the DB
-		Location spot = service.GetLocation(code);
+		Location spot = service.GetLocation(zcode);
 				
 		Coordinate lat = Coordinate.fromDegrees(spot.getLat());
 		Coordinate lng = Coordinate.fromDegrees(spot.getLng());
+		
 		pt = Point.at(lat, lng);
 	}
 	
 	/**
 	 * 
-	 * @param zcode
+	 * @param start
+	 * @param dest
+	 * @throws UnsetStartingPointException Should never happen, but this is need for the method overloading so the signatures match.
 	 * @return
 	 */
-	public double GetDistance(int zcode) {
+	public double GetDistance(String start, String dest) throws UnsetStartingPointException {
+		this.SetZip(start);
+		return this.GetDistance(dest);
+	}
+	
+	/**
+	 * 
+	 * @param dest
+	 * @throws UnsetStartingPointException The SetZip() function has not yet been called.
+	 * @throws BadZipException The destination zip code was not found
+	 * @return
+	 */
+	public double GetDistance(String dest) throws UnsetStartingPointException, BadZipException {
 		//first check the db for cached?
+		if(this.zip == null || this.zip.length() == 0) throw new UnsetStartingPointException();
 		
 		//read the information for the second zip code from the DB
-		Location spot = service.GetLocation(zcode);
+		Location spot = service.GetLocation(dest);
 		
 		//convert to a point
 		Coordinate lat = Coordinate.fromDegrees(spot.getLat());
@@ -172,7 +211,7 @@ public class ZipCalc {
 	public double GetStartingLong() {
 		return pt.longitude;
 	}
-	public int GetStartingZipCode() {
+	public String GetStartingZipCode() {
 		return this.zip;
 	}
 	
