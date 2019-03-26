@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 describe('EditProfilePage', () => {
   let component: EditProfilePage;
   let fixture: ComponentFixture<EditProfilePage>;
+  let routerSpy;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -28,5 +29,11 @@ describe('EditProfilePage', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should navigate home', () => {
+    routerSpy = spyOn<any>(component['router'], 'navigateByUrl').and.stub();
+    component.submitChanges();
+    expect(routerSpy).toHaveBeenCalledWith('/home');
   });
 });

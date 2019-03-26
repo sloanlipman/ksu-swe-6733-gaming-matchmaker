@@ -12,7 +12,10 @@ describe('ViewProfilePage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ViewProfilePage ],
-      imports: [ RouterTestingModule, AppMaterialModule ],
+      imports: [
+        RouterTestingModule,
+        AppMaterialModule
+      ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();

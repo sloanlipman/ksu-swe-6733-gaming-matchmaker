@@ -63,6 +63,12 @@ describe('AppComponent', () => {
     expect(component.router.navigateByUrl).toHaveBeenCalledWith('/landing-page');
   });
 
+  it('should go to view profile page', () => {
+    spyOn(component.router, 'navigateByUrl').and.callThrough();
+    component.viewProfile(123);
+    expect(component.router.navigateByUrl).toHaveBeenCalledWith('/view-profile/123');
+  });
+
   it('should go a location', () => {
     spyOn(component.location, 'back').and.callThrough();
     component.goBack();
@@ -85,6 +91,37 @@ describe('AppComponent', () => {
     spyOn(component.router, 'navigateByUrl').and.callThrough();
     component.viewMatchmaking();
     expect(component.router.navigateByUrl).toHaveBeenCalledWith('/matchmaking');
+  });
+
+  it('should open a dialog', () => {
+    spyOn(component.dialog, 'open');
+    component.showLoading();
+    expect(component.dialog.open).toHaveBeenCalled();
+  });
+
+  describe('home button on toolbar', () => {
+    beforeEach(() => {
+    });
+
+    it('should not show for landing page', () => {
+      component.url = '/landing-page';
+      expect(component.showHome()).toBe(false);
+    });
+
+    it('should not show for login', () => {
+      component.url = '/login';
+      expect(component.showHome()).toBe(false);
+    });
+
+    it('should not show for register', () => {
+      component.url = '/register';
+      expect(component.showHome()).toBe(false);
+    });
+
+    it('should show for anything else', () => {
+      component.url = '';
+      expect(component.showHome()).toBe(true);
+    });
   });
 });
 
