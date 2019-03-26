@@ -6,16 +6,12 @@ public class BadZipException extends IllegalArgumentException {
 		super();
 	}
 	
-	public BadZipException(int z) {
-		super("Zipcode " + " is not in the database.");
+	public BadZipException(String z) {
+		super("Zipcode " + z + " is not in the database.");
 	}
 
 	public BadZipException(String arg0, Throwable arg1) {
 		super(arg0, arg1);
-	}
-
-	public BadZipException(String arg0) {
-		super(arg0);
 	}
 
 	public BadZipException(Throwable arg0) {

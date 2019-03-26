@@ -3,5 +3,5 @@ package com.gamingMatchMaker.gamingMatchMaker.service.LocationService;
 import com.gamingMatchMaker.gamingMatchMaker.model.Location;
 
 public interface LocationService {
-	Location GetLocation(int zipCode);
+	Location GetLocation(String zipCode);
 }
