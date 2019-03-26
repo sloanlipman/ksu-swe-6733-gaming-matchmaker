@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   protected router: Router;
   protected location: Location;
   public currentUser: User;
+  public url: string;
   constructor(
     protected injector: Injector,
     protected dialog: MatDialog
@@ -26,18 +27,21 @@ export class AppComponent implements OnInit {
       this.router = this.injector.get(Router);
       this.location = this.injector.get(Location);
     }
-ngOnInit() {
-}
+
+  ngOnInit() {
+    this.url = this.router.url;
+  }
+
   private showHome() {
-   const url = this.router.url;
-   if (url === '/landing-page' ||
-       url === '/login' ||
-       url === '/register'
+    if (
+        this.url === '/landing-page' ||
+        this.url === '/login' ||
+        this.url === '/register'
       ) {
-     return false;
-   } else {
-     return true;
-   }
+      return false;
+    } else {
+      return true;
+    }
   }
   protected showAbout() {
     this.dialog.open(AboutPage, {

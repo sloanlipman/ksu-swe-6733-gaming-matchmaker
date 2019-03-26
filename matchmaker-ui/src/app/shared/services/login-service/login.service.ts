@@ -77,12 +77,10 @@ export class LoginService {
           if (err.error.message.includes('UserRec not found') || err.error.message.includes('Password not match')) {
            errorMessage = 'Invalid credentials. Please try again.';
           }
-      } else if (err.error){ // Server error
-          if (err.error.includes('Error occured while trying to proxy to')) {
-           errorMessage = 'Server error. Please try again later.';
-          } else if (err.error === 'inactive account') {
+        } else if (err.error === 'inactive account') {
             errorMessage = 'Your account is inactive';
-          }
+        } else {
+            errorMessage = 'Server error. Please try again later.';
         }
       }
       this.snackBar.open(errorMessage, '', { // Display error to the user

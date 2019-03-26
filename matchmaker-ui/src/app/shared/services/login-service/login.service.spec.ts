@@ -3,6 +3,7 @@ import { LoginService } from './login.service';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpErrorResponse } from '@angular/common/http';
 
 // TODO structure the mock data to match how the response from the server is going to be
 
@@ -13,6 +14,7 @@ const auth = {
 };
 
 let detail;
+let err;
 let handleErrorSpy;
 
 describe('LoginService', () => {
@@ -107,5 +109,53 @@ describe('LoginService', () => {
       auth, detail
     });
     httpMock.verify();
+  }));
+
+  it('should return an error for nonexistent users', inject(
+    [HttpTestingController, LoginService], (httpMock: HttpTestingController, loginService: LoginService) => {
+    handleErrorSpy = spyOn<any>(loginService, 'handleError').and.callThrough();
+    err = {
+        message: 'UserRec not found'
+    };
+    loginService.login('rob@students.kennesaw.edu', 'myPassword').subscribe(
+      data => {},
+      (error: HttpErrorResponse) => {
+        expect(handleErrorSpy).toHaveBeenCalled();
+    });
+    const mockReq = httpMock.expectOne('/api/authorizeUser');
+    const mockError = new ErrorEvent('UserRec not found error', err);
+    mockReq.error(mockError);
+  }));
+
+  it('should return an error for an incorrect password', inject(
+    [HttpTestingController, LoginService], (httpMock: HttpTestingController, loginService: LoginService) => {
+    handleErrorSpy = spyOn<any>(loginService, 'handleError').and.callThrough();
+    err = {
+        message: 'Password not match'
+    };
+    loginService.login('rob@students.kennesaw.edu', 'myPassword').subscribe(
+      data => {},
+      (error: HttpErrorResponse) => {
+        expect(handleErrorSpy).toHaveBeenCalled();
+    });
+    const mockReq = httpMock.expectOne('/api/authorizeUser');
+    const mockError = new ErrorEvent('Password not match error', err);
+    mockReq.error(mockError);
+  }));
+
+  it('should return a generic server error for any other error', inject(
+    [HttpTestingController, LoginService], (httpMock: HttpTestingController, loginService: LoginService) => {
+    handleErrorSpy = spyOn<any>(loginService, 'handleError').and.callThrough();
+    err = {
+        message: ''
+    };
+    loginService.login('rob@students.kennesaw.edu', 'myPassword').subscribe(
+      data => {},
+      (error: HttpErrorResponse) => {
+        expect(handleErrorSpy).toHaveBeenCalled();
+    });
+    const mockReq = httpMock.expectOne('/api/authorizeUser');
+    const mockError = new ErrorEvent('Generic server error', err);
+    mockReq.error(mockError);
   }));
 });
