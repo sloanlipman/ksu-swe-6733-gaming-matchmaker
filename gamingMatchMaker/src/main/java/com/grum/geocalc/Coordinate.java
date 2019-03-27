@@ -30,21 +30,12 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Adding Attribution info
+package com.grum.geocalc;
 /**
  * Attribution: Grum Limited
  * https://github.com/grumlimited
  * Version: 0.5.8, downloaded 3/17/19
  */
-<<<<<<< HEAD
-=======
->>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
-=======
->>>>>>> Adding Attribution info
-package com.grum.geocalc;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -53,15 +44,7 @@ import java.math.RoundingMode;
 import static java.lang.Math.*;
 
 /**
-<<<<<<< HEAD
-<<<<<<< HEAD
  * Abstraction of coordinate systems (degrees, radians, dms and gps) 
-=======
- * Abstraction of coordinate systems (degrees, radians, dms and gps)
->>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
-=======
- * Abstraction of coordinate systems (degrees, radians, dms and gps) 
->>>>>>> fixing PEBKAC moment
  *
  * @author rgallet
  */

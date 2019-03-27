@@ -5,16 +5,8 @@ public class PlayerStats {
 	public String steamID;
 	public PlayerAch[] achievements;
 	public PlayerStat[] stats;
-	
-<<<<<<< HEAD
-<<<<<<< HEAD
-	//GSON contructor 
-=======
-	//GSON contructor
->>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
-=======
-	//GSON contructor 
->>>>>>> fixing PEBKAC moment
+
+	//GSON constructor 
 	public PlayerStats() {
 		//do nothing
 	}

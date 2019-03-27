@@ -30,35 +30,18 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Adding Attribution info
+package com.grum.geocalc;
 /**
  * Attribution: Grum Limited
  * https://github.com/grumlimited
  * Version: 0.5.8, downloaded 3/17/19
  */
-<<<<<<< HEAD
-=======
->>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
-=======
->>>>>>> Adding Attribution info
-package com.grum.geocalc;
 
 import static java.lang.Math.abs;
 
 /**
  * Represents coordinates given in
-<<<<<<< HEAD
-<<<<<<< HEAD
  * Degrees Minutes decimal-seconds (D M s) format 
-=======
- * Degrees Minutes decimal-seconds (D M s) format
->>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
-=======
- * Degrees Minutes decimal-seconds (D M s) format 
->>>>>>> fixing PEBKAC moment
  *
  * @author rgallet
  */

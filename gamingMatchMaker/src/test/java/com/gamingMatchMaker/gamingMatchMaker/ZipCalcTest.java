@@ -92,10 +92,6 @@ public class ZipCalcTest {
 		}
 	}
 	
-<<<<<<< HEAD
-=======
-
->>>>>>> ZipCalc completed and ready to go.
 	/**
 	 * Verify the distance is calculated when the set is done via GetDistance.
 	 */
@@ -126,10 +122,6 @@ public class ZipCalcTest {
 		} catch (UnsetStartingPointException e) {
 			fail("Unexpected exception(UnsetStartingPointException): " + e.getMessage());
 		}
-<<<<<<< HEAD
-=======
-		
->>>>>>> ZipCalc completed and ready to go.
 	}
 
 	/**
@@ -179,17 +171,6 @@ public class ZipCalcTest {
 		}
 		//this is the passing case
 		catch (UnsetStartingPointException e) {	}
-		
-<<<<<<< HEAD
-	}
-	
-	public void test_GD_InvalidOther() {
-		//TODO implement the real test
-		Assert.assertTrue(true);
 	}
 
-=======
-	}
-	
->>>>>>> ZipCalc completed and ready to go.
 }

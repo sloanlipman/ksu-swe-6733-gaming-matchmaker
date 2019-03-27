@@ -12,15 +12,7 @@ import com.gamingMatchMaker.gamingMatchMaker.Steam.GSON.*;
 
 public class Chimney {
 	private static final String DEFAULT_APIKEY = "20AF40F8F4220CD76B495FFE09A9FFA0";
-<<<<<<< HEAD
-<<<<<<< HEAD
 	//format - gameID, key, steamID 
-=======
-	//format - gameID, key, steamID
->>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
-=======
-	//format - gameID, key, steamID 
->>>>>>> fixing PEBKAC moment
 	private static final String USTATS_URL = "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=%d&key=%s&steamid=%s";
 	//format - key, steamID
 	private static final String OGAMES_URL = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=%s&steamid=%s&include_played_free_games=1";

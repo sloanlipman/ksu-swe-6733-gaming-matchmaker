@@ -30,35 +30,18 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Adding Attribution info
+package com.grum.geocalc;
 /**
  * Attribution: Grum Limited
  * https://github.com/grumlimited
  * Version: 0.5.8, downloaded 3/17/19
  */
-<<<<<<< HEAD
-=======
->>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
-=======
->>>>>>> Adding Attribution info
-package com.grum.geocalc;
 
 import java.util.Objects;
 
 /**
  * Represents an area (viewed rectangular shaped projected onto Earth), defined by its top left and bottom right
-<<<<<<< HEAD
-<<<<<<< HEAD
  * coordinates 
-=======
- * coordinates
->>>>>>> Initial files, and tweak to gitignore to not grab eclipse project file.
-=======
- * coordinates 
->>>>>>> fixing PEBKAC moment
  *
  * @author rgallet
  */
