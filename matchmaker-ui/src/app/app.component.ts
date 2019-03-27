@@ -1,8 +1,8 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { AboutPage } from './pages/about/about.component';
-import { ContactPage } from './pages/contact-page/contact-page.component';
+import { AboutPage } from './shared/components/about/about.component';
+import { ContactPage } from './shared/components/contact-page/contact-page.component';
 import { MatDialog } from '@angular/material';
 import { User } from './shared/models/user';
 import { LoadingIndicator } from './shared/components/loading-indicator/loading-indicator.component';
@@ -19,7 +19,6 @@ export class AppComponent implements OnInit {
   protected router: Router;
   protected location: Location;
   public currentUser: User;
-  public url: string;
   constructor(
     protected injector: Injector,
     protected dialog: MatDialog
@@ -29,14 +28,13 @@ export class AppComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.url = this.router.url;
   }
 
-  private showHome() {
+  private showHome(url: string) {
     if (
-        this.url === '/landing-page' ||
-        this.url === '/login' ||
-        this.url === '/register'
+        url === '/landing-page' ||
+        url === '/login' ||
+        url === '/register'
       ) {
       return false;
     } else {

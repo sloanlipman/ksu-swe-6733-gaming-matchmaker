@@ -20,4 +20,4 @@ import { RouterModule } from '@angular/router';
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class LoginPageModule{}
+export class LandingPageModule{}

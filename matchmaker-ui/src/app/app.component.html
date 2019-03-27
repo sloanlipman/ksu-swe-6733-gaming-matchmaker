@@ -2,7 +2,7 @@
 <mat-toolbar>
     <mat-toolbar-row> <!--We can use *ngIf="someFunctionOrVariable" to make these buttons or future buttons visible/hidden-->
       <button mat-flat-button class="header-button" disableRipple>GAME MATCH</button>
-      <button mat-flat-button id="homeButton" class="header-button" *ngIf="showHome()" (click)="goHome()">Home</button>
+      <button mat-flat-button id="homeButton" class="header-button" *ngIf="showHome(this.router.url)" (click)="goHome()">Home</button>
       <button mat-flat-button id="aboutButton" class="header-button" (click)="showAbout()">About</button>
       <button mat-flat-button id="contactButton" class="header-button" (click)="showContact()">Contact Us</button>
       </mat-toolbar-row>

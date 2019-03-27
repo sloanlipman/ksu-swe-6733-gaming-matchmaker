@@ -21,4 +21,4 @@ import { EditProfilePage } from './edit-profile-page.component';
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class HomePageModule{}
+export class EditProfilePageModule{}

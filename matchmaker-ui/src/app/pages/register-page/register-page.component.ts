@@ -1,9 +1,9 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { LandingPage } from '../landing-page/landing-page.component';
 import { AppComponent } from 'src/app/app.component';
 import { MatDialog } from '@angular/material';
+import { RegisterService } from 'src/app/shared/services/register-service/register.service';
 
 @Component({
   selector: 'register',
@@ -11,7 +11,7 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./register-page.component.scss']
 })
 export class RegisterPage extends AppComponent implements OnInit {
-
+  registerService: RegisterService;
   constructor(
     protected router: Router,
     protected location: Location,
