@@ -1,32 +1,23 @@
 import {Injectable} from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { HttpService } from '../http-service/http.service';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { User } from '../../models/user';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService /* extends HttpService */ { // TODO decide if there needs to be a parent class to encapsulate http calls
+export class LoginService {
   private authToken: string = null;
-  private currUser: User = new User({
-    id: null,
-    email: null,
-    firstName: null,
-    lastName: null,
-    password: null,
-    age: null,
-    active: null,
-    type: null
-  });
+  public currUser: User;
 
   constructor(
-    protected http: HttpClient
-    ) {
-      // super(http);
-    }
-
+    protected http: HttpClient,
+    private snackBar: MatSnackBar,
+    ) {}
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -35,8 +26,6 @@ export class LoginService /* extends HttpService */ { // TODO decide if there ne
     })
   };
 
-
-// TODO catch an error with an else statment?
   protected typeToString(type: number): string {
     if (type === 1) {
       return 'admin';
@@ -45,46 +34,59 @@ export class LoginService /* extends HttpService */ { // TODO decide if there ne
     }
   }
 
-// TODO catch an error with an else statment?
-  protected activeToBoolean(active: string): boolean {
-    if (active === 'active') {
-      return true;
-    } else if (active === 'not_active') {
-      return false;
-    }
-  }
-
   public login(email, password): Observable<User> {
-    return this.http.post('/api/authorizeUser', { // TODO need the correct call
+    return this.http.post('/api/authorizeUser', {
       email,
       password
     }, this.httpOptions).pipe(map((resp: any) => {
       if (resp) {
-        console.log(resp);
-        console.log(resp.data.active);
-          // if the user is not active then deny the login
-        if (resp.data.active === 'active') {
-        // TODO check if resp.data.someProperty matches to its source from the backend
-        //  this.authToken = resp.auth.accessToken; // TODO see if this is the right declaration
-     //     this.currUser.id = resp.data.id;
-      }
-          this.currUser.email = resp.data.email;
-          this.currUser.firstName = resp.data.first_name;
-          this.currUser.lastName = resp.data.last_name;
-          this.currUser.age = resp.data.age;
-          this.currUser.active = this.activeToBoolean(resp.data.active);
-          this.currUser.type = this.typeToString(resp.data.type);
-
+        if (resp.detail.is_active) { // If the user is active, store it as the current user
+          this.authToken = resp.auth.accessToken;
+          this.currUser = new User({
+            id: resp.detail.id,
+            email: resp.detail.email,
+            firstName: resp.detail.first_name,
+            lastName: resp.detail.last_name,
+            age: resp.detail.age,
+            isActive: resp.detail.is_active,
+            type: this.typeToString(resp.detail.user_type)
+          });
           localStorage.setItem('access-token', this.authToken);
           localStorage.setItem('user', JSON.stringify(this.currUser));
           return Object.assign({}, this.currUser);
+      } else { // If the user is not active, return an error
+            this.currUser = null;
+            const err = {
+              error: 'inactive account'
+            };
+          this.handleError(err);
         }
-          return null
-      })) //.pipe(catchError(err => this.handleError(err)));
-    }
-    protected logout() {
+      }
+      return null;
+    })).pipe(catchError(err => this.handleError(err))); // Catch server errors
+  }
+    public logout() {
       this.currUser = null;
       this.authToken = null;
       localStorage.clear();
     }
+    private handleError(err: any): Observable<any> {
+      let errorMessage;
+      if (err.error) {
+        if (err.error.message) { // Login error
+          if (err.error.message.includes('UserRec not found') || err.error.message.includes('Password not match')) {
+           errorMessage = 'Invalid credentials. Please try again.';
+          }
+        } else if (err.error === 'inactive account') {
+            errorMessage = 'Your account is inactive';
+        } else {
+            errorMessage = 'Server error. Please try again later.';
+        }
+      }
+      this.snackBar.open(errorMessage, '', { // Display error to the user
+        duration: 3000,
+        verticalPosition: 'top',
+      });
+      return of(null);
   }
+}

@@ -1,10 +1,10 @@
 import { Location } from '@angular/common';
 import { Component, OnInit, ViewEncapsulation, Injector } from '@angular/core';
 import { Router } from '@angular/router';
-import { LandingPage } from '../landing-page/landing-page.component';
 import { AppComponent } from 'src/app/app.component';
 import { MatDialog } from '@angular/material';
 import { LoginService } from 'src/app/shared/services/login-service/login.service';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'login',
@@ -13,27 +13,43 @@ import { LoginService } from 'src/app/shared/services/login-service/login.servic
   encapsulation: ViewEncapsulation.None
 
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent extends AppComponent implements OnInit {
+  userLoginForm: FormGroup;
 
   constructor(
     protected router: Router,
     protected location: Location,
     protected injector: Injector,
     protected dialog: MatDialog,
-    protected loginService: LoginService
+    protected loginService: LoginService,
+    private formBuilder: FormBuilder
   ) {
-    // super(injector, dialog);
+     super(injector, dialog);
+     this.loginService.logout();
+
   }
 
   ngOnInit() {
-    this.authenticateCredentials('admin@aaa.com', 'admin');
+    this.userLoginForm = this.formBuilder.group({
+    email: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required])
+  });
   }
 
 
-  authenticateCredentials(email, password) {
-    this.loginService.login(email, password).subscribe(data => {
-    console.log(data);
-    });
+  get f() { return this.userLoginForm.controls; }
+
+  onSubmit(): void {
+    if (this.userLoginForm.invalid) {
+      return;
+    }
+    this.showLoading();
+    this.loginService.login(this.f.email.value, this.f.password.value).subscribe(data => {
+      if (data) {
+        this.goHome();
+      } else {
+          this.closeDialog();
+      }
+   });
   }
 }
-

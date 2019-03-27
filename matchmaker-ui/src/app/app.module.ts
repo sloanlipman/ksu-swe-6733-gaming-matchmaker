@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,11 +16,11 @@ import { HomePage } from './pages/home-page/home-page.component';
 import { LandingPage } from './pages/landing-page/landing-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MatchmakeViewPage } from './pages/matchmake-view-page/matchmake-view-page.component';
-import { PlayerCardComponent } from './shared/components/player-card/player-card.component';
 import { RegisterPage } from './pages/register-page/register-page.component';
-import {LoginService} from './shared/services/login-service/login.service';
-import { from } from 'rxjs';
+import { ViewProfilePage } from './pages/view-profile-page/view-profile-page.component';
 
+import { LoginService } from './shared/services/login-service/login.service';
+import { LoadingIndicator } from './shared/components/loading-indicator/loading-indicator.component';
 
 @NgModule({
   declarations: [
@@ -29,20 +30,26 @@ import { from } from 'rxjs';
     EditProfilePage,
     HomePage,
     LandingPage,
+    LoadingIndicator,
     LoginPageComponent,
     MatchmakeViewPage,
-    PlayerCardComponent,
     RegisterPage,
+    ViewProfilePage,
   ],
   imports: [
     AppMaterialModule,
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [LoginService],
+  providers: [
+    LoginService
+  ],
   bootstrap: [AppComponent],
+  entryComponents: [LoadingIndicator],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
