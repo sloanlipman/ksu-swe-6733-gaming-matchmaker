@@ -6,7 +6,7 @@ import { RegisterService } from './register.service';
 
 const auth = {}; // add proper auth header here
 let httpMock;
-let detail;
+let newUser;
 const existingUsers = {}; // TODO add an array of existing users
 
 describe('RegisterService', () => {
@@ -33,66 +33,103 @@ afterEach(() => {
   });
 
   it('should register a new user and mark that user as logged in', inject(
-    detail = {
-      email: 'slipman@students.kennesaw.edu',
-      first_name: 'Sloan',
-      last_name: 'Lipman',
-      age: 26,
-      password: 'alligator3',
-      confirmPassword: 'alligator3' // TODO add more fields?
-    }
+
     [RegisterService], (service: RegisterService) => {
-      service.register().subscribe(data => {
+      newUser = {
+        email: 'slipman@students.kennesaw.edu',
+        firstName: 'Sloan',
+        lastName: 'Lipman',
+        age: 26,
+        password: 'alligator3',
+        confirmPassword: 'alligator3' // TODO add more fields?
+      };
+      service.register(
+        newUser.email,
+        newUser.firstName,
+        newUser.lastName,
+        newUser.age,
+        // newUser.location,
+        newUser.password,
+        newUser.confirmPassword
+      ).subscribe(data => {
         /** Expect successful creation of user
             * Email not in use
             * Passwords match
         */
 
-        // Expect current user's fields = detail's fields
+        // Expect user to be current user
+        /** Expect current user's:
+         * id to not be null
+         * first name = input's FN
+         * last name = input's
+         * emails to equal
+         * passwords to equal? Maybe not that one because wouldn't be storing the password in local storage
+         * ages to equal
+         * locations to equal
+         * to be active
+         * user type to be regular
+         */
         // Expect navigate to edit profile page
         // Expect anything else?
       });
       const req = httpMock.expectOne(''); // add API call here
       req.flush({
-        auth, detail
+        auth, newUser
       });
   }));
 
   it('should return an error if the passwords do not match', inject(
-    detail = {
-      email: 'slipman@students.kennesaw.edu',
-      first_name: 'Sloan',
-      last_name: 'Lipman',
-      age: 26,
-      password: 'password',
-      confirmPassword: 'differentPassword' // TODO add more fields?
-    }
+
     [RegisterService], (service: RegisterService) => {
-      service.register().subscribe(error => { // TODO subscribe to error?
+      newUser = {
+        email: 'slipman@students.kennesaw.edu',
+        first_name: 'Sloan',
+        last_name: 'Lipman',
+        age: 26,
+        password: 'password',
+        confirmPassword: 'differentPassword' // TODO add more fields?
+      };
+      service.register(
+        newUser.email,
+        newUser.firstName,
+        newUser.lastName,
+        newUser.age,
+        // newUser.location,
+        newUser.password,
+        newUser.confirmPassword
+      ).subscribe(error => { // TODO subscribe to error?
         // Expect error here because passwords do not match
       });
       const req = httpMock.expectOne(''); // add API call here
       req.flush({
-        auth, detail
+        auth, newUser
       });
   }));
 
   it('should return an error if the email is already in use', inject(
-    detail = {
-      email: 'existingUser@gmail.com',
-      first_name: 'Sloan',
-      last_name: 'Lipman',
-      age: 26,
-      password: 'password',
-      confirmPassword: 'password' // TODO add more fields?
-    }
     [RegisterService], (service: RegisterService) => {
-      service.register().subscribe(error => { // TODO subscribe to error
+      newUser = {
+        email: 'existingUser@gmail.com',
+        first_name: 'Sloan',
+        last_name: 'Lipman',
+        age: 26,
+        password: 'password',
+        confirmPassword: 'password' // TODO add more fields?
+      };
+      service.register(
+        newUser.email,
+        newUser.firstName,
+        newUser.lastName,
+        newUser.age,
+        // newUser.location,
+        newUser.password,
+        newUser.confirmPassword
+      ).subscribe(error => { // TODO subscribe to error
         // Expect error here because email is in use
       });
       const req = httpMock.expectOne(''); // add API call here
       req.flush({
-        auth, detail
+        auth, newUser
       });
 
   }));

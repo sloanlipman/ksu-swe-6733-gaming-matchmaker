@@ -21,6 +21,8 @@ import { ViewProfilePage } from './pages/view-profile-page/view-profile-page.com
 
 import { LoginService } from './shared/services/login-service/login.service';
 import { LoadingIndicator } from './shared/components/loading-indicator/loading-indicator.component';
+import { HttpService } from './shared/services/http-service/http.service';
+import { RegisterService } from './shared/services/register-service/register.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { LoadingIndicator } from './shared/components/loading-indicator/loading-
     ReactiveFormsModule
   ],
   providers: [
-    LoginService
+    LoginService,
+    HttpService,
+    RegisterService
   ],
   bootstrap: [AppComponent],
   entryComponents: [LoadingIndicator],

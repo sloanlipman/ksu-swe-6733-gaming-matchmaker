@@ -6,6 +6,7 @@ import { ContactPage } from './shared/components/contact-page/contact-page.compo
 import { MatDialog } from '@angular/material';
 import { User } from './shared/models/user';
 import { LoadingIndicator } from './shared/components/loading-indicator/loading-indicator.component';
+import { HttpService } from './shared/services/http-service/http.service';
 
 /**This page will be the launch point of the app. We can use to initialize and send the user on their way
   Any HTML associated with this component will be persistent throughout the app
@@ -21,7 +22,8 @@ export class AppComponent implements OnInit {
   public currentUser: User;
   constructor(
     protected injector: Injector,
-    protected dialog: MatDialog
+    protected dialog: MatDialog,
+    protected httpService?: HttpService
   ) {
       this.router = this.injector.get(Router);
       this.location = this.injector.get(Location);
@@ -80,6 +82,7 @@ export class AppComponent implements OnInit {
   }
 
   goToLanding() {
+    this.logout();
     this.router.navigateByUrl('/landing-page');
    }
 
@@ -100,5 +103,9 @@ export class AppComponent implements OnInit {
 
   viewMatchmaking(){
     this.router.navigateByUrl('/matchmaking');
+  }
+
+  public logout() {
+    this.httpService.logout();
   }
 }
