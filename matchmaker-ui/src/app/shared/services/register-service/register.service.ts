@@ -37,6 +37,7 @@ export class RegisterService extends HttpService {
         age: age,
         is_active: true,
         user_type: 1,
+        location: null
      /*   location: {
           zip: '30075',
           city: 'Roswell',
@@ -53,7 +54,7 @@ export class RegisterService extends HttpService {
          this.httpOptions).pipe(map((resp: any) => {
             if (resp) {
               console.log(resp);
-            //  this.loginService.login(email, password);
+              this.loginService.login(email, password);
             } else {
               console.log('no response');
 
