@@ -25,7 +25,7 @@ export class RegisterPage extends AppComponent implements OnInit {
 
   ngOnInit() {
   this.registerService.register(
-      'test@aaa.com', 'Sloan', 'Lipman', 26, 'password', 'password')
+      'test3@aaa.com', 'you can delete', 'me whenever you want', 26, 'password', 'password')
       .subscribe(data => (
         console.log(data)
       ));

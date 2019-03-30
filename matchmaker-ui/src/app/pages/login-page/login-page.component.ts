@@ -25,8 +25,6 @@ export class LoginPageComponent extends AppComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
      super(injector, dialog);
-     this.loginService.logout();
-
   }
 
   ngOnInit() {

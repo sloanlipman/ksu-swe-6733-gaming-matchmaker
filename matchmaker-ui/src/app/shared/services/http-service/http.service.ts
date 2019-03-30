@@ -33,6 +33,9 @@ export class HttpService {
     this.currUser = null;
     this.authToken = null;
     localStorage.clear();
+    console.log('logged out');
+    console.log('current user is ' + this.currUser);
+    console.log('local storage current user is ' + localStorage.getItem('user'));
   }
 
   protected handleError(err: any): Observable<any> {
