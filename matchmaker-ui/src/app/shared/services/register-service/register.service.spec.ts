@@ -72,7 +72,7 @@ afterEach(() => {
         // Expect navigate to edit profile page
         // Expect anything else?
       });
-      const req = httpMock.expectOne(''); // add API call here
+      const req = httpMock.expectOne('/api/register'); // add API call here
       req.flush({
         auth, newUser
       });
@@ -100,7 +100,7 @@ afterEach(() => {
       ).subscribe(error => { // TODO subscribe to error?
         // Expect error here because passwords do not match
       });
-      const req = httpMock.expectOne(''); // add API call here
+      const req = httpMock.expectOne('/api/register');
       req.flush({
         auth, newUser
       });
@@ -127,7 +127,7 @@ afterEach(() => {
       ).subscribe(error => { // TODO subscribe to error
         // Expect error here because email is in use
       });
-      const req = httpMock.expectOne(''); // add API call here
+      const req = httpMock.expectOne('/api/register');
       req.flush({
         auth, newUser
       });

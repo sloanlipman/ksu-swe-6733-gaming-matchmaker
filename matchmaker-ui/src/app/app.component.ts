@@ -1,12 +1,11 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { AboutPage } from './shared/components/about/about.component';
-import { ContactPage } from './shared/components/contact-page/contact-page.component';
+import { AboutPage } from './pages/about/about.component';
+import { ContactPage } from './pages/contact-page/contact-page.component';
 import { MatDialog } from '@angular/material';
 import { User } from './shared/models/user';
 import { LoadingIndicator } from './shared/components/loading-indicator/loading-indicator.component';
-import { HttpService } from './shared/services/http-service/http.service';
 
 /**This page will be the launch point of the app. We can use to initialize and send the user on their way
   Any HTML associated with this component will be persistent throughout the app
@@ -20,23 +19,24 @@ export class AppComponent implements OnInit {
   protected router: Router;
   protected location: Location;
   public currentUser: User;
+  public url: string;
   constructor(
     protected injector: Injector,
-    protected dialog: MatDialog,
-    protected httpService?: HttpService
+    protected dialog: MatDialog
   ) {
       this.router = this.injector.get(Router);
       this.location = this.injector.get(Location);
     }
 
   ngOnInit() {
+    this.url = this.router.url;
   }
 
-  private showHome(url: string) {
+  private showHome() {
     if (
-        url === '/landing-page' ||
-        url === '/login' ||
-        url === '/register'
+        this.url === '/landing-page' ||
+        this.url === '/login' ||
+        this.url === '/register'
       ) {
       return false;
     } else {
@@ -82,7 +82,6 @@ export class AppComponent implements OnInit {
   }
 
   goToLanding() {
-    this.logout();
     this.router.navigateByUrl('/landing-page');
    }
 
@@ -103,9 +102,5 @@ export class AppComponent implements OnInit {
 
   viewMatchmaking(){
     this.router.navigateByUrl('/matchmaking');
-  }
-
-  public logout() {
-    this.httpService.logout();
   }
 }

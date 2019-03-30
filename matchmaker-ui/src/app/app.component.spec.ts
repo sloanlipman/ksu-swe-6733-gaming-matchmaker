@@ -99,14 +99,29 @@ describe('AppComponent', () => {
     expect(component.dialog.open).toHaveBeenCalled();
   });
 
-  it('should not show home button on toolbar for any page except landing, login, and register', () => {
-    expect(component.showHome('/landing-page')).toBe(false);
-    expect(component.showHome('/login')).toBe(false);
-    expect(component.showHome('/register')).toBe(false);
-    expect(component.showHome('/home')).toBe(true);
-    expect(component.showHome('/edit-profile')).toBe(true);
-    expect(component.showHome('/view-profile')).toBe(true);
-    expect(component.showHome('/matchmake')).toBe(true);
+  describe('home button on toolbar', () => {
+    beforeEach(() => {
     });
+
+    it('should not show for landing page', () => {
+      component.url = '/landing-page';
+      expect(component.showHome()).toBe(false);
+    });
+
+    it('should not show for login', () => {
+      component.url = '/login';
+      expect(component.showHome()).toBe(false);
+    });
+
+    it('should not show for register', () => {
+      component.url = '/register';
+      expect(component.showHome()).toBe(false);
+    });
+
+    it('should show for anything else', () => {
+      component.url = '';
+      expect(component.showHome()).toBe(true);
+    });
+  });
 });
 

@@ -13,7 +13,6 @@ const auth = {
   user_type: 2
 };
 
-let httpMock;
 let detail;
 let err;
 let handleErrorSpy;
@@ -33,16 +32,8 @@ describe('LoginService', () => {
     });
   });
 
-  beforeEach(() => {
-    httpMock = TestBed.get(HttpTestingController);
-  });
-
-  afterEach(() => {
-    httpMock.verify();
-  });
-
   it('should return a regular user', inject(
-    [LoginService], (loginService: LoginService) => {
+    [HttpTestingController, LoginService], (httpMock: HttpTestingController, loginService: LoginService) => {
       detail = {
         email: 'bob@students.kennesaw.edu',
         first_name: 'Bob',
@@ -66,10 +57,11 @@ describe('LoginService', () => {
       mockReq.flush({
         auth, detail
       });
+      httpMock.verify();
     }));
 
   it('should return an admin', inject(
-    [LoginService], (loginService: LoginService) => {
+    [HttpTestingController, LoginService], (httpMock: HttpTestingController, loginService: LoginService) => {
       detail = {
         email: 'slipman@students.kennesaw.edu',
         first_name: 'Sloan',
@@ -93,10 +85,11 @@ describe('LoginService', () => {
       mockReq.flush({
         auth, detail
       });
+      httpMock.verify();
     }));
 
   it('should return an error for an inactive user', inject(
-    [LoginService], (loginService: LoginService) => {
+    [HttpTestingController, LoginService], (httpMock: HttpTestingController, loginService: LoginService) => {
     handleErrorSpy = spyOn<any>(loginService, 'handleError').and.callThrough();
     detail = {
       email: 'rob@students.kennesaw.edu',
@@ -115,10 +108,11 @@ describe('LoginService', () => {
     mockReq.flush({
       auth, detail
     });
+    httpMock.verify();
   }));
 
   it('should return an error for nonexistent users', inject(
-    [LoginService], (loginService: LoginService) => {
+    [HttpTestingController, LoginService], (httpMock: HttpTestingController, loginService: LoginService) => {
     handleErrorSpy = spyOn<any>(loginService, 'handleError').and.callThrough();
     err = {
         message: 'UserRec not found'
@@ -134,7 +128,7 @@ describe('LoginService', () => {
   }));
 
   it('should return an error for an incorrect password', inject(
-    [LoginService], (loginService: LoginService) => {
+    [HttpTestingController, LoginService], (httpMock: HttpTestingController, loginService: LoginService) => {
     handleErrorSpy = spyOn<any>(loginService, 'handleError').and.callThrough();
     err = {
         message: 'Password not match'
@@ -150,7 +144,7 @@ describe('LoginService', () => {
   }));
 
   it('should return a generic server error for any other error', inject(
-    [LoginService], (loginService: LoginService) => {
+    [HttpTestingController, LoginService], (httpMock: HttpTestingController, loginService: LoginService) => {
     handleErrorSpy = spyOn<any>(loginService, 'handleError').and.callThrough();
     err = {
         message: ''

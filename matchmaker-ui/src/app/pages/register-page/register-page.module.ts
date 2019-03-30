@@ -2,7 +2,6 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { RegisterPage } from './register-page.component';
-import { RegisterService } from 'src/app/shared/services/register-service/register.service';
 
 @NgModule({
   declarations: [
@@ -19,9 +18,7 @@ import { RegisterService } from 'src/app/shared/services/register-service/regist
   exports: [
     RegisterPage
   ],
-  providers: [
-    RegisterService
-  ],
+  providers: [Router],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class RegisterPageModule{}
+export class LoginPageModule{}

@@ -1,9 +1,10 @@
-import { Component, OnInit, Injector } from '@angular/core';
+import { Component, OnInit, Injector, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { AppComponent } from 'src/app/app.component';
+import { AppComponent } from '../../app.component';
 import { MatDialog } from '@angular/material';
-import { RegisterService } from 'src/app/shared/services/register-service/register.service';
+import { RegisterService } from '../../shared/services/register-service/register.service';
+import { HttpService } from '../../shared/services/http-service/http.service';
 
 @Component({
   selector: 'register',
@@ -11,15 +12,22 @@ import { RegisterService } from 'src/app/shared/services/register-service/regist
   styleUrls: ['./register-page.component.scss']
 })
 export class RegisterPage extends AppComponent implements OnInit {
-  registerService: RegisterService;
   constructor(
     protected router: Router,
     protected location: Location,
     protected injector: Injector,
-    protected dialog: MatDialog
+    protected dialog: MatDialog,
+    protected registerService: RegisterService,
+
   ) {
     super(injector, dialog);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  this.registerService.register(
+      'test@aaa.com', 'Sloan', 'Lipman', 26, 'password', 'password')
+      .subscribe(data => (
+        console.log(data)
+      ));
+  }
 }

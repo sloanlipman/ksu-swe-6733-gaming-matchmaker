@@ -4,15 +4,17 @@ import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../http-service/http.service';
 import { map, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { LoginService } from '../login-service/login.service';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService extends HttpService {
-  protected users = [];
   constructor(
     protected http: HttpClient,
-    protected snackBar,
+    protected snackBar: MatSnackBar,
+    protected loginService: LoginService
     ) {
       super(http, snackBar);
     }
@@ -20,25 +22,45 @@ export class RegisterService extends HttpService {
   public register(
     email: string,
     firstName: string,
-    lastname: string,
+    lastName: string,
     age: number,
     // location: number? zip code?,
     password: string,
     confirmPassword: string
     ):  Observable<User>{
+
+      const detail = {
+        email: email,
+        first_name: firstName,
+        last_name: lastName,
+        password: password,
+        age: age,
+        is_active: true,
+        user_type: 1,
+     /*   location: {
+          zip: '30075',
+          city: 'Roswell',
+          state: 'GA',
+          lat: 34.0232,
+          long: 84.3616,
+          locationString: 'myLocation'
+        } */
+      };
       if (password !== confirmPassword) {
         return; // TODO call error
       } else {
-        const listOfUsers = this.http.post('/api/getUsers', {},
+        return this.http.post('/api/register', {detail},
          this.httpOptions).pipe(map((resp: any) => {
             if (resp) {
-              resp.forEach(user => { // TODO make sure I'm using forEach right
-                this.users.push(user);
-              });
-              for (let i = 0; i < this.users.length; ++i ) {
-                if (this.users[i].email ===  email) {
-                  // display an error
-                } else {
+              console.log(resp);
+            //  this.loginService.login(email, password);
+            } else {
+              console.log('no response');
+
+            /** 1) Store email, firstName, lastName, age, and location as current user's attributes.
+             *    Also mark current user as active and a regular user.
+             *  2) Save this new user in localStorage.
+             */
                   // create a user
                   /** Something like this - copied from login service. Maybe can encapsulate
                    *  this.currUser = new User({
@@ -54,15 +76,8 @@ export class RegisterService extends HttpService {
           localStorage.setItem('user', JSON.stringify(this.currUser));
           return Object.assign({}, this.currUser);
                    */
-                }
-              }
             }
-          return null;
         })).pipe(catchError(err => this.handleError(err)));
-      }
-        // Call to backend to return all users in an array
-        // Iterate through users, compare user[i].email
-        // If a hit, return error
-        // Else, create a user, return some kind of success
+     }
+   }
   }
-}

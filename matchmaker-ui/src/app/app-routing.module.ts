@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AboutPage } from './shared/components/about/about.component';
-import { ContactPage } from './shared/components/contact-page/contact-page.component';
+import { AboutPage } from './pages/about/about.component';
+import { ContactPage } from './pages/contact-page/contact-page.component';
 import { EditProfilePage } from './pages/edit-profile-page/edit-profile-page.component';
 import { HomePage } from './pages/home-page/home-page.component';
 import { LandingPage } from './pages/landing-page/landing-page.component';

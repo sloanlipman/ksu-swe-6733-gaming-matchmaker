@@ -9,8 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppMaterialModule } from './app-material.module';
 
-import { AboutPage } from './shared/components/about/about.component';
-import { ContactPage } from './shared/components/contact-page/contact-page.component';
+import { AboutPage } from './pages/about/about.component';
+import { ContactPage } from './pages/contact-page/contact-page.component';
 import { EditProfilePage } from './pages/edit-profile-page/edit-profile-page.component';
 import { HomePage } from './pages/home-page/home-page.component';
 import { LandingPage } from './pages/landing-page/landing-page.component';
@@ -21,8 +21,6 @@ import { ViewProfilePage } from './pages/view-profile-page/view-profile-page.com
 
 import { LoginService } from './shared/services/login-service/login.service';
 import { LoadingIndicator } from './shared/components/loading-indicator/loading-indicator.component';
-import { HttpService } from './shared/services/http-service/http.service';
-import { RegisterService } from './shared/services/register-service/register.service';
 
 @NgModule({
   declarations: [
@@ -48,9 +46,7 @@ import { RegisterService } from './shared/services/register-service/register.ser
     ReactiveFormsModule
   ],
   providers: [
-    LoginService,
-    HttpService,
-    RegisterService
+    LoginService
   ],
   bootstrap: [AppComponent],
   entryComponents: [LoadingIndicator],

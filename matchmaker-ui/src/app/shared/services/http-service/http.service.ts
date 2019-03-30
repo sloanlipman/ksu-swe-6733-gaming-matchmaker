@@ -4,9 +4,7 @@ import { User } from '../../models/user';
 import { MatSnackBar } from '@angular/material';
 import { Observable, of } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class HttpService {
   protected authToken: string = null;
   public currUser: User;

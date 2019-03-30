@@ -6,7 +6,7 @@ export class User {
   age: number;
   isActive: boolean;
   type: string;
-// TODO add location
+
   constructor(obj?: any){
     this.id = obj && obj.id;
     this.email = obj && obj.email;
@@ -15,6 +15,6 @@ export class User {
     this.age = obj && obj.age;
     this.isActive = obj && obj.isActive;
     this.type = obj && obj.type;
-// TODO add location
+
   }
 }
