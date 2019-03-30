@@ -44,6 +44,7 @@ public class UserDetail {
     }
 
     public UserDetail(Optional<UserRec> origOpt) {
+        System.out.println("Got into create user detail!!!!");
         if(origOpt.isPresent()){
             UserRec orig = origOpt.get();
             this.id = orig.getId();

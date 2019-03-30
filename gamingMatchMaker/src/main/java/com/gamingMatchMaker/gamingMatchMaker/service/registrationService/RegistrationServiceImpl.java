@@ -27,6 +27,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Override
     public Optional<UserRec> createRegisterUser(UserRec newUserRecDetails) {
         // check for empty details
+        System.out.println("got into createRegisterUser!");
         if(newUserRecDetails ==  null){
             throw new UserException("newUserRecDetails can not be null");
         }

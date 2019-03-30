@@ -9,6 +9,8 @@ public class CreateRegistrationResponse {
     }
 
     public CreateRegistrationResponse(UserDetail detail) {
+        System.out.println("Got into create registration response");
+        System.out.println(detail.getEmail());
         this.detail = detail;
     }
 

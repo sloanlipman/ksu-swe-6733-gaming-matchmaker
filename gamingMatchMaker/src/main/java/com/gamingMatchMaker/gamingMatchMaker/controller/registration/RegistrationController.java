@@ -27,6 +27,7 @@ public class RegistrationController {
         System.out.println(request.detail.getLast_name());
         System.out.println(request.detail.getAge());
         System.out.println(request.detail.getUser_type());
+        System.out.println(request.detail.getLocation());
         UserDetail newUser = new UserDetail(service.createRegisterUser(new UserRec(request.getDetail())));
 
        CreateRegistrationResponse response = new CreateRegistrationResponse(newUser);
