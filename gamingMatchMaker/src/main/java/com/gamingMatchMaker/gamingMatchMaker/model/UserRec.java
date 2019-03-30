@@ -2,7 +2,9 @@ package com.gamingMatchMaker.gamingMatchMaker.model;
 
 import javax.persistence.*;
 import java.util.UUID;
-
+import java.util.Set;
+import java.util.Arrays;
+import java.util.HashSet;
 
 @Entity
 @Table(name="users")
@@ -27,6 +29,15 @@ public class UserRec {
     @JoinColumn(name="location_id", nullable = false)
     private Location location;
 
+    //for the interests, join the interests table through the users_interests mapping 
+    @ManyToMany(cascade = CascadeType.ALL) //save the interest with the user
+    @JoinTable(name = "users_interests",
+    	joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name = "interest_id", referencedColumnName = "id")
+    ) //map the interests table through the users_interests 
+    private Set<Interest> interests = new HashSet<>();
+    
+    
     public UserRec() {
     }
 
@@ -39,6 +50,7 @@ public class UserRec {
         this.is_active = original.is_active;
         this.user_type = original.user_type;
         this.location = new Location(original.location);
+        this.interests = original.getInterests();
     }
 
     public UserRec(String email, String first_name, String last_name,
@@ -52,6 +64,30 @@ public class UserRec {
         this.is_active = is_active;
         this.user_type = user_type;
         this.location = location;
+    }
+
+    //replace the above construct with a non-empty interests list
+    public UserRec(String email, String first_name, String last_name,
+                   String password, int age, boolean is_active,
+                   int user_type, Location location, Interest[] interests) {
+        this.email = email;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.password = password;
+        this.age = age;
+        this.is_active = is_active;
+        this.user_type = user_type;
+        this.location = location;
+        this.interests.addAll(Arrays.asList(interests));
+    }
+
+    /**
+     * Add a new interest to the user.
+     * @param I
+     */
+    public void AddInterest(Interest I) {
+    	//TODO does this add new ones to the DB or must they already exist?
+    	interests.add(I);
     }
 
     public int getId() {
@@ -125,4 +161,18 @@ public class UserRec {
     public void setLocation(Location location) {
         this.location = location;
     }
+
+	/**
+	 * @return the interests
+	 */
+	public Set<Interest> getInterests() {
+		return interests;
+	}
+
+	/**
+	 * @param interests the interests to set
+	 */
+	public void setInterests(Set<Interest> interests) {
+		this.interests = interests;
+	}
 }

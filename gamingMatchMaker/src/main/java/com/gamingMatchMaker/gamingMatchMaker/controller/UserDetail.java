@@ -1,5 +1,8 @@
 package com.gamingMatchMaker.gamingMatchMaker.controller;
 
+import java.util.ArrayList;
+
+import com.gamingMatchMaker.gamingMatchMaker.model.Interest;
 import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
 
 public class UserDetail {
@@ -10,6 +13,9 @@ public class UserDetail {
     private int age;
     private boolean is_active;
     private int user_type;
+    
+    //list of interests
+    private ArrayList<String> hobbies;
 
     public UserDetail(int id) {
         this.id = id;
@@ -25,6 +31,7 @@ public class UserDetail {
         this.age = age;
         this.is_active = is_active;
         this.user_type = user_type;
+        hobbies = new ArrayList<String>();
     }
 
     public UserDetail(UserDetail orig) {
@@ -35,6 +42,10 @@ public class UserDetail {
         this.age = orig.age;
         this.is_active = orig.is_active;
         this.user_type = orig.user_type;
+        hobbies = new ArrayList<String>();
+        for(String s : orig.hobbies) {
+        	this.hobbies.add(s);
+        }
     }
 
     public UserDetail(UserRec orig) {
@@ -45,6 +56,10 @@ public class UserDetail {
         this.age = orig.getAge();
         this.is_active = orig.isIs_active();
         this.user_type = orig.getUser_type();
+        hobbies = new ArrayList<String>();
+        for(Interest i : orig.getInterests()) {
+        	hobbies.add(i.getActivity_name());
+        }
     }
 
     public int getId() {

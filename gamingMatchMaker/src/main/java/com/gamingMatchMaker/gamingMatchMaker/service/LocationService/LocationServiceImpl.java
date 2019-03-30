@@ -21,7 +21,6 @@ public class LocationServiceImpl implements LocationService {
 	 * @param 
 	 */
 	@Override
-
 	public Location GetLocation(String zipCode) {
 		Optional<Location> place = atlas.findByZip(zipCode);
 		
