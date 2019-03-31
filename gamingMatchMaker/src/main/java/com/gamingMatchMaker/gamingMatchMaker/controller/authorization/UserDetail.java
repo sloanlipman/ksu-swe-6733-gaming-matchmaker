@@ -43,18 +43,15 @@ public class UserDetail {
         this.location = orig.getLocation();
     }
 
-    public UserDetail(Optional<UserRec> origOpt) {
-        System.out.println("Got into create user detail!!!!");
-        if(origOpt.isPresent()){
-            UserRec orig = origOpt.get();
-            this.id = orig.getId();
-            this.email = orig.getEmail();
-            this.first_name = orig.getFirst_name();
-            this.last_name = orig.getLast_name();
-            this.age = orig.getAge();
-            this.is_active = orig.isIs_active();
-            this.user_type = orig.getUser_type();
-        }
+    public UserDetail(UserDetail orig) {
+        this.id = orig.getId();
+        this.email = orig.getEmail();
+        this.first_name = orig.getFirst_name();
+        this.last_name = orig.getLast_name();
+        this.age = orig.getAge();
+        this.is_active = orig.isIs_active();
+        this.user_type = orig.getUser_type();
+        this.location = orig.getLocation();
     }
 
     public int getId() {
@@ -110,5 +107,13 @@ public class UserDetail {
     }
     public void setUser_type(int user_type) {
         this.user_type = user_type;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }

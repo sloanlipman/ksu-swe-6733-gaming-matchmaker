@@ -64,7 +64,8 @@ public class UserRec {
         this.age = detail.getAge();
         this.is_active = true;
         this.user_type = 1;
-        this.location = null;
+        // this.location = detail.getLocation();
+        this.location = new Location(detail.getLocation());
     }
 
     public int getId() {

@@ -6,5 +6,5 @@ import java.util.Optional;
 
 public interface RegistrationService {
 
-    Optional<UserRec> createRegisterUser(UserRec newUserRecDetails);
+    Optional<UserRec> createRegistration(UserRec newUserRecDetails, String password);
 }

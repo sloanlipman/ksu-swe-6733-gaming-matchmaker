@@ -39,7 +39,7 @@ export class HttpService {
   }
 
   public handleError(err: any): Observable<any> {
-    let errorMessage;
+    let errorMessage = 'UNDEFINED ERROR MESSAGE';
     if (err.error) {
       if (err.error.message) { // Login error
         if (err.error.message.includes('UserRec not found') || err.error.message.includes('Password not match')) {

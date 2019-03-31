@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { AppComponent } from '../../app.component';
 import { MatDialog } from '@angular/material';
 import { RegisterService } from '../../shared/services/register-service/register.service';
+import { LoginService } from '../../shared/services/login-service/login.service';
 import { HttpService } from '../../shared/services/http-service/http.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
@@ -19,6 +20,7 @@ export class RegisterPage extends AppComponent implements OnInit {
     protected location: Location,
     protected injector: Injector,
     protected dialog: MatDialog,
+    protected loginService: LoginService,
     protected registerService: RegisterService,
     private formBuilder: FormBuilder
   ) {
@@ -37,7 +39,16 @@ export class RegisterPage extends AppComponent implements OnInit {
       password: new FormControl('', [Validators.required]),
       confirmPassword: new FormControl('', [Validators.required])
     });
-  }
+    this.registerService.register('email@123456.com', 'Jake', 'FromStateFarm', 1000000, 'insurance', 'insurance').subscribe(data =>
+      console.log(data));
+    //  this.loginService.login('email@123456.com', 'insurance').subscribe(resp => {
+    //    if (resp) {
+     //     this.editProfile();
+     //   } else {
+      //      this.closeDialog();
+      //    }
+  //    }));
+    }
   get f() { return this.userRegisterForm.controls; }
   onSubmit(): void {
     if (this.userRegisterForm.invalid) {

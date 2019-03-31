@@ -14,7 +14,6 @@ export class RegisterService extends HttpService {
   constructor(
     protected http: HttpClient,
     public snackBar: MatSnackBar,
-    protected loginService: LoginService
     ) {
       super(http, snackBar);
     }
@@ -29,32 +28,31 @@ export class RegisterService extends HttpService {
     confirmPassword: string
     ):  Observable<User>{
 
-      const detail = {
+
+      const userDetail = {
         email: email,
         first_name: firstName,
         last_name: lastName,
-        password: password,
         age: age,
         is_active: true,
         user_type: 1,
-        location: null
-     /*   location: {
+      // location: null
+      location: {
           zip: '30075',
           city: 'Roswell',
           state: 'GA',
-          lat: 34.0232,
-          long: 84.3616,
+        //  lat: 34.0232,
+        //  long: 84.3616,
           locationString: 'myLocation'
-        } */
+      }
       };
       if (password !== confirmPassword) {
         return; // TODO call error
       } else {
-        return this.http.post('/api/register', {detail},
+        return this.http.post('/api/register', {userDetail, password},
          this.httpOptions).pipe(map((resp: any) => {
             if (resp) {
               console.log(resp);
-              this.loginService.login(email, password);
             } else {
               console.log('no response');
 
