@@ -4,7 +4,7 @@
     <mat-form [formGroup]="userLoginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <mat-form-field id="email">
-        <input matInput type="text" formControlName="email" placeholder="E-mail Address" type="text" required
+        <input matInput formControlName="email" placeholder="E-mail Address" type="text" required
         class="form-control" [ngClass]=" { 'is-invalid': submitted && f.email.errors}" 
         (keyup.enter)="onSubmit()"/>
         <mat-icon matSuffix> </mat-icon>

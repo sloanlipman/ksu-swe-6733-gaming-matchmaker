@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material';
 export class RegisterService extends HttpService {
   constructor(
     protected http: HttpClient,
-    protected snackBar: MatSnackBar,
+    public snackBar: MatSnackBar,
     protected loginService: LoginService
     ) {
       super(http, snackBar);

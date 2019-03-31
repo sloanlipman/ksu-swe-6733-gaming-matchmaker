@@ -63,7 +63,8 @@ export class AppComponent implements OnInit {
   protected showLoading() {
     this.dialog.open(LoadingIndicator, {
       height: '20rem',
-      width: '60rem'
+      width: '60rem',
+      disableClose: true
     });
   }
 

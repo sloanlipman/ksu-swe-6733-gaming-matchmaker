@@ -11,7 +11,7 @@ export class HttpService {
 
   constructor(
     protected http: HttpClient,
-    protected snackBar: MatSnackBar,
+    public snackBar: MatSnackBar,
     ) {}
 
   protected httpOptions = {
@@ -38,7 +38,7 @@ export class HttpService {
     console.log('local storage current user is ' + localStorage.getItem('user'));
   }
 
-  protected handleError(err: any): Observable<any> {
+  public handleError(err: any): Observable<any> {
     let errorMessage;
     if (err.error) {
       if (err.error.message) { // Login error
@@ -50,6 +50,8 @@ export class HttpService {
       } else {
           errorMessage = 'Cannot connect to server. Please try again later.';
       }
+    } else {
+      errorMessage = err;
     }
     this.snackBar.open(errorMessage, '', { // Display error to the user
       duration: 3000,
