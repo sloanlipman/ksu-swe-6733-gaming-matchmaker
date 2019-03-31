@@ -41,8 +41,8 @@ export class RegisterService extends HttpService {
           zip: '30075',
           city: 'Roswell',
           state: 'GA',
-          lat: 34.0232,
-          long: 84.3616,
+          lat: 34.0232f,
+          long: 84.3616f,
           locationString: 'myLocation'
         } */
       };

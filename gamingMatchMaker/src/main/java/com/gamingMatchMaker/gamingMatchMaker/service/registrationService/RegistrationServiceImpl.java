@@ -1,10 +1,13 @@
 package com.gamingMatchMaker.gamingMatchMaker.service.registrationService;
 
+import com.gamingMatchMaker.gamingMatchMaker.dao.LocationRepository;
 import com.gamingMatchMaker.gamingMatchMaker.dao.UserAuthenticationRepository;
 import com.gamingMatchMaker.gamingMatchMaker.dao.UserRepository;
+import com.gamingMatchMaker.gamingMatchMaker.model.Location;
 import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
 import com.gamingMatchMaker.gamingMatchMaker.service.authService.UserException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -14,18 +17,24 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     private final UserRepository userDao;
     private final   UserAuthenticationRepository authDao;
+    private final LocationRepository locDao;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
     public RegistrationServiceImpl(
             UserRepository userDao,
-            UserAuthenticationRepository authDao
+            UserAuthenticationRepository authDao,
+            LocationRepository locDao,
+            PasswordEncoder passwordEncoder
     ){
         this.userDao = userDao;
         this.authDao = authDao;
+        this.locDao = locDao;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
-    public Optional<UserRec> createRegisterUser(UserRec newUserRecDetails) {
+    public Optional<UserRec> createRegistration(UserRec newUserRecDetails, String password) {
         // check for empty details
         if(newUserRecDetails ==  null){
             throw new UserException("newUserRecDetails can not be null");
@@ -39,14 +48,14 @@ public class RegistrationServiceImpl implements RegistrationService {
             throw new UserException("email already exists");
         }
 
-        //make sure user id is null
-        UserRec tempUserRec = new UserRec(newUserRecDetails);
-        tempUserRec.setId(0);
-        tempUserRec.setPassword(null);
-        tempUserRec.setIs_active(true);
+        Location tempLoc = this.locDao.save(newUserRecDetails.getLocation());
 
+        UserRec tempUser = new UserRec(newUserRecDetails);
+
+        tempUser.setLocation(tempLoc);
+        tempUser.setPassword(passwordEncoder.encode(password));
         // insert the new user
-        UserRec newUserRec = userDao.save(tempUserRec);
+        UserRec newUserRec = userDao.save(tempUser);
 
         // make sure the insert was successful
         if(newUserRec == null || newUserRec.getEmail() == null) {

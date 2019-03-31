@@ -64,7 +64,7 @@ public class UserRec {
         this.is_active = true;
         this.user_type = 1;
         // this.location = detail.getLocation();
-        this.location = new Location("30075", "Roswell", "GA", 34.0232f, 84.3616f, "myLoc");
+        this.location = new Location(detail.getLocation());
     }
 
     public int getId() {

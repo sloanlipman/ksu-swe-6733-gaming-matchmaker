@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api")
 public class RegistrationController {
@@ -22,20 +24,28 @@ public class RegistrationController {
     public ResponseEntity<CreateRegistrationResponse> createRegistration(@RequestBody CreateRegistrationRequest request) {
         // first create new user
         System.out.println("Inside the Response Entity constructor");
-        System.out.println(request.detail.getEmail());
-        System.out.println(request.detail.getFirst_name());
-        System.out.println(request.detail.getLast_name());
-        System.out.println(request.detail.getAge());
-        System.out.println(request.detail.getUser_type());
-        UserDetail newUser = new UserDetail(service.createRegisterUser(new UserRec(request.getDetail())));
+        System.out.println(request.userDetail.getEmail());
+        System.out.println(request.userDetail.getFirst_name());
+        System.out.println(request.userDetail.getLast_name());
+        System.out.println(request.userDetail.getAge());
+        System.out.println(request.userDetail.getUser_type());
 
-       CreateRegistrationResponse response = new CreateRegistrationResponse(newUser);
+        Optional<UserRec> regUser = service.createRegistration(
+                new UserRec(request.getUserDetail()),
+                request.getPassword());
 
         HttpHeaders headers = new HttpHeaders();
 
+        if(!regUser.isPresent()) {
+            return new ResponseEntity<>(null, headers, HttpStatus.BAD_REQUEST);
+        }
+
+        UserDetail newUser = new UserDetail(regUser.get());
+
+        CreateRegistrationResponse response = new CreateRegistrationResponse(newUser);
+
         return new ResponseEntity<>(response, headers, HttpStatus.OK);
     }
-
 }
 
 
