@@ -22,14 +22,8 @@ public class RegistrationController {
 
     @PostMapping("/register")
     public ResponseEntity<CreateRegistrationResponse> createRegistration(@RequestBody CreateRegistrationRequest request) {
+        
         // first create new user
-        System.out.println("Inside the Response Entity constructor");
-        System.out.println(request.userDetail.getEmail());
-        System.out.println(request.userDetail.getFirst_name());
-        System.out.println(request.userDetail.getLast_name());
-        System.out.println(request.userDetail.getAge());
-        System.out.println(request.userDetail.getUser_type());
-
         Optional<UserRec> regUser = service.createRegistration(
                 new UserRec(request.getUserDetail()),
                 request.getPassword());

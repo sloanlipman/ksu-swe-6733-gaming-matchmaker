@@ -1,11 +1,12 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { AboutPage } from './pages/about/about.component';
-import { ContactPage } from './pages/contact-page/contact-page.component';
+import { AboutPage } from './shared/components/about/about.component';
+import { ContactPage } from './shared/components/contact-page/contact-page.component';
 import { MatDialog } from '@angular/material';
 import { User } from './shared/models/user';
 import { LoadingIndicator } from './shared/components/loading-indicator/loading-indicator.component';
+import { HttpService } from './shared/services/http-service/http.service';
 
 /**This page will be the launch point of the app. We can use to initialize and send the user on their way
   Any HTML associated with this component will be persistent throughout the app
@@ -22,10 +23,12 @@ export class AppComponent implements OnInit {
   public url: string;
   constructor(
     protected injector: Injector,
-    protected dialog: MatDialog
+    protected dialog: MatDialog,
+    protected httpService?: HttpService
   ) {
       this.router = this.injector.get(Router);
       this.location = this.injector.get(Location);
+      this.httpService = this.injector.get(HttpService);
     }
 
   ngOnInit() {
@@ -60,7 +63,8 @@ export class AppComponent implements OnInit {
   protected showLoading() {
     this.dialog.open(LoadingIndicator, {
       height: '20rem',
-      width: '60rem'
+      width: '60rem',
+      disableClose: true
     });
   }
 
@@ -82,6 +86,7 @@ export class AppComponent implements OnInit {
   }
 
   goToLanding() {
+    this.httpService.logout();
     this.router.navigateByUrl('/landing-page');
    }
 

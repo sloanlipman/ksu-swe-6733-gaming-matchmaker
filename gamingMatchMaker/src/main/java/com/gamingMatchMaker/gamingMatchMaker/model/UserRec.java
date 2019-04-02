@@ -39,7 +39,8 @@ public class UserRec {
         this.age = original.age;
         this.is_active = original.is_active;
         this.user_type = original.user_type;
-        this.location = new Location(original.location);
+       // this.location = new Location(original.location); TODO uncomment this
+       this.location = null;
     }
 
     public UserRec(String email, String first_name, String last_name,

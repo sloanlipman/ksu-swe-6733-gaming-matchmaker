@@ -11,7 +11,7 @@ export class HttpService {
 
   constructor(
     protected http: HttpClient,
-    protected snackBar: MatSnackBar,
+    public snackBar: MatSnackBar,
     ) {}
 
   protected httpOptions = {
@@ -33,25 +33,36 @@ export class HttpService {
     this.currUser = null;
     this.authToken = null;
     localStorage.clear();
+    console.log('logged out');
+    console.log('current user is ' + this.currUser);
+    console.log('local storage current user is ' + localStorage.getItem('user'));
   }
 
-  protected handleError(err: any): Observable<any> {
-    let errorMessage;
+  public handleError(err: any): Observable<any> {
+    let errorMessage = 'UNDEFINED ERROR MESSAGE';
     if (err.error) {
       if (err.error.message) { // Login error
         if (err.error.message.includes('UserRec not found') || err.error.message.includes('Password not match')) {
          errorMessage = 'Invalid credentials. Please try again.';
+        } else if (err.error.message.includes('Location not found for Zip Code') ||
+                  err.error.message.includes('String index out of range')) {
+          errorMessage = 'Invalid ZIP code.';
+        } else if (err.error.message === 'email already exists') {
+          errorMessage = 'Email address already in use. Please try again with a different email.';
         }
       } else if (err.error === 'inactive account') {
           errorMessage = 'Your account is inactive';
       } else {
           errorMessage = 'Cannot connect to server. Please try again later.';
       }
+    } else {
+      errorMessage = err;
     }
     this.snackBar.open(errorMessage, '', { // Display error to the user
       duration: 3000,
       verticalPosition: 'top',
     });
+    console.log(err); // original error message, using this to define new errors to display
     return of(null);
-}
+  }
 }

@@ -43,11 +43,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         if(newUserRecDetails.getEmail()== null || newUserRecDetails.getEmail().length()<1){
             throw new UserException("Email cannot be empty");
         }
-        // make sure location and zip are present
-        if(newUserRecDetails.getLocation().getZip()==null
-             || newUserRecDetails.getLocation().getZip().length() <= 5) {
-            throw new UserException("Need valid zip code");
-        }
+      
         //check for duplicate
         if(userDao.findByEmail(newUserRecDetails.getEmail()).isPresent()){
             throw new UserException("email already exists");
