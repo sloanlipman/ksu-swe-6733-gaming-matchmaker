@@ -22,7 +22,7 @@ public class Location {
     private float lng;
     private String locationString;
 
-    @OneToMany(mappedBy="location", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy="location", cascade=CascadeType.DETACH)
     private final Set<UserRec> userRecSet;
 
     public Location() {

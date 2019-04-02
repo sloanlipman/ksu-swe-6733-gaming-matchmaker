@@ -43,16 +43,29 @@ public class RegistrationServiceImpl implements RegistrationService {
         if(newUserRecDetails.getEmail()== null || newUserRecDetails.getEmail().length()<1){
             throw new UserException("Email cannot be empty");
         }
+        // make sure location and zip are present
+        if(newUserRecDetails.getLocation().getZip()==null
+             || newUserRecDetails.getLocation().getZip().length() <= 5) {
+            throw new UserException("Need valid zip code");
+        }
         //check for duplicate
         if(userDao.findByEmail(newUserRecDetails.getEmail()).isPresent()){
             throw new UserException("email already exists");
         }
 
-        Location tempLoc = this.locDao.save(newUserRecDetails.getLocation());
+        String zip = newUserRecDetails.getLocation().getZip();
+
+        zip = zip.trim().substring(0, 5);
+
+        Optional<Location> tempLoc = this.locDao.findByZip(zip);
+
+        if(!tempLoc.isPresent()) {
+            throw new UserException("Location not found for Zip Code: " + zip);
+        }
 
         UserRec tempUser = new UserRec(newUserRecDetails);
 
-        tempUser.setLocation(tempLoc);
+        tempUser.setLocation(tempLoc.get());
         tempUser.setPassword(passwordEncoder.encode(password));
         // insert the new user
         UserRec newUserRec = userDao.save(tempUser);
