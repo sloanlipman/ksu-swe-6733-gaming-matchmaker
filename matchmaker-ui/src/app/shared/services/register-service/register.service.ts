@@ -48,7 +48,7 @@ export class RegisterService extends HttpService {
             if (resp) {
               return resp;
             } else {
-              return;
+              return; // TODO do we actually need this?
             }
         })).pipe(catchError(err => this.handleError(err)));
      }

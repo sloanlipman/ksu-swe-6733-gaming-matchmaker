@@ -4,6 +4,9 @@ import { LandingPage } from './landing-page.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppMaterialModule } from 'src/app/app-material.module';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpService } from 'src/app/shared/services/http-service/http.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 describe('LandingPage', () => {
   let component: LandingPage;
@@ -11,8 +14,13 @@ describe('LandingPage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [AppMaterialModule, RouterTestingModule],
+      imports: [
+        AppMaterialModule,
+        RouterTestingModule,
+        HttpClientModule
+      ],
       declarations: [ LandingPage ],
+      providers: [HttpService],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
     })

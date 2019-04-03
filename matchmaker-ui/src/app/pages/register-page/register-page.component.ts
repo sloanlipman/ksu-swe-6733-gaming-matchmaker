@@ -60,13 +60,11 @@ export class RegisterPage extends AppComponent implements OnInit {
         } else if (data.detail.email === this.f.email.value) {
           this.loginService.login(data.detail.email, this.f.password.value).subscribe(result => {
             if (result) {
-              this.goHome();
+              this.editProfile();
             } else {
                 this.closeDialog();
               }
           });
-          // TODO need to add checks to see if the user's profile is completed.
-          // If there are no interests present, navigate to edit profile page.
         }
       } else {
           this.closeDialog();

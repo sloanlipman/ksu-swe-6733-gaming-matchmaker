@@ -3,16 +3,20 @@ import { HttpTestingController, HttpClientTestingModule } from '@angular/common/
 import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 
 import { RegisterService } from './register.service';
+import { MatSnackBarModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-const auth = {}; // add proper auth header here
+const auth = {};
 let httpMock;
 let newUser;
-const existingUsers = {}; // TODO add an array of existing users
+let handleErrorSpy;
 
 describe('RegisterService', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [
-      HttpClientTestingModule
+      HttpClientTestingModule,
+      MatSnackBarModule,
+      BrowserAnimationsModule
     ],
     providers: [
       RegisterService
@@ -21,10 +25,6 @@ describe('RegisterService', () => {
 
 beforeEach(() => {
   httpMock = TestBed.get(HttpTestingController);
-});
-
-afterEach(() => {
-  httpMock.verify();
 });
 
   it('should be created', () => {
@@ -39,7 +39,8 @@ afterEach(() => {
         email: 'slipman@students.kennesaw.edu',
         firstName: 'Sloan',
         lastName: 'Lipman',
-        age: 26,
+        age: '26',
+        zip: '30075',
         password: 'alligator3',
         confirmPassword: 'alligator3' // TODO add more fields?
       };
@@ -48,7 +49,7 @@ afterEach(() => {
         newUser.firstName,
         newUser.lastName,
         newUser.age,
-        // newUser.location,
+        newUser.location,
         newUser.password,
         newUser.confirmPassword
       ).subscribe(data => {
@@ -76,16 +77,18 @@ afterEach(() => {
       req.flush({
         auth, newUser
       });
+      service.snackBar.dismiss(); // Dismiss at the end to unblock the view on Karma
   }));
 
   it('should return an error if the passwords do not match', inject(
-
     [RegisterService], (service: RegisterService) => {
+      handleErrorSpy = spyOn(service, 'handleError').and.callThrough();
       newUser = {
         email: 'slipman@students.kennesaw.edu',
-        first_name: 'Sloan',
-        last_name: 'Lipman',
-        age: 26,
+        firstName: 'Sloan',
+        lastName: 'Lipman',
+        age: '26',
+        zip: '30075',
         password: 'password',
         confirmPassword: 'differentPassword' // TODO add more fields?
       };
@@ -94,16 +97,12 @@ afterEach(() => {
         newUser.firstName,
         newUser.lastName,
         newUser.age,
-        // newUser.location,
+        newUser.location,
         newUser.password,
         newUser.confirmPassword
-      ).subscribe(error => { // TODO subscribe to error?
-        // Expect error here because passwords do not match
-      });
-      const req = httpMock.expectOne('/api/register');
-      req.flush({
-        auth, newUser
-      });
+      );
+        expect(handleErrorSpy).toHaveBeenCalledWith('Passwords do not match');
+        service.snackBar.dismiss(); // Dismiss at the end to unblock the view on Karma
   }));
 
   it('should return an error if the email is already in use', inject(
@@ -121,7 +120,7 @@ afterEach(() => {
         newUser.firstName,
         newUser.lastName,
         newUser.age,
-        // newUser.location,
+        newUser.location,
         newUser.password,
         newUser.confirmPassword
       ).subscribe(error => { // TODO subscribe to error
@@ -131,6 +130,6 @@ afterEach(() => {
       req.flush({
         auth, newUser
       });
-
+      service.snackBar.dismiss(); // Dismiss at the end to unblock the view on Karma
   }));
 });
