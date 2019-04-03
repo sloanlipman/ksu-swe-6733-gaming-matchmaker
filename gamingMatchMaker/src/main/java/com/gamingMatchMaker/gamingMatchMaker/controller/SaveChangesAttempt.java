@@ -1,5 +1,7 @@
 package com.gamingMatchMaker.gamingMatchMaker.controller;
 
+import com.gamingMatchMaker.gamingMatchMaker.controller.authorization.UserDetail;
+
 /**
  * This acts as an input/output buffer for saving the profile.  It takes the 
  * user details in and provides a mechanism for returning a descriptive error

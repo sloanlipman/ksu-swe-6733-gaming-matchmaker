@@ -3,6 +3,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppMaterialModule } from './app-material.module';
+import { HttpService } from './shared/services/http-service/http.service';
+import { HttpClientModule } from '@angular/common/http';
 
 let fixture;
 let component;
@@ -14,12 +16,15 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        AppMaterialModule
+        AppMaterialModule,
+        HttpClientModule
       ],
       declarations: [
         AppComponent
       ],
-      providers: [],
+      providers: [
+        HttpService
+      ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     }).compileComponents();
   });

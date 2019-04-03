@@ -4,6 +4,9 @@ import { HomePage } from './home-page.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppMaterialModule } from 'src/app/app-material.module';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpService } from 'src/app/shared/services/http-service/http.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 describe('HomePage', () => {
   let component: HomePage;
@@ -11,8 +14,13 @@ describe('HomePage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [AppMaterialModule, RouterTestingModule],
+      imports: [
+        AppMaterialModule,
+        RouterTestingModule,
+        HttpClientModule
+      ],
       declarations: [ HomePage ],
+      providers: [HttpService],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();

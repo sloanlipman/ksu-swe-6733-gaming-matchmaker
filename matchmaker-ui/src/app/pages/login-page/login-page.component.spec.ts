@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { of } from 'rxjs';
 import { LoadingIndicator } from 'src/app/shared/components/loading-indicator/loading-indicator.component';
+import { HttpService } from 'src/app/shared/services/http-service/http.service';
+import { LoginService } from 'src/app/shared/services/login-service/login.service';
 
 
 
@@ -18,7 +20,7 @@ describe('LoginPageComponent', () => {
   let goHomeSpy;
   let closeDialogSpy;
 
-  beforeEach(async(() => {
+  beforeEach(async() => {
     TestBed.configureTestingModule({
       imports: [
         AppMaterialModule,
@@ -30,12 +32,18 @@ describe('LoginPageComponent', () => {
         LoginPageComponent,
         LoadingIndicator ],
       providers: [
-        FormBuilder
+        FormBuilder,
+        HttpService,
+        LoginService
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
-  }));
+  });
+
+  afterEach(() => {
+    component['httpService'].snackBar.dismiss();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginPageComponent);

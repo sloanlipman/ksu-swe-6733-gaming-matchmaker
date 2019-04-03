@@ -18,6 +18,10 @@ public class Interest {
     
     public Interest() {}
     
+    public Interest(String name) {
+    	this.activity_name = name;
+    }
+    
 	public Interest(int id, String activity_name) {
 		this.id = id;
 		this.activity_name = activity_name;
