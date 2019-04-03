@@ -4,6 +4,8 @@ import { ViewProfilePage } from './view-profile-page.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppMaterialModule } from 'src/app/app-material.module';
+import { HttpService } from 'src/app/shared/services/http-service/http.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('ViewProfilePage', () => {
   let component: ViewProfilePage;
@@ -14,8 +16,10 @@ describe('ViewProfilePage', () => {
       declarations: [ ViewProfilePage ],
       imports: [
         RouterTestingModule,
-        AppMaterialModule
+        AppMaterialModule,
+        HttpClientModule
       ],
+      providers: [HttpService],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();

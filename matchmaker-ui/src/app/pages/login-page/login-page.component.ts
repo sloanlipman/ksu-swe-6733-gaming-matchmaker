@@ -25,8 +25,6 @@ export class LoginPageComponent extends AppComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
      super(injector, dialog);
-     this.loginService.logout();
-
   }
 
   ngOnInit() {
@@ -41,15 +39,16 @@ export class LoginPageComponent extends AppComponent implements OnInit {
 
   onSubmit(): void {
     if (this.userLoginForm.invalid) {
-      return;
+      this.loginService.handleError('Please fill in all required fields and try again');
+    } else {
+      this.showLoading();
+      this.loginService.login(this.f.email.value, this.f.password.value).subscribe(data => {
+        if (data) {
+          this.goHome();
+        } else {
+            this.closeDialog();
+          }
+      });
     }
-    this.showLoading();
-    this.loginService.login(this.f.email.value, this.f.password.value).subscribe(data => {
-      if (data) {
-        this.goHome();
-      } else {
-          this.closeDialog();
-      }
-   });
   }
 }
