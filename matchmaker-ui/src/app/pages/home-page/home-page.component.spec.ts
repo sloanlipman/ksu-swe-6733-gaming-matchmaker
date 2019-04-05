@@ -6,7 +6,9 @@ import { AppMaterialModule } from 'src/app/app-material.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpService } from 'src/app/shared/services/http-service/http.service';
 import { HttpClientModule } from '@angular/common/http';
+import { User } from 'src/app/shared/models/user';
 
+let showAdminToolsSpy;
 
 describe('HomePage', () => {
   let component: HomePage;
@@ -34,5 +36,16 @@ describe('HomePage', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should show admin tools for admins', () => {
+    const user = new User({
+      type: 'admin'
+    });
+    showAdminToolsSpy = spyOn(component, 'showAdminTools').and.callThrough();
+    component.currentUser = user;
+    component.showAdminTools();
+    expect(showAdminToolsSpy).toBeTruthy();
+    console.log('USER TYPE IS', component.currentUser.type);
   });
 });

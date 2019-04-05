@@ -49,7 +49,11 @@ import { HttpService } from './shared/services/http-service/http.service';
     HttpService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [LoadingIndicator],
+  entryComponents: [
+    LoadingIndicator,
+    AboutPage,
+    ContactPage
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

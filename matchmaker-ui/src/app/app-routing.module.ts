@@ -10,6 +10,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MatchmakeViewPage } from './pages/matchmake-view-page/matchmake-view-page.component';
 import { RegisterPage } from './pages/register-page/register-page.component';
 import { ViewProfilePage } from './pages/view-profile-page/view-profile-page.component';
+import { LoadingIndicator } from './shared/components/loading-indicator/loading-indicator.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing-page', pathMatch: 'full' },
@@ -53,6 +54,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  entryComponents: [LoadingIndicator, AboutPage, ContactPage]
 })
 export class AppRoutingModule { }
