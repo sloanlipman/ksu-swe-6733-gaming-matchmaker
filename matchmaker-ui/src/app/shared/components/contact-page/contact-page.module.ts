@@ -1,24 +1,24 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AboutPage } from './about.component';
+import { ContactPage } from './contact-page.component';
 
 @NgModule({
   declarations: [
-    AboutPage
+    ContactPage
   ],
   imports: [
     RouterModule.forChild([
       {
         path: '',
-        component: AboutPage
+        component: ContactPage
       }
     ])
   ],
   exports: [
-    AboutPage
+    ContactPage
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AboutPageModule{}
+export class ContactPageModule{}
