@@ -33,8 +33,7 @@ export class RegisterService extends HttpService {
         first_name: firstName,
         last_name: lastName,
         age: age,
-        is_active: true, // New account should always be active
-        user_type: 1, // should register as a regular user
+        user_type: 2, // should register as a regular user
         location: {
           zip: zip
         }
@@ -48,7 +47,7 @@ export class RegisterService extends HttpService {
             if (resp) {
               return resp;
             } else {
-              return; // TODO do we actually need this?
+                return; // TODO do we actually need this?
             }
         })).pipe(catchError(err => this.handleError(err)));
      }

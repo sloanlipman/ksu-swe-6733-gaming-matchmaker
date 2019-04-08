@@ -5,8 +5,6 @@ import { MatSnackBarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpErrorResponse } from '@angular/common/http';
 
-// TODO structure the mock data to match how the response from the server is going to be
-
 const auth = {
   accessToken: '12345',
   userId: 1,
@@ -161,10 +159,11 @@ describe('LoginService', () => {
     loginService.login('rob@students.kennesaw.edu', 'myPassword').subscribe(
       data => {},
       (error: HttpErrorResponse) => {
+        console.log('ERROR IS:', error);
         expect(handleErrorSpy).toHaveBeenCalled();
     });
     const mockReq = httpMock.expectOne('/api/authorizeUser');
-    const mockError = new ErrorEvent('Generic server error', err);
+    const mockError = new ErrorEvent('Generic server error', err); // TODO I don't think this is working
     mockReq.error(mockError);
   }));
 });

@@ -49,6 +49,8 @@ export class HttpService {
           errorMessage = 'Invalid ZIP code.';
         } else if (err.error.message === 'email already exists') {
           errorMessage = 'Email address already in use. Please try again with a different email.';
+        } else if (err.error.message.includes('Required age')) {
+          errorMessage = 'Invalid age. Please enter an age of 4 years or more'; // TODO make sure this error works with the latest code
         }
       } else if (err.error === 'inactive account') {
           errorMessage = 'Your account is inactive';

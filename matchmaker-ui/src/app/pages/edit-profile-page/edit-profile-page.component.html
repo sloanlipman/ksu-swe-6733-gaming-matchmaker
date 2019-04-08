@@ -14,6 +14,6 @@
 </mat-grid-list>
 
 <nav>
-    <button mat-raised-button class="cancel" (click)="goBack()">Cancel</button>
+    <button mat-raised-button class="cancel" (click)="goBack()" >Cancel</button> <!--TODO add *ngIf="existingUser()"-->
     <button mat-raised-button (click)="submitChanges()" color="primary">Submit Changes</button>
   </nav>
