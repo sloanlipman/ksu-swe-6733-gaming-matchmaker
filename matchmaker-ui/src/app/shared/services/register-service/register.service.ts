@@ -46,8 +46,6 @@ export class RegisterService extends HttpService {
          this.httpOptions).pipe(map((resp: any) => {
             if (resp) {
               return resp;
-            } else {
-                return; // TODO do we actually need this?
             }
         })).pipe(catchError(err => this.handleError(err)));
      }

@@ -142,12 +142,11 @@ describe('LoginService', () => {
     };
     loginService.login('rob@students.kennesaw.edu', 'myPassword').subscribe(
       data => {},
-      (error: HttpErrorResponse) => {
-        expect(handleErrorSpy).toHaveBeenCalled();
-    });
+      (error: HttpErrorResponse) => {});
     const mockReq = httpMock.expectOne('/api/authorizeUser');
     const mockError = new ErrorEvent('Password not match error', err);
     mockReq.error(mockError);
+    expect(handleErrorSpy).toHaveBeenCalled();
   }));
 
   it('should return a generic server error for any other error', inject(
@@ -158,12 +157,10 @@ describe('LoginService', () => {
     };
     loginService.login('rob@students.kennesaw.edu', 'myPassword').subscribe(
       data => {},
-      (error: HttpErrorResponse) => {
-        console.log('ERROR IS:', error);
-        expect(handleErrorSpy).toHaveBeenCalled();
-    });
+      (error: HttpErrorResponse) => {});
     const mockReq = httpMock.expectOne('/api/authorizeUser');
     const mockError = new ErrorEvent('Generic server error', err); // TODO I don't think this is working
     mockReq.error(mockError);
+    expect(handleErrorSpy).toHaveBeenCalled();
   }));
 });

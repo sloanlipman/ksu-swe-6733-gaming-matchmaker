@@ -34,8 +34,6 @@ export class HttpService {
     this.authToken = null;
     localStorage.clear();
     console.log('logged out');
-    console.log('current user is ' + this.currUser);
-    console.log('local storage current user is ' + localStorage.getItem('user'));
   }
 
   public handleError(err: any): Observable<any> {
@@ -46,11 +44,11 @@ export class HttpService {
          errorMessage = 'Invalid credentials. Please try again.';
         } else if (err.error.message.includes('Location not found for Zip Code') ||
                   err.error.message.includes('String index out of range')) {
-          errorMessage = 'Invalid ZIP code.';
+            errorMessage = 'Invalid ZIP code.';
         } else if (err.error.message === 'email already exists') {
-          errorMessage = 'Email address already in use. Please try again with a different email.';
+            errorMessage = 'Email address already in use. Please try again with a different email.';
         } else if (err.error.message.includes('Required age')) {
-          errorMessage = 'Invalid age. Please enter an age of 4 years or more'; // TODO make sure this error works with the latest code
+            errorMessage = 'Invalid age. Please enter an age of 4 years or more'; // TODO make sure this error works with the latest code
         }
       } else if (err.error === 'inactive account') {
           errorMessage = 'Your account is inactive';

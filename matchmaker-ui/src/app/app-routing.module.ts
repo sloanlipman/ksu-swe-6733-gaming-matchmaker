@@ -1,60 +1,48 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AboutPage } from './shared/components/about/about.component';
-import { ContactPage } from './shared/components/contact-page/contact-page.component';
-import { EditProfilePage } from './pages/edit-profile-page/edit-profile-page.component';
-import { HomePage } from './pages/home-page/home-page.component';
-import { LandingPage } from './pages/landing-page/landing-page.component';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { MatchmakeViewPage } from './pages/matchmake-view-page/matchmake-view-page.component';
-import { RegisterPage } from './pages/register-page/register-page.component';
-import { ViewProfilePage } from './pages/view-profile-page/view-profile-page.component';
-import { LoadingIndicator } from './shared/components/loading-indicator/loading-indicator.component';
-
 const routes: Routes = [
-  { path: '', redirectTo: '/landing-page', pathMatch: 'full' },
-    {
-    path: 'about',
-    component: AboutPage
-    },
-    {
-      path: 'contact-page',
-      component: ContactPage
-    },
-    {
-      path: 'edit-profile',
-      component: EditProfilePage
-    },
-    {
-      path: 'home',
-      component: HomePage
-    },
-    {
-      path: 'landing-page',
-      component: LandingPage
-    },
-    {
-      path: 'login',
-      component: LoginPageComponent
-    },
-    {
-      path: 'matchmaking',
-      component: MatchmakeViewPage
-    },
-    {
-      path: 'register',
-      component: RegisterPage
-    },
-    {
-      path: 'view-profile/:id',
-      component: ViewProfilePage
-    }
+  { path: '', redirectTo: 'landing-page', pathMatch: 'full' },
+  {
+  path: 'about',
+  loadChildren: './shared/components/about/about.module#AboutPageModule'
+  },
+  {
+    path: 'contact-page',
+    loadChildren: './shared/components/contact-page/contact-page.module#ContactPageModule'
+  },
+  {
+    path: 'edit-profile',
+    loadChildren: './pages/edit-profile-page/edit-profile-page.module#EditProfilePageModule'
+  },
+  {
+    path: 'home',
+    loadChildren: './pages/home-page/home-page.module#HomePageModule'
+  },
+  {
+    path: 'landing-page',
+    loadChildren: './pages/landing-page/landing-page.module#LandingPageModule'
+  },
+  {
+    path: 'login',
+    loadChildren: './pages/login-page/login-page.module#LoginPageModule'
+  },
+  {
+    path: 'matchmaking',
+    loadChildren: './pages/matchmake-view-page/matchmake-view-page.module#MatchmakeViewPageModule'
+  },
+  {
+    path: 'register',
+    loadChildren: './pages/register-page/register-page.module#RegisterPageModule'
+  },
+  {
+    path: 'view-profile/:id',
+    loadChildren: './pages/view-profile-page/view-profile-page.module#ViewProfilePageModule'
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  entryComponents: [LoadingIndicator, AboutPage, ContactPage]
 })
 export class AppRoutingModule { }
