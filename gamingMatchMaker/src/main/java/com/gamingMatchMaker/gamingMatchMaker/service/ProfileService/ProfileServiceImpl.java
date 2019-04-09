@@ -34,7 +34,7 @@ public class ProfileServiceImpl implements ProfileService {
 	 * @param id The user id for the information to retrieve.
 	 */
 	@Override
-	public UserRec GetUserProfile(long id) {
+	public UserRec GetUserProfile(long id) throws UserException {
 		Optional<UserRec> rec = phoneBook.findById(id);
 		if(rec.isPresent()) return rec.get();
 		else throw new UserException("No user found");
@@ -77,7 +77,7 @@ public class ProfileServiceImpl implements ProfileService {
 		for(String s : scr.getUd().getInterests()) {
 			
 			//try to get the interest
-			Optional<Interest> I = hobbyLobby.findByActivity_Name(s);
+			Optional<Interest> I = hobbyLobby.findByActivity(s);
 			
 			if(I.isPresent()) {
 				//the interest exists, just tack it onto the list

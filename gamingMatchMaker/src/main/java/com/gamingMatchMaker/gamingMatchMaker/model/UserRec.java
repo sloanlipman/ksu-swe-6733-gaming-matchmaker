@@ -29,15 +29,19 @@ public class UserRec {
     @JoinColumn(name="location_id", nullable = false)
     private Location location;
 
+    /* Keeping this for historical perspective - but it looks like I need to do this another way
+     */   
     //for the interests, join the interests table through the users_interests mapping 
     @ManyToMany(cascade = CascadeType.ALL) //save the interest with the user
-    @JoinTable(name = "users_interests",
+    @JoinTable(
+    	name = "users_interests",
     	joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
         inverseJoinColumns = @JoinColumn(name = "interest_id", referencedColumnName = "id")
     ) //map the interests table through the users_interests 
-    private Set<Interest> interests = new HashSet<>();
-    
-    
+    private Set<Interest> hobbies = new HashSet<>();
+
+	
+
     public UserRec() {
     }
 
@@ -49,7 +53,7 @@ public class UserRec {
         this.age = original.age;
         this.is_active = original.is_active;
         this.user_type = original.user_type;
-        this.interests = original.getInterests();
+        this.hobbies = original.getInterests();
        // this.location = new Location(original.location); TODO uncomment this
        this.location = null;
     }
@@ -79,7 +83,7 @@ public class UserRec {
         this.is_active = is_active;
         this.user_type = user_type;
         this.location = location;
-        this.interests.addAll(Arrays.asList(interests));
+        this.hobbies.addAll(Arrays.asList(interests));
     }
 
     public UserRec(UserDetail detail) {
@@ -89,7 +93,7 @@ public class UserRec {
         this.last_name = detail.getLast_name();
         this.age = detail.getAge();
         this.is_active = true;
-        this.user_type = 1;
+        this.user_type = detail.getUser_type();
         // this.location = detail.getLocation();
         this.location = new Location(detail.getLocation());
         
@@ -103,7 +107,7 @@ public class UserRec {
      */
     public void AddInterest(Interest I) {
     	//TODO does this add new ones to the DB or must they already exist?
-    	interests.add(I);
+    	hobbies.add(I);
     }
 
     public int getId() {
@@ -182,13 +186,13 @@ public class UserRec {
 	 * @return the interests
 	 */
 	public Set<Interest> getInterests() {
-		return interests;
+		return hobbies;
 	}
 
 	/**
 	 * @param interests the interests to set
 	 */
 	public void setInterests(Set<Interest> interests) {
-		this.interests = interests;
+		this.hobbies = interests;
 	}
 }

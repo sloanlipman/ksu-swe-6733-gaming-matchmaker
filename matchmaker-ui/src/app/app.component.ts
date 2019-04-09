@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
   protected location: Location;
   public currentUser: User;
   public url: string;
+  isLoading = false;
   constructor(
     protected injector: Injector,
     protected dialog: MatDialog,
@@ -32,10 +33,14 @@ export class AppComponent implements OnInit {
     }
 
   ngOnInit() {
+  }
+
+  setUrl() {
     this.url = this.router.url;
   }
 
   private showHome() {
+    this.setUrl();
     if (
         this.url === '/landing-page' ||
         this.url === '/login' ||
@@ -66,6 +71,14 @@ export class AppComponent implements OnInit {
       width: '60rem',
       disableClose: true
     });
+    this.isLoading = true;
+  }
+
+  protected dismissLoading() {
+    if (this.isLoading) {
+      this.dialog.closeAll();
+      this.isLoading = false;
+    }
   }
 
   protected closeDialog() {
@@ -74,20 +87,25 @@ export class AppComponent implements OnInit {
 
   getUser() {
     this.currentUser = new User(JSON.parse(localStorage.getItem('user')));
-    console.log('current user is');
     console.log(this.currentUser);
   }
   goToLoginPage() {
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/login').then(() => {
+      this.dismissLoading();
+    });
   }
 
   register() {
-    this.router.navigateByUrl('/register');
+    this.router.navigateByUrl('/register').then(() => {
+      this.dismissLoading();
+    });
   }
 
   goToLanding() {
     this.httpService.logout();
-    this.router.navigateByUrl('/landing-page');
+    this.router.navigateByUrl('/landing-page').then(() => {
+      this.dismissLoading();
+    });
    }
 
   goBack() {
@@ -95,17 +113,25 @@ export class AppComponent implements OnInit {
   }
 
   goHome() {
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/home').then(() => {
+      this.dismissLoading();
+    });
   }
 
   editProfile() {
-    this.router.navigateByUrl('/edit-profile');
+    this.router.navigateByUrl('/edit-profile').then(() => {
+      this.dismissLoading();
+    });
   }
   viewProfile(id: any){
-    this.router.navigateByUrl('/view-profile/' + id);
+    this.router.navigateByUrl('/view-profile/' + id).then(() => {
+      this.dismissLoading();
+    });
   }
 
   viewMatchmaking(){
-    this.router.navigateByUrl('/matchmaking');
+    this.router.navigateByUrl('/matchmaking').then(() => {
+      this.dismissLoading();
+    });
   }
 }

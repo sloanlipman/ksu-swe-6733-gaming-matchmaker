@@ -22,4 +22,11 @@ export class EditProfilePage extends AppComponent implements OnInit {
   submitChanges() {
     this.router.navigateByUrl('/home');
   }
+
+/*  existingUser(){
+    // TODO
+    // if no user interests, return false
+    // else return true
+    return true;
+  } */
 }

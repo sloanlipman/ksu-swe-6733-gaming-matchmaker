@@ -5,16 +5,20 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppMaterialModule } from './app-material.module';
 import { HttpService } from './shared/services/http-service/http.service';
 import { HttpClientModule } from '@angular/common/http';
+import { of } from 'rxjs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 let fixture;
 let component;
-let aboutSpy;
-let contactSpy;
+let urlSpy;
+let dialogSpy;
+let routerSpy;
 
 describe('AppComponent', () => {
   beforeEach(async() => {
     TestBed.configureTestingModule({
       imports: [
+        BrowserAnimationsModule,
         RouterTestingModule,
         AppMaterialModule,
         HttpClientModule
@@ -34,68 +38,76 @@ describe('AppComponent', () => {
     component = fixture.debugElement.componentInstance;
   });
 
+  afterEach(() => {
+    fixture.destroy();
+    component.dialog.closeAll();
+  });
+
   it('should create the app', () => {
     expect(component).toBeTruthy();
   });
 
-
-  it('should open about page and contact page', () => {
-    aboutSpy = spyOn<any>(component, 'showAbout').and.callThrough();
-    contactSpy = spyOn<any>(component, 'showContact').and.callThrough();
-    const about = fixture.nativeElement.querySelector('button#aboutButton');
-    const contact = fixture.nativeElement.querySelector('button#contactButton');
-    about.click();
-    contact.click();
-    expect(aboutSpy).toHaveBeenCalled();
-    expect(contactSpy).toHaveBeenCalled();
+  it('should open about page', () => {
+    dialogSpy = spyOn(component.dialog, 'open');
+    component.showAbout();
+    expect(dialogSpy).toHaveBeenCalled();
   });
 
-  it('should go to login page', () => {
-    spyOn(component.router, 'navigateByUrl').and.callThrough();
-    component.goToLoginPage();
-    expect(component.router.navigateByUrl).toHaveBeenCalledWith('/login');
-  });
-
-  it('should go to register page', () => {
-    spyOn(component.router, 'navigateByUrl').and.callThrough();
-    component.register();
-    expect(component.router.navigateByUrl).toHaveBeenCalledWith('/register');
-  });
-
-  it('should go to landing page', () => {
-    spyOn(component.router, 'navigateByUrl').and.callThrough();
-    component.goToLanding();
-    expect(component.router.navigateByUrl).toHaveBeenCalledWith('/landing-page');
-  });
-
-  it('should go to view profile page', () => {
-    spyOn(component.router, 'navigateByUrl').and.callThrough();
-    component.viewProfile(123);
-    expect(component.router.navigateByUrl).toHaveBeenCalledWith('/view-profile/123');
+  it('should open contact page', () => {
+    dialogSpy = spyOn(component.dialog, 'open');
+    component.showContact();
+    expect(dialogSpy).toHaveBeenCalled();
   });
 
   it('should go a location', () => {
     spyOn(component.location, 'back').and.callThrough();
-    component.goBack();
+    component.goBack(); // TODO this case is kind of trivial because we're expecting something that is directly called
     expect(component.location.back).toHaveBeenCalled();
   });
 
-  it('should go to home page', () => {
-    spyOn(component.router, 'navigateByUrl').and.callThrough();
-    component.goHome();
-    expect(component.router.navigateByUrl).toHaveBeenCalledWith('/home');
-  });
+  describe('Navigation', () => {
 
-  it('should go to edit profile page', () => {
-    spyOn(component.router, 'navigateByUrl').and.callThrough();
-    component.editProfile();
-    expect(component.router.navigateByUrl).toHaveBeenCalledWith('/edit-profile');
-  });
+    beforeEach(() => {
+      component.isLoading = true;
+      routerSpy = spyOn(component.router, 'navigateByUrl').and.returnValue(Promise.resolve(of()));
+      fixture.detectChanges();
+    });
 
-  it('should go to matchmaking page', () => {
-    spyOn(component.router, 'navigateByUrl').and.callThrough();
-    component.viewMatchmaking();
-    expect(component.router.navigateByUrl).toHaveBeenCalledWith('/matchmaking');
+    it('should go to login page', () => {
+      component.goToLoginPage();
+      expect(routerSpy).toHaveBeenCalledWith('/login');
+    });
+
+    it('should go to register page', () => {
+      component.register();
+      expect(routerSpy).toHaveBeenCalledWith('/register');
+    });
+
+    it('should go to landing page', () => {
+      component.goToLanding();
+      expect(routerSpy).toHaveBeenCalledWith('/landing-page');
+    });
+
+    it('should go to view profile page', () => {
+      component.viewProfile(123);
+      expect(routerSpy).toHaveBeenCalledWith('/view-profile/123');
+    });
+
+
+    it('should go to home page', () => {
+      component.goHome();
+      expect(routerSpy).toHaveBeenCalledWith('/home');
+    });
+
+    it('should go to edit profile page', () => {
+      component.editProfile();
+      expect(routerSpy).toHaveBeenCalledWith('/edit-profile');
+    });
+
+    it('should go to matchmaking page', () => {
+      component.viewMatchmaking();
+      expect(routerSpy).toHaveBeenCalledWith('/matchmaking');
+    });
   });
 
   it('should open a dialog', () => {
@@ -105,27 +117,38 @@ describe('AppComponent', () => {
   });
 
   describe('home button on toolbar', () => {
-    beforeEach(() => {
+    it('should set the current url when checking for home button', () => {
+     urlSpy = spyOn(component, 'setUrl').and.callThrough();
+      component.showHome();
+      expect(urlSpy).toHaveBeenCalled();
     });
 
     it('should not show for landing page', () => {
-      component.url = '/landing-page';
+      urlSpy = spyOn(component, 'setUrl').and.callFake(() => {
+        component.url = '/landing-page';
+      });
       expect(component.showHome()).toBe(false);
     });
 
     it('should not show for login', () => {
-      component.url = '/login';
+      urlSpy = spyOn(component, 'setUrl').and.callFake(() => {
+        component.url = '/login';
+      });
       expect(component.showHome()).toBe(false);
     });
 
     it('should not show for register', () => {
-      component.url = '/register';
+      urlSpy = spyOn(component, 'setUrl').and.callFake(() => {
+        component.url = '/register';
+      });
       expect(component.showHome()).toBe(false);
     });
 
     it('should show for anything else', () => {
-      component.url = '';
-      expect(component.showHome()).toBe(true);
+      urlSpy = spyOn(component, 'setUrl').and.callFake(() => {
+        component.url = 'any-other-url';
+      });
+        expect(component.showHome()).toBe(true);
     });
   });
 });

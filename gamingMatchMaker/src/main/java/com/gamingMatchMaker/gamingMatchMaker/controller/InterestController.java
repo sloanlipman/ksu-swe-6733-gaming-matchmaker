@@ -6,6 +6,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.gamingMatchMaker.gamingMatchMaker.service.InterestService.EmptyInterestException;
+import com.gamingMatchMaker.gamingMatchMaker.service.InterestService.InterestExistsException;
 import com.gamingMatchMaker.gamingMatchMaker.service.InterestService.InterestService;
 
 @RestController
@@ -15,7 +18,7 @@ public class InterestController {
 	@Autowired
 	private InterestService service;
 	
-	@PostMapping("/interests/getall")
+	@GetMapping("/interests/getall")
 	public ResponseEntity<List<String>> getInterests() {
 		//get the interests
 		List<String> names = service.GetInterests();
@@ -26,7 +29,13 @@ public class InterestController {
 	
 	@PostMapping("/interests/add")
 	public ResponseEntity<String> AddInterest(@RequestBody String NewInterest) {
-		service.AddInterest(NewInterest);
-		return new ResponseEntity<>(HttpStatus.OK);
+		try {
+			service.AddInterest(NewInterest);
+			return new ResponseEntity<>(HttpStatus.OK);
+		}
+		//only expect InterestExistsException and EmptyInterestException  
+		catch (Exception e) {
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);		
+		}
 	}
 }

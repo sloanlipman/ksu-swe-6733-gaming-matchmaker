@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.gamingMatchMaker.gamingMatchMaker.model.Interest;
 
 public interface InterestRepository extends JpaRepository<Interest, UUID> {
-	Optional<Interest> findByActivity_Name(String activity);
+	Optional<Interest> findByActivity(String activity);
 }

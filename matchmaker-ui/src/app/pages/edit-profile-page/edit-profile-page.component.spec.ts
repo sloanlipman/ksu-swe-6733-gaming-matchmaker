@@ -20,7 +20,8 @@ describe('EditProfilePage', () => {
         AppMaterialModule,
         RouterTestingModule,
         BrowserAnimationsModule,
-        HttpClientModule],
+        HttpClientModule
+      ],
       declarations: [
         EditProfilePage
       ],

@@ -44,6 +44,7 @@ public class ControllerTest {
     @MockBean
     private RegistrationService registrationService;
 
+    /*
     @Before
     public void setupUserAuthService() {
         // build the mock server responses
@@ -80,6 +81,7 @@ public class ControllerTest {
         when(registrationService.createRegistration(new UserRec(request.getUserDetail()), request.getPassword()))
                 .thenReturn(Optional.of(response));
     }
+    */
 
     protected String readFileFromResources(String fileName) {
         String result;

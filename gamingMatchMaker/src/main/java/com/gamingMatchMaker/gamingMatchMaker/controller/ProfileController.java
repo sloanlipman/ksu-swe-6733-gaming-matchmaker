@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.gamingMatchMaker.gamingMatchMaker.controller.authorization.UserDetail;
 import com.gamingMatchMaker.gamingMatchMaker.service.ProfileService.ProfileService;
+import com.gamingMatchMaker.gamingMatchMaker.service.authService.UserException;
 
 @RestController
 @RequestMapping("/api")
@@ -14,10 +15,15 @@ public class ProfileController {
 	@Autowired
 	private ProfileService service;
 	
-	@PostMapping("/profile/get/{id:[\\d]+}")
+	@GetMapping("/profile/get/{id:[\\d]+}")
 	public ResponseEntity<UserDetail> GetProfile(@PathVariable long id) {
-		UserDetail ud = new UserDetail(service.GetUserProfile(id));
-        return new ResponseEntity<>(ud, HttpStatus.OK);
+		try {
+			UserDetail ud = new UserDetail(service.GetUserProfile(id));
+	        return new ResponseEntity<>(ud, HttpStatus.OK);
+		}
+		catch(UserException ue) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 	@PostMapping("/profile/save/{id:[\\d]+}")

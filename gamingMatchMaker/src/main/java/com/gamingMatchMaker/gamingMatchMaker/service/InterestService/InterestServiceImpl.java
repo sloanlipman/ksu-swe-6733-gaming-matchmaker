@@ -30,7 +30,7 @@ public class InterestServiceImpl implements InterestService {
 		
 		//convert to just names
 		for(Interest i : ints) {
-			names.add(i.getActivity_name());
+			names.add(i.getActivity());
 		}
 		
 		//return as an array
@@ -38,10 +38,26 @@ public class InterestServiceImpl implements InterestService {
 	}
 
 	@Override
-	public void AddInterest(String name) {
-		Interest toAdd = new Interest();
-		toAdd.setActivity_name(name);
-		intrepo.save(toAdd); //TODO does this allow the db to create the index?  does it check for uniqueness?
+	public void AddInterest(String name) throws InterestExistsException, EmptyInterestException {
+	
+		//first do a sanity check to make sure we're actually trying to do something
+		if(name.length() < 1) throw new EmptyInterestException();
+		
+		//check if the interest exists
+		Optional<Interest> existing = intrepo.findByActivity(name);
+		
+		//if the interest does not exist then add it
+		if(!existing.isPresent()) {
+			Interest toAdd = new Interest();
+			toAdd.setActivity(name);
+			intrepo.save(toAdd); //TODO does this allow the db to create the index?
+		}
+		//already exists, kick the error back
+		else {
+			throw new InterestExistsException(name);
+		}
+		
+		
 	}
 
 }

@@ -51,7 +51,7 @@ public class UserDetail {
         this.location = orig.getLocation();
         this.hobbies = new ArrayList<String>();
         for(Interest i : orig.getInterests()) {
-        	this.hobbies.add(i.getActivity_name());
+        	this.hobbies.add(i.getActivity());
         }
     }
 

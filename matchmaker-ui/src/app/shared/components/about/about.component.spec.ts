@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AboutPage } from './about.component';
 import { AppMaterialModule } from 'src/app/app-material.module';
 import { MatDialog, MatDialogRef } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AboutPage', () => {
   let component: AboutPage;
@@ -10,7 +11,7 @@ describe('AboutPage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [AppMaterialModule],
+      imports: [AppMaterialModule, BrowserAnimationsModule],
       declarations: [ AboutPage ],
       providers: [
         { provide: MatDialogRef, useValue: {}} // TODO this is a workaround. It needs MatDialogRef because it's in the constructor

@@ -49,4 +49,9 @@ describe('RegisterPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('submit registration', () => {
+// TODO add onSubmit tests here
+  
+  });
 });
