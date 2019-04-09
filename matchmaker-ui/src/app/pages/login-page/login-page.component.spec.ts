@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginPageComponent } from './login-page.component';
+import { LoginPage } from './login-page.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppMaterialModule } from 'src/app/app-material.module';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -14,9 +14,9 @@ import { LoginService } from 'src/app/shared/services/login-service/login.servic
 
 
 
-describe('LoginPageComponent', () => {
-  let component: LoginPageComponent;
-  let fixture: ComponentFixture<LoginPageComponent>;
+describe('LoginPage', () => {
+  let component: LoginPage;
+  let fixture: ComponentFixture<LoginPage>;
   let goHomeSpy;
   let closeDialogSpy;
 
@@ -29,8 +29,9 @@ describe('LoginPageComponent', () => {
         HttpClientModule
       ],
       declarations: [
-        LoginPageComponent,
-        LoadingIndicator ],
+        LoginPage,
+        LoadingIndicator
+      ],
       providers: [
         FormBuilder,
         HttpService,
@@ -46,7 +47,7 @@ describe('LoginPageComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginPageComponent);
+    fixture = TestBed.createComponent(LoginPage);
     component = fixture.componentInstance;
     spyOn<any>(component, 'showLoading').and.stub();
     fixture.detectChanges();
@@ -64,9 +65,11 @@ describe('LoginPageComponent', () => {
 
     it('should not call any methods if the form fails validation', () => {
       spyOnProperty(component.userLoginForm, 'invalid').and.returnValue(true);
+      spyOn(component['loginService'], 'handleError').and.callThrough();
       component.onSubmit();
       expect(goHomeSpy).not.toHaveBeenCalled();
       expect(component['closeDialog']).not.toHaveBeenCalled();
+      expect(component['loginService'].handleError).toHaveBeenCalled();
     });
 
     it('should call goHome() on server response', () => {
