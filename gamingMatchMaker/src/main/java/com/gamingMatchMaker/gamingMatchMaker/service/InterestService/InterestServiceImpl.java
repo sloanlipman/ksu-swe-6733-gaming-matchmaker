@@ -41,7 +41,7 @@ public class InterestServiceImpl implements InterestService {
 	public void AddInterest(String name) {
 		Interest toAdd = new Interest();
 		toAdd.setActivity_name(name);
-		intrepo.save(toAdd); //TODO does this allow the db to create the index?
+		intrepo.save(toAdd); //TODO does this allow the db to create the index?  does it check for uniqueness?
 	}
 
 }
