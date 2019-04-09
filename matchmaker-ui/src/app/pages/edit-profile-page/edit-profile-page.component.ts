@@ -18,6 +18,15 @@ export class EditProfilePage extends AppComponent implements OnInit {
     super(injector, dialog);
   }
 
+  typesOfInterest: string[] = ['Hiking', 'Reading', 'Cooking', 'Graphics', 'Programming', 'Surfing', 'Snowboarding', 'Drawing', 'Dogs',
+  'Cats'];
+
+  favoriteGenres: string[] = ['FPS', 'RPG', 'Battle Arena', 'Action', 'RTS', 'Sports Simulation', 'MMORPG', 'Fighting', 'Tactical RPG',
+  'RTT'];
+
+  gamesPlayed: string[] = ['Fortnite', 'Call of Duty', 'Coutner Strike', 'FIFA', 'DOOM', 'Grand Theft Auto', 'Assasins Creed', 'Mario Bros',
+  'Super Smash Borthers'];
+
   ngOnInit() {}
   submitChanges() {
     this.router.navigateByUrl('/home');

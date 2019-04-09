@@ -53,15 +53,15 @@ export class AppComponent implements OnInit {
   }
   protected showAbout() {
     this.dialog.open(AboutPage, {
-      height: '40rem',
-      width: '60rem',
+      height: '30rem',
+      width: '100rem',
     });
   }
 
   protected showContact() {
     this.dialog.open(ContactPage, {
-      height: '40rem',
-      width: '60rem',
+      height: '60rem',
+      width: '100rem',
     });
   }
 
