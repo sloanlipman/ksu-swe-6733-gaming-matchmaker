@@ -3,10 +3,15 @@ package com.gamingMatchMaker.gamingMatchMaker.dao;
 import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 public interface UserRepository extends JpaRepository<UserRec, UUID> {
+<<<<<<< HEAD
     Optional<UserRec> findByEmail(String email);
     Optional<UserRec> findById(int id);
+=======
+    Optional<List<UserRec>> findByEmail(String email);
+>>>>>>> registration service testing
 }
