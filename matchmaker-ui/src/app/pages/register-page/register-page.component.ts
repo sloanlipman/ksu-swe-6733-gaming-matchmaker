@@ -15,6 +15,8 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 })
 export class RegisterPage extends AppComponent implements OnInit {
   userRegisterForm: FormGroup;
+  hide: any;
+  submitted: any;
   constructor(
     protected router: Router,
     protected location: Location,

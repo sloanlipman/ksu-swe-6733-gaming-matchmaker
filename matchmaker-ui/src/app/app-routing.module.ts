@@ -3,14 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: 'landing-page', pathMatch: 'full' },
-  {
+ /* {
   path: 'about',
   loadChildren: './shared/components/about/about.module#AboutPageModule'
-  },
-  {
+  }, */
+  /* {
     path: 'contact-page',
     loadChildren: './shared/components/contact-page/contact-page.module#ContactPageModule'
-  },
+  }, */
   {
     path: 'edit-profile',
     loadChildren: './pages/edit-profile-page/edit-profile-page.module#EditProfilePageModule'
