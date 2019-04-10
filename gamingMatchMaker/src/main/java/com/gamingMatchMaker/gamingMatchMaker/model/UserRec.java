@@ -3,14 +3,9 @@ package com.gamingMatchMaker.gamingMatchMaker.model;
 import com.gamingMatchMaker.gamingMatchMaker.controller.authorization.UserDetail;
 
 import javax.persistence.*;
-<<<<<<< HEAD
 import java.util.Set;
 import java.util.Arrays;
 import java.util.HashSet;
-=======
-import java.util.Objects;
-
->>>>>>> registration service testing
 
 @Entity
 @Table(name="users")
@@ -76,18 +71,10 @@ public class UserRec {
         this.location = location;
     }
 
-<<<<<<< HEAD
     //replace the above construct with a non-empty interests list
     public UserRec(String email, String first_name, String last_name,
                    String password, int age, boolean is_active,
                    int user_type, Location location, Interest[] interests) {
-=======
-    public UserRec(int id, String email, String first_name, String last_name,
-                   String password, int age, boolean is_active,
-                   int user_type, Location location) {
-
-        this.id = id;
->>>>>>> registration service testing
         this.email = email;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -96,10 +83,7 @@ public class UserRec {
         this.is_active = is_active;
         this.user_type = user_type;
         this.location = location;
-<<<<<<< HEAD
         this.hobbies.addAll(Arrays.asList(interests));
-=======
->>>>>>> registration service testing
     }
 
     public UserRec(UserDetail detail) {
