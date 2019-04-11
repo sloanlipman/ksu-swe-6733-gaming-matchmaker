@@ -16,7 +16,7 @@ public class ProfileController {
 	private ProfileService service;
 	
 	@GetMapping("/profile/get/{id:[\\d]+}")
-	public ResponseEntity<UserDetail> GetProfile(@PathVariable int id) {
+	public ResponseEntity<UserDetail> GetProfile(@PathVariable Integer id) {
 		try {
 			UserDetail ud = new UserDetail(service.GetUserProfile(id));
 	        return new ResponseEntity<>(ud, HttpStatus.OK);
