@@ -34,7 +34,7 @@ public class ProfileServiceImpl implements ProfileService {
 	 * @param id The user id for the information to retrieve.
 	 */
 	@Override
-	public UserRec GetUserProfile(long id) throws UserException {
+	public UserRec GetUserProfile(int id) throws UserException {
 		Optional<UserRec> rec = phoneBook.findById(id);
 		if(rec.isPresent()) return rec.get();
 		else throw new UserException("No user found");

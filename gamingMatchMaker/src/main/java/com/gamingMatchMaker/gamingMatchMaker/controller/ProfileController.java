@@ -16,13 +16,13 @@ public class ProfileController {
 	private ProfileService service;
 	
 	@GetMapping("/profile/get/{id:[\\d]+}")
-	public ResponseEntity<UserDetail> GetProfile(@PathVariable long id) {
+	public ResponseEntity<UserDetail> GetProfile(@PathVariable int id) {
 		try {
 			UserDetail ud = new UserDetail(service.GetUserProfile(id));
 	        return new ResponseEntity<>(ud, HttpStatus.OK);
 		}
 		catch(UserException ue) {
-			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
 	

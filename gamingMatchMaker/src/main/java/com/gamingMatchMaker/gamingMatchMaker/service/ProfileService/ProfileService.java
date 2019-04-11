@@ -6,6 +6,6 @@ import com.gamingMatchMaker.gamingMatchMaker.controller.SaveChangesAttempt;
 import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
 
 public interface ProfileService {
-	UserRec GetUserProfile(long id);
+	UserRec GetUserProfile(int id);
 	boolean SaveProfile(SaveChangesAttempt scr);
 }

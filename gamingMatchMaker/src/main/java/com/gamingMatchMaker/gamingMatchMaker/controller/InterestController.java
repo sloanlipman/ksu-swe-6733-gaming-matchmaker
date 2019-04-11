@@ -37,5 +37,5 @@ public class InterestController {
 		catch (Exception e) {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);		
 		}
-	}
-}
+	} //end AddInterest
+} //end InterestController
