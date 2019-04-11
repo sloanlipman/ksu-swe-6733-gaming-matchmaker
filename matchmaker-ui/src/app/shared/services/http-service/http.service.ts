@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { User } from '../../models/user';
 import { MatSnackBar } from '@angular/material';
-import { Observable, of } from 'rxjs';
+import { Observable, of, defer } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class HttpService {
   protected authToken: string = null;
   public currUser: User;
+  protected apiUrl = environment.API_URL;
 
   constructor(
     protected http: HttpClient,
@@ -17,7 +19,8 @@ export class HttpService {
   protected httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
-      'Access-Control': 'Access-Control-Allow-Headers'
+      'Access-Control': 'Access-Control-Allow-Headers',
+      'HttpStatus': 'ok'
     })
   };
 
@@ -27,6 +30,13 @@ export class HttpService {
     } else if (type === 2) {
         return 'regular';
     }
+  }
+
+  protected post(url: string, body: any, options?: any) {
+    url = this.apiUrl + url;
+    return defer(() => {
+      return this.http.post(url, body, options);
+    });
   }
 
   public logout() {
