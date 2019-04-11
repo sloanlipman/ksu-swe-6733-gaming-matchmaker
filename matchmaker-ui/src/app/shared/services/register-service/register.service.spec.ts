@@ -10,8 +10,6 @@ const auth = {};
 let httpMock;
 let detail;
 let handleErrorSpy;
-let err;
-let expectedError;
 
 describe('RegisterService', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -94,17 +92,9 @@ beforeEach(() => {
         service.snackBar.dismiss(); // Dismiss at the end to unblock the view on Karma
   }));
 
-  it('should return an error if the email is already in use', inject(
+  it('should return an error for existing email', inject(
     [RegisterService], (service: RegisterService) => {
       handleErrorSpy = spyOn<any>(service, 'handleError').and.callThrough();
-      expectedError = {
-        error: {
-          message: 'Email address already in use. Please try again with a different email.'
-        }
-      };
-    err = {
-        message: ''
-    };
       detail = {
         email: 'existingUser@gmail.com',
         first_name: 'Sloan',
@@ -125,11 +115,69 @@ beforeEach(() => {
       ).subscribe(
         data => {},
         (error: HttpErrorResponse)  => {
-          console.log('ERROR IS', error);
-          expect(handleErrorSpy).not.toHaveBeenCalledWith(expectedError);
+          expect(error.message).toEqual('email already in use');
       });
       const mockReq = httpMock.expectOne('/api/register');
-      const mockError = new ErrorEvent('', expectedError); // TODO I don't think this is getting hit properly
-      mockReq.error(mockError);
+      const emailError = new ErrorEvent('Existing user error', {message: 'email already exists'});
+      mockReq.error(emailError);
+      expect(handleErrorSpy).toHaveBeenCalled();
+  }));
+
+  it('should return an error for invalid zip code', inject(
+    [RegisterService], (service: RegisterService) => {
+      handleErrorSpy = spyOn<any>(service, 'handleError').and.callThrough();
+      detail = {
+        email: 'existingUser@gmail.com',
+        first_name: 'Sloan',
+        last_name: 'Lipman',
+        age: 26,
+        password: 'password',
+        confirmPassword: 'password',
+        zip: '30075'
+      };
+      service.register(
+        detail.email,
+        detail.firstName,
+        detail.lastName,
+        detail.age,
+        detail.zip,
+        detail.password,
+        detail.confirmPassword
+      ).subscribe(
+        data => {},
+        (error: HttpErrorResponse)  => {});
+      const mockReq = httpMock.expectOne('/api/register');
+      const zipError = new ErrorEvent('ZIP Code Error', {message: 'Location not found for Zip Code'});
+      mockReq.error(zipError);
+      expect(handleErrorSpy).toHaveBeenCalled();
+  }));
+
+  it('should return an error for an invalid age', inject(
+    [RegisterService], (service: RegisterService) => {
+      handleErrorSpy = spyOn<any>(service, 'handleError').and.callThrough();
+      detail = {
+        email: 'existingUser@gmail.com',
+        first_name: 'Sloan',
+        last_name: 'Lipman',
+        age: 26,
+        password: 'password',
+        confirmPassword: 'password',
+        zip: '30075'
+      };
+      service.register(
+        detail.email,
+        detail.firstName,
+        detail.lastName,
+        detail.age,
+        detail.zip,
+        detail.password,
+        detail.confirmPassword
+      ).subscribe(
+        data => {},
+        (error: HttpErrorResponse)  => {});
+      const mockReq = httpMock.expectOne('/api/register');
+      const ageError = new ErrorEvent('Age Error', {message: 'Required age'});
+      mockReq.error(ageError);
+      expect(handleErrorSpy).toHaveBeenCalled();
   }));
 });

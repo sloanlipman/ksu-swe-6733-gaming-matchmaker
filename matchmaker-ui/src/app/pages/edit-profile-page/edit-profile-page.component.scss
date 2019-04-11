@@ -1,19 +1,44 @@
 // TODO decide whether or not to have a single color
-// TODO add more spacing in between cards
+
+mat-form-field {
+  width: 90%;
+  font-size: 18px;
+}
+mat-form {
+  width: 80%;
+  font-size: 18px;
+}
+
+mat-selection-list {
+  max-height: 200px;
+  overflow: auto;
+  width: 90%;
+}
+
 .profile-card {
-  background: magenta;
-  margin-right: 5rem;
+  background: rgb(145, 149, 151);
 }
 
 .genres {
-  background: lightcoral;
+  background: rgb(145, 149, 151);
 }
+
 .interests {
-  background: lightgrey;
+  background: rgb(145, 149, 151);
 }
+
 .games-played {
-  background: brown;
+  background: rgb(145, 149, 151);
 }
+
 mat-grid-list {
   margin: 5rem;
+}
+
+.button{
+  padding-left: 50px;
+}
+
+.cancel{
+  margin-right: 7px;
 }

@@ -10,16 +10,26 @@ import { RegisterService } from 'src/app/shared/services/register-service/regist
 import { LoginService } from 'src/app/shared/services/login-service/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
+import { of } from 'rxjs';
+import { MatDialogModule } from '@angular/material';
+import { User } from 'src/app/shared/models/user';
 
 
 describe('RegisterPage', () => {
   let component: RegisterPage;
   let fixture: ComponentFixture<RegisterPage>;
+  let registerSpy;
+  let loginSpy;
+  let editProfileSpy;
+  let closeDialogSpy;
+  let data;
+  let user;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         AppMaterialModule,
+        MatDialogModule,
         RouterTestingModule,
         BrowserAnimationsModule,
         HttpClientModule
@@ -44,6 +54,7 @@ describe('RegisterPage', () => {
 
   afterEach(() => {
     component['httpService'].snackBar.dismiss();
+    fixture.destroy();
   });
 
   it('should create', () => {
@@ -51,7 +62,70 @@ describe('RegisterPage', () => {
   });
 
   describe('submit registration', () => {
-// TODO add onSubmit tests here
-  
+    beforeEach(() => {
+      closeDialogSpy = spyOn<any>(component, 'closeDialog').and.stub();
+      spyOn<any>(component, 'showLoading').and.stub();
+      data = {
+        detail: {
+          email: 'test@test.com'
+        }
+      };
+
+      user = new User({
+        id: 1,
+        email: 'test@test.com',
+        firstName: 'First',
+        lastName: 'Name',
+        age: '55',
+        isActive: true,
+        type: 'regular'
+      });
+    });
+
+    it('should display an error if the form is not filled in', () => {
+      spyOnProperty(component.userRegisterForm, 'invalid').and.returnValue(true);
+      const handleErrorSpy = spyOn<any>(component['registerService'], 'handleError').and.returnValue(of(''));
+      component.onSubmit();
+      expect(handleErrorSpy).toHaveBeenCalled();
+    });
+
+    it('should close dialog when passwords do not match', () => {
+      spyOnProperty(component.userRegisterForm, 'invalid').and.returnValue(false);
+      registerSpy = spyOn(component['registerService'], 'register').and.returnValue(of('Password Error'));
+      component.onSubmit();
+      expect(registerSpy).toHaveBeenCalled();
+      expect(closeDialogSpy).toHaveBeenCalled();
+    });
+
+    it('should go to edit profile page on successful registration', () => {
+      spyOnProperty(component.userRegisterForm, 'invalid').and.returnValue(false);
+      component['userRegisterForm'].controls['email'].setValue('test@test.com');
+      registerSpy = spyOn(component['registerService'], 'register').and.returnValue(of(data));
+      loginSpy = spyOn(component['loginService'], 'login').and.returnValue(of(user));
+      editProfileSpy = spyOn(component, 'editProfile').and.stub();
+      component.onSubmit();
+      expect(registerSpy).toHaveBeenCalled();
+      expect(loginSpy).toHaveBeenCalled();
+      expect(editProfileSpy).toHaveBeenCalled();
+    });
+
+    it('should close dialog if login fails', () => {
+      spyOnProperty(component.userRegisterForm, 'invalid').and.returnValue(false);
+      component['userRegisterForm'].controls['email'].setValue('test@test.com');
+      registerSpy = spyOn(component['registerService'], 'register').and.returnValue(of(data));
+      loginSpy = spyOn(component['loginService'], 'login').and.returnValue(of(''));
+      component.onSubmit();
+      expect(registerSpy).toHaveBeenCalled();
+      expect(loginSpy).toHaveBeenCalled();
+    });
+
+    it('should close dialog if registratin fails', () => {
+      spyOnProperty(component.userRegisterForm, 'invalid').and.returnValue(false);
+      component['userRegisterForm'].controls['email'].setValue('test2@test.com');
+      registerSpy = spyOn(component['registerService'], 'register').and.returnValue(of(''));
+      component.onSubmit();
+      expect(registerSpy).toHaveBeenCalled();
+      expect(closeDialogSpy).toHaveBeenCalled();;
+    });
   });
 });

@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 
 import { MatButtonModule} from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule } from '@angular/material/';
+import { MatDialogModule, MatListModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material/';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
@@ -16,11 +16,14 @@ import { MatToolbarModule} from '@angular/material/toolbar';
     imports: [
         MatButtonModule,
         MatCardModule,
+        MatDatepickerModule,
         MatDialogModule,
         MatFormFieldModule,
         MatGridListModule,
         MatInputModule,
         MatIconModule,
+        MatListModule,
+        MatNativeDateModule,
         MatProgressBarModule,
         MatSnackBarModule,
         MatToolbarModule,
@@ -28,11 +31,14 @@ import { MatToolbarModule} from '@angular/material/toolbar';
     exports: [
         MatButtonModule,
         MatCardModule,
+        MatDatepickerModule,
         MatDialogModule,
         MatFormFieldModule,
         MatGridListModule,
         MatInputModule,
         MatIconModule,
+        MatListModule,
+        MatNativeDateModule,
         MatProgressBarModule,
         MatSnackBarModule,
         MatToolbarModule,

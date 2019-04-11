@@ -46,6 +46,5 @@ describe('HomePage', () => {
     component.currentUser = user;
     component.showAdminTools();
     expect(showAdminToolsSpy).toBeTruthy();
-    console.log('USER TYPE IS', component.currentUser.type);
   });
 });

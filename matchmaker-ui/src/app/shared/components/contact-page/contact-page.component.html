@@ -1,4 +1,31 @@
-<h1>
-  Contact us
-</h1>
+<h1 id="contact-title">Contact Us</h1>
+<hr>
+<mat-grid-list cols="6" rowHeight="10rem">
+  <mat-grid-tile colspan="3" rowspan="1" id="contact-name">
+    <mat-form-field>
+      <input matInput type="text" class="form-control" placeholder="Your Name">
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="3" rowspan="1" id="contact-email">
+    <mat-form-field>
+      <input matInput type="text" class="form-control" placeholder="Your Email">
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="6" rowspan="1" id="contact-subject">
+      <mat-form-field id="conact-subjecttext">
+        <input matInput type="text" class="form-control" placeholder="Subject">
+      </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="6" rowspan="2" id="contact-content">
+    <mat-form-field appearance="outline" id="contact-textarea">
+      <mat-label>Content</mat-label>
+      <textarea matInput
+                cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="6"
+                cdkAutosizeMaxRows="6"></textarea>
+    </mat-form-field>
+  </mat-grid-tile>
+</mat-grid-list>
+<button mat-raised-button class="cancel" (click)="this.dialogRef.close()">Submit</button>
 <button mat-raised-button class="cancel" (click)="this.dialogRef.close()">Dismiss</button>

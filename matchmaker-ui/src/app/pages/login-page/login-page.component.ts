@@ -13,9 +13,10 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
   encapsulation: ViewEncapsulation.None
 
 })
-export class LoginPageComponent extends AppComponent implements OnInit {
+export class LoginPage extends AppComponent implements OnInit {
   userLoginForm: FormGroup;
-
+  submitted: any;
+  hide: any;
   constructor(
     protected router: Router,
     protected location: Location,
