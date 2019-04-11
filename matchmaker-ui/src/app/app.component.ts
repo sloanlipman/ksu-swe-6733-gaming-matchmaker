@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
     this.url = this.router.url;
   }
 
-  private showHome() {
+  showHome() {
     this.setUrl();
     if (
         this.url === '/landing-page' ||
@@ -51,14 +51,14 @@ export class AppComponent implements OnInit {
       return true;
     }
   }
-  protected showAbout() {
+  showAbout() {
     this.dialog.open(AboutPage, {
       height: '30rem',
       width: '100rem',
     });
   }
 
-  protected showContact() {
+  showContact() {
     this.dialog.open(ContactPage, {
       height: '60rem',
       width: '100rem',

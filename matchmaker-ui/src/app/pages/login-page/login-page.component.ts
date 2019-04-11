@@ -15,7 +15,8 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 export class LoginPage extends AppComponent implements OnInit {
   userLoginForm: FormGroup;
-
+  submitted: any;
+  hide: any;
   constructor(
     protected router: Router,
     protected location: Location,
