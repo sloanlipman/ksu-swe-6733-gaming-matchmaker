@@ -1,0 +1,21 @@
+{
+	"detail":{
+		"id":2,
+		"email":"two@count.com",
+		"first_name":"second",
+		"last_name":"lastname",
+		"age":20,
+		"is_active":true,
+		"user_type":2
+		"location": {
+			"id": 83697,
+			"zip": "30040",
+			"city": "CUMMING",
+			"state": "GA",
+			"lat": 34.20,
+			"lng": -84.13,
+			"locationString": "NA-US-GA-CUMMING"
+		}
+		interests:{ ["Homebrewing", "Lego building", "Testing", "Hacking"] }
+	}
+}

@@ -31,7 +31,9 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 	
 	/**
+	 * Reads the user's profile.
 	 * @param id The user id for the information to retrieve.
+	 * @throws UserException The user was not found.
 	 */
 	@Override
 	public UserRec GetUserProfile(int id) throws UserException {
@@ -53,6 +55,13 @@ public class ProfileServiceImpl implements ProfileService {
 			scr.setMessage("User does not exist.  Please Register first.");
 			return false;
 		}
+		
+		//verify the location is present before saving anything
+		Optional<Location> spot = atlas.findByZip(scr.getUd().getLocation().getZip());
+		if(!spot.isPresent()) {
+			scr.setMessage("Zipcode does not exist.");
+			return false;
+		}
 
 		//there's got to be a better way to do this, but screw it - GO GO BRUTE FORCE
 		rec.get().setAge(scr.getUd().getAge());  //TODO validate age
@@ -60,19 +69,8 @@ public class ProfileServiceImpl implements ProfileService {
 		rec.get().setFirst_name(scr.getUd().getFirst_name());
 		rec.get().setIs_active(scr.getUd().isIs_active());
 		rec.get().setLast_name(scr.getUd().getLast_name());
+		rec.get().setLocation(spot.get());
 
-		//slightly more complex than above
-		Optional<Location> spot = atlas.findByZip(scr.getUd().getLocation().getZip());
-		if(spot.isPresent()) {
-			//save the location
-			rec.get().setLocation(spot.get());
-		}
-		else {
-			//set the error and fail
-			scr.setMessage("Zipcode does not exist.");
-			return false;
-		}
-		
 		//ok, interests gets a little more interesting (<rimshot>)
 		for(String s : scr.getUd().getInterests()) {
 			
@@ -91,7 +89,7 @@ public class ProfileServiceImpl implements ProfileService {
 		}
 		
 		//save the record
-		phoneBook.save(rec.get());
+		phoneBook.save(rec.get()); //TODO do I need this?
 		
 		//if we've gotten here everything worked!
 		return true;

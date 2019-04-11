@@ -37,7 +37,25 @@ public class UserDetail {
         this.age = age;
         this.is_active = is_active;
         this.user_type = user_type;
+        this.location = location;
         hobbies = new ArrayList<String>();
+    }
+
+    //need this for ProfileServiceImpl.SaveProfile() unit test
+    public UserDetail(int id, String email, String first_name, String last_name,
+                      int age, boolean is_active, int user_type, Location location, 
+                      ArrayList<String> ints
+    ) {
+        this.id = id;
+        this.email = email;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.age = age;
+        this.is_active = is_active;
+        this.user_type = user_type;
+        this.location = location;
+        hobbies = new ArrayList<String>();
+        hobbies.addAll(ints);
     }
 
     public UserDetail(UserRec orig) {
