@@ -5,11 +5,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { RegisterService } from './register.service';
 import { MatSnackBarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from 'src/environments/environment';
+
 
 const auth = {};
 let httpMock;
 let detail;
 let handleErrorSpy;
+const apiUrl = environment.API_URL;
 
 describe('RegisterService', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -42,7 +45,7 @@ beforeEach(() => {
         age: '26',
         zip: '30075',
         password: 'alligator3',
-        confirmPassword: 'alligator3' // TODO add more fields?
+        confirmPassword: 'alligator3'
       };
       service.register(
         detail.email,
@@ -59,12 +62,11 @@ beforeEach(() => {
           expect(data.detail.age).toEqual(detail.age);
           expect(data.detail.location).toEqual(detail.location);
       });
-      const req = httpMock.expectOne('/api/register'); // add API call here
+      const req = httpMock.expectOne(apiUrl + '/api/register'); // add API call here
       req.flush({
         auth, detail
       });
       service.snackBar.dismiss(); // Dismiss at the end to unblock the view on Karma
-                                  // TODO these aren't really working
   }));
 
   it('should return an error if the passwords do not match', inject(
@@ -117,10 +119,11 @@ beforeEach(() => {
         (error: HttpErrorResponse)  => {
           expect(error.message).toEqual('email already in use');
       });
-      const mockReq = httpMock.expectOne('/api/register');
+      const mockReq = httpMock.expectOne(apiUrl + '/api/register');
       const emailError = new ErrorEvent('Existing user error', {message: 'email already exists'});
       mockReq.error(emailError);
       expect(handleErrorSpy).toHaveBeenCalled();
+      service.snackBar.dismiss(); // Dismiss at the end to unblock the view on Karma
   }));
 
   it('should return an error for invalid zip code', inject(
@@ -146,10 +149,11 @@ beforeEach(() => {
       ).subscribe(
         data => {},
         (error: HttpErrorResponse)  => {});
-      const mockReq = httpMock.expectOne('/api/register');
+      const mockReq = httpMock.expectOne(apiUrl + '/api/register');
       const zipError = new ErrorEvent('ZIP Code Error', {message: 'Location not found for Zip Code'});
       mockReq.error(zipError);
       expect(handleErrorSpy).toHaveBeenCalled();
+      service.snackBar.dismiss(); // Dismiss at the end to unblock the view on Karma
   }));
 
   it('should return an error for an invalid age', inject(
@@ -175,9 +179,10 @@ beforeEach(() => {
       ).subscribe(
         data => {},
         (error: HttpErrorResponse)  => {});
-      const mockReq = httpMock.expectOne('/api/register');
+      const mockReq = httpMock.expectOne(apiUrl + '/api/register');
       const ageError = new ErrorEvent('Age Error', {message: 'Required age'});
       mockReq.error(ageError);
       expect(handleErrorSpy).toHaveBeenCalled();
+      service.snackBar.dismiss(); // Dismiss at the end to unblock the view on Karma
   }));
 });
