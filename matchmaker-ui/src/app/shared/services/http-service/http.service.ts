@@ -20,7 +20,6 @@ export class HttpService {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
       'Access-Control': 'Access-Control-Allow-Headers',
-      'HttpStatus': 'ok'
     })
   };
 
@@ -36,6 +35,13 @@ export class HttpService {
     url = this.apiUrl + url;
     return defer(() => {
       return this.http.post(url, body, options);
+    });
+  }
+
+  protected get(url: string, options?: any) {
+    url = this.apiUrl + url;
+    return defer(() => {
+      return this.http.get(url, options);
     });
   }
 
