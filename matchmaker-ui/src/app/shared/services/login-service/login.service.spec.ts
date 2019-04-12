@@ -50,7 +50,11 @@ describe('LoginService', () => {
         age: 26,
         is_active: true,
         user_type: 2,
-        id: 1
+        id: 1,
+        hobbies: [
+          'hiking',
+          'reading'
+        ]
     };
       loginService.login('bob@students.kennesaw.edu', 'alligator3').subscribe(data => {
         expect(data.email).toEqual(detail.email);
@@ -60,6 +64,8 @@ describe('LoginService', () => {
         expect(data.isActive).toEqual(true);
         expect(data.id).toEqual(detail.id);
         expect(data.type).toEqual('regular');
+        expect(data.hobbies).toEqual(detail.hobbies);
+        console.log(data.hobbies);
       });
       const mockReq = httpMock.expectOne(apiUrl + '/api/authorizeUser');
       expect(mockReq.request.method).toEqual('POST');

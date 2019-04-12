@@ -35,7 +35,8 @@ export class LoginService extends HttpService {
             lastName: resp.detail.last_name,
             age: resp.detail.age,
             isActive: resp.detail.is_active,
-            type: this.typeToString(resp.detail.user_type)
+            type: this.typeToString(resp.detail.user_type),
+            hobbies: resp.detail.hobbies
           });
           localStorage.setItem('access-token', this.authToken);
           localStorage.setItem('user', JSON.stringify(this.currUser));

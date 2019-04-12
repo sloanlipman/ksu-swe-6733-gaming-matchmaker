@@ -6,6 +6,7 @@ export class User {
   age: number;
   isActive: boolean;
   type: string;
+  hobbies: string[];
 
   constructor(obj?: any){
     this.id = obj && obj.id;
@@ -15,6 +16,7 @@ export class User {
     this.age = obj && obj.age;
     this.isActive = obj && obj.isActive;
     this.type = obj && obj.type;
+    this.hobbies = obj && obj.hobbies;
 
   }
 }
