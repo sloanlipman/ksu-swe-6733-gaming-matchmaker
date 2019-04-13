@@ -63,8 +63,8 @@ public class UserAuthServiceImpl implements UserAuthService{
         tmp.setPassword(null);
         // return the new users record
         UserAuthRecPair result = new UserAuthRecPair();
-        result.auth = auth;
-        result.userRec = userRec;
+        result.setAuth(auth);
+        result.setUserRec(userRec);
 
         return result;
     }

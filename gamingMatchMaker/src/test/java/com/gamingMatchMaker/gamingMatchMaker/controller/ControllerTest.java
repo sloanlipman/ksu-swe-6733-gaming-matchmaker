@@ -2,7 +2,6 @@ package com.gamingMatchMaker.gamingMatchMaker.controller;
 
 import com.gamingMatchMaker.gamingMatchMaker.controller.authorization.UserDetail;
 import com.gamingMatchMaker.gamingMatchMaker.controller.registration.CreateRegistrationRequest;
-import com.gamingMatchMaker.gamingMatchMaker.controller.registration.CreateRegistrationResponse;
 import com.gamingMatchMaker.gamingMatchMaker.model.Location;
 import com.gamingMatchMaker.gamingMatchMaker.model.UserAuthentication;
 import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
@@ -30,6 +29,7 @@ import java.util.stream.Collectors;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
@@ -73,10 +73,12 @@ public abstract class ControllerTest {
     @Before
     public void setupRegistrationService() {
         Location mockLocation = new Location("99004","testCiy","NY",
-                20.05f,15.50f,"Jon test location");
+                20.05f,15.50f,"Jons Test Location");
+        mockLocation.setId(0);
         UserDetail mockUserDetail = new UserDetail(
-                -1,"testJon#test.com","Jon","Test",
+                0,"testJon@test.com","Jon","Doe",
                 37,true,1,mockLocation);
+        UserRec mockUserRec = new UserRec(mockUserDetail);
         CreateRegistrationRequest request =
                 new CreateRegistrationRequest(mockUserDetail, "password1");
 
@@ -90,14 +92,11 @@ public abstract class ControllerTest {
 
         when(this.locationService.GetLocation(eq(mockLocation.getZip()))).thenReturn(mockLocation);
 
-        when(registrationService.createRegistration(
-                new UserRec(new UserDetail(
-                        anyInt(),eq("testJon@test.com"), anyString(),anyString(),
-                        anyInt(),eq(true), anyInt(), eq(mockLocation))),
-                        eq(request.getPassword()))
+        when(
+                registrationService.createRegistration(
+                        eq(mockUserRec), eq("password1")
                 )
-                .thenReturn(Optional.of(response)
-        );
+        ).thenReturn(Optional.of(response));
     }
 
     protected String readFileFromResources(Class c, String fileName) throws Exception {
