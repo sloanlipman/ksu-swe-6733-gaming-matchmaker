@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -44,7 +45,7 @@ public class UserAuthServiceImpl implements UserAuthService{
             throw new UserAuthenticationException("UserRec not found: username = " + email);
         }
 
-        UserRec userRec = userOpt.get();
+        UserRec userRec = (UserRec) userOpt.get();
 
         // fail if the passwords don't match
 
@@ -62,8 +63,8 @@ public class UserAuthServiceImpl implements UserAuthService{
         tmp.setPassword(null);
         // return the new users record
         UserAuthRecPair result = new UserAuthRecPair();
-        result.auth = auth;
-        result.userRec = userRec;
+        result.setAuth(auth);
+        result.setUserRec(userRec);
 
         return result;
     }

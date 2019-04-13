@@ -16,10 +16,10 @@ import { HttpService } from './shared/services/http-service/http.service';
 
 @NgModule({
   declarations: [
-  AppComponent,
-  LoadingIndicator,
-  AboutPage,
-  ContactPage
+    AppComponent,
+    LoadingIndicator,
+    AboutPage,
+    ContactPage
   ],
   imports: [
     AppMaterialModule,

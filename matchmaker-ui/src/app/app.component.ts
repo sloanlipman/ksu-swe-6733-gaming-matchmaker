@@ -44,7 +44,8 @@ export class AppComponent implements OnInit {
     if (
         this.url === '/landing-page' ||
         this.url === '/login' ||
-        this.url === '/register'
+        this.url === '/register' ||
+        this.url === '/edit-profile'
       ) {
       return false;
     } else {
@@ -85,7 +86,7 @@ export class AppComponent implements OnInit {
     this.dialog.closeAll();
   }
 
-  getUser() {
+  getUser() { // TODO update to a backend call
     this.currentUser = new User(JSON.parse(localStorage.getItem('user')));
     console.log(this.currentUser);
   }

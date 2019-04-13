@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.util.Set;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Objects;
 
 @Entity
 @Table(name="users")
@@ -108,6 +109,19 @@ public class UserRec {
     public void AddInterest(Interest I) {
     	//TODO does this add new ones to the DB or must they already exist?
     	hobbies.add(I);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserRec userRec = (UserRec) o;
+        return Objects.equals(email, userRec.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(email);
     }
 
     public int getId() {

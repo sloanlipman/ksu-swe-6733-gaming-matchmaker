@@ -4,8 +4,8 @@ import com.gamingMatchMaker.gamingMatchMaker.model.UserAuthentication;
 import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
 
 public class UserAuthRecPair {
-    public UserRec userRec;
-    public UserAuthentication auth;
+    private UserRec userRec;
+    private UserAuthentication auth;
 
     public UserAuthRecPair() {
     }

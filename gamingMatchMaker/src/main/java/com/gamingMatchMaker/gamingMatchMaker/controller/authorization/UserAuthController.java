@@ -25,7 +25,7 @@ public class UserAuthController {
         HttpHeaders headers = new HttpHeaders();
 
         return new ResponseEntity<>(
-                new AuthUserResponse(authResults.auth, new UserDetail(authResults.userRec)),
+                new AuthUserResponse(authResults.getAuth(), new UserDetail(authResults.getUserRec())),
                 headers, HttpStatus.OK);
     }
 }
