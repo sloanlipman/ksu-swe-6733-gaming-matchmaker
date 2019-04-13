@@ -4,9 +4,10 @@ export class User {
   firstName: string;
   lastName: string;
   age: number;
+  location: any;
   isActive: boolean;
   type: string;
-  hobbies: string[];
+  interests?: string[];
 
   constructor(obj?: any){
     this.id = obj && obj.id;
@@ -14,9 +15,10 @@ export class User {
     this.firstName = obj && obj.firstName;
     this.lastName = obj && obj.lastName;
     this.age = obj && obj.age;
+    this.location = obj && obj.location;
     this.isActive = obj && obj.isActive;
     this.type = obj && obj.type;
-    this.hobbies = obj && obj.hobbies;
+    this.interests = obj && obj.interests;
 
   }
 }

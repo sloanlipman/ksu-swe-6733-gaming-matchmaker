@@ -1,9 +1,10 @@
 import { Location } from '@angular/common';
 import { Component, OnInit, Injector } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppComponent } from 'src/app/app.component';
+import { AppComponent } from '../../app.component';
 import { MatDialog } from '@angular/material';
-import { EditProfileService } from 'src/app/shared/services/edit-profile-service/edit-profile.service';
+import { EditProfileService } from '../../shared/services/edit-profile-service/edit-profile.service';
+import { User } from 'src/app/shared/models/user';
 @Component({
   selector: 'app-edit-profile-page',
   templateUrl: './edit-profile-page.component.html',
@@ -21,9 +22,6 @@ export class EditProfilePage extends AppComponent implements OnInit {
     super(injector, dialog);
   }
 
-  typesOfInterest: string[] = ['Hiking', 'Reading', 'Cooking', 'Graphics', 'Programming', 'Surfing', 'Snowboarding', 'Drawing', 'Dogs',
-  'Cats'];
-
   favoriteGenres: string[] = ['FPS', 'RPG', 'Battle Arena', 'Action', 'RTS', 'Sports Simulation', 'MMORPG', 'Fighting', 'Tactical RPG',
   'RTT'];
 
@@ -35,6 +33,14 @@ export class EditProfilePage extends AppComponent implements OnInit {
     console.log(this.interests);
   }
   submitChanges() {
+    // If no interests are selected, do not let them hit submit
+    /**  On submit, call something like
+       * saveProfile().then(() => { // Error handling: Failed to save profile.
+          * if success response received -->
+            * this.editProfileService.updateUser(resp);
+       * });
+         *
+    */
     this.router.navigateByUrl('/home');
   }
 
@@ -48,10 +54,11 @@ export class EditProfilePage extends AppComponent implements OnInit {
     });
   }
 
-/*  existingUser(){
-    // TODO
-    // if no user interests, return false
-    // else return true
-    return true;
-  } */
+  isExistingUser() {
+    if (this.currentUser.interests && this.currentUser.interests.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

@@ -4,6 +4,7 @@ import { User } from '../../models/user';
 import { MatSnackBar } from '@angular/material';
 import { Observable, of, defer } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class HttpService {
@@ -44,6 +45,33 @@ export class HttpService {
       return this.http.get(url, options);
     });
   }
+
+ /* public getUser(id: string): Observable<User> {
+    return this.get('/api/profile/get' + id).pipe(map((resp: any) => {
+      if (resp) {
+        console.log(resp);
+        return this.updateUser(resp);
+      }
+    })).pipe(catchError(err => this.handleError));
+  } */
+
+ /* protected updateUser(resp: any, authToken?: any) {
+    this.currUser = new User({
+      id: resp.detail.id,
+      email: resp.detail.email,
+      firstName: resp.detail.first_name,
+      lastName: resp.detail.last_name,
+      age: resp.detail.age,
+      isActive: resp.detail.is_active,
+      type: this.typeToString(resp.detail.user_type),
+      interests: resp.detail.interests
+    });
+    localStorage.setItem('user', JSON.stringify(this.currUser));
+    if (authToken) {
+      localStorage.setItem('auth', resp.auth);
+    }
+    return this.currUser;
+  } */
 
   public logout() {
     this.currUser = null;
