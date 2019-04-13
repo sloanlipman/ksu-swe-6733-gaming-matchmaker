@@ -64,6 +64,7 @@ export class HttpService {
       firstName: user.first_name,
       lastName: user.last_name,
       age: user.age,
+      location: user.location,
       isActive: user.is_active,
       type: this.typeToString(user.user_type),
       interests: user.interests
