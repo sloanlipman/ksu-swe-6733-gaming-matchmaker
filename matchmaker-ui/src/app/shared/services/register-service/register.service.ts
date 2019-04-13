@@ -42,7 +42,7 @@ export class RegisterService extends HttpService {
         this.handleError('Passwords do not match');
         return of('Password Error');
       } else {
-        return this.http.post('/api/register', {userDetail, password},
+        return this.post('/api/register', {userDetail, password},
          this.httpOptions).pipe(map((resp: any) => {
             if (resp) {
               return resp;

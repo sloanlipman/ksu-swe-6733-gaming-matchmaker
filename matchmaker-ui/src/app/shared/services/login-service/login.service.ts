@@ -21,7 +21,7 @@ export class LoginService extends HttpService {
     }
 
   public login(email, password): Observable<User> {
-    return this.http.post('/api/authorizeUser', {
+    return this.post('/api/authorizeUser', {
       email,
       password
     }, this.httpOptions).pipe(map((resp: any) => {
