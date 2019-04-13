@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.util.Set;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Objects;
 
 @Entity
 @Table(name="users")

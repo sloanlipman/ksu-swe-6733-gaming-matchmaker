@@ -57,13 +57,13 @@ public abstract class ServiceTest {
 
 
     // Known set of users for testing
-    public static final UserRec USER_1 = new UserRec(1,
+    public static final UserRec USER_1 = new UserRec(
             "user1@testDomain.tst",
             "Ned", "stark",
             "Winter*I3_CominG!",
             37, true, UserType.admin.getValue(),
             LOC_1);
-    public static final UserRec USER_2 = new UserRec(2,
+    public static final UserRec USER_2 = new UserRec(
             "user2@testDomain.tst",
             "Han", "solo",
             "password",

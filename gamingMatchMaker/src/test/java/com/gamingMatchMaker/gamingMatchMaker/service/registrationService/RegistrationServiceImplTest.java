@@ -31,7 +31,7 @@ public class RegistrationServiceImplTest extends ServiceTest {
         // simulate a call to the service to create a user registration
 
         // create a new  newUserRecDetails, and s password
-        UserRec newUserRecDetails = new UserRec(1,
+        UserRec newUserRecDetails = new UserRec(
                 "test1@test.com", "test1", "test",
                 "password", 22, true, 1, LOC_1);
 
