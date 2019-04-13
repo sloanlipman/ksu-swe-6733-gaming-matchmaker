@@ -5,6 +5,7 @@ import { EditProfilePage } from './edit-profile-page.component';
 import { AppMaterialModule } from 'src/app/app-material.module';
 import { CommonModule } from '@angular/common';
 import { EditProfileService } from 'src/app/shared/services/edit-profile-service/edit-profile.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { EditProfileService } from 'src/app/shared/services/edit-profile-service
   imports: [
     AppMaterialModule,
     CommonModule,
+    ReactiveFormsModule,
     RouterModule.forChild([
       {
         path: '',

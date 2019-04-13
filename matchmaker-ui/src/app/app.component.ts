@@ -92,7 +92,6 @@ export class AppComponent implements OnInit {
     this.httpService.getUser(this.currentUser.id).subscribe(user => {
       console.log('back in app component, the response is:', user);
       this.currentUser = this.httpService.updateUser(user);
-     // this.currentUser = user;
       console.log('Finally, current user is:', this.currentUser);
     });
   }
