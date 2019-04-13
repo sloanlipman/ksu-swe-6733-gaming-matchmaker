@@ -27,7 +27,4 @@ public class LocationServiceImpl implements LocationService {
         if(place.isPresent()) return place.get();
         else throw new BadZipException();
     }
-
-
-
 }
