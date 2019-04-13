@@ -29,6 +29,7 @@ export class EditProfilePage extends AppComponent implements OnInit {
   'Super Smash Borthers'];
 
   ngOnInit() {
+    this.getUser();
     this.getAllInterests();
     console.log(this.interests);
   }
@@ -55,6 +56,7 @@ export class EditProfilePage extends AppComponent implements OnInit {
   }
 
   isExistingUser() {
+    console.log('IN ISEXISTINGUSER():', this.currentUser);
     if (this.currentUser.interests && this.currentUser.interests.length > 0) {
       return true;
     } else {
