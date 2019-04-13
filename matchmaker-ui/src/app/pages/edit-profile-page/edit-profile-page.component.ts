@@ -56,7 +56,6 @@ export class EditProfilePage extends AppComponent implements OnInit {
   }
 
   isExistingUser() {
-    console.log('IN ISEXISTINGUSER():', this.currentUser);
     if (this.currentUser.interests && this.currentUser.interests.length > 0) {
       return true;
     } else {

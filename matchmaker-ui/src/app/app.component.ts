@@ -86,10 +86,17 @@ export class AppComponent implements OnInit {
     this.dialog.closeAll();
   }
 
-  getUser() { // TODO update to a backend call
-    this.currentUser = new User(JSON.parse(localStorage.getItem('user')));
-    console.log(this.currentUser);
+  getUser() {
+    this.currentUser =  new User(JSON.parse(localStorage.getItem('user')));
+    console.log('Originally, user is:', this.currentUser);
+    this.httpService.getUser(this.currentUser.id).subscribe(user => {
+      console.log('back in app component, the response is:', user);
+      this.currentUser = this.httpService.updateUser(user);
+     // this.currentUser = user;
+      console.log('Finally, current user is:', this.currentUser);
+    });
   }
+
   goToLoginPage() {
     this.router.navigateByUrl('/login').then(() => {
       this.dismissLoading();
