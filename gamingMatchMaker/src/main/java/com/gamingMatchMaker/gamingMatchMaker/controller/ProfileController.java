@@ -8,6 +8,7 @@ import com.gamingMatchMaker.gamingMatchMaker.controller.authorization.UserDetail
 import com.gamingMatchMaker.gamingMatchMaker.service.ProfileService.ProfileService;
 import com.gamingMatchMaker.gamingMatchMaker.service.authService.UserException;
 
+@CrossOrigin(origins="*", allowedHeaders="*")
 @RestController
 @RequestMapping("/api")
 public class ProfileController {

@@ -161,17 +161,18 @@ public class ProfileServiceTest {
 
 	@Test
 	public void test_SaveProfile() {
+		
+		Location place = new Location("30040", "CUMMING", "GA", 34.20f, -84.13f, "NA-US-GA-CUMMING");
+
+		//create the user detail
+		UserDetail ud = new UserDetail(76, "mm@test.com", "moffett", "mckenna", 42, true, 1, place);
 		ArrayList<String> ints  = new ArrayList<>();
 		ints.add("Board/tabletop game");
 		ints.add("Do it yourself");
 		ints.add("Homebrewing");
 		ints.add("Lego building");
 		ints.add("Woodworking");
-		
-		Location place = new Location("30040", "CUMMING", "GA", 34.20f, -84.13f, "NA-US-GA-CUMMING");
-
-		//create the user detail
-		UserDetail ud = new UserDetail(76, "mm@test.com", "moffett", "mckenna", 42, true, 1, place, ints);
+		ud.setInterests(ints);
 		SaveChangesAttempt sca = new SaveChangesAttempt(ud);
 		
 		//attempt the save operation
@@ -299,6 +300,10 @@ public class ProfileServiceTest {
 	public void test_SaveProfile_NewInterest() {
 		// the only difference between this and the normal case is the addition of an interest not in the db
 		
+		Location place = new Location("30040", "CUMMING", "GA", 34.20f, -84.13f, "NA-US-GA-CUMMING");
+
+		//create the user detail
+		UserDetail ud = new UserDetail(76, "mm@test.com", "moffett", "mckenna", 42, true, 1, place);
 		ArrayList<String> ints  = new ArrayList<>();
 		ints.add("Board/tabletop game");
 		ints.add("Do it yourself");
@@ -306,11 +311,7 @@ public class ProfileServiceTest {
 		ints.add("Lego building");
 		ints.add("Woodworking");
 		ints.add("Hacking");	//THE ONLY DIFFERENCE!!!!!
-		
-		Location place = new Location("30040", "CUMMING", "GA", 34.20f, -84.13f, "NA-US-GA-CUMMING");
-
-		//create the user detail
-		UserDetail ud = new UserDetail(76, "mm@test.com", "moffett", "mckenna", 42, true, 1, place, ints);
+		ud.setInterests(ints);
 		SaveChangesAttempt sca = new SaveChangesAttempt(ud);
 		
 		//attempt the save operation

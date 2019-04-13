@@ -11,6 +11,7 @@ import com.gamingMatchMaker.gamingMatchMaker.service.InterestService.EmptyIntere
 import com.gamingMatchMaker.gamingMatchMaker.service.InterestService.InterestExistsException;
 import com.gamingMatchMaker.gamingMatchMaker.service.InterestService.InterestService;
 
+@CrossOrigin(origins="*", allowedHeaders="*")
 @RestController
 @RequestMapping("/api")
 public class InterestController {
