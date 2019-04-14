@@ -9,9 +9,9 @@ mat-card{
   background-size: cover;
 }
 
-.view-profile-card{
-  margin-left: 200px;
-  margin-right: 200px;
+.view-profile-card{ // TODO these margins mess up really long names
+//  margin-left: 200px;
+//  margin-right: 200px;
 }
 
 .view-profile-title{

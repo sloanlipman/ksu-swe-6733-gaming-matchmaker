@@ -30,9 +30,12 @@ constructor(
 
   public saveProfile(request: any, id: any): Observable<any> {
     return this.post('/api/profile/save/' + id, request, this.httpOptions).pipe(map((resp: any) => {
+      console.log(resp);
       if (resp) {
-        console.log('RESP IS', resp);
-        return this.updateUser(id);        // Not an error, but we can reuse the same logic to display 'Profile Updated Successfully'
+        this.handleError('Profile Updated Successfully');
+            // Not an error, but we can reuse the same logic to display 'Profile Updated Successfully'
+
+        return resp;
       }
     })).pipe(catchError(err => this.handleError(err)));
   }

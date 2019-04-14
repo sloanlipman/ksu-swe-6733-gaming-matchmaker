@@ -64,6 +64,7 @@ export class RegisterPage extends AppComponent implements OnInit {
             if (result) {
               this.getAllInterests().then(() => {
                 this.allInterests = JSON.parse(localStorage.getItem('interests'));
+                console.log(this.allInterests);
                 this.editProfile();
               });
             } else {

@@ -56,9 +56,19 @@ export class EditProfilePage extends AppComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.getFormControls();
-    this.getUser();
-    this.setFormControls();
+    if (!this.allInterests) {
+      this.getAllInterests().then(() => {
+      this.dismissLoading();
+      this.getFormControls();
+      this.getUser();
+      this.setFormControls();
+      });
+    } else {
+      this.dismissLoading();
+      this.getFormControls();
+      this.getUser();
+      this.setFormControls();
+    }
     console.log('all interests:', this.allInterests.length);
 
     console.log(this.allInterests);
@@ -80,7 +90,7 @@ export class EditProfilePage extends AppComponent implements OnInit {
   } else if (this.interestsBoxes.value.length === 0) {
     this.editProfileService.handleError('Please select at least one interest and try again');
   } else {
-  const profileChanges = {
+  const profileChanges = JSON.stringify({
     id: this.currentUser.id,
     email: this.f.email.value,
     first_name: this.f.firstName.value,
@@ -88,17 +98,18 @@ export class EditProfilePage extends AppComponent implements OnInit {
     age: this.f.age.value,
     is_active: true,
     user_type: this.editProfileService.stringToType(this.currentUser.type),
-    location: this.f.zip.value,
+    location: {
+      zip: this.f.zip.value,
+    },
     interests: this.interestsBoxes.value
-  };
+  });
+  console.log(profileChanges);
     this.showLoading();
-    this.editProfileService.saveProfile(profileChanges, this.currentUser.id).subscribe(success => {
-      console.log(success);
-      if (success) {
-        this.editProfileService.getUser(this.currentUser.id).subscribe(data => {
-          console.log('DATA IS', data);
-          this.goHome();
-        });
+    this.editProfileService.saveProfile(profileChanges, this.currentUser.id).subscribe((data) => {
+      console.log(data);
+      if (data) {
+        this.currentUser = this.httpService.updateUser(data);
+        this.goHome();
       } else {
         this.dismissLoading();
       }

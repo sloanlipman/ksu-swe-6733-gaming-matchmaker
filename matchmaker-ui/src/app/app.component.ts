@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   public currentUser: User;
   public url: string;
   isLoading = false;
-  allInterests = [];
+  protected allInterests = [];
   constructor(
     protected injector: Injector,
     protected dialog: MatDialog,
@@ -90,8 +90,8 @@ export class AppComponent implements OnInit {
 
    getUser() {
     this.currentUser =  new User(JSON.parse(localStorage.getItem('user')));
-    this.httpService.getUser(this.currentUser.id).subscribe(user => {
-      this.currentUser = this.httpService.updateUser(user);
+    this.httpService.getUser(this.currentUser.id).subscribe(() => {
+      console.log('got user');
     });
   }
 
@@ -119,12 +119,20 @@ export class AppComponent implements OnInit {
   }
 
   goHome() {
+    if (this.currentUser) {
+      console.log(this.currentUser);
+      if (this.currentUser.interests.length === 0) {
+        this.editProfile();
+        return;
+      }
+    }
     this.router.navigateByUrl('/home').then(() => {
       this.dismissLoading();
     });
   }
 
-  async editProfile() {
+  editProfile() {
+    this.allInterests = JSON.parse(localStorage.getItem('interests'));
       this.router.navigateByUrl('/edit-profile').then(() => {
         this.dismissLoading();
     });
@@ -144,19 +152,16 @@ export class AppComponent implements OnInit {
 
 
   async getAllInterests(): Promise<any> {
-    this.showLoading();
     console.log('getting interests');
-    if (this.allInterests.length < 1 ) {
-      this.httpService.getAllInterests().subscribe(data => {
-        if (data) {
-          const interests = [];
-          for (let i = 0; i < data.length; ++i) {
-            interests.push(data[i]);
+        this.httpService.getAllInterests().subscribe(data => {
+          if (data) {
+            const interests = [];
+            for (let i = 0; i < data.length; ++i) {
+              interests.push(data[i]);
+            }
+            localStorage.setItem('interests', JSON.stringify(interests));
           }
-          localStorage.setItem('interests', JSON.stringify(interests));
-        }
-      });
-      return Promise.resolve();
-    }
+        });
+    return Promise.resolve();
   }
 }

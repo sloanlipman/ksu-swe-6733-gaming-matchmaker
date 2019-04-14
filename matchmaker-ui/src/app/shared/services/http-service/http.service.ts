@@ -57,13 +57,13 @@ export class HttpService {
   public getUser(id: any): Observable<User> {
     return this.get('/api/profile/get/' + id).pipe(map((resp: any) => {
       if (resp) {
+        this.updateUser(resp);
         return resp;
       }
-    })).pipe(catchError(err => this.handleError));
+    })).pipe(catchError(err => this.handleError(err)));
   }
 
   public updateUser(user: any, accessToken?: any) {
-    console.log('updating user');
     this.currUser = new User({
       id: user.id,
       email: user.email,
