@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
   public currentUser: User;
   public url: string;
   isLoading = false;
+  allInterests = [];
   constructor(
     protected injector: Injector,
     protected dialog: MatDialog,
@@ -33,6 +34,7 @@ export class AppComponent implements OnInit {
     }
 
   ngOnInit() {
+    console.log('all interests:', this.allInterests.length);
   }
 
   setUrl() {
@@ -86,13 +88,10 @@ export class AppComponent implements OnInit {
     this.dialog.closeAll();
   }
 
-  getUser() {
+   getUser() {
     this.currentUser =  new User(JSON.parse(localStorage.getItem('user')));
-    console.log('Originally, user is:', this.currentUser);
     this.httpService.getUser(this.currentUser.id).subscribe(user => {
-      console.log('back in app component, the response is:', user);
       this.currentUser = this.httpService.updateUser(user);
-      console.log('Finally, current user is:', this.currentUser);
     });
   }
 
@@ -125,11 +124,12 @@ export class AppComponent implements OnInit {
     });
   }
 
-  editProfile() {
-    this.router.navigateByUrl('/edit-profile').then(() => {
-      this.dismissLoading();
+  async editProfile() {
+      this.router.navigateByUrl('/edit-profile').then(() => {
+        this.dismissLoading();
     });
   }
+
   viewProfile(id: any){
     this.router.navigateByUrl('/view-profile/' + id).then(() => {
       this.dismissLoading();
@@ -140,5 +140,23 @@ export class AppComponent implements OnInit {
     this.router.navigateByUrl('/matchmaking').then(() => {
       this.dismissLoading();
     });
+  }
+
+
+  async getAllInterests(): Promise<any> {
+    this.showLoading();
+    console.log('getting interests');
+    if (this.allInterests.length < 1 ) {
+      this.httpService.getAllInterests().subscribe(data => {
+        if (data) {
+          const interests = [];
+          for (let i = 0; i < data.length; ++i) {
+            interests.push(data[i]);
+          }
+          localStorage.setItem('interests', JSON.stringify(interests));
+        }
+      });
+      return Promise.resolve();
+    }
   }
 }

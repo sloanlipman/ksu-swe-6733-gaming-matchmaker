@@ -48,16 +48,14 @@ export class HttpService {
 
   public getUser(id: any): Observable<User> {
     return this.get('/api/profile/get/' + id).pipe(map((resp: any) => {
-      console.log('inside the back end call to getUser');
       if (resp) {
-        console.log('inside get user call, resp is:', resp);
         return resp;
       }
     })).pipe(catchError(err => this.handleError));
   }
 
   public updateUser(user: any, accessToken?: any) {
-    console.log('got inside update user');
+    console.log('updating user');
     this.currUser = new User({
       id: user.id,
       email: user.email,
@@ -71,10 +69,17 @@ export class HttpService {
     });
     localStorage.setItem('user', JSON.stringify(this.currUser));
     if (accessToken) {
-      console.log('hit an auth token:', accessToken);
       localStorage.setItem('auth', accessToken);
     }
     return this.currUser;
+  }
+
+  public getAllInterests(): Observable<any>{
+      return this.get('/api/interests/getall').pipe(map((resp: any) => {
+        if (resp){
+          return resp;
+        }
+    })).pipe(catchError(err => this.handleError(err)));
   }
 
   public logout() {
@@ -101,7 +106,7 @@ export class HttpService {
       } else if (err.error === 'inactive account') {
           errorMessage = 'Your account is inactive';
       } else {
-          errorMessage = 'Cannot connect to server. Please try again later.';
+        errorMessage = 'Cannot connect to server. Please try again later.';
       }
     } else {
       errorMessage = err;

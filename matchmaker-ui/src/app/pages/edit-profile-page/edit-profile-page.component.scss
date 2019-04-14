@@ -18,7 +18,8 @@ form {
 }
 
 mat-selection-list {
-  max-height: 200px;
+  max-height: 500px;
+  max-width: 1000px;
   overflow: auto;
   width: 90%;
 }

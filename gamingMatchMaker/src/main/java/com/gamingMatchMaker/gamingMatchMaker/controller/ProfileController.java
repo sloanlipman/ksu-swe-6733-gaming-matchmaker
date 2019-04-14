@@ -28,7 +28,7 @@ public class ProfileController {
 	}
 	
 	@PostMapping("/profile/save/{id:[\\d]+}")
-	public ResponseEntity<String> SaveProfile(@PathVariable long id, @RequestBody UserDetail ud) {
+	public ResponseEntity<String> SaveProfile(@PathVariable Integer id, @RequestBody UserDetail ud) {
 		//create the carry object
 		SaveChangesAttempt scr = new SaveChangesAttempt(ud);
 		

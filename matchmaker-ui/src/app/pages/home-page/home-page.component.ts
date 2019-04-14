@@ -27,6 +27,9 @@ export class HomePage extends AppComponent implements OnInit {
 
   ngOnInit() {
     this.getUser();
+    this.getAllInterests().then(() => {
+      this.dismissLoading();
+    });
   }
 
   showAdminTools(){

@@ -1,8 +1,8 @@
 import { Location } from '@angular/common';
-import { Component, OnInit, Injector } from '@angular/core';
+import { Component, OnInit, Injector, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from '../../app.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSelectionList } from '@angular/material';
 import { EditProfileService } from '../../shared/services/edit-profile-service/edit-profile.service';
 import { User } from 'src/app/shared/models/user';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
@@ -12,10 +12,11 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
   styleUrls: ['./edit-profile-page.component.scss']
 })
 export class EditProfilePage extends AppComponent implements OnInit {
-  allInterests = [];
-  currentUserInterests = [];
   interestsBoxes: FormControl;
   infoForm: FormGroup;
+  currentUserInterests = [];
+  allInterests = JSON.parse(localStorage.getItem('interests'));
+
   favoriteGenres: string[] = ['FPS', 'RPG', 'Battle Arena', 'Action', 'RTS', 'Sports Simulation', 'MMORPG', 'Fighting', 'Tactical RPG',
   'RTT'];
 
@@ -31,7 +32,6 @@ export class EditProfilePage extends AppComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     super(injector, dialog);
-    this.getFormControls();
   }
 
   getFormControls() {
@@ -44,13 +44,25 @@ export class EditProfilePage extends AppComponent implements OnInit {
       password: new FormControl('', [Validators.required]),
       confirmPassword: new FormControl('', [Validators.required])
     });
+    this.interestsBoxes = new FormControl();
   }
 
+  setFormControls() {
+    this.currentUserInterests = this.currentUser.interests;
+    this.infoForm.controls.firstName.setValue(this.currentUser.firstName);
+    this.infoForm.controls.lastName.setValue(this.currentUser.lastName);
+    this.infoForm.controls.age.setValue(this.currentUser.age);
+    this.infoForm.controls.zip.setValue(this.currentUser.location.zip);
+    this.infoForm.controls.email.setValue(this.currentUser.email);
+    this.interestsBoxes.setValue(this.currentUser.interests);
+    }
+
   ngOnInit() {
+    this.getFormControls();
     this.getUser();
-    this.getAllInterests();
-    // this.pullUserInterests();
-    this.interestsBoxes = new FormControl(this.currentUserInterests);
+    this.setFormControls();
+    console.log('all interests:', this.allInterests.length);
+
     console.log(this.allInterests);
     console.log(this.currentUserInterests);
     console.log(this.interestsBoxes.value);
@@ -63,15 +75,33 @@ export class EditProfilePage extends AppComponent implements OnInit {
 
    get f() { return this.interestsBoxes.value; }
 
-  pullUserInterests(){
-    for (let i = 0; i < this.currentUser.interests.length; i++){
-      this.currentUserInterests.push(this.currentUser.interests[i]);
-    }
-  }
-
   submitChanges() {
+   // const selections =  this.f.interestsBoxes.value;
+    // console.log(selections);
     const selections =  this.f.interestsBoxes.value;
-    console.log(selections);
+  //  this.f.interestsBoxes.setValue('Hello');
+    const req = `{
+      "id": 127,
+      "email": "qqqqq",
+      "first_name": "Thor",
+      "last_name": "Odinson",
+      "age": 100,
+      "is_active": true,
+      "user_type": 2,
+      "location": {
+          "zip": "30609"
+      },
+      "interests": [
+        "Yoga", "Singing", "Hiking", "Video gaming", "Yodeling", "Woodworking"
+        ]
+  }`;
+    this.editProfileService.saveProfile(req, 127).subscribe(() => {
+      this.editProfileService.getUser(this.currentUser.id).subscribe(data => {
+        console.log('DATA IS', data);
+        this.goHome();
+      });
+    });
+
     // If no interests are selected, do not let them hit submit
     /**  On submit, call something like
        * saveProfile().then(() => { // Error handling: Failed to save profile.
@@ -83,16 +113,7 @@ export class EditProfilePage extends AppComponent implements OnInit {
  //   this.router.navigateByUrl('/home');
   }
 
-  getAllInterests(){
-    this.editProfileService.getAllInterests().subscribe(data => {
-      if (data){
-        for (let i = 0; i < data.length; ++i){
-          this.allInterests.push(data[i]);
-        }
-        this.pullUserInterests();
-      }
-    });
-  }
+
 
   isExistingUser() {
     if (this.currentUser.interests && this.currentUser.interests.length > 0) {
