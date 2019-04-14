@@ -26,21 +26,8 @@ export class LoginService extends HttpService {
       password
     }, this.httpOptions).pipe(map((resp: any) => {
       if (resp) {
-        if (resp.detail.is_active) { // If the user is active, store it as the current user
-          this.authToken = resp.auth.accessToken;
-          this.currUser = new User({
-            id: resp.detail.id,
-            email: resp.detail.email,
-            firstName: resp.detail.first_name,
-            lastName: resp.detail.last_name,
-            age: resp.detail.age,
-            location: resp.detail.location,
-            isActive: resp.detail.is_active,
-            interests: resp.detail.interests,
-            type: this.typeToString(resp.detail.user_type),
-          });
-          localStorage.setItem('access-token', this.authToken);
-          localStorage.setItem('user', JSON.stringify(this.currUser));
+        if (resp.detail.is_active) {
+          this.updateUser(resp.detail, resp.accessToken);
           return Object.assign({}, this.currUser);
       } else { // If the user is not active, return an error
             this.currUser = null;

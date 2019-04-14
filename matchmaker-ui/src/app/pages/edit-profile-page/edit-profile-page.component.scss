@@ -1,4 +1,7 @@
 // TODO decide whether or not to have a single color
+#temp{
+  font-size: 19px;
+}
 
 mat-form-field {
   width: 90%;
@@ -9,8 +12,14 @@ mat-form {
   font-size: 18px;
 }
 
+form {
+  width: 80%;
+  font-size: 18px;
+}
+
 mat-selection-list {
-  max-height: 200px;
+  max-height: 500px;
+  max-width: 1000px;
   overflow: auto;
   width: 90%;
 }
@@ -23,7 +32,7 @@ mat-selection-list {
   background: rgb(145, 149, 151);
 }
 
-.interests {
+.interestsCard {
   background: rgb(145, 149, 151);
 }
 
@@ -41,4 +50,16 @@ mat-grid-list {
 
 .cancel{
   margin-right: 7px;
+}
+
+.radio-button-group {
+   max-height: 200px;
+  overflow: auto;
+  width: 90%;
+}
+
+#interestList {
+  max-height: 200px;
+  overflow: auto;
+  width: 90%;
 }

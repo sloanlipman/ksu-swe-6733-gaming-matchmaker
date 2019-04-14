@@ -21,7 +21,7 @@ export class ViewProfilePage extends AppComponent  implements OnInit {
   }
 
   ngOnInit() {
-    this.closeDialog();
     this.getUser();
+    this.closeDialog();
   }
 }

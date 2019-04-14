@@ -13,18 +13,29 @@ import { HttpService } from '../http-service/http.service';
 })
 export class EditProfileService extends HttpService {
 
-  constructor(
-    protected http: HttpClient,
-    public snackBar: MatSnackBar,
-    ) {
-      super(http, snackBar);
-    }
+constructor(
+  protected http: HttpClient,
+  public snackBar: MatSnackBar,
+  ) {
+    super(http, snackBar);
+  }
 
-    public getAllInterests(): Observable<any>{
-        return this.get('/api/interests/getall').pipe(map((resp: any) => {
-            if (resp){
-                return resp;
-            }
-        })).pipe(catchError(err => this.handleError(err)));
-    }
+  public getAllInterests(): Observable<any>{
+    return this.get('/api/interests/getall').pipe(map((resp: any) => {
+      if (resp) {
+        return resp;
+      }
+    })).pipe(catchError(err => this.handleError(err)));
+  }
+
+  public saveProfile(request: any, id: any): Observable<any> {
+    return this.post('/api/profile/save/' + id, request, this.httpOptions).pipe(map((resp: any) => {
+      if (resp) {
+        this.handleError('Profile Updated Successfully');
+            // Not an error, but we can reuse the same logic to display 'Profile Updated Successfully'
+
+        return resp;
+      }
+    })).pipe(catchError(err => this.handleError(err)));
+  }
 }

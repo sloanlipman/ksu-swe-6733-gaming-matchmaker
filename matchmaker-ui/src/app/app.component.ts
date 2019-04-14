@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
   public currentUser: User;
   public url: string;
   isLoading = false;
+  public allInterests = [];
   constructor(
     protected injector: Injector,
     protected dialog: MatDialog,
@@ -33,6 +34,9 @@ export class AppComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.getAllInterests().then(() => {
+      this.allInterests = JSON.parse(localStorage.getItem('interests'));
+    });
   }
 
   setUrl() {
@@ -86,10 +90,12 @@ export class AppComponent implements OnInit {
     this.dialog.closeAll();
   }
 
-  getUser() { // TODO update to a backend call
-    this.currentUser = new User(JSON.parse(localStorage.getItem('user')));
-    console.log(this.currentUser);
+   getUser() {
+    this.currentUser =  new User(JSON.parse(localStorage.getItem('user')));
+    this.httpService.getUser(this.currentUser.id).subscribe(() => {
+    });
   }
+
   goToLoginPage() {
     this.router.navigateByUrl('/login').then(() => {
       this.dismissLoading();
@@ -120,10 +126,11 @@ export class AppComponent implements OnInit {
   }
 
   editProfile() {
-    this.router.navigateByUrl('/edit-profile').then(() => {
-      this.dismissLoading();
+      this.router.navigateByUrl('/edit-profile').then(() => {
+        this.dismissLoading();
     });
   }
+
   viewProfile(id: any){
     this.router.navigateByUrl('/view-profile/' + id).then(() => {
       this.dismissLoading();
@@ -134,5 +141,19 @@ export class AppComponent implements OnInit {
     this.router.navigateByUrl('/matchmaking').then(() => {
       this.dismissLoading();
     });
+  }
+  
+  async getAllInterests(): Promise<any> {
+    console.log('getting interests');
+        this.httpService.getAllInterests().subscribe(data => {
+          if (data) {
+            const interests = [];
+            for (let i = 0; i < data.length; ++i) {
+              interests.push(data[i]);
+            }
+            localStorage.setItem('interests', JSON.stringify(interests));
+          }
+        });
+    return Promise.resolve();
   }
 }
