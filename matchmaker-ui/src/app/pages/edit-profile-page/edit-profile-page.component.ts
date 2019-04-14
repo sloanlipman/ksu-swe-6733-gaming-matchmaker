@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnInit, Injector, ViewChild } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from '../../app.component';
 import { MatDialog } from '@angular/material';
@@ -13,8 +13,8 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 })
 export class EditProfilePage extends AppComponent implements OnInit {
   allInterests = [];
-  selectedInterests = [];
-  interestForm: FormGroup;
+  currentUserInterests = [];
+  interestsBoxes: FormControl;
   infoForm: FormGroup;
   favoriteGenres: string[] = ['FPS', 'RPG', 'Battle Arena', 'Action', 'RTS', 'Sports Simulation', 'MMORPG', 'Fighting', 'Tactical RPG',
   'RTT'];
@@ -35,9 +35,6 @@ export class EditProfilePage extends AppComponent implements OnInit {
   }
 
   getFormControls() {
-    this.interestForm = this.formBuilder.group( {
-      interestsBoxes: new FormControl('')
-    });
     this.infoForm = this.formBuilder.group({
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
@@ -52,10 +49,25 @@ export class EditProfilePage extends AppComponent implements OnInit {
   ngOnInit() {
     this.getUser();
     this.getAllInterests();
+    // this.pullUserInterests();
+    this.interestsBoxes = new FormControl(this.currentUserInterests);
     console.log(this.allInterests);
+    console.log(this.currentUserInterests);
+    console.log(this.interestsBoxes.value);
   }
 
-  get f() { return this.interestForm.controls; }
+  compare(c1: any, c2: any) {
+    console.log('IN COMPARE');
+    return c1 && c2 && c1 === c2;
+  }
+
+   get f() { return this.interestsBoxes.value; }
+
+  pullUserInterests(){
+    for (let i = 0; i < this.currentUser.interests.length; i++){
+      this.currentUserInterests.push(this.currentUser.interests[i]);
+    }
+  }
 
   submitChanges() {
     const selections =  this.f.interestsBoxes.value;
@@ -77,6 +89,7 @@ export class EditProfilePage extends AppComponent implements OnInit {
         for (let i = 0; i < data.length; ++i){
           this.allInterests.push(data[i]);
         }
+        this.pullUserInterests();
       }
     });
   }

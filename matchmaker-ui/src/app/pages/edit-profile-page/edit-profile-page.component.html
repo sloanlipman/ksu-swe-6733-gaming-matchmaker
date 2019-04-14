@@ -1,5 +1,5 @@
 
-<div>Selected boxes: {{ interestForm.get('interestsBoxes').value | json }}</div>
+<div id="temp">Selected boxes: {{ interestsBoxes.value | json }}</div>
 <mat-grid-list cols="6" rowHeight="32rem" [gutterSize]="'15px'">
   <mat-grid-tile colspan="2" rowspan="1.5" class="profile-card">
     <mat-grid-tile-header>General Info</mat-grid-tile-header>
@@ -9,19 +9,19 @@
               class="form-control" [ngClass]=" { 'is-invalid': submitted && f.firstName.errors}" >
           </mat-form-field>
           <mat-form-field id="lastName">
-            <input matInput placeholder="Last Name" type="text" formControlName="lastName" required
+            <input matInput placeholder="{{this.currentUser.lastName}}" type="text" formControlName="lastName" required
               class="form-control" [ngClass]=" { 'is-invalid': submitted && f.lastName.errors}" >
           </mat-form-field>
           <mat-form-field id="age">
-            <input matInput placeholder="Age" type="text" formControlName="age" required
+            <input matInput placeholder="{{this.currentUser.age}}" type="text" formControlName="age" required
             class="form-control" [ngClass]=" { 'is-invalid': submitted && f.age.errors}" >
           </mat-form-field>
           <mat-form-field id="zip">
-            <input matInput placeholder="ZIP Code" type="text" formControlName="zip" required
+            <input matInput placeholder="{{this.currentUser.location.zip}}" type="text" formControlName="zip" required
             class="form-control" [ngClass]=" { 'is-invalid': submitted && f.zip.errors}">
           </mat-form-field>
           <mat-form-field id="email">
-            <input matInput placeholder="E-mail Address" type="text" formControlName="email" required
+            <input matInput placeholder="{{this.currentUser.email}}" type="text" formControlName="email" required
             class="form-control" [ngClass]=" { 'is-invalid': submitted && f.email.errors}">
           </mat-form-field>
       </form>
@@ -37,15 +37,13 @@
 
   <mat-grid-tile class="interestsCard" colspan="2" rowspan="1">
     <mat-grid-tile-header>Interests</mat-grid-tile-header>
-    <form [formGroup]="interestForm">
-        <mat-selection-list #interests formControlName="interestsBoxes">
+        <mat-selection-list [compareWith]="compare" [formControl]="interestsBoxes">
           <mat-list-option *ngFor="let interest of allInterests" [value]="interest">
             {{interest}}
           </mat-list-option>
         </mat-selection-list>
-    </form>
-  
   </mat-grid-tile>
+  
   <mat-grid-tile class="games-played" colspan="3" rowspan="1">
     <mat-grid-tile-header>Games Played</mat-grid-tile-header>
     <mat-selection-list #played>
