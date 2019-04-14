@@ -15,6 +15,7 @@ export class EditProfilePage extends AppComponent implements OnInit {
   interestsBoxes: FormControl;
   infoForm: FormGroup;
   currentUserInterests = [];
+  submitted: any;
   allInterests = JSON.parse(localStorage.getItem('interests'));
 
   favoriteGenres: string[] = ['FPS', 'RPG', 'Battle Arena', 'Action', 'RTS', 'Sports Simulation', 'MMORPG', 'Fighting', 'Tactical RPG',
@@ -56,75 +57,46 @@ export class EditProfilePage extends AppComponent implements OnInit {
     }
 
   ngOnInit() {
-    if (!this.allInterests) {
-      this.getAllInterests().then(() => {
-      this.dismissLoading();
       this.getFormControls();
       this.getUser();
       this.setFormControls();
-      });
-    } else {
-      this.dismissLoading();
-      this.getFormControls();
-      this.getUser();
-      this.setFormControls();
-    }
-    console.log('all interests:', this.allInterests.length);
-
-    console.log(this.allInterests);
-    console.log(this.currentUserInterests);
-    console.log(this.interestsBoxes.value);
   }
 
   compare(c1: any, c2: any) {
-    console.log('IN COMPARE');
     return c1 && c2 && c1 === c2;
   }
 
    get f() { return this.infoForm.controls; }
 
   submitChanges() {
-    console.log('value?', this.interestsBoxes.value);
   if (this.infoForm.invalid) {
     this.editProfileService.handleError('Please fill in all required fields and try again');
   } else if (this.interestsBoxes.value.length === 0) {
     this.editProfileService.handleError('Please select at least one interest and try again');
   } else {
-  const profileChanges = JSON.stringify({
-    id: this.currentUser.id,
-    email: this.f.email.value,
-    first_name: this.f.firstName.value,
-    last_name: this.f.lastName.value,
-    age: this.f.age.value,
-    is_active: true,
-    user_type: this.editProfileService.stringToType(this.currentUser.type),
-    location: {
-      zip: this.f.zip.value,
-    },
-    interests: this.interestsBoxes.value
-  });
-  console.log(profileChanges);
-    this.showLoading();
-    this.editProfileService.saveProfile(profileChanges, this.currentUser.id).subscribe((data) => {
-      console.log(data);
-      if (data) {
-        this.currentUser = this.httpService.updateUser(data);
-        this.goHome();
-      } else {
-        this.dismissLoading();
-      }
-    });
-  }
-
-    // If no interests are selected, do not let them hit submit
-    /**  On submit, call something like
-       * saveProfile().then(() => { // Error handling: Failed to save profile.
-          * if success response received -->
-            * this.editProfileService.updateUser(resp);
-       * });
-         *
-    */
- //   this.router.navigateByUrl('/home');
+      const profileChanges = JSON.stringify({
+        id: this.currentUser.id,
+        email: this.f.email.value,
+        first_name: this.f.firstName.value,
+        last_name: this.f.lastName.value,
+        age: this.f.age.value,
+        is_active: true,
+        user_type: this.editProfileService.stringToType(this.currentUser.type),
+        location: {
+          zip: this.f.zip.value,
+        },
+        interests: this.interestsBoxes.value
+      });
+        this.showLoading();
+        this.editProfileService.saveProfile(profileChanges, this.currentUser.id).subscribe((data) => {
+        if (data) {
+          this.currentUser = this.httpService.updateUser(data);
+          this.goHome();
+        } else {
+          this.dismissLoading();
+        }
+      });
+    }
   }
 
 

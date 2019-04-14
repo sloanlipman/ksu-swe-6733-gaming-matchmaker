@@ -30,7 +30,6 @@ constructor(
 
   public saveProfile(request: any, id: any): Observable<any> {
     return this.post('/api/profile/save/' + id, request, this.httpOptions).pipe(map((resp: any) => {
-      console.log(resp);
       if (resp) {
         this.handleError('Profile Updated Successfully');
             // Not an error, but we can reuse the same logic to display 'Profile Updated Successfully'

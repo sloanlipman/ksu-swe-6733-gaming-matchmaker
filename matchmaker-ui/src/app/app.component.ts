@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   public currentUser: User;
   public url: string;
   isLoading = false;
-  protected allInterests = [];
+  public allInterests = [];
   constructor(
     protected injector: Injector,
     protected dialog: MatDialog,
@@ -34,7 +34,9 @@ export class AppComponent implements OnInit {
     }
 
   ngOnInit() {
-    console.log('all interests:', this.allInterests.length);
+    this.getAllInterests().then(() => {
+      this.allInterests = JSON.parse(localStorage.getItem('interests'));
+    });
   }
 
   setUrl() {
@@ -91,7 +93,6 @@ export class AppComponent implements OnInit {
    getUser() {
     this.currentUser =  new User(JSON.parse(localStorage.getItem('user')));
     this.httpService.getUser(this.currentUser.id).subscribe(() => {
-      console.log('got user');
     });
   }
 
@@ -119,20 +120,12 @@ export class AppComponent implements OnInit {
   }
 
   goHome() {
-    if (this.currentUser) {
-      console.log(this.currentUser);
-      if (this.currentUser.interests.length === 0) {
-        this.editProfile();
-        return;
-      }
-    }
     this.router.navigateByUrl('/home').then(() => {
       this.dismissLoading();
     });
   }
 
   editProfile() {
-    this.allInterests = JSON.parse(localStorage.getItem('interests'));
       this.router.navigateByUrl('/edit-profile').then(() => {
         this.dismissLoading();
     });
@@ -149,8 +142,7 @@ export class AppComponent implements OnInit {
       this.dismissLoading();
     });
   }
-
-
+  
   async getAllInterests(): Promise<any> {
     console.log('getting interests');
         this.httpService.getAllInterests().subscribe(data => {

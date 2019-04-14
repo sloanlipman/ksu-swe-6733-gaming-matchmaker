@@ -94,7 +94,6 @@ export class HttpService {
     this.currUser = null;
     this.authToken = null;
     localStorage.clear();
-    console.log('logged out');
   }
 
   public handleError(err: any): Observable<any> {
@@ -123,7 +122,7 @@ export class HttpService {
       duration: 3000,
       verticalPosition: 'top',
     });
-    console.log(err); // original error message, using this to define new errors to display
+    console.log('Error is', err); // original error message, using this to define new errors to display
     return of(null);
   }
 }

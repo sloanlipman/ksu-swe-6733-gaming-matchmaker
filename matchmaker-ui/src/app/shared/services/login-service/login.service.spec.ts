@@ -65,7 +65,6 @@ describe('LoginService', () => {
         expect(data.id).toEqual(detail.id);
         expect(data.type).toEqual('regular');
         expect(data.interests).toEqual(detail.interests);
-        console.log(data.interests);
       });
       const mockReq = httpMock.expectOne(apiUrl + '/api/authorizeUser');
       expect(mockReq.request.method).toEqual('POST');
