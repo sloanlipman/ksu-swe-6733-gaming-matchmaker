@@ -41,8 +41,6 @@ export class EditProfilePage extends AppComponent implements OnInit {
       age: new FormControl('', [Validators.required]),
       zip: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
-      confirmPassword: new FormControl('', [Validators.required])
     });
     this.interestsBoxes = new FormControl();
   }
@@ -73,34 +71,39 @@ export class EditProfilePage extends AppComponent implements OnInit {
     return c1 && c2 && c1 === c2;
   }
 
-   get f() { return this.interestsBoxes.value; }
+   get f() { return this.infoForm.controls; }
 
   submitChanges() {
-   // const selections =  this.f.interestsBoxes.value;
-    // console.log(selections);
-    const selections =  this.f.interestsBoxes.value;
-  //  this.f.interestsBoxes.setValue('Hello');
-    const req = `{
-      "id": 127,
-      "email": "qqqqq",
-      "first_name": "Thor",
-      "last_name": "Odinson",
-      "age": 100,
-      "is_active": true,
-      "user_type": 2,
-      "location": {
-          "zip": "30609"
-      },
-      "interests": [
-        "Yoga", "Singing", "Hiking", "Video gaming", "Yodeling", "Woodworking"
-        ]
-  }`;
-    this.editProfileService.saveProfile(req, 127).subscribe(() => {
-      this.editProfileService.getUser(this.currentUser.id).subscribe(data => {
-        console.log('DATA IS', data);
-        this.goHome();
-      });
+    console.log('value?', this.interestsBoxes.value);
+  if (this.infoForm.invalid) {
+    this.editProfileService.handleError('Please fill in all required fields and try again');
+  } else if (this.interestsBoxes.value.length === 0) {
+    this.editProfileService.handleError('Please select at least one interest and try again');
+  } else {
+  const profileChanges = {
+    id: this.currentUser.id,
+    email: this.f.email.value,
+    first_name: this.f.firstName.value,
+    last_name: this.f.lastName.value,
+    age: this.f.age.value,
+    is_active: true,
+    user_type: this.editProfileService.stringToType(this.currentUser.type),
+    location: this.f.zip.value,
+    interests: this.interestsBoxes.value
+  };
+    this.showLoading();
+    this.editProfileService.saveProfile(profileChanges, this.currentUser.id).subscribe(success => {
+      console.log(success);
+      if (success) {
+        this.editProfileService.getUser(this.currentUser.id).subscribe(data => {
+          console.log('DATA IS', data);
+          this.goHome();
+        });
+      } else {
+        this.dismissLoading();
+      }
     });
+  }
 
     // If no interests are selected, do not let them hit submit
     /**  On submit, call something like

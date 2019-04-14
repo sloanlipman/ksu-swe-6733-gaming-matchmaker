@@ -24,11 +24,19 @@ export class HttpService {
     })
   };
 
-  protected typeToString(type: number): string {
+  public typeToString(type: number): string {
     if (type === 1) {
       return 'admin';
     } else if (type === 2) {
         return 'regular';
+    }
+  }
+
+  public stringToType(type: string): number {
+    if (type === 'admin') {
+      return 1;
+    } else if (type === 'regular') {
+      return 2;
     }
   }
 
