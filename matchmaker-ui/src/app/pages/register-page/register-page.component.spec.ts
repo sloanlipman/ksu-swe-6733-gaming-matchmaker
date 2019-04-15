@@ -125,7 +125,7 @@ describe('RegisterPage', () => {
       registerSpy = spyOn(component['registerService'], 'register').and.returnValue(of(''));
       component.onSubmit();
       expect(registerSpy).toHaveBeenCalled();
-      expect(closeDialogSpy).toHaveBeenCalled();;
+      expect(closeDialogSpy).toHaveBeenCalled();
     });
   });
 });

@@ -57,8 +57,7 @@ export class HttpService {
   public getUser(id: any): Observable<User> {
     return this.get('/api/profile/get/' + id).pipe(map((resp: any) => {
       if (resp) {
-        this.updateUser(resp);
-        return resp;
+        return this.updateUser(resp);
       }
     })).pipe(catchError(err => this.handleError(err)));
   }
