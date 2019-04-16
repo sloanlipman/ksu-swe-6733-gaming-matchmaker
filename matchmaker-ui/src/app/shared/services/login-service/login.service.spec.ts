@@ -6,19 +6,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
-const auth = {
-  accessToken: '12345',
-  userId: 1,
-  user_type: 2
-};
-
-let detail;
-let err;
-let handleErrorSpy;
-let httpMock;
-const apiUrl = environment.API_URL;
 
 describe('LoginService', () => {
+  const auth = {
+    accessToken: '12345',
+    userId: 1,
+    user_type: 2
+  };
+
+  let detail;
+  let err;
+  let handleErrorSpy;
+  let httpMock;
+  const apiUrl = environment.API_URL;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [

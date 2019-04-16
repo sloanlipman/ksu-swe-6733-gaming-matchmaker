@@ -8,13 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
 
 
-const auth = {};
-let httpMock;
-let detail;
-let handleErrorSpy;
-const apiUrl = environment.API_URL;
 
 describe('RegisterService', () => {
+  const auth = {};
+  let httpMock;
+  let detail;
+  let handleErrorSpy;
+  const apiUrl = environment.API_URL;
+
   beforeEach(() => TestBed.configureTestingModule({
     imports: [
       HttpClientTestingModule,

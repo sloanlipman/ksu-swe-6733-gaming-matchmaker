@@ -11,13 +11,18 @@ import { of } from 'rxjs';
 import { LoadingIndicator } from 'src/app/shared/components/loading-indicator/loading-indicator.component';
 import { HttpService } from 'src/app/shared/services/http-service/http.service';
 import { LoginService } from 'src/app/shared/services/login-service/login.service';
-
+import { MockUsers } from 'src/app/shared/mock-users';
 
 
 describe('LoginPage', () => {
+
+const mockUsers = new MockUsers();
+const user1 = mockUsers.getUser1();
+const user2 = mockUsers.getUser2();
   let component: LoginPage;
   let fixture: ComponentFixture<LoginPage>;
   let goHomeSpy;
+  let editProfileSpy;
   let closeDialogSpy;
 
   beforeEach(async() => {
@@ -60,6 +65,7 @@ describe('LoginPage', () => {
   describe('onSubmit()', () => {
     beforeEach(() => {
       goHomeSpy = spyOn(component, 'goHome').and.stub();
+      editProfileSpy = spyOn(component, 'editProfile').and.stub();
       closeDialogSpy = spyOn<any>(component, 'closeDialog').and.stub();
     });
 
@@ -72,11 +78,18 @@ describe('LoginPage', () => {
       expect(component['loginService'].handleError).toHaveBeenCalled();
     });
 
-    it('should call goHome() on server response', () => {
+    it('should call goHome() on server response for a user who has listed interests', () => {
       spyOnProperty(component.userLoginForm, 'invalid').and.returnValue(false);
-      spyOn(component['loginService'], 'login').and.returnValue(of(true));
+      spyOn(component['loginService'], 'login').and.returnValue(of(user1));
       component.onSubmit();
       expect(goHomeSpy).toHaveBeenCalled();
+    });
+
+    it('should call editProfile() on server response for a user without interests', () => {
+      spyOnProperty(component.userLoginForm, 'invalid').and.returnValue(false);
+      spyOn(component['loginService'], 'login').and.returnValue(of(user2));
+      component.onSubmit();
+      expect(editProfileSpy).toHaveBeenCalled();
     });
 
     it('should dismiss loading indicator on no server response', () => {

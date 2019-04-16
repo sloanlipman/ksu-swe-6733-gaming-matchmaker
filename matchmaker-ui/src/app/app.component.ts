@@ -93,7 +93,7 @@ export class AppComponent implements OnInit {
    getUser() {
     this.currentUser =  new User(JSON.parse(localStorage.getItem('user')));
     this.httpService.getUser(this.currentUser.id).subscribe(data => {
-      this.currentUser = data;
+    this.currentUser = data;
     });
   }
 
@@ -144,7 +144,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  getAllInterests(): Promise<any> {
+   getAllInterests(): Promise<any> {
     console.log('getting interests');
         this.httpService.getAllInterests().subscribe(data => {
           if (data) {
