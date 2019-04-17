@@ -5,9 +5,20 @@ import com.gamingMatchMaker.gamingMatchMaker.model.GameGenre;
 import java.util.List;
 
 public class GetGameGenreNameResponse {
-    private List<GameGenre> genreName;
+    private List<GameGenre> gameGenresName;
 
-    public List<GameGenre> getGenreName() {
-        return genreName;
+    public GetGameGenreNameResponse() {
+    }
+
+    public GetGameGenreNameResponse(List<GameGenre> gameGenresName) {
+        this.gameGenresName = gameGenresName;
+    }
+
+    public List<GameGenre> getGameGenresName() {
+        return gameGenresName;
+    }
+
+    public void setGameGenresName(List<GameGenre> gameGenresName) {
+        this.gameGenresName = gameGenresName;
     }
 }

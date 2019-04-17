@@ -2,6 +2,10 @@ package com.gamingMatchMaker.gamingMatchMaker.model;
 
 import java.util.*;
 import javax.persistence.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name="users")
@@ -40,7 +44,9 @@ public class UserRec {
     private final Set<GameGenre> genres;
 
     @ManyToMany
-    private final Set<PlayTime> timings;
+    private Set<GameGenre> gameGenres;
+
+
 
     public UserRec() {
 
@@ -220,7 +226,18 @@ public class UserRec {
         return genres;
     }
 
-    public Set<PlayTime> getTimings() {
-        return timings;
+	/**
+	 * @param interests the interests to set
+	 */
+	public void setInterests(Set<Interest> interests) {
+		this.hobbies = interests;
+	}
+
+    public Set<GameGenre> getGameGenres() {
+        return gameGenres;
+    }
+
+    public void setGameGenres(Set<GameGenre> gameGenres) {
+        this.gameGenres = gameGenres;
     }
 }
