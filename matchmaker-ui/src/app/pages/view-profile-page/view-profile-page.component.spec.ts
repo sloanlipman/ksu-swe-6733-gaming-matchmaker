@@ -6,10 +6,14 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppMaterialModule } from 'src/app/app-material.module';
 import { HttpService } from 'src/app/shared/services/http-service/http.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MockUsers } from 'src/app/shared/mock-users';
+
 
 describe('ViewProfilePage', () => {
+  const mockUsers = new MockUsers();
   let component: ViewProfilePage;
   let fixture: ComponentFixture<ViewProfilePage>;
+  const user1 = mockUsers.getUser1();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -28,10 +32,14 @@ describe('ViewProfilePage', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ViewProfilePage);
     component = fixture.componentInstance;
+    spyOn(component, 'getUser').and.callFake(() => {
+      component.currentUser = user1;
+    });
     fixture.detectChanges();
   });
 
   it('should create', () => {
+  console.log('VIEW PROFILE USER:', component.currentUser);
     expect(component).toBeTruthy();
   });
 });

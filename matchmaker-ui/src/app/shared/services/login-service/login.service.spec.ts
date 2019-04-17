@@ -6,19 +6,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
-const auth = {
-  accessToken: '12345',
-  userId: 1,
-  user_type: 2
-};
-
-let detail;
-let err;
-let handleErrorSpy;
-let httpMock;
-const apiUrl = environment.API_URL;
 
 describe('LoginService', () => {
+  const auth = {
+    accessToken: '12345',
+    userId: 1,
+    user_type: 2
+  };
+
+  let detail;
+  let err;
+  let handleErrorSpy;
+  let httpMock;
+  const apiUrl = environment.API_URL;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -40,6 +41,11 @@ describe('LoginService', () => {
   afterEach(() => {
     httpMock.verify();
   });
+
+  afterEach(() => {
+    localStorage.clear();
+  });
+
 
   it('should return a regular user', inject(
     [LoginService], (loginService: LoginService) => {
@@ -71,7 +77,6 @@ describe('LoginService', () => {
       mockReq.flush({
         auth, detail
       });
-      loginService.snackBar.dismiss(); // Dismiss at the end to unblock the view on Karma
     }));
 
   it('should return an admin', inject(
@@ -99,7 +104,6 @@ describe('LoginService', () => {
       mockReq.flush({
         auth, detail
       });
-      loginService.snackBar.dismiss(); // Dismiss at the end to unblock the view on Karma
     }));
 
   it('should return an error for an inactive user', inject(
@@ -122,7 +126,6 @@ describe('LoginService', () => {
     mockReq.flush({
       auth, detail
     });
-    loginService.snackBar.dismiss(); // Dismiss at the end to unblock the view on Karma
   }));
 
   it('should return an error for nonexistent users', inject(
@@ -139,7 +142,6 @@ describe('LoginService', () => {
     const mockError = new ErrorEvent('UserRec not found error', err);
     mockReq.error(mockError);
     expect(handleErrorSpy).toHaveBeenCalled();
-    loginService.snackBar.dismiss(); // Dismiss at the end to unblock the view on Karma
   }));
 
   it('should return an error for an incorrect password', inject(
@@ -155,7 +157,6 @@ describe('LoginService', () => {
     const mockError = new ErrorEvent('Password not match error', err);
     mockReq.error(mockError);
     expect(handleErrorSpy).toHaveBeenCalled();
-    loginService.snackBar.dismiss(); // Dismiss at the end to unblock the view on Karma
   }));
 
   it('should return a generic server error for any other error', inject(
@@ -171,6 +172,5 @@ describe('LoginService', () => {
     const mockError = new ErrorEvent('Generic server error', err); // TODO I don't think this is working
     mockReq.error(mockError);
     expect(handleErrorSpy).toHaveBeenCalled();
-    loginService.snackBar.dismiss(); // Dismiss at the end to unblock the view on Karma
   }));
 });

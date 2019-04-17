@@ -8,13 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
 
 
-const auth = {};
-let httpMock;
-let detail;
-let handleErrorSpy;
-const apiUrl = environment.API_URL;
 
 describe('RegisterService', () => {
+  const auth = {};
+  let httpMock;
+  let detail;
+  let handleErrorSpy;
+  const apiUrl = environment.API_URL;
+
   beforeEach(() => TestBed.configureTestingModule({
     imports: [
       HttpClientTestingModule,
@@ -29,6 +30,11 @@ describe('RegisterService', () => {
 beforeEach(() => {
   httpMock = TestBed.get(HttpTestingController);
 });
+
+afterEach(() => {
+  localStorage.clear();
+});
+
 
   it('should be created', () => {
     const service: RegisterService = TestBed.get(RegisterService); // Get from TestBed instead of inject for reasons I'm not sure of

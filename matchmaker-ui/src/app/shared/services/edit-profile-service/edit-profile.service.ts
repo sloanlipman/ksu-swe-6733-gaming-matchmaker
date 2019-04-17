@@ -20,14 +20,6 @@ constructor(
     super(http, snackBar);
   }
 
-  public getAllInterests(): Observable<any>{
-    return this.get('/api/interests/getall').pipe(map((resp: any) => {
-      if (resp) {
-        return resp;
-      }
-    })).pipe(catchError(err => this.handleError(err)));
-  }
-
   public saveProfile(request: any, id: any): Observable<any> {
     return this.post('/api/profile/save/' + id, request, this.httpOptions).pipe(map((resp: any) => {
       if (resp) {
