@@ -71,7 +71,12 @@ public class ProfileServiceImpl implements ProfileService {
 		rec.get().setLast_name(scr.getUd().getLast_name());
 		rec.get().setLocation(spot.get());
 
+		
 		//ok, interests gets a little more interesting (<rimshot>)
+		//first clear out all the interests
+		rec.get().getInterests().clear(); //TODO if this doesn't work add a clearInterests inside UserRec
+		
+		//then add them all - note any the user deselected are not re-added
 		for(String s : scr.getUd().getInterests()) {
 			
 			//try to get the interest

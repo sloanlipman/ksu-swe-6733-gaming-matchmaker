@@ -35,7 +35,7 @@ public class ProfileController {
 		//call for processing
 		if(service.SaveProfile(scr)) {
 			//success! - just kick back all good
-			return new ResponseEntity<String>("Profile Updated Successfully", HttpStatus.OK);
+			return new ResponseEntity<String>(HttpStatus.OK);
 		}
 		else {
 			//return the error message and 400 error
