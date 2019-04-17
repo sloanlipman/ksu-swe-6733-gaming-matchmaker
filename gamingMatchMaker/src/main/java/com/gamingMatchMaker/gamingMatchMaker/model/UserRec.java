@@ -41,11 +41,7 @@ public class UserRec {
     private final Set<Interest> interests;
 
     @ManyToMany
-    private final Set<GameGenre> genres;
-
-    @ManyToMany
     private Set<GameGenre> genres;
-
 
 
     public UserRec() {

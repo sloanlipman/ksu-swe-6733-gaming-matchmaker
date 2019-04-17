@@ -9,21 +9,16 @@ import java.util.List;
 
 @Service
 public class GameGenreServiceImpl implements GameGenreService {
-    private final GameGenreRepository genreDao;
+    private final GameGenreRepository gameDao;
 
     public GameGenreServiceImpl(GameGenreRepository gameDao) {
-        this.genreDao = gameDao;
+        this.gameDao = gameDao;
     }
 
     @Override
-    public List<String> getGenreName() {
-        List<String> names = new ArrayList<>();
+    public List<GameGenre> getGenreName() {
+        List<GameGenre> result = gameDao.findAll();
 
-        List<GameGenre> result = genreDao.findAll();
-
-        for(GameGenre gameGenre: result)
-            names.add(gameGenre.getGenreName());
-
-        return names;
+        return result;
     }
 }
