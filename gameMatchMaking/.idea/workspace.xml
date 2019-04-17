@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreService.java" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="472dc27a-afb8-4947-a62f-294e1494f087" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/GetGameGenreNameResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/gameGenreController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/GameGenreRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/GameGenre.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/UserRec.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/UserRec.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/controller/registration/RegistrationControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/controller/registration/RegistrationControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/service/authService/UserAuthServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/service/authService/UserAuthServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/service/registrationService/RegistrationServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/service/registrationService/RegistrationServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../matchmaker-ui/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../matchmaker-ui/package-lock.json" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/../gamingMatchMaker/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/gameMatchMaking$com_gamingMatchMaker_gamingMatchMaker_service_in_demo.ic" NAME="com.gamingMatchMaker.gamingMatchMaker.service in demo Coverage Results" MODIFIED="1555271760370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.gamingMatchMaker.gamingMatchMaker.service.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="263" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1865967064">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="5" />
+          <entry key="project.open.time.1" value="2" />
+          <entry key="project.open.time.15" value="1" />
+          <entry key="project.open.time.2" value="2" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="6" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="40" />
+          <entry key="XML" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="1264" />
+          <entry key="PLAIN_TEXT" value="7" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="41" lean-forward="true" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#366#367#0" expanded="true" />
+                <element signature="e#404#405#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/GetGameGenreNameResponse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#356#357#0" expanded="true" />
+                <element signature="e#408#409#0" expanded="true" />
+                <element signature="e#458#459#0" expanded="true" />
+                <element signature="e#495#496#0" expanded="true" />
+                <element signature="e#564#565#0" expanded="true" />
+                <element signature="e#616#617#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/gameGenreController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="527">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/controller/registration/RegistrationControllerTest.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/service/authService/UserAuthServiceImplTest.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/service/registrationService/RegistrationServiceImplTest.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/GameGenre.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenre.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/UserRepository.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/UserRec.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/GameGenreRepository.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre.fxml" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/GetGameGenreNameResponse.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreService.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreServiceImpl.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/gameGenreController.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1111" />
+    <option name="y" value="17" />
+    <option name="width" value="1946" />
+    <option name="height" value="2107" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="gameGenre" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="gameGenre" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555476202249" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.GamingMatchMakerApplication">
+    <configuration name="com.gamingMatchMaker.gamingMatchMaker.controller.registration in demo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gamingMatchMaker.gamingMatchMaker.controller.registration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gamingMatchMaker.gamingMatchMaker.controller.registration" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.gamingMatchMaker.gamingMatchMaker.service in demo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gamingMatchMaker.gamingMatchMaker.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gamingMatchMaker.gamingMatchMaker.service" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GamingMatchMakerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.gamingMatchMaker.gamingMatchMaker.GamingMatchMakerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.GamingMatchMakerApplication" />
+      <item itemvalue="JUnit.com.gamingMatchMaker.gamingMatchMaker.controller.registration in demo" />
+      <item itemvalue="JUnit.com.gamingMatchMaker.gamingMatchMaker.service in demo" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.com.gamingMatchMaker.gamingMatchMaker.service in demo" />
+        <item itemvalue="JUnit.com.gamingMatchMaker.gamingMatchMaker.controller.registration in demo" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="472dc27a-afb8-4947-a62f-294e1494f087" name="Default Changelist" comment="" />
+      <created>1555267869584</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1555267869584</updated>
+      <workItem from="1555267872738" duration="1619000" />
+      <workItem from="1555271277241" duration="1732000" />
+      <workItem from="1555371345780" duration="685000" />
+      <workItem from="1555442788419" duration="2654000" />
+      <workItem from="1555446805955" duration="58000" />
+      <workItem from="1555446990281" duration="6325000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="com_gamingMatchMaker_gamingMatchMaker_controller_registration_in_demo - 2019.04.14 at 14h 59m 29s.xml">
+      <configuration name="com.gamingMatchMaker.gamingMatchMaker.controller.registration in demo" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="com_gamingMatchMaker_gamingMatchMaker_service_in_demo - 2019.04.14 at 15h 54m 33s.xml">
+      <configuration name="com.gamingMatchMaker.gamingMatchMaker.service in demo" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="com_gamingMatchMaker_gamingMatchMaker_service_in_demo - 2019.04.14 at 15h 56m 46s.xml">
+      <configuration name="com.gamingMatchMaker.gamingMatchMaker.service in demo" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="com_gamingMatchMaker_gamingMatchMaker_service_in_demo - 2019.04.16 at 16h 19m 21s.xml">
+      <configuration name="com.gamingMatchMaker.gamingMatchMaker.service in demo" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="13073000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="635" y="10" width="1112" height="1204" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30740038" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Debug" order="2" weight="0.39962825" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="5" />
+      <window_info anchor="bottom" id="Spring" order="6" weight="0.32992566" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32992566" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.3292797" />
+      <window_info anchor="bottom" id="Java Enterprise" order="10" weight="0.32992566" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="13" weight="0.33208606" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" />
+      <window_info active="true" anchor="right" id="Coverage" order="10" side_tool="true" visible="true" weight="0.32976744" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Debug" order="2" weight="0.39962825" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="5" />
+      <window_info anchor="bottom" id="Spring" order="6" weight="0.32992566" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32992566" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Messages" order="9" visible="true" weight="0.3292797" />
+      <window_info anchor="bottom" id="Java Enterprise" order="10" weight="0.32992566" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="13" weight="0.33208606" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" />
+      <window_info active="true" anchor="right" id="Coverage" order="10" side_tool="true" visible="true" weight="0.32976744" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/service/authService/UserAuthServiceImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="1" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/controller/ControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="51" column="13" selection-end-line="123" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/authService/UserAuthServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="56" column="46" selection-start-line="56" selection-start-column="42" selection-end-line="56" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/2.0.9.RELEASE/spring-data-commons-2.0.9.RELEASE-sources.jar!/org/springframework/data/repository/CrudRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="875">
+          <caret line="92" column="27" lean-forward="true" selection-start-line="25" selection-end-line="92" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/controller/registration/RegistrationControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="39" selection-end-line="49" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/InterestService/InterestService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/UserRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/UserRec.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="48" column="22" lean-forward="true" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5772#5773#0" expanded="true" />
+            <element signature="e#5805#5806#0" expanded="true" />
+            <element signature="e#5865#5866#0" expanded="true" />
+            <element signature="e#5909#5910#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/Location.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/Interest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/InterestRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/LocationRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/InterestService/InterestServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="11" column="61" lean-forward="true" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/service/registrationService/RegistrationServiceImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="503">
+          <caret line="45" column="33" lean-forward="true" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/GameGenre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="30" lean-forward="true" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/service/ServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="32" column="22" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/GameGenreRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/GetGameGenreNameResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#356#357#0" expanded="true" />
+            <element signature="e#408#409#0" expanded="true" />
+            <element signature="e#458#459#0" expanded="true" />
+            <element signature="e#495#496#0" expanded="true" />
+            <element signature="e#564#565#0" expanded="true" />
+            <element signature="e#616#617#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="41" lean-forward="true" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#366#367#0" expanded="true" />
+            <element signature="e#404#405#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/gameGenreController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
