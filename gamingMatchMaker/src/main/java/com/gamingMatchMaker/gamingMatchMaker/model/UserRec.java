@@ -3,10 +3,10 @@ package com.gamingMatchMaker.gamingMatchMaker.model;
 import com.gamingMatchMaker.gamingMatchMaker.controller.authorization.UserDetail;
 
 import javax.persistence.*;
-import java.util.Set;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name="users")
@@ -41,7 +41,10 @@ public class UserRec {
     ) //map the interests table through the users_interests 
     private Set<Interest> hobbies = new HashSet<>();
 
-	
+    @ManyToMany
+    private Set<GameGenre> gameGenres;
+
+
 
     public UserRec() {
     }
@@ -209,4 +212,12 @@ public class UserRec {
 	public void setInterests(Set<Interest> interests) {
 		this.hobbies = interests;
 	}
+
+    public Set<GameGenre> getGameGenres() {
+        return gameGenres;
+    }
+
+    public void setGameGenres(Set<GameGenre> gameGenres) {
+        this.gameGenres = gameGenres;
+    }
 }
