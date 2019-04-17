@@ -42,6 +42,11 @@ describe('LoginService', () => {
     httpMock.verify();
   });
 
+  afterEach(() => {
+    localStorage.clear();
+  });
+
+
   it('should return a regular user', inject(
     [LoginService], (loginService: LoginService) => {
       detail = {
@@ -72,7 +77,6 @@ describe('LoginService', () => {
       mockReq.flush({
         auth, detail
       });
-      loginService.snackBar.dismiss(); // Dismiss at the end to unblock the view on Karma
     }));
 
   it('should return an admin', inject(
@@ -100,7 +104,6 @@ describe('LoginService', () => {
       mockReq.flush({
         auth, detail
       });
-      loginService.snackBar.dismiss(); // Dismiss at the end to unblock the view on Karma
     }));
 
   it('should return an error for an inactive user', inject(
@@ -123,7 +126,6 @@ describe('LoginService', () => {
     mockReq.flush({
       auth, detail
     });
-    loginService.snackBar.dismiss(); // Dismiss at the end to unblock the view on Karma
   }));
 
   it('should return an error for nonexistent users', inject(
@@ -140,7 +142,6 @@ describe('LoginService', () => {
     const mockError = new ErrorEvent('UserRec not found error', err);
     mockReq.error(mockError);
     expect(handleErrorSpy).toHaveBeenCalled();
-    loginService.snackBar.dismiss(); // Dismiss at the end to unblock the view on Karma
   }));
 
   it('should return an error for an incorrect password', inject(
@@ -156,7 +157,6 @@ describe('LoginService', () => {
     const mockError = new ErrorEvent('Password not match error', err);
     mockReq.error(mockError);
     expect(handleErrorSpy).toHaveBeenCalled();
-    loginService.snackBar.dismiss(); // Dismiss at the end to unblock the view on Karma
   }));
 
   it('should return a generic server error for any other error', inject(
@@ -172,6 +172,5 @@ describe('LoginService', () => {
     const mockError = new ErrorEvent('Generic server error', err); // TODO I don't think this is working
     mockReq.error(mockError);
     expect(handleErrorSpy).toHaveBeenCalled();
-    loginService.snackBar.dismiss(); // Dismiss at the end to unblock the view on Karma
   }));
 });

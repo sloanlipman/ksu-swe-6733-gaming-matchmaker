@@ -4,7 +4,7 @@ export class MockUsers {
   constructor() {}
 
   getUser1(){ // For use as a frontend user object
-    return new User(JSON.parse(
+    return JSON.parse(
       `{
         "id": 127,
         "email": "qqqqq",
@@ -36,30 +36,52 @@ export class MockUsers {
             "Amateur radio"
         ]
       }`
-    ));
+    );
   }
 
   getUser2() { // For use as a front end user object
-    return new User(JSON.parse(
-      `{
-        "id": 74,
-        "email": "admin@aaa.com",
-        "firstName": "admin",
-        "lastName": "admin",
-        "age": 98,
-        "isActive": true,
-        "type": "admin",
+    return {
+      id: 74,
+      email: 'admin@aaa.com',
+      firstName: 'admin',
+      lastName: 'admin',
+      age: 98,
+      isActive: true,
+      type: 'admin',
+      location: {
+        id: 83782,
+        zip: 30075,
+        city: 'Roswell',
+        state: 'GA',
+        lat: 34.03,
+        lng: -84.35,
+        locationString: null
+      },
+        interests: []
+    };
+  }
+
+  getUser3() {
+    return JSON.parse(`
+      {
+        "id": 75,
+        "email": "testJon2@test.com",
+        "first_name": "Jon",
+        "last_name": "Doe",
+        "age": 37,
+        "is_active": true,
+        "user_type": 1,
         "location": {
-            "id": 83782,
-            "zip": "30075",
-            "city": "ROSWELL",
+            "id": 83697,
+            "zip": "30047",
+            "city": "LILBURN",
             "state": "GA",
-            "lat": 34.03,
-            "lng": -84.35,
+            "lat": 33.88,
+            "lng": -84.13,
             "locationString": null
         },
         "interests": []
       }`
-    ));
+    );
   }
 }

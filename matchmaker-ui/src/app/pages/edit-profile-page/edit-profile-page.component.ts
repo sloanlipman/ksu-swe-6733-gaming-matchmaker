@@ -90,7 +90,7 @@ export class EditProfilePage extends AppComponent implements OnInit {
         this.showLoading();
         this.editProfileService.saveProfile(profileChanges, this.currentUser.id).subscribe((data) => {
         if (data) {
-          this.currentUser = this.httpService.updateUser(data);
+          this.currentUser = this.editProfileService.updateUser(data);
           this.goHome();
         } else {
           this.dismissLoading();

@@ -10,13 +10,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { EditProfileService } from 'src/app/shared/services/edit-profile-service/edit-profile.service';
 import { MockUsers } from '../../shared/mock-users';
+import { of } from 'rxjs';
+import { User } from 'src/app/shared/models/user';
 
 describe('EditProfilePage', () => {
   const mockUsers = new MockUsers();
   const user1 = mockUsers.getUser1();
   let component: EditProfilePage;
   let fixture: ComponentFixture<EditProfilePage>;
-  let existingUserSpy;
+  let goHomeSpy;
+  let updateUserSpy;
+  let saveProfileSpy;
+  let dismissLoadingSpy;
+  let handleErrorSpy;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -35,7 +41,7 @@ describe('EditProfilePage', () => {
         EditProfileService,
         FormBuilder
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
@@ -46,6 +52,7 @@ describe('EditProfilePage', () => {
     spyOn(component, 'getUser').and.callFake(() => {
       component.currentUser = user1;
     });
+    spyOn<any>(component, 'showLoading').and.stub();
     fixture.detectChanges();
   });
 
@@ -68,9 +75,95 @@ describe('EditProfilePage', () => {
   });
 
 
-  xdescribe('OnSubmit', () => {
+  describe('SubmitChanges', () => {
     beforeEach(() => {
-     // spyOn()
+      goHomeSpy = spyOn(component, 'goHome').and.stub();
+      updateUserSpy = spyOn(component['editProfileService'], 'updateUser').and.callThrough();
+      dismissLoadingSpy = spyOn<any>(component, 'dismissLoading').and.stub();
+      handleErrorSpy = spyOn(component['editProfileService'], 'handleError').and.stub();
+    });
+
+    it('should handle error for invalid form', () => {
+      spyOnProperty(component.infoForm, 'invalid').and.returnValue(true);
+      component.submitChanges();
+      expect(handleErrorSpy).toHaveBeenCalledWith('Please fill in all required fields and try again');
+    });
+
+    it('should handle error for no interests selected', () => {
+      component.interestsBoxes.setValue([]);
+      fixture.detectChanges();
+      component.submitChanges();
+      expect(handleErrorSpy).toHaveBeenCalledWith('Please select at least one interest and try again');
+    });
+
+    it('should submit the user\'s changes when forms are correctly filled out', () => {
+      component.f.email.setValue('NewEmail@123.com');
+      component.f.firstName.setValue('Thor');
+      component.f.lastName.setValue('Odinson');
+      component.f.age.setValue(1000);
+      component.f.zip.setValue(30068);
+      component.interestsBoxes.setValue(['Drinking', 'Fighting', 'Flying with a hammer']);
+      const newUser = JSON.stringify({
+        id: 127,
+        email: 'NewEmail@123.com',
+        first_name: 'Thor',
+        last_name: 'Odinson',
+        age: 1000,
+        is_active: true,
+        user_type: 2,
+        location: {
+          zip: 30068
+        },
+        interests: ['Drinking', 'Fighting', 'Flying with a hammer']
+      });
+
+      saveProfileSpy = spyOn(component['editProfileService'], 'saveProfile').and.returnValue(of(JSON.parse(newUser)));
+
+      component.submitChanges();
+
+      expect(saveProfileSpy).toHaveBeenCalledWith(newUser, 127);
+      expect(updateUserSpy).toHaveBeenCalledWith(JSON.parse(newUser));
+      expect(goHomeSpy).toHaveBeenCalled();
+    });
+    it('should dismiss loading if no data is returned', () => {
+      saveProfileSpy = spyOn(component['editProfileService'], 'saveProfile').and.returnValue(of(false));
+      component.f.email.setValue('NewEmail@123.com');
+      component.f.firstName.setValue('Thor');
+      component.f.lastName.setValue('Odinson');
+      component.f.age.setValue(1000);
+      component.f.zip.setValue(30068);
+      component.interestsBoxes.setValue(['Drinking', 'Fighting', 'Flying with a hammer']);
+      const newUser = JSON.stringify({
+        id: 127,
+        email: 'NewEmail@123.com',
+        first_name: 'Thor',
+        last_name: 'Odinson',
+        age: 1000,
+        is_active: true,
+        user_type: 2,
+        location: {
+          zip: 30068
+        },
+        interests: ['Drinking', 'Fighting', 'Flying with a hammer']
+      });
+
+      component.submitChanges();
+      expect(dismissLoadingSpy).toHaveBeenCalled();
+      });
+
+  });
+
+  describe('Compare', () => {
+    beforeEach(() => {
+    });
+    it('should return true for matches', () => {
+      const comparison = component.compare('a', 'a');
+      expect(comparison).toEqual(true);
+    });
+
+    it('should return false for mismatches', () => {
+      const comparison = component.compare('a', 'b');
+      expect(comparison).toEqual(false);
     });
   });
 

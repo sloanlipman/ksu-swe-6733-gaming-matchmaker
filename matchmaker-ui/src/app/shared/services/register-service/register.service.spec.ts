@@ -31,6 +31,11 @@ beforeEach(() => {
   httpMock = TestBed.get(HttpTestingController);
 });
 
+afterEach(() => {
+  localStorage.clear();
+});
+
+
   it('should be created', () => {
     const service: RegisterService = TestBed.get(RegisterService); // Get from TestBed instead of inject for reasons I'm not sure of
     expect(service).toBeTruthy();
