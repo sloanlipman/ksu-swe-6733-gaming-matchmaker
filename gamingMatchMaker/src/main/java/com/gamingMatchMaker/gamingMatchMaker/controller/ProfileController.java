@@ -28,18 +28,18 @@ public class ProfileController {
 	}
 	
 	@PostMapping("/profile/save/{id:[\\d]+}")
-	public ResponseEntity<String> SaveProfile(@PathVariable long id, @RequestBody UserDetail ud) {
+	public ResponseEntity<UserDetail> SaveProfile(@PathVariable Integer id, @RequestBody UserDetail ud) {
 		//create the carry object
 		SaveChangesAttempt scr = new SaveChangesAttempt(ud);
 		
 		//call for processing
 		if(service.SaveProfile(scr)) {
 			//success! - just kick back all good
-			return new ResponseEntity<String>(HttpStatus.OK);
+			return GetProfile(id);
 		}
 		else {
 			//return the error message and 400 error
-			return new ResponseEntity<String>(scr.getMessage(), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
 	
