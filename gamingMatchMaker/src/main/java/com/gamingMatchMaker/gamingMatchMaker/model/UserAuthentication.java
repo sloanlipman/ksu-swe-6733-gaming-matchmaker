@@ -35,6 +35,12 @@ public class UserAuthentication {
         this.user_type = authCredentials.getUser_type();
     }
 
+    public UserAuthentication(UserAuthentication original){
+        this.accessToken = original.accessToken;
+        this.userId = original.userId;
+        this.user_type = original.user_type;
+    }
+
     public int getUserId() {
         return userId;
     }

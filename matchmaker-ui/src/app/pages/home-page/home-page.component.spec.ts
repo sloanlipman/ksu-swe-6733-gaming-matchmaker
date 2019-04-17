@@ -6,11 +6,12 @@ import { AppMaterialModule } from 'src/app/app-material.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpService } from 'src/app/shared/services/http-service/http.service';
 import { HttpClientModule } from '@angular/common/http';
-import { User } from 'src/app/shared/models/user';
-
-let showAdminToolsSpy;
+import { MockUsers } from 'src/app/shared/mock-users';
 
 describe('HomePage', () => {
+  let showAdminToolsSpy;
+  const mockUsers = new MockUsers();
+  const user2 = mockUsers.getUser2();
   let component: HomePage;
   let fixture: ComponentFixture<HomePage>;
 
@@ -31,6 +32,9 @@ describe('HomePage', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HomePage);
     component = fixture.componentInstance;
+    spyOn(component, 'getUser').and.callFake(() => {
+      component.currentUser = user2;
+    });
     fixture.detectChanges();
   });
 
@@ -39,11 +43,7 @@ describe('HomePage', () => {
   });
 
   it('should show admin tools for admins', () => {
-    const user = new User({
-      type: 'admin'
-    });
     showAdminToolsSpy = spyOn(component, 'showAdminTools').and.callThrough();
-    component.currentUser = user;
     component.showAdminTools();
     expect(showAdminToolsSpy).toBeTruthy();
   });
