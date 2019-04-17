@@ -45,7 +45,12 @@ package com.grum.geocalc;
  */
 public class GPSCoordinate extends DMSCoordinate {
 
-    GPSCoordinate(double wholeDegrees, double minutes) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	GPSCoordinate(double wholeDegrees, double minutes) {
         super(wholeDegrees, minutes, 0);
     }
 }

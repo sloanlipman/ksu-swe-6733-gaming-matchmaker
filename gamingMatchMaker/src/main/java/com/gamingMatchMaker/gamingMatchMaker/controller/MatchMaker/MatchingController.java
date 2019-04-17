@@ -28,7 +28,7 @@ public class MatchingController {
 	 * @param id The id of the player making the requests.
 	 * @return The UserDetails of the other players who meet the criteria.
 	 */
-	@GetMapping("/profile/get/{id:[\\d]+}")
+	@GetMapping("/enginer/match/{id:[\\d]+}")
 	public ResponseEntity<ArrayList<UserDetail>> GetMatches(@PathVariable Integer id) {
 		//create the return list
 		ArrayList<UserDetail> uds = new ArrayList<>();

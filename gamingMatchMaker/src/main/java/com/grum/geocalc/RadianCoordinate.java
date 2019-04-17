@@ -45,7 +45,11 @@ package com.grum.geocalc;
  */
 public class RadianCoordinate extends Coordinate {
 
-    public final double radians;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public final double radians;
 
     RadianCoordinate(double radians) {
         this.radians = radians;

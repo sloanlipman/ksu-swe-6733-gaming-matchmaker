@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.gamingMatchMaker.gamingMatchMaker.service.LocationService.BadZipException;
 import com.gamingMatchMaker.gamingMatchMaker.service.LocationService.UnsetStartingPointException;
+import com.gamingMatchMaker.gamingMatchMaker.service.MatchingService.ZipCalc;
 
 @RunWith(SpringRunner.class)
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)

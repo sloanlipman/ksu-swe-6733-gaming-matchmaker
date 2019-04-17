@@ -47,7 +47,11 @@ import static java.lang.Math.abs;
  */
 public class DMSCoordinate extends Coordinate {
 
-    public final double wholeDegrees, minutes, seconds;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public final double wholeDegrees, minutes, seconds;
 
     DMSCoordinate(double wholeDegrees, double minutes, double seconds) {
         this.wholeDegrees = wholeDegrees;

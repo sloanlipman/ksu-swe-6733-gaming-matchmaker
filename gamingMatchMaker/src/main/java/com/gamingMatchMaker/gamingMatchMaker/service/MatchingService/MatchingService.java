@@ -1,7 +1,6 @@
 package com.gamingMatchMaker.gamingMatchMaker.service.MatchingService;
 
 import java.util.List;
-import java.util.Set;
 
 import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
 

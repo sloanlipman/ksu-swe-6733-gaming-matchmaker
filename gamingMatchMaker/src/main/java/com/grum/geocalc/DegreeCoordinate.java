@@ -45,7 +45,11 @@ package com.grum.geocalc;
  */
 public class DegreeCoordinate extends Coordinate {
 
-    final double decimalDegrees;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	final double decimalDegrees;
 
     DegreeCoordinate(double decimalDegrees) {
         this.decimalDegrees = decimalDegrees;

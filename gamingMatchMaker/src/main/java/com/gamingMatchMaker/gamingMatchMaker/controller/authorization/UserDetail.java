@@ -6,7 +6,7 @@ import com.gamingMatchMaker.gamingMatchMaker.model.Interest;
 import com.gamingMatchMaker.gamingMatchMaker.model.Location;
 import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
 
-import java.util.Optional;
+//import java.util.Optional;
 
 public class UserDetail {
 	private int id;
