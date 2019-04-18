@@ -84,6 +84,7 @@ describe('HttpService', () => {
       expect(user.isActive).toEqual(user3.is_active);
       expect(user.interests).toEqual(user3.interests);
       expect(auth).toEqual('12345');
+      // TODO can add interests and time here
     });
   });
 

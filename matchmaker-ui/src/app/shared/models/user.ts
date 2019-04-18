@@ -8,6 +8,9 @@ export class User {
   isActive: boolean;
   type: string;
   interests?: string[];
+  genres?: string[]; // TODO decide what to actually call these
+  times?: string[];
+  priorities?: string[];
 
   constructor(obj?: any){
     this.id = obj && obj.id;
@@ -19,6 +22,8 @@ export class User {
     this.isActive = obj && obj.isActive;
     this.type = obj && obj.type;
     this.interests = obj && obj.interests;
-
+    this.genres = obj && obj.genres;
+    this.times = obj && obj.times;
+    this.priorities = obj && obj.priorities;
   }
 }

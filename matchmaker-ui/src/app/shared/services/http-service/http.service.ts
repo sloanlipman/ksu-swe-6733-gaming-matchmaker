@@ -72,7 +72,11 @@ export class HttpService {
       location: user.location,
       isActive: user.is_active,
       type: this.typeToString(user.user_type),
-      interests: user.interests
+      interests: user.interests,
+      genres: user.genres,
+      times: user.times,
+      priorities: user.priorities
+      // TODO add genres and time here
     });
     localStorage.setItem('user', JSON.stringify(this.currUser));
     if (accessToken) {
@@ -86,6 +90,22 @@ export class HttpService {
         if (resp){
           return resp;
         }
+    })).pipe(catchError(err => this.handleError(err)));
+  }
+
+  public getAllGenres(): Observable<any> { // TODO confirm this is the right endpoint
+    return this.get('/api/gameGenres').pipe(map((resp: any) => {
+      if (resp){
+        return resp;
+      }
+  })).pipe(catchError(err => this.handleError(err)));
+}
+
+  public getAllTimes(): Observable<any> {
+    return this.get('').pipe(map((resp: any) => { // TODO add the endpoint
+      if (resp){
+        return resp;
+      }
     })).pipe(catchError(err => this.handleError(err)));
   }
 

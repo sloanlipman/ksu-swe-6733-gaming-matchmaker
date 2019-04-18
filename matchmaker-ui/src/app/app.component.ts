@@ -23,6 +23,8 @@ export class AppComponent implements OnInit {
   public url: string;
   isLoading = false;
   public allInterests = [];
+  public allGenres = [];
+  public allTimes = [];
   constructor(
     protected injector: Injector,
     protected dialog: MatDialog,
@@ -36,6 +38,13 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.getAllInterests().then(() => {
       this.allInterests = JSON.parse(localStorage.getItem('interests'));
+    });
+    this.getAllGenres().then(() => {
+      this.allGenres = JSON.parse(localStorage.getItem('genres'));
+    });
+
+    this.getAllTimes().then(() => {
+      this.allTimes = JSON.parse(localStorage.getItem('times'));
     });
   }
 
@@ -155,6 +164,32 @@ export class AppComponent implements OnInit {
             localStorage.setItem('interests', JSON.stringify(interests));
           }
         });
+    return Promise.resolve();
+  }
+
+  getAllGenres(): Promise<any> {
+    this.httpService.getAllGenres().subscribe(data => {
+      if (data) {
+        const genres = [];
+        for (let i = 0; i < data.length; ++i) {
+          genres.push(data[i]);
+        }
+        localStorage.setItem('genres', JSON.stringify(genres));
+      }
+    });
+    return Promise.resolve();
+  }
+
+  getAllTimes(): Promise<any> {
+    this.httpService.getAllTimes().subscribe(data => {
+      if (data) {
+        const times = [];
+        for (let i = 0; i < data.length; ++i) {
+          times.push(data[i]);
+        }
+        localStorage.setItem('genres', JSON.stringify(times));
+      }
+    });
     return Promise.resolve();
   }
 }

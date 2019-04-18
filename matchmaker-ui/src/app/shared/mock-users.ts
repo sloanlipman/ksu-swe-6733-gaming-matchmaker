@@ -1,5 +1,6 @@
 import { User } from './models/user';
 
+// TODO add genres and times
 export class MockUsers {
   constructor() {}
 
