@@ -5,7 +5,5 @@ import com.gamingMatchMaker.gamingMatchMaker.model.GameGenre;
 import java.util.List;
 
 public interface GameGenreService {
-    List<GameGenre> getGenreName();
-    //List<Integer> GetGentreById();
-
+    List<String> getGenreName();
 }

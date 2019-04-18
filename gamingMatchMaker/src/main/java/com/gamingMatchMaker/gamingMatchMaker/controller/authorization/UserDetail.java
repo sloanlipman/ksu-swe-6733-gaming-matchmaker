@@ -20,6 +20,7 @@ public class UserDetail {
 	// list of interests
 	// @JsonFormat(shape=JsonFormat.Shape.ARRAY)
 	private ArrayList<String> hobbies;
+	private ArrayList<String> genre;
 
 	// TODO shouldn't the location have just the zip code - why are we sending
 	// everything else to the front-end or otherwise expecting them to have it?
@@ -44,6 +45,7 @@ public class UserDetail {
 		this.user_type = user_type;
 		this.location = location;
 		hobbies = new ArrayList<String>();
+		genre = new ArrayList<String>();
 	}
 
 	// need this for ProfileServiceImpl.SaveProfile() unit test
@@ -83,6 +85,9 @@ public class UserDetail {
 		hobbies = new ArrayList<String>();
 		for (String s : orig.getInterests()) {
 			this.hobbies.add(s);
+		}
+		for (String s : orig.getGenres()) {
+			this.genre.add(s);
 		}
 	}
 
@@ -163,5 +168,8 @@ public class UserDetail {
 	 */
 	public ArrayList<String> getInterests() {
 		return hobbies;
+	}
+	public ArrayList<String> getGenres() {
+		return genre;
 	}
 }
