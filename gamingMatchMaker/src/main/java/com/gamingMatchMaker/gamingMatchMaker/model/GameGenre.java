@@ -12,23 +12,23 @@ public class GameGenre {
     private int id;
 
     @Column(name= "GenreName")
-    private String GenreName;
+    private String genreName;
 
     @ManyToMany
     private Set<UserRec> users;
 
-    public GameGenre(GameGenre orginal) {
-        this.id  = orginal.id;
-        this.GenreName = orginal.GenreName;
+    public GameGenre() {
+    }
+
+    public GameGenre(GameGenre original) {
+        this.id  = original.id;
+        this.genreName = original.genreName;
     }
 
     public GameGenre(String genreName, Set<UserRec> users) {
-        GenreName = genreName;
+        genreName = genreName;
         this.users = users;
     }
-
-    public GameGenre() {}
-
     public int getId() {
         return id;
     }
@@ -38,11 +38,11 @@ public class GameGenre {
     }
 
     public String getGenreName() {
-        return GenreName;
+        return genreName;
     }
 
     public void setGenreName(String genreName) {
-        GenreName = genreName;
+        genreName = genreName;
     }
 
     public Set<UserRec> getUsers() {
