@@ -4,20 +4,26 @@ import com.gamingMatchMaker.gamingMatchMaker.dao.GameGenreRepository;
 import com.gamingMatchMaker.gamingMatchMaker.model.GameGenre;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class GameGenreServiceImpl implements GameGenreService {
-    private final GameGenreRepository gameDao;
+    private final GameGenreRepository genreDao;
 
     public GameGenreServiceImpl(GameGenreRepository gameDao) {
-        this.gameDao = gameDao;
+        this.genreDao = gameDao;
     }
 
     @Override
-    public List<GameGenre> getGenreName() {
-        List<GameGenre> result = gameDao.findAll();
+    public List<String> getGenreName() {
+        List<String> names = new ArrayList<>();
 
-        return result;
+        List<GameGenre> result = genreDao.findAll();
+
+        for(GameGenre gameGenre: result)
+            names.add(gameGenre.getGenreName());
+
+        return names;
     }
 }
