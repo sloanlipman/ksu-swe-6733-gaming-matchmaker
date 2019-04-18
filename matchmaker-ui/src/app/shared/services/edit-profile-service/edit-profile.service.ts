@@ -20,7 +20,7 @@ constructor(
     super(http, snackBar);
   }
 
-  public saveProfile(request: any, id: any): Observable<any> {
+  public saveProfile(id: any, request: any): Observable<any> {
     return this.post('/api/profile/save/' + id, request, this.httpOptions).pipe(map((resp: any) => {
       if (resp) {
         this.handleError('Profile Updated Successfully');
