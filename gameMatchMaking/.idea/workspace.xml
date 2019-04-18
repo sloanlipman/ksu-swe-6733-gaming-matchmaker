@@ -3,6 +3,7 @@
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreService.java" />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <bookmark url="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreService.java" line="7" />
     <bookmark url="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/ProfileService/ProfileServiceImpl.java" line="59" />
     <bookmark url="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/ProfileService/ProfileServiceImpl.java" line="0" />
@@ -42,6 +43,20 @@
       <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/service/registrationService/RegistrationServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/service/registrationService/RegistrationServiceImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../matchmaker-ui/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../matchmaker-ui/package-lock.json" afterDir="false" />
 >>>>>>> adding game genre functionaility
+=======
+    <bookmark url="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreService.java" line="7" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="472dc27a-afb8-4947-a62f-294e1494f087" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/authorization/UserDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/authorization/UserDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/GetGameGenreNameResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/GetGameGenreNameResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/gameGenreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/gameGenreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/InterestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/InterestRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/GameGenre.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/GameGenre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreServiceImpl.java" afterDir="false" />
+>>>>>>> finshed getGenre controller implmentation
     </list>
     <ignored path="$PROJECT_DIR$/../gamingMatchMaker/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,6 +78,7 @@
       <usages-collector id="statistics.lifecycle.project">
         <counts>
 <<<<<<< HEAD
+<<<<<<< HEAD
           <entry key="project.closed" value="12" />
           <entry key="project.open.time.1" value="5" />
           <entry key="project.open.time.12" value="1" />
@@ -80,27 +96,43 @@
           <entry key="project.open.time.6" value="1" />
           <entry key="project.opened" value="6" />
 >>>>>>> adding game genre functionaility
+=======
+          <entry key="project.closed" value="6" />
+          <entry key="project.open.time.1" value="3" />
+          <entry key="project.open.time.15" value="1" />
+          <entry key="project.open.time.2" value="2" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="7" />
+>>>>>>> finshed getGenre controller implmentation
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+<<<<<<< HEAD
 <<<<<<< HEAD
           <entry key="JAVA" value="183" />
           <entry key="Properties" value="2" />
 =======
           <entry key="JAVA" value="40" />
 >>>>>>> adding game genre functionaility
+=======
+          <entry key="JAVA" value="78" />
+>>>>>>> finshed getGenre controller implmentation
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
 <<<<<<< HEAD
+<<<<<<< HEAD
           <entry key="JAVA" value="4212" />
           <entry key="PLAIN_TEXT" value="8" />
           <entry key="Properties" value="10" />
 =======
           <entry key="JAVA" value="1264" />
+=======
+          <entry key="JAVA" value="1924" />
+>>>>>>> finshed getGenre controller implmentation
           <entry key="PLAIN_TEXT" value="7" />
 >>>>>>> adding game genre functionaility
         </counts>
@@ -108,6 +140,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
 <<<<<<< HEAD
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
@@ -249,6 +282,99 @@
         </entry>
       </file>
     </leaf>
+=======
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreService.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="119">
+                  <caret line="7" column="29" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="29" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/authorization/UserAuthController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="119">
+                  <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreServiceImpl.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="459">
+                  <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/gameGenreController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="323">
+                  <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/InterestRepository.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="68">
+                  <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/InterestController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="119">
+                  <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/InterestService/InterestService.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="68">
+                  <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/InterestService/InterestServiceImpl.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="221">
+                  <caret line="25" column="8" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="47" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
+>>>>>>> finshed getGenre controller implmentation
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -276,6 +402,7 @@
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/service/authService/UserAuthServiceImplTest.java" />
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/service/registrationService/RegistrationServiceImplTest.java" />
 <<<<<<< HEAD
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenre.java" />
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre.fxml" />
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/GameGenre.java" />
@@ -300,12 +427,18 @@
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/userController/UserController.java" />
 =======
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/GameGenre.java" />
+=======
+>>>>>>> finshed getGenre controller implmentation
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenre.java" />
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/UserRepository.java" />
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/UserRec.java" />
-        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/GameGenreRepository.java" />
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre.fxml" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/GameGenre.java" />
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/GetGameGenreNameResponse.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/InterestRepository.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/ProfileService/ProfileServiceImpl.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/GameGenreRepository.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/authorization/UserDetail.java" />
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreService.java" />
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreServiceImpl.java" />
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/gameGenreController.java" />
@@ -320,6 +453,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-11" />
     <option name="width" value="1943" />
@@ -331,6 +465,12 @@
     <option name="width" value="1946" />
     <option name="height" value="2107" />
 >>>>>>> adding game genre functionaility
+=======
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-6" />
+    <option name="width" value="1812" />
+    <option name="height" value="2106" />
+>>>>>>> finshed getGenre controller implmentation
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -341,10 +481,13 @@
     </navigator>
     <panes>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <pane id="Scope" />
 =======
 >>>>>>> adding game genre functionaility
       <pane id="PackagesPane" />
+=======
+>>>>>>> finshed getGenre controller implmentation
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -408,6 +551,17 @@
 <<<<<<< HEAD
 =======
               <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="authorization" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
               <item name="gameGenre" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -418,7 +572,20 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
 >>>>>>> adding game genre functionaility
+=======
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+>>>>>>> finshed getGenre controller implmentation
               <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -451,9 +618,34 @@
               <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
 <<<<<<< HEAD
+<<<<<<< HEAD
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
 =======
+=======
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="InterestService" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="ProfileService" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+>>>>>>> finshed getGenre controller implmentation
               <item name="test" type="462c0819:PsiDirectoryNode" />
 >>>>>>> adding game genre functionaility
             </path>
@@ -515,7 +707,11 @@
 <<<<<<< HEAD
 =======
       <pane id="Scope" />
+<<<<<<< HEAD
 >>>>>>> adding game genre functionaility
+=======
+      <pane id="PackagesPane" />
+>>>>>>> finshed getGenre controller implmentation
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -526,10 +722,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555984223560" />
 =======
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555476202249" />
 >>>>>>> adding game genre functionaility
+=======
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555552567748" />
+>>>>>>> finshed getGenre controller implmentation
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -609,6 +809,7 @@
       <workItem from="1555442788419" duration="2654000" />
       <workItem from="1555446805955" duration="58000" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <workItem from="1555446990281" duration="7701000" />
       <workItem from="1555539839468" duration="17685000" />
       <workItem from="1555567249408" duration="12231000" />
@@ -620,6 +821,10 @@
 =======
       <workItem from="1555446990281" duration="6325000" />
 >>>>>>> adding game genre functionaility
+=======
+      <workItem from="1555446990281" duration="7701000" />
+      <workItem from="1555539839468" duration="12331000" />
+>>>>>>> finshed getGenre controller implmentation
     </task>
     <servers />
   </component>
@@ -639,6 +844,7 @@
   </component>
   <component name="TimeTrackingManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="54931000" />
   </component>
   <component name="ToolWindowManager">
@@ -648,13 +854,19 @@
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15627907" />
 =======
     <option name="totallyTimeSpent" value="13073000" />
+=======
+    <option name="totallyTimeSpent" value="26780000" />
+>>>>>>> finshed getGenre controller implmentation
   </component>
   <component name="ToolWindowManager">
-    <frame x="635" y="10" width="1112" height="1204" extended-state="0" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="2208" height="1208" extended-state="7" />
     <layout>
+<<<<<<< HEAD
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30740038" />
 >>>>>>> adding game genre functionaility
+=======
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15209302" />
+>>>>>>> finshed getGenre controller implmentation
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -664,10 +876,14 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Find" order="1" weight="0.32992566" />
       <window_info anchor="bottom" id="Debug" order="2" weight="0.3986989" />
 =======
       <window_info anchor="bottom" id="Find" order="1" />
+=======
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32992566" />
+>>>>>>> finshed getGenre controller implmentation
       <window_info anchor="bottom" id="Debug" order="2" weight="0.39962825" />
 >>>>>>> adding game genre functionaility
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
@@ -676,6 +892,7 @@
       <window_info anchor="bottom" id="Spring" order="6" weight="0.32992566" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32992566" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+<<<<<<< HEAD
 <<<<<<< HEAD
       <window_info anchor="bottom" id="Messages" order="9" weight="0.32899627" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" weight="0.32992566" />
@@ -689,6 +906,13 @@
       <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="13" weight="0.33208606" />
 >>>>>>> adding game genre functionaility
+=======
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.32899627" />
+      <window_info anchor="bottom" id="Java Enterprise" order="10" weight="0.32992566" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="13" visible="true" weight="0.32992566" />
+>>>>>>> finshed getGenre controller implmentation
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -840,6 +1064,7 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/LocationRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -964,6 +1189,8 @@
         <state relative-caret-position="68">
           <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
 =======
+=======
+>>>>>>> finshed getGenre controller implmentation
     <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/UserRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -975,6 +1202,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/GetGameGenreNameResponse.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1062,37 +1290,19 @@
           <caret line="101" column="42" selection-start-line="101" selection-start-column="42" selection-end-line="101" selection-end-column="42" />
 =======
     <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/Location.java">
+=======
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/Location.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/Interest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/InterestRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/LocationRepository.java">
+>>>>>>> finshed getGenre controller implmentation
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/InterestService/InterestServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="11" column="61" lean-forward="true" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
         </state>
       </provider>
     </entry>
@@ -1103,17 +1313,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/GameGenre.java">
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/service/ServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="32" column="22" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre.fxml" />
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/ProfileController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/GetGameGenreNameResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#356#357#0" expanded="true" />
+            <element signature="e#408#409#0" expanded="true" />
+            <element signature="e#458#459#0" expanded="true" />
+            <element signature="e#495#496#0" expanded="true" />
+            <element signature="e#564#565#0" expanded="true" />
+            <element signature="e#616#617#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/Interest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/ProfileService/ProfileServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="74" column="26" lean-forward="true" selection-start-line="74" selection-start-column="23" selection-end-line="74" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/UserRec.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="425">
           <caret line="25" column="30" lean-forward="true" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
 >>>>>>> adding game genre functionaility
+=======
+        <state relative-caret-position="816">
+          <caret line="48" column="22" lean-forward="true" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
+>>>>>>> finshed getGenre controller implmentation
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/SaveChangesAttempt.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1139,6 +1400,26 @@
         <state relative-caret-position="34">
           <caret line="32" column="22" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
 >>>>>>> adding game genre functionaility
+=======
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/authorization/UserDetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="88" column="43" lean-forward="true" selection-start-line="88" selection-start-column="43" selection-end-line="88" selection-end-column="43" />
+          <folding>
+            <element signature="e#3985#3986#0" expanded="true" />
+            <element signature="e#4006#4007#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/GameGenre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="19" lean-forward="true" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+>>>>>>> finshed getGenre controller implmentation
         </state>
       </provider>
     </entry>
@@ -1168,6 +1449,7 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/Interest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1190,15 +1472,18 @@
             <element signature="imports" expanded="true" />
 =======
     <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre.fxml">
+=======
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/InterestRepository.java">
+>>>>>>> finshed getGenre controller implmentation
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
+        <state relative-caret-position="68">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/GetGameGenreNameResponse.java">
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/InterestService/InterestService.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="408">
           <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
           <folding>
@@ -1211,6 +1496,10 @@
             <element signature="e#616#617#0" expanded="true" />
 >>>>>>> adding game genre functionaility
           </folding>
+=======
+        <state relative-caret-position="68">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+>>>>>>> finshed getGenre controller implmentation
         </state>
       </provider>
     </entry>
@@ -1229,15 +1518,21 @@
 =======
     <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreService.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="102">
           <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
 >>>>>>> adding game genre functionaility
+=======
+        <state relative-caret-position="119">
+          <caret line="7" column="29" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="29" />
+>>>>>>> finshed getGenre controller implmentation
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/ProfileController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1263,21 +1558,43 @@
             <element signature="e#807#808#0" expanded="true" />
 =======
     <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreServiceImpl.java">
+=======
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/authorization/UserAuthController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="41" lean-forward="true" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#366#367#0" expanded="true" />
-            <element signature="e#404#405#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="119">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/InterestService/InterestServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="25" column="8" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/InterestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/gameGenreController.java">
+>>>>>>> finshed getGenre controller implmentation
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="323">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
           <folding>
             <element signature="imports" expanded="true" />
 >>>>>>> adding game genre functionaility

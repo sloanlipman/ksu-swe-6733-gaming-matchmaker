@@ -19,13 +19,12 @@ public class gameGenreController {
     private GameGenreService service;
 
     @CrossOrigin
-    @GetMapping("/gameGenre")
-    public ResponseEntity<GetGameGenreNameResponse> getGenreName() {
-        List<GameGenre> results = this.service.getGenreName();
+    @GetMapping("/gameGenres")
+    public ResponseEntity<List<String>> getGenreName() {
+        List<String> results = service.getGenreName();
 
-        GetGameGenreNameResponse response = new GetGameGenreNameResponse(results);
-        HttpHeaders header = new HttpHeaders();
 
-        return new ResponseEntity<>(response, header, HttpStatus.OK);
+
+        return new ResponseEntity<>(results, new HttpHeaders(), HttpStatus.OK);
     }
 }
