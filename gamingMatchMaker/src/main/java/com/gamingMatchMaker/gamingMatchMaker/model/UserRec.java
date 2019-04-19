@@ -42,6 +42,10 @@ public class UserRec {
 
     @ManyToMany
     private Set<GameGenre> genres;
+<<<<<<< HEAD
+=======
+
+>>>>>>> nothing major just trying to save changes before rebase
 
 
     public UserRec() {
@@ -60,12 +64,10 @@ public class UserRec {
         this.age = original.age;
         this.is_active = original.is_active;
         this.user_type = original.user_type;
-
-        this.interests = new HashSet<>(original.getInterests());
-        this.genres = new HashSet<>(original.getGenres());
-        this.timings = new HashSet<>(original.getTimings());
-
-        this.location = original.location;
+        this.hobbies = original.getInterests();
+        this.genres = original.getGenres();
+       // this.location = new Location(original.location); TODO uncomment this
+       this.location = null;
     }
 
     public UserRec(String email, String first_name, String last_name,
@@ -88,9 +90,7 @@ public class UserRec {
     //replace the above construct with a non-empty interests list
     public UserRec(String email, String first_name, String last_name,
                    String password, int age, boolean is_active,
-                   int user_type, Location location,
-                   Interest[] interests, GameGenre[] genres, PlayTime[] timings
-    ){
+                   int user_type, Location location, Interest[] interests, GameGenre[] genres) {
         this.email = email;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -99,6 +99,9 @@ public class UserRec {
         this.is_active = is_active;
         this.user_type = user_type;
         this.location = location;
+        this.hobbies.addAll(Arrays.asList(interests));
+        this.genres.addAll(Arrays.asList(genres));
+    }
 
         this.interests = new HashSet<>(Arrays.asList(interests));
         this.genres = new HashSet<>(Arrays.asList(genres));
