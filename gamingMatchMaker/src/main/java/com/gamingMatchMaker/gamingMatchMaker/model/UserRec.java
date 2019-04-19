@@ -44,7 +44,7 @@ public class UserRec {
     private final Set<GameGenre> genres;
 
     @ManyToMany
-    private Set<GameGenre> gameGenres;
+    private Set<GameGenre> genres;
 
 
 
@@ -233,11 +233,11 @@ public class UserRec {
 		this.hobbies = interests;
 	}
 
-    public Set<GameGenre> getGameGenres() {
-        return gameGenres;
+    public Set<GameGenre> getGenres() {
+        return genres;
     }
 
-    public void setGameGenres(Set<GameGenre> gameGenres) {
-        this.gameGenres = gameGenres;
+    public void setGenres(Set<GameGenre> genres) {
+        this.genres = genres;
     }
 }
