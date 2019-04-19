@@ -10,6 +10,6 @@ import java.util.UUID;
 public interface UserRepository extends JpaRepository<UserRec, UUID> {
     Optional<UserRec> findByEmail(String email);
     Optional<UserRec> findById(int id);
-    List<UserRec> findBygameGenres_Id(int id);
+    //List<UserRec> findBygameGenres_Id(int id);
 
 }
