@@ -23,8 +23,8 @@ public class gameGenreController {
     public ResponseEntity<List<String>> getGenreName() {
         List<String> results = service.getGenreName();
 
+        HttpHeaders headers = new HttpHeaders();
 
-
-        return new ResponseEntity<>(results, new HttpHeaders(), HttpStatus.OK);
+        return new ResponseEntity<>(results, headers, HttpStatus.OK);
     }
 }

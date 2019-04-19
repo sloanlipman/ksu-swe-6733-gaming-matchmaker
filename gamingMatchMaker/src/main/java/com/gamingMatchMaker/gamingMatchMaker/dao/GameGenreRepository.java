@@ -4,8 +4,9 @@ import com.gamingMatchMaker.gamingMatchMaker.model.GameGenre;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface GameGenreRepository  extends JpaRepository<GameGenre, Integer> {
-    List<GameGenre> findByGenreName(String genreName);
+    Optional<GameGenre> findByGenreName(String genreName);
 
 }
