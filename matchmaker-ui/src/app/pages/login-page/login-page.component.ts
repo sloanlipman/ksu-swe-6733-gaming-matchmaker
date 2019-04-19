@@ -35,7 +35,6 @@ export class LoginPage extends AppComponent implements OnInit {
   });
   }
 
-
   get f() { return this.userLoginForm.controls; }
 
   onSubmit(): void {

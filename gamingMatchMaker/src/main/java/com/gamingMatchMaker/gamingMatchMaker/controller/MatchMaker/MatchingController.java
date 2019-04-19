@@ -21,8 +21,8 @@ import com.gamingMatchMaker.gamingMatchMaker.service.authService.UserException;
 public class MatchingController {
 
 	@Autowired
-	private MatchingService service;
-	
+	private MatchingService service; 
+
 	/**
 	 * Matches the player for the given id to all the other players in the system.
 	 * @param id The id of the player making the requests.

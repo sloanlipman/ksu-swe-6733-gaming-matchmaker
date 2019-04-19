@@ -1,5 +1,5 @@
 
-<mat-grid-list cols="6" rowHeight="32rem" [gutterSize]="'15px'">
+<mat-grid-list cols="8" rowHeight="32rem" [gutterSize]="'15px'">
   <mat-grid-tile colspan="2" rowspan="1.5" class="profile-card">
     <mat-grid-tile-header>General Info</mat-grid-tile-header>
     <form [formGroup]="infoForm">
@@ -25,40 +25,50 @@
           </mat-form-field>
       </form>
   </mat-grid-tile>
- <!-- <mat-grid-tile class="genres" colspan="3" rowspan="1">
-    <mat-grid-tile-header>Game Genres</mat-grid-tile-header>
-    <mat-selection-list #genres id="genre-list">
-        <mat-list-option *ngFor="let genres of favoriteGenres">
-          {{genres}}
-        </mat-list-option>
-      </mat-selection-list>
-  </mat-grid-tile> -->
 
   <mat-grid-tile class="interestsCard" colspan="2" rowspan="1.5">
-    <mat-grid-tile-header>Interests</mat-grid-tile-header>
+    <mat-grid-tile-header>What are your hobbies?</mat-grid-tile-header>
         <mat-selection-list #interestsSelectionList [compareWith]="compare" [formControl]="interestsBoxes">
           <mat-list-option *ngFor="let interest of allInterests" [value]="interest">
             {{interest}}
           </mat-list-option>
         </mat-selection-list>
   </mat-grid-tile>
-  <!--<mat-grid-tile class="games-played" colspan="3" rowspan="1">
-    <mat-grid-tile-header>Games Played</mat-grid-tile-header>
-    <mat-selection-list #played>
-        <mat-list-option *ngFor="let played of gamesPlayed">
-          {{played}}
+
+
+  <mat-grid-tile class="genres" colspan="2" rowspan="1.5">
+    <mat-grid-tile-header>What kinds of games do you like?</mat-grid-tile-header>
+    <mat-selection-list #genreSelectionList [compareWith]="compare" [formControl]="genreBoxes" id="genre-list">
+        <mat-list-option *ngFor="let genres of allGenres">
+          {{genres}}
         </mat-list-option>
       </mat-selection-list>
-  </mat-grid-tile>-->
+  </mat-grid-tile> 
+
+
+  
+  <mat-grid-tile class="preferred-times" colspan="2" rowspan="1.5">
+    <mat-grid-tile-header>When do you like to play games?</mat-grid-tile-header>
+    <mat-selection-list #timeSelectionList [compareWith]="compare" [formControl]="timeBoxes">
+        <mat-list-option *ngFor="let times of allTimes">
+          {{times}}
+        </mat-list-option>
+      </mat-selection-list>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2" rowspan="0.5"></mat-grid-tile>
+
+<!--TODO change implementation to what's going to make the most sense. Maybe <mat-select>?-->
+  <mat-grid-tile class="priorities" colspan="4" rowspan="0.5">
+    <mat-grid-tile-header>What's important to you?</mat-grid-tile-header>
+    <mat-selection-list #prioritiesSelectionList [compareWith]="compare" [formControl]="prioritiesBoxes">
+        <mat-list-option *ngFor="let priorities of allPriorities">
+          {{priorities}}
+        </mat-list-option>
+      </mat-selection-list>
+  </mat-grid-tile>
 </mat-grid-list>
 
 <div class="button">
-  <button mat-raised-button class="cancel" *ngIf="isExistingUser()" (click)="goBack()">Cancel</button> <!--TODO add *ngIf="existingUser()"-->
+  <button mat-raised-button class="cancel" *ngIf="isExistingUser()" (click)="goBack()">Cancel</button>
   <button mat-raised-button (click)="submitChanges()" color="primary">Submit Changes</button>
 </div>
-
-<!-- TODO check agianst previous implementation
-  <nav>
-    <button mat-raised-button class="cancel" (click)="goBack()" >Cancel</button> 
-    <button mat-raised-button (click)="submitChanges()" color="primary">Submit Changes</button>
-  </nav>-->

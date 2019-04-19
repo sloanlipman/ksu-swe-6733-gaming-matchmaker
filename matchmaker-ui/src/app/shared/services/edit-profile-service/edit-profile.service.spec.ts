@@ -45,7 +45,7 @@ describe('EditProfileService', () => {
       const id = 123;
       handleErrorSpy = spyOn(service, 'handleError').and.stub();
 
-      service.saveProfile(req, id).subscribe(data => {
+      service.saveProfile(id, req).subscribe(data => {
         expect(data).toEqual(req);
         expect(handleErrorSpy).toHaveBeenCalled();
       });

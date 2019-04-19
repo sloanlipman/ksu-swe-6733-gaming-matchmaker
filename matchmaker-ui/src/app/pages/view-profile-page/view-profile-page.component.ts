@@ -10,7 +10,7 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./view-profile-page.component.scss']
 })
 export class ViewProfilePage extends AppComponent  implements OnInit {
-
+  // TODO add genres and time here
   constructor(
     protected router: Router,
     protected location: Location,
@@ -25,3 +25,5 @@ export class ViewProfilePage extends AppComponent  implements OnInit {
     this.closeDialog();
   }
 }
+
+// TODO need to define a variable to hold the details for the user whose profile is being viewed

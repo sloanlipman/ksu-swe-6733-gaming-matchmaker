@@ -114,7 +114,9 @@ describe('EditProfilePage', () => {
         location: {
           zip: 30068
         },
-        interests: ['Drinking', 'Fighting', 'Flying with a hammer']
+        interests: ['Drinking', 'Fighting', 'Flying with a hammer'],
+        genres: null,
+        priorities: '' // TODO update this when ordered priorities is funtional
       });
 
       saveProfileSpy = spyOn(component['editProfileService'], 'saveProfile').and.returnValue(of(JSON.parse(newUser)));

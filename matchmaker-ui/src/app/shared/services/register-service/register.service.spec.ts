@@ -43,7 +43,7 @@ afterEach(() => {
 
   it('should register a new user and mark that user as logged in', inject(
 
-    [RegisterService], (service: RegisterService) => {
+    [RegisterService], (service: RegisterService) => { // TODO switch to a MockUser if time
       detail = {
         email: 'slipman@students.kennesaw.edu',
         firstName: 'Sloan',

@@ -81,7 +81,7 @@ describe('LoginService', () => {
 
   it('should return an admin', inject(
     [LoginService], (loginService: LoginService) => {
-      detail = {
+      detail = { // TODO switch to one of the MockUser users if time allows
         email: 'slipman@students.kennesaw.edu',
         first_name: 'Sloan',
         last_name: 'Lipman',
@@ -98,6 +98,7 @@ describe('LoginService', () => {
         expect(data.isActive).toEqual(true);
         expect(data.id).toEqual(detail.id);
         expect(data.type).toEqual('admin');
+        // TODO can add interests, genres, and times here
       });
       const mockReq = httpMock.expectOne(apiUrl + '/api/authorizeUser');
       expect(mockReq.request.method).toEqual('POST');

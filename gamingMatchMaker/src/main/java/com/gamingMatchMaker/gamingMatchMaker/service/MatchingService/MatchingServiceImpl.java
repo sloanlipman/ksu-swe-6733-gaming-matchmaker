@@ -1,7 +1,9 @@
 package com.gamingMatchMaker.gamingMatchMaker.service.MatchingService;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -11,6 +13,7 @@ import com.gamingMatchMaker.gamingMatchMaker.service.authService.UserException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class MatchingServiceImpl implements MatchingService {
 
@@ -56,8 +59,11 @@ public class MatchingServiceImpl implements MatchingService {
 	 * @exception UserException The user to match could not be found.
 	 */
 	public List<UserRec> getMatches(Integer uid) throws UserException {
+		//get the score holder ready
+		LinkedHashMap<UserRec, Integer> scores = new LinkedHashMap<>();
+		
 		//inti the return value
-		ArrayList<UserRec> recs = new ArrayList<>();
+		ArrayList<UserRec> users = new ArrayList<>();
 		
 		//get the user asking for matches
 		Optional<UserRec> self = phoneBook.findById(uid);
@@ -65,14 +71,39 @@ public class MatchingServiceImpl implements MatchingService {
 		if(!self.isPresent()) throw new UserException("User not found.");
 		
 		//fill in recs and remove the user
-		recs.addAll(phoneBook.findAll());
-		recs.remove(self.get());
+		users.addAll(phoneBook.findAll());
+		users.remove(self.get());
 			//little nervous not checking the return value, but if it's not found the findById above failed first
 		
-		//go through the plugins, highest priority firt
-		for(int i = 0; i < matchers.size(); i++) {
-			recs = matchers.get(i).findMatches(self.get(), recs);
+		//run on a per user basis
+		for(UserRec ur : users) {
+			//if the user id isn't in the list add it
+			if(!scores.containsKey(ur)) scores.put(ur, 0);
+			
+			//go through the plugins, highest priority firt
+			for(int i = 0; i < matchers.size(); i++) {
+				
+				//calculate the score for this matcher - use the index for weighting
+				int score = matchers.get(i).scoreUser(self.get(), ur) * (matchers.size() - 1); //so the earlier ones will have higher values
+				
+				//update the score for this other user
+				scores.computeIfPresent(ur, (k,v) -> v + score);
+			}
 		}
+		
+		//sort the scores
+		scores = scores
+			.entrySet()
+			.stream()
+			.sorted((Map.Entry.<UserRec, Integer>comparingByValue().reversed()))
+			.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+		//ooh eeh ooh ah aah ting tang walla walla bingbang! - voodoo
+		
+		//make the final list holder
+		ArrayList<UserRec> recs = new ArrayList<>();
+		
+		//copy the keys over
+		for(UserRec ur : scores.keySet()) recs.add(ur);
 		
 		//return the matches list
 		return recs;

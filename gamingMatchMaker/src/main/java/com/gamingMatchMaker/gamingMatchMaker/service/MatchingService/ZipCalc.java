@@ -1,6 +1,7 @@
 package com.gamingMatchMaker.gamingMatchMaker.service.MatchingService;
 
 import java.util.ArrayList;
+import java.math.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,6 +16,8 @@ public class ZipCalc implements IMatcher {
 	private com.grum.geocalc.Point pt;
 	
 	private static final int RADIUS = 1005840;  //about 25 miles in meters
+	private static final double STEP = 16093.44; //about 10 miles
+	private static final int MAX_STEPS = 10;  //in the scoring function only allow a max of 100 miles
 
 	//this is here for unit testing- might be removed once matchmaking app is built
 	@Autowired
@@ -130,6 +133,30 @@ public class ZipCalc implements IMatcher {
 		
 		//return the list
 		return others;
+	}
+
+	@Override
+	public int scoreUser(UserRec self, UserRec other) {
+		//set the starting point
+		this.SetZip(self.getLocation().getZip());
+		
+		double dist = 0.0;
+		
+		try {
+			//get teh distance
+			dist = this.GetDistance(other.getLocation().getZip());
+		}
+		catch(Exception e) {
+			//on error just give no points
+			return 0;
+		}
+
+		//cheesy conversion - probably a better way
+		Double dub = Math.ceil(dist/STEP);
+		Integer a = new Integer(dub.toString());
+		
+		//use subtraction operation for ascending to descending inversion
+		return (MAX_STEPS - a.intValue());
 	}
 
 }
