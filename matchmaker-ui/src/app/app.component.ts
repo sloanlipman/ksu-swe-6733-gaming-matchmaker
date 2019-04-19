@@ -103,6 +103,7 @@ export class AppComponent implements OnInit {
     this.currentUser =  new User(JSON.parse(localStorage.getItem('user')));
     this.httpService.getUser(this.currentUser.id).subscribe(data => {
     this.currentUser = data;
+    console.log(this.currentUser);
     });
   }
 

@@ -60,11 +60,32 @@
 <!--TODO change implementation to what's going to make the most sense. Maybe <mat-select>?-->
   <mat-grid-tile class="priorities" colspan="4" rowspan="0.5">
     <mat-grid-tile-header>What's important to you?</mat-grid-tile-header>
-    <mat-selection-list #prioritiesSelectionList [compareWith]="compare" [formControl]="prioritiesBoxes">
-        <mat-list-option *ngFor="let priorities of allPriorities">
-          {{priorities}}
-        </mat-list-option>
-      </mat-selection-list>
+    <form [formGroup]="prioritiesForm">
+      <mat-form-field > 
+        <mat-label>#1 Priority</mat-label>
+        <mat-select formControlName="priority1" [value]="allPriorities.value">
+          <mat-option *ngFor="let priority of allPriorities" [value]="priority">
+            {{priority.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>#2 Priority</mat-label>
+        <mat-select formControlName="priority2" [value]="allPriorities.value">
+            <mat-option *ngFor="let priority of allPriorities" [value]="priority">
+            {{priority.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>#3 Priority</mat-label>
+        <mat-select formControlName="priority3" [value]="allPriorities.value">
+            <mat-option *ngFor="let priority of allPriorities" [value]="priority">
+              {{priority.label}}
+            </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
   </mat-grid-tile>
 </mat-grid-list>
 

@@ -75,8 +75,7 @@ export class HttpService {
       interests: user.interests,
       genres: user.genres,
       times: user.times,
-      priorities: user.priorities
-      // TODO add genres and time here
+      priorities: JSON.parse(localStorage.getItem('priorities')) // TODO set to user.priorities
     });
     localStorage.setItem('user', JSON.stringify(this.currUser));
     if (accessToken) {
