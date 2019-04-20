@@ -65,7 +65,7 @@
         <mat-label>#1 Priority</mat-label>
         <mat-select formControlName="priority1" [value]="allPriorities.value">
           <mat-option *ngFor="let priority of allPriorities" [value]="priority">
-            {{priority.label}}
+            {{priority}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -73,7 +73,7 @@
         <mat-label>#2 Priority</mat-label>
         <mat-select formControlName="priority2" [value]="allPriorities.value">
             <mat-option *ngFor="let priority of allPriorities" [value]="priority">
-            {{priority.label}}
+            {{priority}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -81,10 +81,19 @@
         <mat-label>#3 Priority</mat-label>
         <mat-select formControlName="priority3" [value]="allPriorities.value">
             <mat-option *ngFor="let priority of allPriorities" [value]="priority">
-              {{priority.label}}
+              {{priority}}
             </mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-form-field>
+        <mat-label>#4 Priority</mat-label>
+        <mat-select formControlName="priority4" [value]="allPriorities.value">
+          <mat-option *ngFor="let priority of allPriorities" [value]="priority">
+            {{priority}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
     </form>
   </mat-grid-tile>
 </mat-grid-list>

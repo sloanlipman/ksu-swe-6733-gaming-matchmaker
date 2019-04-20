@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AppComponent } from '../../app.component';
 import { MatDialog, } from '@angular/material';
 import { EditProfileService } from '../../shared/services/edit-profile-service/edit-profile.service';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators, FormArray } from '@angular/forms';
 import { Priorities } from 'src/app/shared/models/priorities';
 
 @Component({
@@ -17,6 +17,7 @@ export class EditProfilePage extends AppComponent implements OnInit {
   genreBoxes: FormControl;
   timeBoxes: FormControl;
   prioritiesForm: FormGroup;
+  prioritiesFormArray: FormArray;
   infoForm: FormGroup;
   currentUserInterests = [];
   submitted: any;
@@ -25,13 +26,15 @@ export class EditProfilePage extends AppComponent implements OnInit {
   allTimes = JSON.parse(localStorage.getItem('times'));
 
   // TODO either get the value from the DB or talk with backend team to get the right names
-  allPriorities: Priorities[] = [
+ /* allPriorities: Priorities[] = [
     {value: 'interests', label: 'Interests'},
-    {value: 'games', label: 'Games'},
-    {value: 'activeTime', label: 'Active Time'}
-  ];
+    {value: 'genres', label: 'Genres'},
+    {value: 'activeTime', label: 'Active Time'},
+    {value: 'location', label: 'Location'}
+  ];*/
+  allPriorities = ['Interests', 'Game Genres', 'Active Time', 'Location'];
   prioritiesArray: string[];
-  currentUserPriorities: Priorities[] = [];
+  currentUserPriorities:  [];
 
 
   constructor(
@@ -48,13 +51,13 @@ export class EditProfilePage extends AppComponent implements OnInit {
   ngOnInit() {
       this.getFormControls();
       this.getUser();
-      this.setCurrentPriorities();
+     // this.setCurrentPriorities();
       this.setFormControls();
     // TODO take out hardcoded values when real service is in place
       this.allTimes = ['Morning', 'Noon', 'Evening', 'Night Owl'];
   }
 
-  setCurrentPriorities() {
+  /*setCurrentPriorities() {
     for (let i = 0; i < this.currentUser.priorities.length; ++i) {
       if (this.currentUser.priorities[i] === 'interests') {
         this.currentUserPriorities.push(this.allPriorities[0]);
@@ -69,9 +72,13 @@ export class EditProfilePage extends AppComponent implements OnInit {
         console.log(this.currentUserPriorities);
       }
     }
-  }
+  } */
 
-
+addPriority() {
+  return this.formBuilder.group({
+    value: ''
+  });
+}
   getFormControls() {
     this.infoForm = this.formBuilder.group({
       firstName: new FormControl('', [Validators.required]),
@@ -85,8 +92,12 @@ export class EditProfilePage extends AppComponent implements OnInit {
       priority1: new FormControl('', [Validators.required]),
       priority2: new FormControl('', [Validators.required]),
       priority3: new FormControl('', [Validators.required]),
-
+      priority4: new FormControl('', [Validators.required]),
     });
+
+    this.prioritiesFormArray = this.formBuilder.array([ this.addPriority() ]);
+
+
     this.interestsBoxes = new FormControl();
     this.genreBoxes = new FormControl();
     this.timeBoxes = new FormControl();
@@ -102,9 +113,11 @@ export class EditProfilePage extends AppComponent implements OnInit {
     this.interestsBoxes.setValue(this.currentUser.interests);
     this.genreBoxes.setValue(this.currentUser.genres);
     this.timeBoxes.setValue(this.currentUser.times);
-    this.prioritiesForm.controls.priority1.setValue(this.currentUserPriorities[0]);
-    this.prioritiesForm.controls.priority2.setValue(this.currentUserPriorities[1]);
-    this.prioritiesForm.controls.priority3.setValue(this.currentUserPriorities[2]);
+    this.prioritiesForm.controls.priority1.setValue(this.currentUser.priorities[0]);
+    this.prioritiesForm.controls.priority2.setValue(this.currentUser.priorities[1]);
+    this.prioritiesForm.controls.priority3.setValue(this.currentUser.priorities[2]);
+    this.prioritiesForm.controls.priority4.setValue(this.currentUser.priorities[3]);
+
     console.log(this.p.priority1.value);
   }
 
@@ -118,7 +131,7 @@ export class EditProfilePage extends AppComponent implements OnInit {
   submitChanges() {
 
   // Put priorities in an array so they are ready to go
-    this.prioritiesArray = [this.p.priority1.value.value, this.p.priority2.value.value, this.p.priority3.value.value];
+    this.prioritiesArray = [this.p.priority1.value, this.p.priority2.value, this.p.priority3.value, this.p.priority4.value];
     let unique;
     const distinctPriorities = new Set(this.prioritiesArray);
     console.log(distinctPriorities);
@@ -137,12 +150,12 @@ export class EditProfilePage extends AppComponent implements OnInit {
       this.editProfileService.handleError('Please select at least one interest and try again');
     } else if (this.genreBoxes.value.length === 0) {
      this.editProfileService.handleError('Please select at least one game genre and try again');
-     } else if (this.timeBoxes.value.length === 0) {
-        this.editProfileService.handleError('Please select at least one active time and try again');
+  //   } else if (this.timeBoxes.value.length === 0) {
+ //       this.editProfileService.handleError('Please select at least one active time and try again');
     } else if (this.prioritiesForm.invalid) {
       this.editProfileService.handleError('Please select your matchmaking priorities and try again');
     } else if (this.prioritiesForm.valid && !unique)  {
-        this.editProfileService.handleError('Please select three unique options for your matchmaking priorities and try again');
+        this.editProfileService.handleError('Please make unique selections for your matchmaking priorities and try again');
     }  else {
       localStorage.setItem('priorities', JSON.stringify(this.prioritiesArray)); // TODO remove this
 
