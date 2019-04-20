@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
   public allInterests = [];
   public allGenres = [];
   public allTimes = [];
+  public allPriorities = [];
   constructor(
     protected injector: Injector,
     protected dialog: MatDialog,
@@ -36,6 +37,7 @@ export class AppComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.goToLanding();
     this.getAllInterests().then(() => {
       this.allInterests = JSON.parse(localStorage.getItem('interests'));
     });
@@ -45,6 +47,10 @@ export class AppComponent implements OnInit {
 
     this.getAllTimes().then(() => {
       this.allTimes = JSON.parse(localStorage.getItem('times'));
+    });
+
+    this.getAllPriorities().then(() => {
+      this.allPriorities = JSON.parse(localStorage.getItem('priorities'));
     });
   }
 
@@ -124,6 +130,7 @@ export class AppComponent implements OnInit {
     this.router.navigateByUrl('/landing-page').then(() => {
       this.dismissLoading();
     });
+    console.log('current user:', this.currentUser);
    }
 
   goBack() {
@@ -169,7 +176,10 @@ export class AppComponent implements OnInit {
   }
 
   getAllGenres(): Promise<any> {
-    this.httpService.getAllGenres().subscribe(data => {
+    const genres = ['Shooters', 'RPGs', 'RTS']; // TODO delete
+    localStorage.setItem('genres', JSON.stringify(genres)); // TODO delete
+
+   /* this.httpService.getAllGenres().subscribe(data => {
       if (data) {
         const genres = [];
         for (let i = 0; i < data.length; ++i) {
@@ -178,19 +188,41 @@ export class AppComponent implements OnInit {
         localStorage.setItem('genres', JSON.stringify(genres));
       }
     });
+     */
     return Promise.resolve();
   }
 
   getAllTimes(): Promise<any> {
-    this.httpService.getAllTimes().subscribe(data => {
+
+    const times = ['1', '2', '3']; // TODO delete
+    localStorage.setItem('times', JSON.stringify(times)); // TODO delete
+   /* this.httpService.getAllTimes().subscribe(data => {
       if (data) {
         const times = [];
         for (let i = 0; i < data.length; ++i) {
           times.push(data[i]);
         }
-        localStorage.setItem('genres', JSON.stringify(times));
+        localStorage.setItem('times', JSON.stringify(times));
       }
     });
+    */
+    return Promise.resolve();
+  }
+
+  getAllPriorities(): Promise<any> { // TODO update this to call a method from http service
+   const priorities =  ['Location', 'Game Genres', 'Active Time', 'Interests'];
+   localStorage.setItem('priorities', JSON.stringify(priorities));
+
+  /*  this.httpService.getAllPriorities().subscribe(data => {
+      if (data) {
+        const priorities = [];
+        for (let i = 0; i < data.length; ++i) {
+          priorities.push(data[i]);
+        }
+        localStorage.setItem('times', JSON.stringify(priorities));
+      }
+    }); */
+
     return Promise.resolve();
   }
 }
