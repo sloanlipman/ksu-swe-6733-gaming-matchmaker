@@ -49,13 +49,13 @@ export class EditProfilePage extends AppComponent implements OnInit {
   ngOnInit() {
       this.getFormControls();
       this.getUser();
-      this.setCurrentPriorities();
+     // this.setCurrentPriorities();
       this.setFormControls();
     // TODO take out hardcoded values when real service is in place
       this.allTimes = ['Morning', 'Noon', 'Evening', 'Night Owl'];
   }
 
-  setCurrentPriorities() {
+  /*setCurrentPriorities() {
     for (let i = 0; i < this.currentUser.priorities.length; ++i) {
       if (this.currentUser.priorities[i] === 'interests') {
         this.currentUserPriorities.push(this.allPriorities[0]);
@@ -70,9 +70,13 @@ export class EditProfilePage extends AppComponent implements OnInit {
         console.log(this.currentUserPriorities);
       }
     }
-  }
+  } */
 
-
+addPriority() {
+  return this.formBuilder.group({
+    value: ''
+  });
+}
   getFormControls() {
     this.infoForm = this.formBuilder.group({
       firstName: new FormControl('', [Validators.required]),

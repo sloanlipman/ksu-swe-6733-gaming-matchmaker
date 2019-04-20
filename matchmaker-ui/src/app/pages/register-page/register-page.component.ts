@@ -44,6 +44,8 @@ export class RegisterPage extends AppComponent implements OnInit {
   get f() { return this.userRegisterForm.controls; }
 
   onSubmit(): void {
+    localStorage.setItem('priorities', JSON.stringify([])); // TODO remove this
+
     if (this.userRegisterForm.invalid) {
       this.registerService.handleError('Please fill in all required fields and try again');
     } else {
