@@ -70,7 +70,6 @@ export class HttpService {
   }
 
   public updateUser(user: any, accessToken?: any) {
-
     user.priorities = []; // TODO delete
     this.currUser = new User({
       id: user.id,
