@@ -115,10 +115,16 @@ export class HttpService {
     localStorage.clear();
   }
 
-  public handleError(err: any): Observable<any> {
-    let errorMessage = 'UNDEFINED ERROR MESSAGE';
-    if (err.error) {
-      if (err.error.message) { // Login error
+  public handleError(err?: any): Observable<any> {
+    let errorMessage = 'Oops! Something went wrong. Please try again!';
+    console.log(err);
+    console.log(err.error);
+    if (err.error && err.statusText !== 'Unknown Error') {
+      errorMessage = err.error;
+    } else if (!err.error) {
+      errorMessage = err;
+    }
+     /* if (err.error.message) { // Login error
         if (err.error.message.includes('UserRec not found') || err.error.message.includes('Password not match')) {
          errorMessage = 'Invalid credentials. Please try again.';
         } else if (err.error.message.includes('Location not found for Zip Code') ||
@@ -135,8 +141,8 @@ export class HttpService {
         errorMessage = 'Cannot connect to server. Please try again later.';
       }
     } else {
-      errorMessage = err;
-    }
+      errorMessage = err; */
+
     this.snackBar.open(errorMessage, '', { // Display error to the user
       duration: 3000,
       verticalPosition: 'top',

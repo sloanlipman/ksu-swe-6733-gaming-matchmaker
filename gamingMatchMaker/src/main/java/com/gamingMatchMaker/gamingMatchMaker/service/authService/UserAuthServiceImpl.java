@@ -42,7 +42,7 @@ public class UserAuthServiceImpl implements UserAuthService{
 
         // fail if record not found
         if(!userOpt.isPresent()){
-            throw new UserAuthenticationException("UserRec not found: username = " + email);
+            throw new UserAuthenticationException("Invalid Credentials. Please try again.");
         }
 
         UserRec userRec = (UserRec) userOpt.get();
@@ -50,7 +50,7 @@ public class UserAuthServiceImpl implements UserAuthService{
         // fail if the passwords don't match
 
         if(!passwordEncoder.matches(password, userRec.getPassword())){
-            throw new UserAuthenticationException("Password not match for userRec: username = " + email);
+            throw new UserAuthenticationException("Invalid Credentials. Please try again.");
         }
 
         // userRec is authenticated so create a auth record

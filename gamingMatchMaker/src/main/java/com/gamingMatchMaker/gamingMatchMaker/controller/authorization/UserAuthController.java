@@ -34,7 +34,7 @@ public class UserAuthController {
         catch (Exception e)
         {
             String message = e.getMessage();
-            message = "{error: {message: '"+message+"'}}";
+          //  message = "{error: {message: '"+message+"'}}";
             re = new ResponseEntity<String>(message, HttpStatus.BAD_REQUEST);
         }
         return re;
