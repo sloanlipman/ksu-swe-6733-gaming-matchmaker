@@ -5,8 +5,11 @@ import com.gamingMatchMaker.gamingMatchMaker.model.GameGenre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+
 import com.gamingMatchMaker.gamingMatchMaker.controller.SaveChangesAttempt;
 import com.gamingMatchMaker.gamingMatchMaker.dao.InterestRepository;
 import com.gamingMatchMaker.gamingMatchMaker.dao.LocationRepository;
@@ -93,10 +96,10 @@ public class ProfileServiceImpl implements ProfileService {
 				rec.get().AddInterest(hobby);
 			}
 		}
-//		 for(String g : scr.getUd().getGenres()){
-//		 	Optional<GameGenre> genres = genreDao.findByGenreName(g);
-//		 }
-//
+
+		List<GameGenre> genreList = this.genreDao.findByGenreNameIn(scr.getUd().getGenres());
+
+		rec.get().setGenres(new HashSet<>(genreList));
 		//save the record
 		phoneBook.save(rec.get()); //TODO do I need this?
 		

@@ -9,4 +9,5 @@ import com.gamingMatchMaker.gamingMatchMaker.model.Interest;
 public interface InterestRepository extends JpaRepository<Interest, UUID> {
 	Optional<Interest> findByActivity(String activity);
 	List<Interest> findByUsers_Id(int userId);
+	List<Interest> findByActivityIn(List<String> activityList);
 }

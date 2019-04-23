@@ -20,8 +20,8 @@ public class gameGenreController {
 
     @CrossOrigin
     @GetMapping("/gameGenres")
-    public ResponseEntity<List<String>> getGenreName() {
-        List<String> results = service.getGenreName();
+    public ResponseEntity<List<String>> getGenreNames() {
+        List<String> results = service.getGenreNames();
 
         HttpHeaders headers = new HttpHeaders();
 
