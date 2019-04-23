@@ -20,12 +20,21 @@ public class UserAuthController {
     public ResponseEntity<AuthUserResponse> authUser(@RequestBody AuthUserRequest request) {
         String email = request.getEmail();
         String password = request.getPassword();
-        UserAuthRecPair authResults = service.authByEmailPassword(email, password);
+        ResponseEntity re = null;
+        try {
+            UserAuthRecPair authResults = service.authByEmailPassword(email, password);
 
-        HttpHeaders headers = new HttpHeaders();
+            HttpHeaders headers = new HttpHeaders();
 
-        return new ResponseEntity<>(
-                new AuthUserResponse(authResults.getAuth(), new UserDetail(authResults.getUserRec())),
-                headers, HttpStatus.OK);
+            re = new ResponseEntity<>(
+                    new AuthUserResponse(authResults.getAuth(), new UserDetail(authResults.getUserRec())),
+                    headers, HttpStatus.OK);
+
+        }
+        catch (Exception e)
+        {
+            re = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+        return re;
     }
 }
