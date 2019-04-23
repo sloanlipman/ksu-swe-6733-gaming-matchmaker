@@ -1,6 +1,7 @@
 package com.gamingMatchMaker.gamingMatchMaker.controller;
 
 import com.gamingMatchMaker.gamingMatchMaker.controller.authorization.UserDetail;
+import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
 
 /**
  * This acts as an input/output buffer for saving the profile.  It takes the 
@@ -12,6 +13,7 @@ import com.gamingMatchMaker.gamingMatchMaker.controller.authorization.UserDetail
 public class SaveChangesAttempt {
 	private UserDetail ud;
 	private String msg;
+	private UserRec userRec;
 	
 	public SaveChangesAttempt(UserDetail details) {
 		ud = details;
@@ -36,6 +38,9 @@ public class SaveChangesAttempt {
 	 */
 	public UserDetail getUd() { return ud; }
 
+	public UserRec getUserRec() {
+		return userRec;
+	}
 }
 
 

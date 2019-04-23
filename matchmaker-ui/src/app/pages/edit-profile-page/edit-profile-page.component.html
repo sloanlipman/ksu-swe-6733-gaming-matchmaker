@@ -39,8 +39,8 @@
   <mat-grid-tile class="genres" colspan="2" rowspan="1.5">
     <mat-grid-tile-header>What kinds of games do you like?</mat-grid-tile-header>
     <mat-selection-list #genreSelectionList [compareWith]="compare" [formControl]="genreBoxes" id="genre-list">
-        <mat-list-option *ngFor="let genres of allGenres">
-          {{genres}}
+        <mat-list-option *ngFor="let genre of allGenres" [value]="genre">
+          {{genre}}
         </mat-list-option>
       </mat-selection-list>
   </mat-grid-tile> 
@@ -50,21 +50,27 @@
   <mat-grid-tile class="preferred-times" colspan="2" rowspan="1.5">
     <mat-grid-tile-header>When do you like to play games?</mat-grid-tile-header>
     <mat-selection-list #timeSelectionList [compareWith]="compare" [formControl]="timeBoxes">
-        <mat-list-option *ngFor="let times of allTimes">
-          {{times}}
+        <mat-list-option *ngFor="let time of allTimes" [value]="time">
+          {{time}}
         </mat-list-option>
       </mat-selection-list>
   </mat-grid-tile>
   <mat-grid-tile colspan="2" rowspan="0.5"></mat-grid-tile>
 
-<!--TODO change implementation to what's going to make the most sense. Maybe <mat-select>?-->
-  <mat-grid-tile class="priorities" colspan="4" rowspan="0.5">
+  <mat-grid-tile class="priorities" colspan="4" rowspan="1.5">
     <mat-grid-tile-header>What's important to you?</mat-grid-tile-header>
-    <mat-selection-list #prioritiesSelectionList [compareWith]="compare" [formControl]="prioritiesBoxes">
-        <mat-list-option *ngFor="let priorities of allPriorities">
-          {{priorities}}
-        </mat-list-option>
-      </mat-selection-list>
+    <form [formGroup]="prioritiesForm">
+      <div formArrayName="priorities" *ngFor="let priorities of prioritiesFormArray.controls; index as i">
+      <mat-form-field> 
+        <mat-label>#{{i+1}} Priority</mat-label>
+        <mat-select [formControlName]="i" [value] ="i.value">
+        <mat-option *ngFor="let priority of allPriorities" [value]="priority">
+          {{priority}}
+        </mat-option>
+      </mat-select>
+      </mat-form-field>
+    </div>
+    </form>
   </mat-grid-tile>
 </mat-grid-list>
 

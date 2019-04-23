@@ -62,6 +62,7 @@ export class RegisterPage extends AppComponent implements OnInit {
         } else if (data.detail.email === this.f.email.value) {
           this.loginService.login(data.detail.email, this.f.password.value).subscribe(result => {
             if (result) {
+              this.getUser();
               this.editProfile();
             } else {
                 this.closeDialog();
