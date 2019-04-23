@@ -2,6 +2,7 @@ package com.gamingMatchMaker.gamingMatchMaker.controller.authorization;
 
 import java.util.ArrayList;
 
+import com.gamingMatchMaker.gamingMatchMaker.model.GameGenre;
 import com.gamingMatchMaker.gamingMatchMaker.model.Interest;
 import com.gamingMatchMaker.gamingMatchMaker.model.Location;
 import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
@@ -72,9 +73,9 @@ public class UserDetail {
             this.interests.add(i.getActivity());
         }
         this.genres = new ArrayList<>();
-//        for(GameGenre genre: orig.getGenres()){
-//            this.genres.add(genre.getGenreName());
-//        }
+        for(GameGenre genre: orig.getGenres()){
+            this.genres.add(genre.getGenreName());
+        }
     }
 
     public UserDetail(UserDetail orig) {
