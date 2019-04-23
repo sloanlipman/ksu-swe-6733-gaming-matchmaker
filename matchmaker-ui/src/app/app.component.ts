@@ -38,20 +38,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.goToLanding();
-    this.getAllInterests().then(() => {
-      this.allInterests = JSON.parse(localStorage.getItem('interests'));
-    });
-    this.getAllGenres().then(() => {
-      this.allGenres = JSON.parse(localStorage.getItem('genres'));
-    });
-
-    this.getAllTimes().then(() => {
-      this.allTimes = JSON.parse(localStorage.getItem('times'));
-    });
-
-    this.getAllPriorities().then(() => {
-      this.allPriorities = JSON.parse(localStorage.getItem('priorities'));
-    });
   }
 
   setUrl() {
@@ -99,6 +85,7 @@ export class AppComponent implements OnInit {
       this.dialog.closeAll();
       this.isLoading = false;
     }
+    return Promise.resolve();
   }
 
   protected closeDialog() {
@@ -143,9 +130,22 @@ export class AppComponent implements OnInit {
     });
   }
 
-  editProfile() {
+  async editProfile() {
+    if (!this.isLoading) {
+      this.showLoading();
+    }
+    const interestPromise = await Promise.resolve(this.getAllInterests());
+    const timePromise = await Promise.resolve(this.getAllTimes());
+    const priorityPromise = await Promise.resolve(this.getAllPriorities());
+    const genrePromise = await Promise.resolve(this.getAllGenres());
+    Promise.all([interestPromise, timePromise, priorityPromise, genrePromise]).then(() => {
+      this.allInterests = JSON.parse(localStorage.getItem('interests'));
+      this.allGenres = JSON.parse(localStorage.getItem('genres'));
+      this.allTimes = JSON.parse(localStorage.getItem('times'));
+      this.allPriorities = JSON.parse(localStorage.getItem('priorities'));
       this.router.navigateByUrl('/edit-profile').then(() => {
         this.dismissLoading();
+      });
     });
   }
 
@@ -161,68 +161,77 @@ export class AppComponent implements OnInit {
     });
   }
 
-   getAllInterests(): Promise<any> {
-    console.log('getting interests');
-        this.httpService.getAllInterests().subscribe(data => {
-          if (data) {
-            const interests = [];
-            for (let i = 0; i < data.length; ++i) {
-              interests.push(data[i]);
-            }
-            localStorage.setItem('interests', JSON.stringify(interests));
+  async getAllInterests() {
+    return new Promise((resolve) => {
+      this.httpService.getAllInterests().subscribe(data => {
+        if (data) {
+          const interests = [];
+          for (let i = 0; i < data.length; ++i) {
+            interests.push(data[i]);
           }
-        });
-    return Promise.resolve();
+          localStorage.setItem('interests', JSON.stringify(interests));
+          }
+        resolve();
+      });
+    });
   }
 
-  getAllGenres(): Promise<any> {
+  getAllGenres() {
     const genres = ['Shooters', 'RPGs', 'RTS']; // TODO delete
     localStorage.setItem('genres', JSON.stringify(genres)); // TODO delete
 
-   /* this.httpService.getAllGenres().subscribe(data => {
-      if (data) {
-        const genres = [];
-        for (let i = 0; i < data.length; ++i) {
-          genres.push(data[i]);
-        }
-        localStorage.setItem('genres', JSON.stringify(genres));
-      }
-    });
-     */
-    return Promise.resolve();
+  /*
+    return new Promise((resolve) => {
+      this.httpService.getAllGenres().subscribe(data => {
+        if (data) {
+          const genres = [];
+          for (let i = 0; i < data.length; ++i) {
+            genres.push(data[i]);
+          }
+          localStorage.setItem('genres', JSON.stringify(genres));
+          }
+        resolve();
+      });
+    }); */
   }
 
-  getAllTimes(): Promise<any> {
+  getAllTimes() {
 
     const times = ['1', '2', '3']; // TODO delete
     localStorage.setItem('times', JSON.stringify(times)); // TODO delete
-   /* this.httpService.getAllTimes().subscribe(data => {
+   /*
+   return new Promise((resolve) => {
+    this.httpService.getAllTimes().subscribe(data => {
       if (data) {
         const times = [];
         for (let i = 0; i < data.length; ++i) {
           times.push(data[i]);
         }
         localStorage.setItem('times', JSON.stringify(times));
-      }
+        }
+      resolve();
+      });
     });
     */
-    return Promise.resolve();
   }
 
-  getAllPriorities(): Promise<any> { // TODO update this to call a method from http service
-   const priorities =  ['Location', 'Game Genres', 'Active Time', 'Interests'];
-   localStorage.setItem('priorities', JSON.stringify(priorities));
+  getAllPriorities(){
+    const priorities =  ['Location', 'Game Genres', 'Active Time', 'Interests'];
+    localStorage.setItem('priorities', JSON.stringify(priorities));
 
-  /*  this.httpService.getAllPriorities().subscribe(data => {
-      if (data) {
-        const priorities = [];
-        for (let i = 0; i < data.length; ++i) {
-          priorities.push(data[i]);
+
+  /*  return new Promise((resolve) => {
+      this.httpService.getAllPriorities().subscribe(data => {
+        if (data) {
+          const priorities = [];
+          for (let i = 0; i < data.length; ++i) {
+            priorities.push(data[i]);
+          }
+          localStorage.setItem('times', JSON.stringify(priorities));
         }
-        localStorage.setItem('times', JSON.stringify(priorities));
-      }
+      resolve();
+      });
     }); */
-
-    return Promise.resolve();
   }
+
 }
