@@ -180,7 +180,7 @@ export class AppComponent implements OnInit {
   //  const genres = ['Shooters', 'RPGs', 'RTS']; // TODO delete
   //  localStorage.setItem('genres', JSON.stringify(genres)); // TODO delete
 
-  
+
     return new Promise((resolve) => {
       this.httpService.getAllGenres().subscribe(data => {
         if (data) {
@@ -192,7 +192,7 @@ export class AppComponent implements OnInit {
           }
         resolve();
       });
-    }); 
+    });
   }
 
   getAllTimes() {
