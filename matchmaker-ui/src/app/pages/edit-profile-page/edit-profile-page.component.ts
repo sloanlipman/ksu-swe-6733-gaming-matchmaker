@@ -141,8 +141,9 @@ export class EditProfilePage extends AppComponent implements OnInit {
           times: this.timeBoxes.value,
           priorities: this.prioritiesArray
         });
+        console.log(this.genreBoxes.value);
           this.showLoading();
-          this.editProfileService.saveProfile(this.currentUser.id, profileChanges).subscribe((data) => {
+          this.editProfileService.saveProfile(profileChanges).subscribe((data) => {
           if (data) {
             this.currentUser = this.editProfileService.updateUser(data);
             console.log(this.prioritiesArray);

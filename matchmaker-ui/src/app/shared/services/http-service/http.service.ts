@@ -47,6 +47,13 @@ export class HttpService {
     });
   }
 
+  protected put(url: string, body: any, options?: any) {
+    url = this.apiUrl + url;
+    return defer(() => {
+      return this.http.put(url, body, options);
+    });
+  }
+
   protected get(url: string, options?: any) {
     url = this.apiUrl + url;
     return defer(() => {

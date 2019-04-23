@@ -39,8 +39,8 @@
   <mat-grid-tile class="genres" colspan="2" rowspan="1.5">
     <mat-grid-tile-header>What kinds of games do you like?</mat-grid-tile-header>
     <mat-selection-list #genreSelectionList [compareWith]="compare" [formControl]="genreBoxes" id="genre-list">
-        <mat-list-option *ngFor="let genres of allGenres">
-          {{genres}}
+        <mat-list-option *ngFor="let genre of allGenres" [value]="genre">
+          {{genre}}
         </mat-list-option>
       </mat-selection-list>
   </mat-grid-tile> 
@@ -50,8 +50,8 @@
   <mat-grid-tile class="preferred-times" colspan="2" rowspan="1.5">
     <mat-grid-tile-header>When do you like to play games?</mat-grid-tile-header>
     <mat-selection-list #timeSelectionList [compareWith]="compare" [formControl]="timeBoxes">
-        <mat-list-option *ngFor="let times of allTimes">
-          {{times}}
+        <mat-list-option *ngFor="let time of allTimes" [value]="time">
+          {{time}}
         </mat-list-option>
       </mat-selection-list>
   </mat-grid-tile>
