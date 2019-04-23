@@ -57,14 +57,20 @@
   </mat-grid-tile>
   <mat-grid-tile colspan="2" rowspan="0.5"></mat-grid-tile>
 
-<!--TODO change implementation to what's going to make the most sense. Maybe <mat-select>?-->
-  <mat-grid-tile class="priorities" colspan="4" rowspan="0.5">
+  <mat-grid-tile class="priorities" colspan="4" rowspan="1.5">
     <mat-grid-tile-header>What's important to you?</mat-grid-tile-header>
-    <mat-selection-list #prioritiesSelectionList [compareWith]="compare" [formControl]="prioritiesBoxes">
-        <mat-list-option *ngFor="let priorities of allPriorities">
-          {{priorities}}
-        </mat-list-option>
-      </mat-selection-list>
+    <form [formGroup]="prioritiesForm">
+      <div formArrayName="priorities" *ngFor="let priorities of prioritiesFormArray.controls; index as i">
+      <mat-form-field> 
+        <mat-label>#{{i+1}} Priority</mat-label>
+        <mat-select [formControlName]="i" [value] ="i.value">
+        <mat-option *ngFor="let priority of allPriorities" [value]="priority">
+          {{priority}}
+        </mat-option>
+      </mat-select>
+      </mat-form-field>
+    </div>
+    </form>
   </mat-grid-tile>
 </mat-grid-list>
 

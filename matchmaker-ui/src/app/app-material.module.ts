@@ -10,6 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule} from '@angular/material/toolbar';
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
     declarations: [],
@@ -25,6 +27,7 @@ import { MatToolbarModule} from '@angular/material/toolbar';
         MatListModule,
         MatNativeDateModule,
         MatProgressBarModule,
+        MatSelectModule,
         MatSnackBarModule,
         MatToolbarModule,
     ],
@@ -40,6 +43,7 @@ import { MatToolbarModule} from '@angular/material/toolbar';
         MatListModule,
         MatNativeDateModule,
         MatProgressBarModule,
+        MatSelectModule,
         MatSnackBarModule,
         MatToolbarModule,
     ],

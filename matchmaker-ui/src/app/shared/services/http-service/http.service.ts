@@ -63,6 +63,9 @@ export class HttpService {
   }
 
   public updateUser(user: any, accessToken?: any) {
+    user.genres =  []; // TODO delete
+    user.times = []; // TODO delete
+    user.priorities = []; // TODO delete
     this.currUser = new User({
       id: user.id,
       email: user.email,
@@ -76,7 +79,6 @@ export class HttpService {
       genres: user.genres,
       times: user.times,
       priorities: user.priorities
-      // TODO add genres and time here
     });
     localStorage.setItem('user', JSON.stringify(this.currUser));
     if (accessToken) {
@@ -108,6 +110,16 @@ export class HttpService {
       }
     })).pipe(catchError(err => this.handleError(err)));
   }
+
+  public getAllPriorities(): Observable<any>{
+    return this.get('/api/priority/getall').pipe(map((resp: any) => {
+      if (resp){
+        return resp;
+      }
+  })).pipe(catchError(err => this.handleError(err)));
+}
+
+
 
   public logout() {
     this.currUser = null;
