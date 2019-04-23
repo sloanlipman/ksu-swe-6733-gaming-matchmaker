@@ -63,15 +63,17 @@
 <<<<<<< HEAD
 =======
     <bookmark url="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreService.java" line="7" />
-    <bookmark url="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/ProfileService/ProfileServiceImpl.java" line="56" />
+    <bookmark url="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/ProfileService/ProfileServiceImpl.java" line="59" />
     <bookmark url="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/ProfileService/ProfileServiceImpl.java" line="0" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="472dc27a-afb8-4947-a62f-294e1494f087" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/vaidi.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/userController/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/userService/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/userService/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/SaveChangesAttempt.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/SaveChangesAttempt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/authorization/UserDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/authorization/UserDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/GetGameGenreNameResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/GetGameGenreNameResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/gameGenreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/gameGenreController.java" afterDir="false" />
 <<<<<<< HEAD
 >>>>>>> finshed getGenre controller implmentation
@@ -85,9 +87,9 @@
 =======
 >>>>>>> nothing major just trying to save changes before rebase
       <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/GameGenreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/GameGenreRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/UserRec.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/UserRec.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/InterestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/InterestRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/ProfileService/ProfileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/ProfileService/ProfileServiceImpl.java" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/controller/ProfileControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/controller/ProfileControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/test/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/test/resources/application.properties" afterDir="false" />
@@ -99,6 +101,10 @@
 >>>>>>> finshed getGenre controller implmentation
 =======
 >>>>>>> nothing major just trying to save changes before rebase
+=======
+      <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreServiceImpl.java" afterDir="false" />
+>>>>>>> updated genre backend
     </list>
     <ignored path="$PROJECT_DIR$/../gamingMatchMaker/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -119,6 +125,7 @@
     <session id="-1865967064">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -175,16 +182,27 @@
 =======
           <entry key="project.closed" value="9" />
           <entry key="project.open.time.1" value="4" />
+=======
+          <entry key="project.closed" value="12" />
+          <entry key="project.open.time.1" value="5" />
+          <entry key="project.open.time.12" value="1" />
+>>>>>>> updated genre backend
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.6" value="2" />
+<<<<<<< HEAD
           <entry key="project.opened" value="10" />
 >>>>>>> nothing major just trying to save changes before rebase
+=======
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="13" />
+>>>>>>> updated genre backend
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -201,6 +219,9 @@
 >>>>>>> finshed getGenre controller implmentation
 =======
           <entry key="JAVA" value="151" />
+=======
+          <entry key="JAVA" value="183" />
+>>>>>>> updated genre backend
           <entry key="Properties" value="2" />
 >>>>>>> nothing major just trying to save changes before rebase
 =======
@@ -224,6 +245,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           <entry key="JAVA" value="4212" />
           <entry key="PLAIN_TEXT" value="8" />
           <entry key="Properties" value="10" />
@@ -240,6 +262,10 @@
 =======
           <entry key="JAVA" value="2934" />
           <entry key="PLAIN_TEXT" value="7" />
+=======
+          <entry key="JAVA" value="4212" />
+          <entry key="PLAIN_TEXT" value="8" />
+>>>>>>> updated genre backend
           <entry key="Properties" value="10" />
 >>>>>>> nothing major just trying to save changes before rebase
 =======
@@ -272,6 +298,7 @@
 =======
 >>>>>>> nothing major just trying to save changes before rebase
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/ProfileService/ProfileServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -309,11 +336,19 @@
 >>>>>>> nothing major just trying to save changes before rebase
 =======
 >>>>>>> nothing major just trying to save changes before rebase
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/Interest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="14" column="27" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="27" />
+>>>>>>> updated genre backend
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/userService/UserServiceImpl.java">
@@ -335,16 +370,20 @@
 =======
 >>>>>>> nothing major just trying to save changes before rebase
         <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/ProfileController.java">
+=======
+        <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/InterestRepository.java">
+>>>>>>> updated genre backend
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="37" selection-start-line="37" selection-end-line="37" />
+            <state relative-caret-position="119">
+              <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreService.java">
+        <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/userService/UserServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="85">
               <caret line="7" column="29" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="29" />
 <<<<<<< HEAD
@@ -353,6 +392,10 @@
 >>>>>>> adding game genre functionaility
 =======
 >>>>>>> nothing major just trying to save changes before rebase
+=======
+            <state relative-caret-position="99">
+              <caret line="58" column="9" lean-forward="true" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
+>>>>>>> updated genre backend
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -360,6 +403,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -392,21 +436,31 @@
 >>>>>>> nothing major just trying to save changes before rebase
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/GameGenre.java">
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/userController/UserController.java">
+>>>>>>> updated genre backend
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+            <state relative-caret-position="561">
+              <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="34" />
               <folding>
                 <element signature="imports" expanded="true" />
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> nothing major just trying to save changes before rebase
 =======
 >>>>>>> nothing major just trying to save changes before rebase
+=======
+                <element signature="e#761#762#0" expanded="true" />
+                <element signature="e#807#808#0" expanded="true" />
+>>>>>>> updated genre backend
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -428,11 +482,18 @@
 >>>>>>> nothing major just trying to save changes before rebase
 =======
 >>>>>>> nothing major just trying to save changes before rebase
+=======
+        <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/ProfileController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="371">
+              <caret line="32" column="60" lean-forward="true" selection-start-line="32" selection-start-column="60" selection-end-line="32" selection-end-column="60" />
+>>>>>>> updated genre backend
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/authorization/UserAuthController.java">
@@ -456,11 +517,18 @@
 >>>>>>> adding game genre functionaility
 =======
 >>>>>>> nothing major just trying to save changes before rebase
+=======
+        <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/authorization/UserAuthController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+>>>>>>> updated genre backend
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -491,9 +559,12 @@
 =======
 >>>>>>> nothing major just trying to save changes before rebase
         <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/gameGenreController.java">
+=======
+        <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/userService/UserService.java">
+>>>>>>> updated genre backend
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state relative-caret-position="136">
+              <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
 <<<<<<< HEAD
@@ -517,8 +588,9 @@
 =======
 >>>>>>> nothing major just trying to save changes before rebase
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/GetGameGenreNameResponse.java">
+        <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/authorization/UserDetail.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="68">
               <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
               <folding>
@@ -533,6 +605,10 @@
 >>>>>>> adding game genre functionaility
 =======
 >>>>>>> nothing major just trying to save changes before rebase
+=======
+            <state relative-caret-position="405">
+              <caret line="172" column="5" selection-start-line="172" selection-start-column="5" selection-end-line="172" selection-end-column="5" />
+>>>>>>> updated genre backend
             </state>
           </provider>
         </entry>
@@ -561,6 +637,7 @@
 =======
 =======
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
 >>>>>>> nothing major just trying to save changes before rebase
         <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/ProfileService/ProfileService.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -575,6 +652,15 @@
 >>>>>>> adding game genre functionaility
 =======
 >>>>>>> nothing major just trying to save changes before rebase
+=======
+        <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/GameGenre.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+>>>>>>> updated genre backend
             </state>
           </provider>
         </entry>
@@ -786,24 +872,36 @@
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenre.java" />
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre.fxml" />
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/GameGenre.java" />
-        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/InterestRepository.java" />
-        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreService.java" />
-        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreServiceImpl.java" />
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/controller/ProfileControllerTest.java" />
-        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/GameGenreRepository.java" />
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/test/resources/application.properties" />
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/UserRepository.java" />
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/UserRec.java" />
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/GetGameGenreNameResponse.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/gameGenreController.java" />
 <<<<<<< HEAD
 >>>>>>> adding game genre functionaility
 =======
+=======
+>>>>>>> updated genre backend
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/SaveChangesAttempt.java" />
-        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/authorization/UserDetail.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreServiceImpl.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreService.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/gameGenreController.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/userService/userService.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/userService/UserService.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/GameGenreRepository.java" />
         <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/ProfileService/ProfileServiceImpl.java" />
+<<<<<<< HEAD
 >>>>>>> nothing major just trying to save changes before rebase
+=======
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/InterestRepository.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/userService/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/authorization/UserDetail.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/ProfileController.java" />
+        <option value="$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/userController/UserController.java" />
+>>>>>>> updated genre backend
       </list>
     </option>
   </component>
@@ -848,6 +946,7 @@
 =======
   <component name="ProjectFrameBounds" extendedState="7">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="x" value="-6" />
     <option name="width" value="1812" />
     <option name="height" value="2106" />
@@ -857,6 +956,11 @@
     <option name="width" value="1945" />
     <option name="height" value="2104" />
 >>>>>>> nothing major just trying to save changes before rebase
+=======
+    <option name="x" value="-11" />
+    <option name="width" value="1943" />
+    <option name="height" value="2102" />
+>>>>>>> updated genre backend
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -866,6 +970,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -881,6 +986,10 @@
 >>>>>>> adding game genre functionaility
 =======
 >>>>>>> finshed getGenre controller implmentation
+=======
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+>>>>>>> updated genre backend
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -914,6 +1023,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> updated genre backend
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -925,6 +1037,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
 =======
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
@@ -959,6 +1072,8 @@
 =======
               <item name="controller" type="462c0819:PsiDirectoryNode" />
 >>>>>>> adding game genre functionaility
+=======
+>>>>>>> updated genre backend
             </path>
             <path>
               <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
@@ -969,6 +1084,7 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="authorization" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -998,6 +1114,8 @@
 =======
 >>>>>>> finshed getGenre controller implmentation
               <item name="dao" type="462c0819:PsiDirectoryNode" />
+=======
+>>>>>>> updated genre backend
             </path>
             <path>
               <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
@@ -1008,11 +1126,14 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> finshed getGenre controller implmentation
 =======
 >>>>>>> adding game genre functionaility
 =======
 >>>>>>> finshed getGenre controller implmentation
+=======
+>>>>>>> updated genre backend
               <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -1036,10 +1157,14 @@
               <item name="service" type="462c0819:PsiDirectoryNode" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
               <item name="userService" type="462c0819:PsiDirectoryNode" />
 =======
               <item name="gameGenre" type="462c0819:PsiDirectoryNode" />
 >>>>>>> adding game genre functionaility
+=======
+              <item name="userService" type="462c0819:PsiDirectoryNode" />
+>>>>>>> updated genre backend
             </path>
             <path>
               <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
@@ -1047,6 +1172,9 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> updated genre backend
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
 =======
@@ -1129,6 +1257,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
 >>>>>>> adding game genre functionaility
             </path>
+<<<<<<< HEAD
             <path>
               <item name="gameMatchMaking" type="b2602c69:ProjectViewProjectNode" />
               <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
@@ -1194,12 +1323,15 @@
               <item name="gamingMatchMaker" type="462c0819:PsiDirectoryNode" />
               <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
+=======
+>>>>>>> updated genre backend
           </expand>
           <select />
         </subPane>
       </pane>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       <pane id="Scope" />
 <<<<<<< HEAD
@@ -1214,6 +1346,8 @@
 =======
       <pane id="PackagesPane" />
 >>>>>>> finshed getGenre controller implmentation
+=======
+>>>>>>> updated genre backend
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1223,6 +1357,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1248,6 +1383,9 @@
 =======
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555633932977" />
 >>>>>>> nothing major just trying to save changes before rebase
+=======
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555984223560" />
+>>>>>>> updated genre backend
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -1364,8 +1502,15 @@
       <workItem from="1555539839468" duration="17685000" />
       <workItem from="1555567249408" duration="12231000" />
       <workItem from="1555634097262" duration="28000" />
+<<<<<<< HEAD
       <workItem from="1555634321068" duration="250000" />
 >>>>>>> nothing major just trying to save changes before rebase
+=======
+      <workItem from="1555634321068" duration="654000" />
+      <workItem from="1555634987914" duration="663000" />
+      <workItem from="1555636976233" duration="90000" />
+      <workItem from="1555637232293" duration="9131000" />
+>>>>>>> updated genre backend
     </task>
     <servers />
   </component>
@@ -1384,6 +1529,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1427,10 +1573,15 @@
 =======
     <option name="totallyTimeSpent" value="44643000" />
 >>>>>>> nothing major just trying to save changes before rebase
+=======
+    <option name="totallyTimeSpent" value="54931000" />
+>>>>>>> updated genre backend
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="2208" height="1208" extended-state="6" />
+    <frame x="-7" y="-7" width="2208" height="1208" extended-state="7" />
+    <editor active="true" />
     <layout>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30740038" />
@@ -1441,6 +1592,9 @@
 =======
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15348837" />
 >>>>>>> nothing major just trying to save changes before rebase
+=======
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15627907" />
+>>>>>>> updated genre backend
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1460,6 +1614,7 @@
 =======
       <window_info anchor="bottom" id="Find" order="1" weight="0.32992566" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> finshed getGenre controller implmentation
       <window_info anchor="bottom" id="Debug" order="2" weight="0.39962825" />
 >>>>>>> adding game genre functionaility
@@ -1477,6 +1632,9 @@
 =======
       <window_info active="true" anchor="bottom" id="Debug" order="2" visible="true" weight="0.3986989" />
 >>>>>>> nothing major just trying to save changes before rebase
+=======
+      <window_info anchor="bottom" id="Debug" order="2" weight="0.3986989" />
+>>>>>>> updated genre backend
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="5" />
@@ -1521,11 +1679,15 @@
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Run" order="13" visible="true" weight="0.32992566" />
 >>>>>>> finshed getGenre controller implmentation
 =======
       <window_info anchor="bottom" id="Run" order="13" weight="0.63475835" />
 >>>>>>> nothing major just trying to save changes before rebase
+=======
+      <window_info active="true" anchor="bottom" id="Run" order="13" visible="true" weight="0.34200743" />
+>>>>>>> updated genre backend
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1655,6 +1817,7 @@
 =======
 >>>>>>> nothing major just trying to save changes before rebase
   <component name="XDebuggerManager">
+<<<<<<< HEAD
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
@@ -1669,6 +1832,8 @@
 >>>>>>> nothing major just trying to save changes before rebase
 =======
 >>>>>>> nothing major just trying to save changes before rebase
+=======
+>>>>>>> updated genre backend
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="rec.value.gameGenres" language="JAVA" />
@@ -1760,6 +1925,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/Location.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1769,6 +1935,8 @@
       </provider>
     </entry>
 >>>>>>> nothing major just trying to save changes before rebase
+=======
+>>>>>>> updated genre backend
     <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/LocationRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1795,6 +1963,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre.fxml" />
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/controller/ProfileControllerTest.java">
 =======
@@ -1823,6 +1992,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> updated genre backend
     <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/test/java/com/gamingMatchMaker/gamingMatchMaker/controller/ProfileControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -1841,13 +2012,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="25" column="8" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/InterestRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1908,6 +2072,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/InterestService/InterestServiceImpl.java">
@@ -1985,6 +2150,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
           <caret line="46" selection-start-line="46" selection-end-line="46" />
+=======
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="579" column="19" selection-start-line="579" selection-start-column="19" selection-end-line="579" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/UserRec.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1995,28 +2172,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-=======
-=======
->>>>>>> finshed getGenre controller implmentation
-=======
->>>>>>> adding game genre functionaility
-    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/UserRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-<<<<<<< HEAD
->>>>>>> adding game genre functionaility
-=======
->>>>>>> adding game genre functionaility
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/GetGameGenreNameResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -2025,26 +2186,10 @@
             <element signature="imports" expanded="true" />
             <element signature="e#278#279#0" expanded="true" />
             <element signature="e#310#311#0" expanded="true" />
-=======
-=======
->>>>>>> adding game genre functionaility
-    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/UserRec.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="48" column="22" lean-forward="true" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5772#5773#0" expanded="true" />
-            <element signature="e#5805#5806#0" expanded="true" />
-            <element signature="e#5865#5866#0" expanded="true" />
-            <element signature="e#5909#5910#0" expanded="true" />
-<<<<<<< HEAD
->>>>>>> adding game genre functionaility
           </folding>
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/ProfileService/ProfileService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -2068,12 +2213,203 @@
           <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/registration/RegistrationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="38" column="51" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="28" column="1" lean-forward="true" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/registrationService/RegistrationServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="649">
+          <caret line="71" column="28" selection-start-line="71" selection-start-column="28" selection-end-line="71" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/authService/UserAuthService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/ProfileService/ProfileServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="746">
+          <caret line="101" column="42" selection-start-line="101" selection-start-column="42" selection-end-line="101" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/SaveChangesAttempt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/InterestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="22" column="25" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/Location.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/GameGenreRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+>>>>>>> updated genre backend
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/UserRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+=======
+=======
+>>>>>>> finshed getGenre controller implmentation
+=======
+>>>>>>> adding game genre functionaility
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/UserRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+<<<<<<< HEAD
+>>>>>>> adding game genre functionaility
+=======
+>>>>>>> adding game genre functionaility
+=======
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/GameGenre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+>>>>>>> updated genre backend
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/GetGameGenreNameResponse.java">
+=======
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/Interest.java">
+>>>>>>> updated genre backend
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="14" column="27" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/dao/InterestRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/userService/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+<<<<<<< HEAD
+            <element signature="e#278#279#0" expanded="true" />
+            <element signature="e#310#311#0" expanded="true" />
+=======
+=======
+>>>>>>> adding game genre functionaility
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/model/UserRec.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="48" column="22" lean-forward="true" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5772#5773#0" expanded="true" />
+            <element signature="e#5805#5806#0" expanded="true" />
+            <element signature="e#5865#5866#0" expanded="true" />
+            <element signature="e#5909#5910#0" expanded="true" />
+<<<<<<< HEAD
+>>>>>>> adding game genre functionaility
+=======
+>>>>>>> updated genre backend
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/ProfileService/ProfileService.java">
+=======
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/authorization/UserDetail.java">
+>>>>>>> updated genre backend
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="172" column="5" selection-start-line="172" selection-start-column="5" selection-end-line="172" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/gameGenre/gameGenreController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/gameGenre/GameGenreService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+=======
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/service/userService/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="58" column="9" lean-forward="true" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
+>>>>>>> updated genre backend
+          <folding>
+            <element signature="imports" expanded="true" />
 =======
 >>>>>>> adding game genre functionaility
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/registration/RegistrationController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -2867,6 +3203,30 @@
           <folding>
             <element signature="imports" expanded="true" />
 >>>>>>> adding game genre functionaility
+=======
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/ProfileController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="32" column="60" lean-forward="true" selection-start-line="32" selection-start-column="60" selection-end-line="32" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/authorization/UserAuthController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/controller/userController/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#761#762#0" expanded="true" />
+            <element signature="e#807#808#0" expanded="true" />
+>>>>>>> updated genre backend
           </folding>
         </state>
       </provider>

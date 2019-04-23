@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface GameGenreRepository  extends JpaRepository<GameGenre, Integer> {
     Optional<GameGenre> findByGenreName(String genreName);
-
+    List<GameGenre> findByGenreNameIn(List<String> genreNames);
 }

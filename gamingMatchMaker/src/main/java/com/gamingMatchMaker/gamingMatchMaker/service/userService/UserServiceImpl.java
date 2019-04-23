@@ -13,7 +13,6 @@ import com.gamingMatchMaker.gamingMatchMaker.model.GameGenre;
 import com.gamingMatchMaker.gamingMatchMaker.model.Interest;
 import com.gamingMatchMaker.gamingMatchMaker.model.Location;
 import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,20 +28,15 @@ public class UserServiceImpl implements UserService{
     private final InterestRepository interestDao;
     private final GameGenreRepository genreDao;
 
-    private final PlayTimeRepository timeDao;
-
     @Autowired
     public UserServiceImpl(UserRepository userDao, LocationRepository locDao,
-                           InterestRepository interestDao, GameGenreRepository genreDao,
-                           PlayTimeRepository timeDao
-
+                           InterestRepository interestDao, GameGenreRepository genreDao
     ) {
         this.userDao = userDao;
         this.locDao = locDao;
         this.interestDao = interestDao;
         this.genreDao = genreDao;
-        this.timeDao = timeDao;
-}
+    }
 
     @Override
     public Optional<UserRec> update(UserDetail userDetail) {
@@ -88,11 +82,6 @@ public class UserServiceImpl implements UserService{
         // first load the list of genres from the genre names
         List<GameGenre> newGenreList = this.genreDao.findByGenreNameIn(userDetail.getGenres());
         userRec.setGenres(new HashSet<>(newGenreList));
-
-
-        // Step 8 update the list of playTiming for the playtime names
-        List<PlayTime> newTimeList =  this.timeDao.findByTimingNameIn(userDetail.getTimes());
-        userRec.setTimings(new HashSet<>(newTimeList));
 
         // Finally save and return the updated record
         return Optional.of(userDao.save(userRec));

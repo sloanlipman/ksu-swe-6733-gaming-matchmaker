@@ -16,7 +16,7 @@ public class GameGenreServiceImpl implements GameGenreService {
     }
 
     @Override
-    public List<String> getGenreName() {
+    public List<String> getGenreNames() {
         List<String> names = new ArrayList<>();
 
         List<GameGenre> result = genreDao.findAll();

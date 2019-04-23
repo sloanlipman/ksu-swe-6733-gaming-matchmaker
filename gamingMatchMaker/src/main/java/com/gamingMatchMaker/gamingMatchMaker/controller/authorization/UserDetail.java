@@ -2,7 +2,6 @@ package com.gamingMatchMaker.gamingMatchMaker.controller.authorization;
 
 import java.util.ArrayList;
 
-import com.gamingMatchMaker.gamingMatchMaker.model.GameGenre;
 import com.gamingMatchMaker.gamingMatchMaker.model.Interest;
 import com.gamingMatchMaker.gamingMatchMaker.model.Location;
 import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
@@ -18,7 +17,7 @@ public class UserDetail {
 
     // list of interests
     // @JsonFormat(shape=JsonFormat.Shape.ARRAY)
-    private ArrayList<String> hobbies;
+    private ArrayList<String> interests;
     private ArrayList<String> genres;
 
     // TODO shouldn't the location have just the zip code - why are we sending
@@ -26,7 +25,7 @@ public class UserDetail {
     private Location location;
 
     public UserDetail() {
-        this.hobbies = new ArrayList<String>();
+        this.interests = new ArrayList<String>();
         this.genres = new ArrayList<>();
     }
 
@@ -45,7 +44,7 @@ public class UserDetail {
         this.is_active = is_active;
         this.user_type = user_type;
         this.location = location;
-        hobbies = new ArrayList<String>();
+        interests = new ArrayList<>();
         genres = new ArrayList<>();
     }
 
@@ -56,7 +55,7 @@ public class UserDetail {
      * ArrayList<String> interests ) { this.id = id; this.email = email;
      * this.first_name = first_name; this.last_name = last_name; this.age = age;
      * this.is_active = is_active; this.user_type = user_type; this.location =
-     * location; hobbies = new ArrayList<String>(); hobbies.addAll(interests); }
+     * location; interests = new ArrayList<String>(); interests.addAll(interests); }
      */
 
     public UserDetail(UserRec orig) {
@@ -68,14 +67,14 @@ public class UserDetail {
         this.is_active = orig.isIs_active();
         this.user_type = orig.getUser_type();
         this.location = orig.getLocation();
-        this.hobbies = new ArrayList<String>();
+        this.interests = new ArrayList<String>();
         for (Interest i : orig.getInterests()) {
-            this.hobbies.add(i.getActivity());
+            this.interests.add(i.getActivity());
         }
         this.genres = new ArrayList<>();
-        for(GameGenre genre: orig.getGenres()){
-            this.genres.add(genre.getGenreName());
-        }
+//        for(GameGenre genre: orig.getGenres()){
+//            this.genres.add(genre.getGenreName());
+//        }
     }
 
     public UserDetail(UserDetail orig) {
@@ -87,9 +86,9 @@ public class UserDetail {
         this.is_active = orig.isIs_active();
         this.user_type = orig.getUser_type();
         this.location = orig.getLocation();
-        hobbies = new ArrayList<String>();
+        interests = new ArrayList<>();
         for (String s : orig.getInterests()) {
-            this.hobbies.add(s);
+            this.interests.add(s);
         }
         genres = new ArrayList<>();
         for(String genre: orig.getGenres()){
@@ -164,21 +163,19 @@ public class UserDetail {
     /**
      */
     public void setInterests(ArrayList<String> interests) {
-        this.hobbies.clear();
-        hobbies.addAll(interests);
+        this.interests.clear();
+        this.interests.addAll(interests);
     }
 
     public void setGenres(ArrayList<String> genreName){
         this.genres.clear();
         genres.addAll(genreName);
     }
-
-
     /**
-     * @return the hobbies
+     * @return the interests
      */
     public ArrayList<String> getInterests() {
-        return hobbies;
+        return interests;
     }
 
     public ArrayList<String> getGenres() {
