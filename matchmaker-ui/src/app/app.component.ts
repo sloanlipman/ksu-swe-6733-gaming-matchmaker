@@ -134,19 +134,21 @@ export class AppComponent implements OnInit {
     if (!this.isLoading) {
       this.showLoading();
     }
-    const interestPromise = await Promise.resolve(this.getAllInterests());
-    const timePromise = await Promise.resolve(this.getAllTimes());
-    const priorityPromise = await Promise.resolve(this.getAllPriorities());
-    const genrePromise = await Promise.resolve(this.getAllGenres());
+    if (this.allGenres.length === 0 || this.allInterests.length === 0 || this.allPriorities.length === 0 || this.allTimes.length === 0) {
+      const interestPromise = await Promise.resolve(this.getAllInterests());
+      const timePromise = await Promise.resolve(this.getAllTimes());
+      const priorityPromise = await Promise.resolve(this.getAllPriorities());
+      const genrePromise = await Promise.resolve(this.getAllGenres());
     Promise.all([interestPromise, timePromise, priorityPromise, genrePromise]).then(() => {
-      this.allInterests = JSON.parse(localStorage.getItem('interests'));
-      this.allGenres = JSON.parse(localStorage.getItem('genres'));
-      this.allTimes = JSON.parse(localStorage.getItem('times'));
-      this.allPriorities = JSON.parse(localStorage.getItem('priorities'));
       this.router.navigateByUrl('/edit-profile').then(() => {
         this.dismissLoading();
       });
     });
+  } else {
+      this.router.navigateByUrl('/edit-profile').then(() => {
+        this.dismissLoading();
+      });
+    }
   }
 
   viewProfile(id: any){

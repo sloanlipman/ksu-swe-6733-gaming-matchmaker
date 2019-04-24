@@ -42,7 +42,7 @@ public class UserRec {
     private Set<Interest> hobbies = new HashSet<>();
 
     @ManyToMany
-    private Set<GameGenre> genres;
+    private Set<GameGenre> genres = new HashSet<>();
 
 
 
