@@ -90,6 +90,7 @@ export class EditProfilePage extends AppComponent implements OnInit {
    get p() {return this.prioritiesFormArray.controls; }
 
   submitChanges() {
+    console.log('About to submit changes');
 
   // Put priorities in an array so they are ready to go
     for (let i = 0; i < this.allPriorities.length; ++i) {

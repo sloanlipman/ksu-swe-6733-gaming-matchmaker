@@ -83,6 +83,8 @@ public class UserServiceImpl implements UserService{
         List<GameGenre> newGenreList = this.genreDao.findByGenreNameIn(userDetail.getGenres());
         userRec.setGenres(new HashSet<>(newGenreList));
 
+        // Step 8 update the list of playTiming for the playtime names
+
         // Finally save and return the updated record
         return Optional.of(userDao.save(userRec));
     }
