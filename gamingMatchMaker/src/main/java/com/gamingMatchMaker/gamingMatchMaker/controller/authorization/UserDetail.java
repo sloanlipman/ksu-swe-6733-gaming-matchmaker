@@ -72,7 +72,7 @@ public class UserDetail {
         for (Interest i : orig.getInterests()) {
             this.interests.add(i.getActivity());
         }
-        this.genres = new ArrayList<>();
+        this.genres = new ArrayList<String>();
         for(GameGenre genre: orig.getGenres()){
             this.genres.add(genre.getGenreName());
         }
