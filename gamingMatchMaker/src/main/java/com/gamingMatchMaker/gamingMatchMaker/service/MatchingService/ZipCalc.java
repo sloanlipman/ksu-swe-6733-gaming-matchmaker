@@ -106,7 +106,6 @@ public class ZipCalc implements IMatcher {
 		return this.zip;
 	}
 
-	@Override
 	/**
 	 * Finds all the players within approximately 25 miles.
 	 * @param self The user doing the search.

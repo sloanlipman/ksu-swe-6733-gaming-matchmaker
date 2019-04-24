@@ -3,6 +3,8 @@ package com.gamingMatchMaker.gamingMatchMaker.controller.MatchMaker;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -11,8 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.gamingMatchMaker.gamingMatchMaker.controller.authorization.UserDetail;
 import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
-import com.gamingMatchMaker.gamingMatchMaker.service.MatchingService.MatchingService;
-import com.gamingMatchMaker.gamingMatchMaker.service.MatchingService.PluginException;
+import com.gamingMatchMaker.gamingMatchMaker.service.MatchingService.*;
 import com.gamingMatchMaker.gamingMatchMaker.service.authService.UserException;
 
 @CrossOrigin(origins="*", allowedHeaders="*")
@@ -22,6 +23,23 @@ public class MatchingController {
 
 	@Autowired
 	private MatchingService service; 
+
+	/* Not entirely happy with this, but a real plugin approach is more
+	 * complicated, involving dynamically detecting presence and loading
+	 * the information, as well as executable, from external sources.
+	 */
+	@Autowired
+	private ZipCalc zc;
+	
+	@Autowired
+	private InterestCalc ic;
+	
+	@PostConstruct
+	public void InitPlugins() {
+		//register the plugins
+		service.registerPlugin("Location", zc);
+		service.registerPlugin("Interests", ic);
+	}
 
 	/**
 	 * Matches the player for the given id to all the other players in the system.
