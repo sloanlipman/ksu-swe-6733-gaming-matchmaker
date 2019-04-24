@@ -1,18 +1,18 @@
 package com.gamingMatchMaker.gamingMatchMaker.service.registrationService;
 
-import com.gamingMatchMaker.gamingMatchMaker.model.Location;
-import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
-import com.gamingMatchMaker.gamingMatchMaker.service.LocationService.LocationService;
-import com.gamingMatchMaker.gamingMatchMaker.service.ServiceTest;
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
+        import com.gamingMatchMaker.gamingMatchMaker.model.Location;
+        import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
+        import com.gamingMatchMaker.gamingMatchMaker.service.LocationService.LocationService;
+        import com.gamingMatchMaker.gamingMatchMaker.service.ServiceTest;
+        import org.junit.Test;
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.boot.test.mock.mockito.MockBean;
 
-import java.util.Optional;
+        import java.util.Optional;
 
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+        import static junit.framework.TestCase.assertTrue;
+        import static org.junit.Assert.assertEquals;
+        import static org.mockito.Mockito.when;
 
 public class RegistrationServiceImplTest extends ServiceTest {
 

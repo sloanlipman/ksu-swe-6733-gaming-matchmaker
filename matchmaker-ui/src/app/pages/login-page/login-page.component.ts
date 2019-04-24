@@ -43,9 +43,13 @@ export class LoginPage extends AppComponent implements OnInit {
     } else {
       this.showLoading();
       this.loginService.login(this.f.email.value, this.f.password.value).subscribe(data => {
-        console.log(data);
         if (data) {
-          if (data.interests.length === 0) {
+          if (
+            (data.interests && data.interests.length === 0) ||
+            (data.priorities && data.priorities.length < this.allPriorities.length) ||
+            (data.times && data.times.length === 0) ||
+            (data.genres && data.genres.length === 0)
+            ) {
             this.editProfile();
           } else {
             this.goHome();

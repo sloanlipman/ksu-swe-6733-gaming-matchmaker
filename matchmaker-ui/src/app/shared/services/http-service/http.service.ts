@@ -47,6 +47,13 @@ export class HttpService {
     });
   }
 
+  protected put(url: string, body: any, options?: any) {
+    url = this.apiUrl + url;
+    return defer(() => {
+      return this.http.put(url, body, options);
+    });
+  }
+
   protected get(url: string, options?: any) {
     url = this.apiUrl + url;
     return defer(() => {
@@ -63,6 +70,8 @@ export class HttpService {
   }
 
   public updateUser(user: any, accessToken?: any) {
+    user.times = []; // TODO delete
+    user.priorities = []; // TODO delete
     this.currUser = new User({
       id: user.id,
       email: user.email,
@@ -76,7 +85,6 @@ export class HttpService {
       genres: user.genres,
       times: user.times,
       priorities: user.priorities
-      // TODO add genres and time here
     });
     localStorage.setItem('user', JSON.stringify(this.currUser));
     if (accessToken) {
@@ -109,16 +117,32 @@ export class HttpService {
     })).pipe(catchError(err => this.handleError(err)));
   }
 
+  public getAllPriorities(): Observable<any>{
+    return this.get('/api/priority/getall').pipe(map((resp: any) => {
+      if (resp){
+        return resp;
+      }
+  })).pipe(catchError(err => this.handleError(err)));
+}
+
+
+
   public logout() {
     this.currUser = null;
     this.authToken = null;
     localStorage.clear();
   }
 
-  public handleError(err: any): Observable<any> {
-    let errorMessage = 'UNDEFINED ERROR MESSAGE';
-    if (err.error) {
-      if (err.error.message) { // Login error
+  public handleError(err?: any): Observable<any> {
+    let errorMessage = 'Oops! Something went wrong. Please try again!';
+    console.log(err);
+    console.log(err.error);
+    if (err.error && err.statusText !== 'Unknown Error') {
+      errorMessage = err.error;
+    } else if (!err.error) {
+      errorMessage = err;
+    }
+     /* if (err.error.message) { // Login error
         if (err.error.message.includes('UserRec not found') || err.error.message.includes('Password not match')) {
          errorMessage = 'Invalid credentials. Please try again.';
         } else if (err.error.message.includes('Location not found for Zip Code') ||
@@ -135,8 +159,8 @@ export class HttpService {
         errorMessage = 'Cannot connect to server. Please try again later.';
       }
     } else {
-      errorMessage = err;
-    }
+      errorMessage = err; */
+
     this.snackBar.open(errorMessage, '', { // Display error to the user
       duration: 3000,
       verticalPosition: 'top',

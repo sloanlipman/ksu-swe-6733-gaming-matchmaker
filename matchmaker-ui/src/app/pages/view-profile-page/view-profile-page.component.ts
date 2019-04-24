@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewEncapsulation, Injector } from '@angular/core';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { MatDialog } from '@angular/material';
+import { User } from 'src/app/shared/models/user';
 
 @Component({
   selector: 'view-profile',
@@ -11,16 +12,20 @@ import { MatDialog } from '@angular/material';
 })
 export class ViewProfilePage extends AppComponent  implements OnInit {
   // TODO add genres and time here
+  userId: string;
+  user: User;
   constructor(
     protected router: Router,
     protected location: Location,
     protected injector: Injector,
-    protected dialog: MatDialog
+    protected dialog: MatDialog,
+    protected route: ActivatedRoute
   ) {
     super(injector, dialog);
   }
 
   ngOnInit() {
+    this.userId = this.route.snapshot.paramMap.get('id');
     this.getUser();
     this.closeDialog();
   }

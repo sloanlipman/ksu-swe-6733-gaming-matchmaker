@@ -1,9 +1,15 @@
 package com.gamingMatchMaker.gamingMatchMaker.service.ProfileService;
 
+import com.gamingMatchMaker.gamingMatchMaker.dao.GameGenreRepository;
+import com.gamingMatchMaker.gamingMatchMaker.model.GameGenre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+
 import com.gamingMatchMaker.gamingMatchMaker.controller.SaveChangesAttempt;
 import com.gamingMatchMaker.gamingMatchMaker.dao.InterestRepository;
 import com.gamingMatchMaker.gamingMatchMaker.dao.LocationRepository;
@@ -19,15 +25,18 @@ public class ProfileServiceImpl implements ProfileService {
 	private UserRepository phoneBook;
 	private LocationRepository atlas;
 	private InterestRepository hobbyLobby;
+	private	GameGenreRepository genreDao;
 	
 	@Autowired
 	public ProfileServiceImpl(
 			UserRepository ur, 
 			LocationRepository lr, 
-			InterestRepository ir) {
+			InterestRepository ir,
+			GameGenreRepository genreDao) {
 		this.phoneBook = ur;
 		this.atlas = lr;
 		this.hobbyLobby = ir;
+		this.genreDao = genreDao;
 	}
 	
 	/**
@@ -78,7 +87,7 @@ public class ProfileServiceImpl implements ProfileService {
 		
 		//then add them all - note any the user deselected are not re-added
 		for(String s : scr.getUd().getInterests()) {
-			
+
 			//try to get the interest
 			Optional<Interest> I = hobbyLobby.findByActivity(s);
 			
@@ -92,7 +101,10 @@ public class ProfileServiceImpl implements ProfileService {
 				rec.get().AddInterest(hobby);
 			}
 		}
-		
+
+		List<GameGenre> genreList = this.genreDao.findByGenreNameIn(scr.getUd().getGenres());
+
+		rec.get().setGenres(new HashSet<>(genreList));
 		//save the record
 		phoneBook.save(rec.get()); //TODO do I need this?
 		

@@ -3,10 +3,10 @@ package com.gamingMatchMaker.gamingMatchMaker.model;
 import com.gamingMatchMaker.gamingMatchMaker.controller.authorization.UserDetail;
 
 import javax.persistence.*;
-import java.util.Set;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name="users")
@@ -41,7 +41,10 @@ public class UserRec {
     ) //map the interests table through the users_interests 
     private Set<Interest> hobbies = new HashSet<>();
 
-	
+    @ManyToMany
+    private Set<GameGenre> genres;
+
+
 
     public UserRec() {
     }
@@ -55,6 +58,7 @@ public class UserRec {
         this.is_active = original.is_active;
         this.user_type = original.user_type;
         this.hobbies = original.getInterests();
+        this.genres = original.getGenres();
        // this.location = new Location(original.location); TODO uncomment this
        this.location = null;
     }
@@ -75,7 +79,7 @@ public class UserRec {
     //replace the above construct with a non-empty interests list
     public UserRec(String email, String first_name, String last_name,
                    String password, int age, boolean is_active,
-                   int user_type, Location location, Interest[] interests) {
+                   int user_type, Location location, Interest[] interests, GameGenre[] genres) {
         this.email = email;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -85,6 +89,7 @@ public class UserRec {
         this.user_type = user_type;
         this.location = location;
         this.hobbies.addAll(Arrays.asList(interests));
+        this.genres.addAll(Arrays.asList(genres));
     }
 
     public UserRec(UserDetail detail) {
@@ -209,4 +214,12 @@ public class UserRec {
 	public void setInterests(Set<Interest> interests) {
 		this.hobbies = interests;
 	}
+
+    public Set<GameGenre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(Set<GameGenre> genres) {
+        this.genres = genres;
+    }
 }
