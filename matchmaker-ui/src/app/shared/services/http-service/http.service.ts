@@ -135,8 +135,6 @@ export class HttpService {
 
   public handleError(err?: any): Observable<any> {
     let errorMessage = 'Oops! Something went wrong. Please try again!';
-    console.log(err);
-    console.log(err.error);
     if (err.error && err.statusText !== 'Unknown Error') {
       errorMessage = err.error;
     } else if (!err.error) {
