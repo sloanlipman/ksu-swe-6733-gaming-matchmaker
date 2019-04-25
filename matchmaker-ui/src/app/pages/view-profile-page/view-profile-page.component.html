@@ -12,15 +12,26 @@
 </mat-card>
 
 
-<h1> Under Construction</h1>
-<!--<mat-grid-list cols="6" rowHeight="25rem">
-  <mat-grid-tile colspan="2" rowspan="1" class="interest-card">
+<mat-grid-list cols="6" rowHeight="25rem" [gutterSize]="'15px'">
+  <mat-grid-tile colspan="2" rowspan="1.5" class="interest-card">
       <mat-grid-tile-header>Interests</mat-grid-tile-header>
+      <mat-list>
+        <mat-list-item *ngFor="let interest of interests">
+          <mat-icon matListIcon>loyalty</mat-icon>
+          <p matLine>{{interest}}</p>
+        </mat-list-item>
+      </mat-list>
   </mat-grid-tile>
-  <mat-grid-tile colspan="2" rowspan="1" class="genre-card">
+  <mat-grid-tile colspan="2" rowspan="1.5" class="genre-card">
       <mat-grid-tile-header>Favorite Genres</mat-grid-tile-header>
+      <mat-list>
+        <mat-list-item *ngFor="let genre of genres">
+          <mat-icon matListIcon>stars</mat-icon>
+          <p matLine>{{genre}}</p>
+        </mat-list-item>
+      </mat-list>
   </mat-grid-tile>
-  <mat-grid-tile colspan="2" rowspan="1" class="games-played-card">
-      <mat-grid-tile-header>Games Played</mat-grid-tile-header>
+  <mat-grid-tile colspan="2" rowspan="1.5" class="priorities-played-card">
+      <mat-grid-tile-header>Priorities</mat-grid-tile-header>
   </mat-grid-tile>
-</mat-grid-list> -->
+</mat-grid-list>

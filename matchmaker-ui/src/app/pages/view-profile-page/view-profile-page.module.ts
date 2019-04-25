@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ViewProfilePage } from './view-profile-page.component';
 import { AppMaterialModule } from 'src/app/app-material.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -10,6 +11,7 @@ import { AppMaterialModule } from 'src/app/app-material.module';
   ],
   imports: [
     AppMaterialModule,
+    CommonModule,
     RouterModule.forChild([
       {
         path: '',

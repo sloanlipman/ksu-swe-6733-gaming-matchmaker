@@ -12,6 +12,8 @@ import { User } from 'src/app/shared/models/user';
 })
 export class ViewProfilePage extends AppComponent  implements OnInit {
   // TODO add genres and time here
+  interests = [];
+  genres = [];
   userId: string;
   user: User;
   constructor(
@@ -28,6 +30,8 @@ export class ViewProfilePage extends AppComponent  implements OnInit {
     this.userId = this.route.snapshot.paramMap.get('id');
     this.getUser();
     this.closeDialog();
+    this.interests = this.currentUser.interests;
+    this.genres = this.currentUser.genres;
   }
 }
 
