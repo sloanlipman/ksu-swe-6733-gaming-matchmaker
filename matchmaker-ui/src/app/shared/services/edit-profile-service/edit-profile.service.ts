@@ -21,7 +21,6 @@ constructor(
   }
 
   public saveProfile(request: any): Observable<any> {
-    console.log(request);
     return this.put('/api/users/update/', request, this.httpOptions).pipe(map((resp: any) => {
       if (resp) {
         this.handleError('Profile Updated Successfully');

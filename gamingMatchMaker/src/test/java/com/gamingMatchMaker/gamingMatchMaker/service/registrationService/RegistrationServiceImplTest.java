@@ -30,15 +30,18 @@ public class RegistrationServiceImplTest extends ServiceTest {
 
         // simulate a call to the service to create a user registration
 
-        // create a new  newUserRecDetails, and s password
+        // create a new  newUserRecDetails, and a password
         UserRec newUserRecDetails = new UserRec(
                 "test1@test.com", "test1", "test",
                 "password", 22, true, 1, LOC_1);
 
-        String password = "test";
-
         // call the service method
-        Optional<UserRec> result = this.registrationService.createRegistration(newUserRecDetails, password);
+        Optional<UserRec> result = this.registrationService.createRegistration(
+                newUserRecDetails.getEmail(), newUserRecDetails.getPassword(),
+                newUserRecDetails.getFirst_name(), newUserRecDetails.getLast_name(),
+                newUserRecDetails.getAge(), newUserRecDetails.isIs_active(),
+                newUserRecDetails.getUser_type(), newUserRecDetails.getLocation()
+        );
 
         // assert to make sure user reg was created
         assertTrue(result.isPresent());

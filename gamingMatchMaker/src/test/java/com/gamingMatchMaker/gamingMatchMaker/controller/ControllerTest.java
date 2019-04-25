@@ -75,18 +75,14 @@ public abstract class ControllerTest {
         Location mockLocation = new Location("99004","testCiy","NY",
                 20.05f,15.50f,"Jons Test Location");
         mockLocation.setId(0);
-        UserDetail mockUserDetail = new UserDetail(
-                0,"testJon@test.com","Jon","Doe",
-                37,true,1,mockLocation);
-        UserRec mockUserRec = new UserRec(mockUserDetail);
-        CreateRegistrationRequest request =
-                new CreateRegistrationRequest(mockUserDetail, "password1");
-
-        mockUserDetail.getId();
 
         Location mockLocationRec = new Location(mockLocation);
         mockLocationRec.setId(42);
-        UserRec response = new UserRec(mockUserDetail);
+        UserRec response = new UserRec(
+                "testJon@test.com", "Jon", "Doe",
+                "password1", 37, true,
+                1, mockLocation
+        );
         response.setId(43);
         response.setLocation(mockLocationRec);
 
@@ -94,7 +90,10 @@ public abstract class ControllerTest {
 
         when(
                 registrationService.createRegistration(
-                        eq(mockUserRec), eq("password1")
+                        eq("testJon@test.com"), eq("password1"),
+                        anyString(), anyString(),
+                        anyInt(), eq(true),
+                        eq(1), eq(mockLocation)
                 )
         ).thenReturn(Optional.of(response));
     }

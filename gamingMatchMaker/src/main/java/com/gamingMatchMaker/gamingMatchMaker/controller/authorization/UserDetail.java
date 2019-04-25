@@ -3,6 +3,10 @@ package com.gamingMatchMaker.gamingMatchMaker.controller.authorization;
 import java.util.ArrayList;
 
 import com.gamingMatchMaker.gamingMatchMaker.model.*;
+import com.gamingMatchMaker.gamingMatchMaker.model.GameGenre;
+import com.gamingMatchMaker.gamingMatchMaker.model.Interest;
+import com.gamingMatchMaker.gamingMatchMaker.model.Location;
+import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
 
 public class UserDetail {
     private int id;
@@ -13,8 +17,6 @@ public class UserDetail {
     private boolean is_active;
     private int user_type;
 
-    // list of interests
-    // @JsonFormat(shape=JsonFormat.Shape.ARRAY)
     private final ArrayList<String> interests;
     private final ArrayList<String> genres;
     private final ArrayList<String> times;
@@ -63,11 +65,21 @@ public class UserDetail {
         this.age = age;
         this.is_active = is_active;
         this.user_type = user_type;
-        this.interests = interests;
-        this.genres = genres;
-        this.times = times;
         this.location = location;
+        this.interests = new ArrayList<>(interests);
+        this.genres = new ArrayList<>(genres);
+        this.times = new ArrayList<>(times);
     }
+
+    // need this for ProfileServiceImpl.SaveProfile() unit test
+    /*
+     * public UserDetail(int id, String email, String first_name, String last_name,
+     * int age, boolean is_active, int user_type, Location location,
+     * ArrayList<String> interests ) { this.id = id; this.email = email;
+     * this.first_name = first_name; this.last_name = last_name; this.age = age;
+     * this.is_active = is_active; this.user_type = user_type; this.location =
+     * location; interests = new ArrayList<String>(); interests.addAll(interests); }
+     */
 
     public UserDetail(UserRec orig) {
         this.id = orig.getId();
@@ -78,6 +90,7 @@ public class UserDetail {
         this.is_active = orig.isIs_active();
         this.user_type = orig.getUser_type();
         this.location = orig.getLocation();
+
         this.interests = new ArrayList<>();
         this.genres = new ArrayList<>();
         this.times = new ArrayList<>();
@@ -91,7 +104,6 @@ public class UserDetail {
         for(PlayTime time: orig.getTimings()){
             this.times.add(time.getTimingName());
         }
-
     }
 
     public UserDetail(UserDetail orig) {
@@ -103,6 +115,7 @@ public class UserDetail {
         this.is_active = orig.isIs_active();
         this.user_type = orig.getUser_type();
         this.location = orig.getLocation();
+
         this.interests = new ArrayList<>(orig.interests);
         this.genres = new ArrayList<>(orig.genres);
         this.times = new ArrayList<>(orig.times);
@@ -203,3 +216,4 @@ public class UserDetail {
         this.times.addAll(times);
     }
 }
+
