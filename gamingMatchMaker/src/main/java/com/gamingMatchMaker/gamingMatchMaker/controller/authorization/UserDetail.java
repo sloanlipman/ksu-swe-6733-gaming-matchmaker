@@ -20,6 +20,7 @@ public class UserDetail {
     // @JsonFormat(shape=JsonFormat.Shape.ARRAY)
     private ArrayList<String> interests;
     private ArrayList<String> genres;
+    private ArrayList<String> priorities;
 
     // TODO shouldn't the location have just the zip code - why are we sending
     // everything else to the front-end or otherwise expecting them to have it?
@@ -47,6 +48,7 @@ public class UserDetail {
         this.location = location;
         interests = new ArrayList<>();
         genres = new ArrayList<>();
+        priorities = new ArrayList<>();
     }
 
     // need this for ProfileServiceImpl.SaveProfile() unit test
@@ -76,6 +78,10 @@ public class UserDetail {
         for(GameGenre genre: orig.getGenres()){
             this.genres.add(genre.getGenreName());
         }
+        priorities = new ArrayList<>();
+//        for(Priority p : orig.getPriorities()) {
+//        	this.priorities.add(p.getName);
+//        }
     }
 
     public UserDetail(UserDetail orig) {
@@ -95,6 +101,10 @@ public class UserDetail {
         for(String genre: orig.getGenres()){
             this.genres.add(genre);
         }
+        priorities = new ArrayList<>();
+      for(String p : orig.getPriorities()) {
+      	this.priorities.add(p);
+      }
     }
 
     public int getId() {
@@ -182,5 +192,21 @@ public class UserDetail {
     public ArrayList<String> getGenres() {
         return genres;
     }
+
+
+	/**
+	 * @return the priorities
+	 */
+	public ArrayList<String> getPriorities() {
+		return priorities;
+	}
+
+
+	/**
+	 * @param priorities the priorities to set
+	 */
+	public void setPriorities(ArrayList<String> priorities) {
+		this.priorities = priorities;
+	}
 
 }

@@ -3,8 +3,11 @@ package com.gamingMatchMaker.gamingMatchMaker.model;
 import com.gamingMatchMaker.gamingMatchMaker.controller.authorization.UserDetail;
 
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -44,9 +47,11 @@ public class UserRec {
     @ManyToMany
     private Set<GameGenre> genres = new HashSet<>();
 
+    @OneToMany(mappedBy = "user")
+    @OrderBy("order")	//this may not work because it's a join table
+    private List<Priority> priorities = new ArrayList<>();
 
-
-    public UserRec() {
+	public UserRec() {
     }
 
     public UserRec(UserRec original) {
@@ -79,7 +84,7 @@ public class UserRec {
     //replace the above construct with a non-empty interests list
     public UserRec(String email, String first_name, String last_name,
                    String password, int age, boolean is_active,
-                   int user_type, Location location, Interest[] interests, GameGenre[] genres) {
+                   int user_type, Location location, Interest[] interests, GameGenre[] genres, Priority[] priorities) {
         this.email = email;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -90,6 +95,7 @@ public class UserRec {
         this.location = location;
         this.hobbies.addAll(Arrays.asList(interests));
         this.genres.addAll(Arrays.asList(genres));
+        this.priorities.addAll(Arrays.asList(priorities));
     }
 
     public UserRec(UserDetail detail) {
@@ -222,4 +228,18 @@ public class UserRec {
     public void setGenres(Set<GameGenre> genres) {
         this.genres = genres;
     }
+    
+    /**
+	 * @return the priorities
+	 */
+	public List<Priority> getPriorities() {
+		return priorities;
+	}
+
+	/**
+	 * @param priorities the priorities to set
+	 */
+	public void setPriorities(List<Priority> priorities) {
+		this.priorities = priorities;
+	}
 }

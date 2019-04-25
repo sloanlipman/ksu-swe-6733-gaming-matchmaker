@@ -7,7 +7,9 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.gamingMatchMaker.gamingMatchMaker.dao.PrioritiesRepository;
 import com.gamingMatchMaker.gamingMatchMaker.dao.UserRepository;
+import com.gamingMatchMaker.gamingMatchMaker.model.Priority;
 import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
 import com.gamingMatchMaker.gamingMatchMaker.service.authService.UserException;
 
@@ -17,22 +19,24 @@ import java.util.LinkedHashMap;
 
 public class MatchingServiceImpl implements MatchingService {
 
-	private HashMap<Integer, IMatcher> matchers;	//ordered list
+	//private HashMap<Integer, IMatcher> matchers;	//ordered list
 	private HashMap<String, IMatcher> plugins;		//keyed look-up of known 
 	private UserRepository phoneBook;
+	private PrioritiesRepository plugRepo;
 	
 	/**
 	 * Default Constructor
 	 */
 	@Autowired
-	public MatchingServiceImpl(UserRepository ur) {
-		matchers = new HashMap<>();
+	public MatchingServiceImpl(UserRepository ur, PrioritiesRepository pr) {
+//		matchers = new HashMap<>();
 		plugins = new HashMap<>();
 		this.phoneBook = ur;
+		this.plugRepo = pr;
 	}
 	
 	/**
-	 * Change the priorities - the order in which the plugins are run.
+	 * Change the priorities - the order in which the plugins are run.  THIS SHOULD NEVER BE USED!!
 	 * @param prs The new list of priorities.
 	 * @throws PluginException
 	 */
@@ -49,7 +53,7 @@ public class MatchingServiceImpl implements MatchingService {
 		}
 		
 		//now load the matchers - this way there is no change on the matchers when we error
-		matchers = ms;
+//		matchers = ms;
 	}
 	
 	/**
@@ -79,12 +83,14 @@ public class MatchingServiceImpl implements MatchingService {
 		for(UserRec ur : users) {
 			//if the user id isn't in the list add it
 			if(!scores.containsKey(ur)) scores.put(ur, 0);
+			List<Priority> matchers = self.get().getPriorities();
 			
 			//go through the plugins, highest priority firt
-			for(int i = 0; i < matchers.size(); i++) {
+			for(int i = 0; i < self.get().getPriorities().size(); i++) {
 				
 				//calculate the score for this matcher - use the index for weighting
-				int score = matchers.get(i).scoreUser(self.get(), ur) * (matchers.size() - 1); //so the earlier ones will have higher values
+				int score = plugins.get(matchers.get(i).getName()).scoreUser(self.get(), ur) * (i); //so the earlier ones will have higher values
+							//could I have been anymore convoluted?
 				
 				//update the score for this other user
 				scores.computeIfPresent(ur, (k,v) -> v + score);
@@ -127,7 +133,9 @@ public class MatchingServiceImpl implements MatchingService {
 	 */
 	public List<String> getAllPlugins() {
 		ArrayList<String> plugs = new ArrayList<>();
-		plugs.addAll(plugins.keySet());
+		for(Priority p : plugRepo.findAll()) {
+			plugs.add(p.getName());
+		}
 		return plugs;
 	}
 	

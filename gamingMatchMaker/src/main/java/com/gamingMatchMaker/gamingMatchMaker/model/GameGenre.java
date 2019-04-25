@@ -26,7 +26,7 @@ public class GameGenre {
     }
 
     public GameGenre(String genreName, Set<UserRec> users) {
-        genreName = genreName;
+        this.genreName = genreName;
         this.users = users;
     }
     public int getId() {
@@ -42,7 +42,7 @@ public class GameGenre {
     }
 
     public void setGenreName(String genreName) {
-        genreName = genreName;
+        this.genreName = genreName;
     }
 
     public Set<UserRec> getUsers() {

@@ -34,11 +34,27 @@ public class MatchingController {
 	@Autowired
 	private InterestCalc ic;
 	
+	@Autowired
+	private GenreCalc gc;
+	
 	@PostConstruct
 	public void InitPlugins() {
 		//register the plugins
-		service.registerPlugin("Location", zc);
-		service.registerPlugin("Interests", ic);
+		try{
+			service.registerPlugin("Location", zc);
+		}
+		catch(PluginException pe) {}
+		
+		try {
+			service.registerPlugin("Interests", ic);
+		}
+		catch(PluginException pe) {}
+		
+		try {
+			service.registerPlugin("Game Genre", gc);
+		}
+		catch(PluginException pe) {}
+
 	}
 
 	/**
@@ -80,7 +96,7 @@ public class MatchingController {
 	}
 	
 	/**
-	 * Change the order in which different factors are used to match players.
+	 * Change the order in which different factors are used to match players.  Don't know why I added this, should be handled in save profile operations....
 	 * @param id
 	 * @param priorities
 	 * @return
