@@ -199,7 +199,6 @@ export class AppComponent implements OnInit {
 
   getAllTimes() {
 
-
    return new Promise((resolve) => {
     this.httpService.getAllTimes().subscribe(data => {
       if (data) {
