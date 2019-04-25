@@ -45,13 +45,13 @@ describe('EditProfileService', () => {
       const id = 123;
       handleErrorSpy = spyOn(service, 'handleError').and.stub();
 
-      service.saveProfile(id, req).subscribe(data => {
+      service.saveProfile(req).subscribe(data => {
         expect(data).toEqual(req);
         expect(handleErrorSpy).toHaveBeenCalled();
       });
 
-      const mockReq = httpMock.expectOne(apiUrl + '/api/profile/save/' + id);
-      expect(mockReq.request.method).toEqual('POST');
+      const mockReq = httpMock.expectOne(apiUrl + '/api/users/update/');
+      expect(mockReq.request.method).toEqual('PUT');
       mockReq.flush(
         req
       );

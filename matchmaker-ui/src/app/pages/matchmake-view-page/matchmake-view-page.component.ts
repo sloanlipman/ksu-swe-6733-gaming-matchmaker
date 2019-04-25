@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { LandingPage } from '../landing-page/landing-page.component';
 import { AppComponent } from 'src/app/app.component';
 import { MatDialog } from '@angular/material';
+import { MockUsers } from 'src/app/shared/mock-users';
+import { User } from 'src/app/shared/models/user';
 
 @Component({
   selector: 'matchmaking',
@@ -11,7 +13,8 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./matchmake-view-page.component.scss']
 })
 export class MatchmakeViewPage extends AppComponent implements OnInit {
-
+  mockUsers = new MockUsers();
+  matchList: User[];
   constructor(
     protected router: Router,
     protected location: Location,
@@ -22,5 +25,6 @@ export class MatchmakeViewPage extends AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.matchList = [this.mockUsers.getUser1(), this.mockUsers.getUser2()];
   }
 }

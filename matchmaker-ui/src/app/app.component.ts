@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.goToLanding();
+  //  this.goToLanding();
   }
 
   setUrl() {
@@ -149,8 +149,9 @@ export class AppComponent implements OnInit {
     });
   }
 
-  viewProfile(id: any){
-    this.router.navigateByUrl('/view-profile/' + id).then(() => {
+  viewProfile(user: User){
+    localStorage.setItem('clickedUser', JSON.stringify(user));
+    this.router.navigateByUrl('/view-profile/' + user.id).then(() => {
       this.dismissLoading();
     });
   }
@@ -177,10 +178,6 @@ export class AppComponent implements OnInit {
   }
 
   getAllGenres() {
-  //  const genres = ['Shooters', 'RPGs', 'RTS']; // TODO delete
-  //  localStorage.setItem('genres', JSON.stringify(genres)); // TODO delete
-
-
     return new Promise((resolve) => {
       this.httpService.getAllGenres().subscribe(data => {
         if (data) {

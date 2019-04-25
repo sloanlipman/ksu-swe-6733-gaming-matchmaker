@@ -10,10 +10,10 @@ import { User } from 'src/app/shared/models/user';
   templateUrl: './view-profile-page.component.html',
   styleUrls: ['./view-profile-page.component.scss']
 })
-export class ViewProfilePage extends AppComponent  implements OnInit {
+export class ViewProfilePage extends AppComponent implements OnInit {
   // TODO add genres and time here
   userId: string;
-  user: User;
+  user =  JSON.parse(localStorage.getItem('clickedUser'));
   constructor(
     protected router: Router,
     protected location: Location,
@@ -25,8 +25,7 @@ export class ViewProfilePage extends AppComponent  implements OnInit {
   }
 
   ngOnInit() {
-    this.userId = this.route.snapshot.paramMap.get('id');
-    this.getUser();
+    console.log(this.user);
     this.closeDialog();
   }
 }
