@@ -70,7 +70,7 @@ export class HttpService {
   }
 
   public updateUser(user: any, accessToken?: any) {
-    user.times = []; // TODO delete
+
     user.priorities = []; // TODO delete
     this.currUser = new User({
       id: user.id,
@@ -110,7 +110,7 @@ export class HttpService {
 }
 
   public getAllTimes(): Observable<any> {
-    return this.get('').pipe(map((resp: any) => { // TODO add the endpoint
+    return this.get('/api/playTimes').pipe(map((resp: any) => { // TODO add the endpoint
       if (resp){
         return resp;
       }
