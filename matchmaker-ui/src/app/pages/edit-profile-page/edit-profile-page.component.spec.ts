@@ -53,6 +53,7 @@ describe('EditProfilePage', () => {
       component.currentUser = user1;
     });
     spyOn<any>(component, 'showLoading').and.stub();
+    component.allPriorities = [];
     fixture.detectChanges();
   });
 

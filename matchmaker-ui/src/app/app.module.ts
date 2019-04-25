@@ -13,13 +13,16 @@ import { LoadingIndicator } from './shared/components/loading-indicator/loading-
 import { AboutPage } from './shared/components/about/about.component';
 import { ContactPage } from './shared/components/contact-page/contact-page.component';
 import { HttpService } from './shared/services/http-service/http.service';
+import { ProfileCard } from './shared/components/profile-card/profile-card.component';
+import { ProfileCardModule } from './shared/components/profile-card/profile-card.module';
+// import { ProfileCardModule } from './shared/components/profile-card/profile-card.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoadingIndicator,
     AboutPage,
-    ContactPage
+    ContactPage,
   ],
   imports: [
     AppMaterialModule,
@@ -28,6 +31,7 @@ import { HttpService } from './shared/services/http-service/http.service';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    ProfileCardModule
   ],
   providers: [
     HttpService

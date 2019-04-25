@@ -62,7 +62,7 @@ export class MockUsers {
     };
   }
 
-  getUser3() {
+  getUser3() { // for use as a back end user object
     return JSON.parse(`
       {
         "id": 75,
