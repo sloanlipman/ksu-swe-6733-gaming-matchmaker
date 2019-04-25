@@ -10,6 +10,12 @@ import java.util.UUID;
 public interface UserRepository extends JpaRepository<UserRec, UUID> {
     Optional<UserRec> findByEmail(String email);
     Optional<UserRec> findById(int id);
+<<<<<<< HEAD
     //List<UserRec> findBygameGenres_Id(int id);
 
+=======
+
+    List<UserRec> findByGenres_Id(int id);
+    List<UserRec> findByGenres_IdIn(List<Integer> idList);
+>>>>>>> remotes/origin/Sloan-misc
 }

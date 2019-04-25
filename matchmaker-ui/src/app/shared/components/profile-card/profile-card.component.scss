@@ -1,0 +1,24 @@
+
+mat-card{
+ // background-color: rgb(70, 0, 182);
+  align-content: center;
+}
+
+.logo {
+background-image: url('src/assets/skull.png');
+background-size: cover;
+}
+
+.view-profile-card{ // TODO these margins mess up really long names
+//  margin-left: 200px;
+//  margin-right: 200px;
+}
+
+.view-profile-title{
+font-size: 33px;
+}
+
+.view-profile-content{
+font-size: 20px;
+}
+

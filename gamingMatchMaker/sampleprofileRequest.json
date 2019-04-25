@@ -1,0 +1,30 @@
+{
+  "id": 133,
+  "email": "vaid.imad@gmail.com",
+  "first_name": "emad",
+  "last_name": "vaid",
+  "age": 37,
+  "is_active": true,
+  "user_type": 2,
+  "location": {
+    "zip": "90210"
+  },
+  "interests": [
+    "Acting",
+    "Baking",
+    "Beatboxing"
+  ],
+  "genres": [
+    "Fighting"
+  ],
+  "times": [
+    "2",
+    "3"
+  ],
+  "priorities": [
+    "Location",
+    "Game Genres",
+    "Active Time",
+    "Interests"
+  ]
+}

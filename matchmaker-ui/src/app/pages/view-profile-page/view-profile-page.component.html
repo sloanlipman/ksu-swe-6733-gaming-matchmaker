@@ -1,19 +1,7 @@
-<!--TODO change currentUser to something else. Might not be on current user's profile.-->
-<mat-card class = "view-profile-card">
-    <mat-card-header>
-      <div mat-card-avatar class="logo"></div>
-      <mat-card-title class = "view-profile-title">{{ this.currentUser.firstName }} {{ this.currentUser.lastName}}</mat-card-title>
-      <div id="xp">XP: 50</div>
-    </mat-card-header>
-    <hr>
-    <h2>Age: {{ this.currentUser.age }}<br>
-      Location: {{ this.currentUser.location.city }}, {{ this.currentUser.location.state}}
-    </h2>
-</mat-card>
-
-
-<mat-grid-list cols="6" rowHeight="25rem" [gutterSize]="'15px'">
-  <mat-grid-tile colspan="2" rowspan="1.5" class="interest-card">
+<profile-card [player]="this.user"></profile-card>
+<h1> Under Construction</h1>
+<mat-grid-list cols="6" rowHeight="25rem">
+  <mat-grid-tile colspan="2" rowspan="1" class="interest-card">
       <mat-grid-tile-header>Interests</mat-grid-tile-header>
       <mat-list>
         <mat-list-item *ngFor="let interest of interests">

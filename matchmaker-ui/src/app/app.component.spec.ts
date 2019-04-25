@@ -59,7 +59,7 @@ describe('AppComponent', () => {
     expect(dialogSpy).toHaveBeenCalled();
   });
 
-  it('should go a location', () => {
+  it('should go back a location', () => {
     spyOn(component.location, 'back').and.callThrough();
     component.goBack(); // TODO this case is kind of trivial because we're expecting something that is directly called
     expect(component.location.back).toHaveBeenCalled();
@@ -100,6 +100,11 @@ describe('AppComponent', () => {
     });
 
     it('should go to edit profile page', () => {
+      spyOn(component, 'getAllInterests').and.returnValue(Promise.resolve());
+      spyOn(component, 'getAllTimes').and.returnValue(Promise.resolve());
+      spyOn(component, 'getAllPriorities').and.returnValue(Promise.resolve());
+      spyOn(component, 'getAllGenres').and.returnValue(Promise.resolve());
+
       component.editProfile();
       expect(routerSpy).toHaveBeenCalledWith('/edit-profile');
     });

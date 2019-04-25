@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { ViewProfilePage } from './view-profile-page.component';
 import { AppMaterialModule } from 'src/app/app-material.module';
 import { CommonModule } from '@angular/common';
+import { ProfileCard } from 'src/app/shared/components/profile-card/profile-card.component';
+import { ProfileCardModule } from 'src/app/shared/components/profile-card/profile-card.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +14,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     AppMaterialModule,
     CommonModule,
+    ProfileCardModule,
     RouterModule.forChild([
       {
         path: '',
