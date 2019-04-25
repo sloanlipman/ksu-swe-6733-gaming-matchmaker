@@ -1,12 +1,7 @@
 package com.gamingMatchMaker.gamingMatchMaker.model;
 
-import com.gamingMatchMaker.gamingMatchMaker.controller.authorization.UserDetail;
-
+import java.util.*;
 import javax.persistence.*;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name="users")
@@ -38,18 +33,24 @@ public class UserRec {
     	name = "users_interests",
     	joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
         inverseJoinColumns = @JoinColumn(name = "interest_id", referencedColumnName = "id")
-    ) //map the interests table through the users_interests 
-    private Set<Interest> hobbies = new HashSet<>();
+    ) //map the interests table through the users_interests
+    private final Set<Interest> interests;
 
     @ManyToMany
-    private Set<GameGenre> genres = new HashSet<>();
+    private final Set<GameGenre> genres;
 
-
+    @ManyToMany
+    private final Set<PlayTime> timings;
 
     public UserRec() {
+
+        this.interests = new HashSet<>();
+        this.genres = new HashSet<>();
+        this.timings = new HashSet<>();
     }
 
     public UserRec(UserRec original) {
+        this.id = original.id;
         this.email = original.email;
         this.first_name = original.first_name;
         this.last_name = original.last_name;
@@ -57,10 +58,12 @@ public class UserRec {
         this.age = original.age;
         this.is_active = original.is_active;
         this.user_type = original.user_type;
-        this.hobbies = original.getInterests();
-        this.genres = original.getGenres();
-       // this.location = new Location(original.location); TODO uncomment this
-       this.location = null;
+
+        this.interests = new HashSet<>(original.getInterests());
+        this.genres = new HashSet<>(original.getGenres());
+        this.timings = new HashSet<>(original.getTimings());
+
+        this.location = original.location;
     }
 
     public UserRec(String email, String first_name, String last_name,
@@ -74,12 +77,18 @@ public class UserRec {
         this.is_active = is_active;
         this.user_type = user_type;
         this.location = location;
+
+        this.interests = new HashSet<>();
+        this.genres = new HashSet<>();
+        this.timings = new HashSet<>();
     }
 
     //replace the above construct with a non-empty interests list
     public UserRec(String email, String first_name, String last_name,
                    String password, int age, boolean is_active,
-                   int user_type, Location location, Interest[] interests, GameGenre[] genres) {
+                   int user_type, Location location,
+                   Interest[] interests, GameGenre[] genres, PlayTime[] timings
+    ){
         this.email = email;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -88,32 +97,19 @@ public class UserRec {
         this.is_active = is_active;
         this.user_type = user_type;
         this.location = location;
-        this.hobbies.addAll(Arrays.asList(interests));
-        this.genres.addAll(Arrays.asList(genres));
-    }
 
-    public UserRec(UserDetail detail) {
-        System.out.println("inside constructor, detail is " + detail);
-        this.email = detail.getEmail();
-        this.first_name = detail.getFirst_name();
-        this.last_name = detail.getLast_name();
-        this.age = detail.getAge();
-        this.is_active = true;
-        this.user_type = detail.getUser_type();
-        // this.location = detail.getLocation();
-        this.location = new Location(detail.getLocation());
-        
-        //TODO convert from strings (activity_names) to interests
-        
+        this.interests = new HashSet<>(Arrays.asList(interests));
+        this.genres = new HashSet<>(Arrays.asList(genres));
+        this.timings = new HashSet<>(Arrays.asList(timings));
     }
 
     /**
      * Add a new interest to the user.
-     * @param I
+     * @param I the interest to addI
      */
     public void AddInterest(Interest I) {
     	//TODO does this add new ones to the DB or must they already exist?
-    	hobbies.add(I);
+    	interests.add(I);
     }
 
     @Override
@@ -129,12 +125,27 @@ public class UserRec {
         return Objects.hash(email);
     }
 
+    public void setInterests(Set<Interest> interests) {
+        this.interests.clear();
+        this.interests.addAll(interests);
+    }
+
+    public void setGenres(Set<GameGenre> genres){
+        this.genres.clear();
+        this.genres.addAll(genres);
+    }
+
+    public void setTimings(Set<PlayTime> timings){
+        this.timings.clear();
+        this.timings.addAll(timings);
+    }
+
     public int getId() {
         return id;
     }
 
-    public void setId(int newId) {
-        this.id = newId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -201,25 +212,15 @@ public class UserRec {
         this.location = location;
     }
 
-	/**
-	 * @return the interests
-	 */
-	public Set<Interest> getInterests() {
-		return hobbies;
-	}
-
-	/**
-	 * @param interests the interests to set
-	 */
-	public void setInterests(Set<Interest> interests) {
-		this.hobbies = interests;
-	}
+    public Set<Interest> getInterests() {
+        return interests;
+    }
 
     public Set<GameGenre> getGenres() {
         return genres;
     }
 
-    public void setGenres(Set<GameGenre> genres) {
-        this.genres = genres;
+    public Set<PlayTime> getTimings() {
+        return timings;
     }
 }

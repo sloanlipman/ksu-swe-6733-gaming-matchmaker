@@ -2,6 +2,7 @@ package com.gamingMatchMaker.gamingMatchMaker.controller.authorization;
 
 import java.util.ArrayList;
 
+import com.gamingMatchMaker.gamingMatchMaker.model.*;
 import com.gamingMatchMaker.gamingMatchMaker.model.GameGenre;
 import com.gamingMatchMaker.gamingMatchMaker.model.Interest;
 import com.gamingMatchMaker.gamingMatchMaker.model.Location;
@@ -16,27 +17,30 @@ public class UserDetail {
     private boolean is_active;
     private int user_type;
 
-    // list of interests
-    // @JsonFormat(shape=JsonFormat.Shape.ARRAY)
-    private ArrayList<String> interests;
-    private ArrayList<String> genres;
+    private final ArrayList<String> interests;
+    private final ArrayList<String> genres;
+    private final ArrayList<String> times;
 
     // TODO shouldn't the location have just the zip code - why are we sending
     // everything else to the front-end or otherwise expecting them to have it?
     private Location location;
 
     public UserDetail() {
-        this.interests = new ArrayList<String>();
+        this.interests = new ArrayList<>();
         this.genres = new ArrayList<>();
+        this.times = new ArrayList<>();
     }
-
 
     public UserDetail(int id) {
         this.id = id;
+        this.interests = new ArrayList<>();
+        this.genres = new ArrayList<>();
+        this.times = new ArrayList<>();
     }
 
-    public UserDetail(int id, String email, String first_name, String last_name, int age, boolean is_active,
-                      int user_type, Location location) {
+    public UserDetail(int id, String email, String first_name, String last_name,
+                      int age, boolean is_active, int user_type, Location location
+    ) {
         this.id = id;
         this.email = email;
         this.first_name = first_name;
@@ -45,8 +49,26 @@ public class UserDetail {
         this.is_active = is_active;
         this.user_type = user_type;
         this.location = location;
-        interests = new ArrayList<>();
-        genres = new ArrayList<>();
+        this.interests = new ArrayList<>();
+        this.genres = new ArrayList<>();
+        this.times = new ArrayList<>();
+    }
+
+    public UserDetail(int id, String email, String first_name, String last_name,
+                      int age, boolean is_active, int user_type, ArrayList<String> interests,
+                      ArrayList<String> genres, ArrayList<String> times, Location location
+    ) {
+        this.id = id;
+        this.email = email;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.age = age;
+        this.is_active = is_active;
+        this.user_type = user_type;
+        this.location = location;
+        this.interests = new ArrayList<>(interests);
+        this.genres = new ArrayList<>(genres);
+        this.times = new ArrayList<>(times);
     }
 
     // need this for ProfileServiceImpl.SaveProfile() unit test
@@ -68,13 +90,19 @@ public class UserDetail {
         this.is_active = orig.isIs_active();
         this.user_type = orig.getUser_type();
         this.location = orig.getLocation();
-        this.interests = new ArrayList<String>();
+
+        this.interests = new ArrayList<>();
+        this.genres = new ArrayList<>();
+        this.times = new ArrayList<>();
+
         for (Interest i : orig.getInterests()) {
             this.interests.add(i.getActivity());
         }
-        this.genres = new ArrayList<String>();
         for(GameGenre genre: orig.getGenres()){
             this.genres.add(genre.getGenreName());
+        }
+        for(PlayTime time: orig.getTimings()){
+            this.times.add(time.getTimingName());
         }
     }
 
@@ -87,14 +115,10 @@ public class UserDetail {
         this.is_active = orig.isIs_active();
         this.user_type = orig.getUser_type();
         this.location = orig.getLocation();
-        interests = new ArrayList<>();
-        for (String s : orig.getInterests()) {
-            this.interests.add(s);
-        }
-        genres = new ArrayList<>();
-        for(String genre: orig.getGenres()){
-            this.genres.add(genre);
-        }
+
+        this.interests = new ArrayList<>(orig.interests);
+        this.genres = new ArrayList<>(orig.genres);
+        this.times = new ArrayList<>(orig.times);
     }
 
     public int getId() {
@@ -183,4 +207,13 @@ public class UserDetail {
         return genres;
     }
 
+    public ArrayList<String> getTimes() {
+        return times;
+    }
+
+    public void setTimes(ArrayList<String> times) {
+        this.times.clear();
+        this.times.addAll(times);
+    }
 }
+

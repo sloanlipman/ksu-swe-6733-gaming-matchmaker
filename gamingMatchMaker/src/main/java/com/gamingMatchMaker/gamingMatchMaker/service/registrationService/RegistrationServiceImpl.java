@@ -35,24 +35,28 @@ public class RegistrationServiceImpl implements RegistrationService {
     }
 
     @Override
-    public Optional<UserRec> createRegistration(UserRec newUserRecDetails, String password) {
-        // check for empty password
-        if(password == null){
-            throw new UserException("Password cannot be empty");
-        }
-        // make sure the newUserRecDetails is not null
-        if(newUserRecDetails ==  null){
-            throw new UserException("newUserRecDetails can not be null");
-        }
+    public Optional<UserRec> createRegistration(String email, String password,
+                                                String first_name, String last_name,
+                                                int age, boolean is_active,
+                                                int user_type, Location location) {
+
+        UserRec newUserRecDetails = new UserRec(email,
+                first_name, last_name,
+                password, age, is_active, user_type, location);
+
         // check for empty username
         if(newUserRecDetails.getEmail()== null || newUserRecDetails.getEmail().length()<1){
             throw new UserException("Email cannot be empty");
         }
 
-        //check for duplicate
+        // check for empty username
+        if(newUserRecDetails.getPassword()== null || newUserRecDetails.getPassword().length()<1){
+            throw new UserException("Password cannot be empty");
+        }
+
         // check for empty location
         if(newUserRecDetails.getLocation()==null) {
-            throw new UserException("Location cannot be empty");
+            throw new UserException("Location cannot be null");
         }
 
         String zip = newUserRecDetails.getLocation().getZip();

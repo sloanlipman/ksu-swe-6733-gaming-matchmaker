@@ -46,7 +46,7 @@ export class LoginPage extends AppComponent implements OnInit {
         if (data) {
           if (
             (data.interests && data.interests.length === 0) ||
-            (data.priorities && data.priorities.length < this.allPriorities.length) ||
+            (data.priorities && data.priorities.length === 0) ||
             (data.times && data.times.length === 0) ||
             (data.genres && data.genres.length === 0)
             ) {
