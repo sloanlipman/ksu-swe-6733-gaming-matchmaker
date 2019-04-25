@@ -1,13 +1,52 @@
 
+mat-card{
+    background-color: rgb(70, 0, 182);
+    align-content: center;
+  }
+  mat-list{
+  width: 90%;
+  max-height: 400px;
+  overflow-y: scroll;
+}
+mat-grid-tile-header{
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.logo {
+  background-image: url('src/assets/skull.png');
+  background-size: cover;
+}
+
+.view-profile-card{ // TODO these margins mess up really long names
+//  margin-left: 200px;
+//  margin-right: 200px;
+}
+
+.view-profile-title{
+  font-size: 33px;
+}
+
+.view-profile-content{
+  font-size: 20px;
+}
+
+#xp{
+    font-size: 33px;
+    position: absolute;
+    right: 18px;
+     
+}
+
 .genre-card {
-    background: rgb(250, 176, 238);
+    background: rgb(160, 192, 207);
 }
 
 .interest-card {
-    background: rgb(223, 245, 245);
+    background: rgb(145, 149, 151);
 }
-.games-played-card {
-    background: rgb(205, 216, 143);
+.priorities-played-card {
+    background: rgb(145, 149, 151);
 }
 mat-grid-list {
     margin: 5rem;

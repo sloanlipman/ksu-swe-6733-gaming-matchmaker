@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ViewProfilePage } from './view-profile-page.component';
 import { AppMaterialModule } from 'src/app/app-material.module';
-import { ProfileCard } from 'src/app/shared/components/profile-card/profile-card.component';
-import { ProfileCardModule } from 'src/app/shared/components/profile-card/profile-card.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -12,7 +11,7 @@ import { ProfileCardModule } from 'src/app/shared/components/profile-card/profil
   ],
   imports: [
     AppMaterialModule,
-    ProfileCardModule,
+    CommonModule,
     RouterModule.forChild([
       {
         path: '',
