@@ -14,7 +14,7 @@ public class Interest {
     @Column(name = "activity_name")
     private String activity;
 
-    @ManyToMany(mappedBy = "hobbies")
+    @ManyToMany(mappedBy = "interests")
     private Set<UserRec> users = new HashSet<>();
     
     public Interest() {}

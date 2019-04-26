@@ -37,6 +37,9 @@ public class MatchingController {
 	@Autowired
 	private GenreCalc gc;
 	
+	@Autowired
+	private ActiveTimeCalc atc;
+	
 	@PostConstruct
 	public void InitPlugins() {
 		//register the plugins
@@ -52,6 +55,11 @@ public class MatchingController {
 		
 		try {
 			service.registerPlugin("Game Genre", gc);
+		}
+		catch(PluginException pe) {}
+		
+		try {
+			service.registerPlugin("Active Time", atc);
 		}
 		catch(PluginException pe) {}
 

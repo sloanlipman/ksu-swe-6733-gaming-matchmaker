@@ -11,8 +11,8 @@ public class GenreCalc implements IMatcher {
 		for(GameGenre gg : self.getGenres()) {
 			if(other.getGenres().contains(gg)) score++;
 		}
-		//TODO normalize vs 10?
-		return score;
+		//normalize vs 10
+		return (Math.floorDiv(score, self.getGenres().size()) * 10);
 	}
 
 }

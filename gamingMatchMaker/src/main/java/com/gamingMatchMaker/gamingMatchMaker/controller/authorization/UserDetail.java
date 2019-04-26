@@ -2,6 +2,7 @@ package com.gamingMatchMaker.gamingMatchMaker.controller.authorization;
 
 import java.util.ArrayList;
 
+import com.gamingMatchMaker.gamingMatchMaker.model.*;
 import com.gamingMatchMaker.gamingMatchMaker.model.GameGenre;
 import com.gamingMatchMaker.gamingMatchMaker.model.Interest;
 import com.gamingMatchMaker.gamingMatchMaker.model.Location;
@@ -16,28 +17,33 @@ public class UserDetail {
     private boolean is_active;
     private int user_type;
 
-    // list of interests
-    // @JsonFormat(shape=JsonFormat.Shape.ARRAY)
-    private ArrayList<String> interests;
-    private ArrayList<String> genres;
-    private ArrayList<String> priorities;
+    private final ArrayList<String> priorities;
+    private final ArrayList<String> interests;
+    private final ArrayList<String> genres;
+    private final ArrayList<String> times;
 
     // TODO shouldn't the location have just the zip code - why are we sending
     // everything else to the front-end or otherwise expecting them to have it?
     private Location location;
 
     public UserDetail() {
-        this.interests = new ArrayList<String>();
+        this.interests = new ArrayList<>();
         this.genres = new ArrayList<>();
+        this.times = new ArrayList<>();
+        this.priorities = new ArrayList<>();
     }
-
 
     public UserDetail(int id) {
         this.id = id;
+        this.interests = new ArrayList<>();
+        this.genres = new ArrayList<>();
+        this.times = new ArrayList<>();
+        this.priorities = new ArrayList<>();
     }
 
-    public UserDetail(int id, String email, String first_name, String last_name, int age, boolean is_active,
-                      int user_type, Location location) {
+    public UserDetail(int id, String email, String first_name, String last_name,
+                      int age, boolean is_active, int user_type, Location location
+    ) {
         this.id = id;
         this.email = email;
         this.first_name = first_name;
@@ -46,9 +52,29 @@ public class UserDetail {
         this.is_active = is_active;
         this.user_type = user_type;
         this.location = location;
-        interests = new ArrayList<>();
-        genres = new ArrayList<>();
-        priorities = new ArrayList<>();
+        this.interests = new ArrayList<>();
+        this.genres = new ArrayList<>();
+        this.times = new ArrayList<>();
+        this.priorities = new ArrayList<>();
+    }
+
+    public UserDetail(int id, String email, String first_name, String last_name,
+                      int age, boolean is_active, int user_type, ArrayList<String> interests,
+                      ArrayList<String> genres, ArrayList<String> times, Location location, 
+					  ArrayList<String> priorities
+    ) {
+        this.id = id;
+        this.email = email;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.age = age;
+        this.is_active = is_active;
+        this.user_type = user_type;
+        this.location = location;
+        this.priorities = new ArrayList<>(priorities);
+        this.interests = new ArrayList<>(interests);
+        this.genres = new ArrayList<>(genres);
+        this.times = new ArrayList<>(times);
     }
 
     // need this for ProfileServiceImpl.SaveProfile() unit test
@@ -70,18 +96,25 @@ public class UserDetail {
         this.is_active = orig.isIs_active();
         this.user_type = orig.getUser_type();
         this.location = orig.getLocation();
-        this.interests = new ArrayList<String>();
+
+        this.interests = new ArrayList<>();
+        this.genres = new ArrayList<>();
+        this.times = new ArrayList<>();
+
         for (Interest i : orig.getInterests()) {
             this.interests.add(i.getActivity());
         }
-        this.genres = new ArrayList<String>();
         for(GameGenre genre: orig.getGenres()){
             this.genres.add(genre.getGenreName());
         }
         priorities = new ArrayList<>();
-//        for(Priority p : orig.getPriorities()) {
-//        	this.priorities.add(p.getName);
-//        }
+        for(Priority p : orig.getPriorities()) {
+        	this.priorities.add(p.getName());
+        }
+        for(PlayTime time: orig.getTimings()){
+            this.times.add(time.getTimingName());
+        }
+
     }
 
     public UserDetail(UserDetail orig) {
@@ -93,18 +126,10 @@ public class UserDetail {
         this.is_active = orig.isIs_active();
         this.user_type = orig.getUser_type();
         this.location = orig.getLocation();
-        interests = new ArrayList<>();
-        for (String s : orig.getInterests()) {
-            this.interests.add(s);
-        }
-        genres = new ArrayList<>();
-        for(String genre: orig.getGenres()){
-            this.genres.add(genre);
-        }
-        priorities = new ArrayList<>();
-      for(String p : orig.getPriorities()) {
-      	this.priorities.add(p);
-      }
+        this.priorities = new ArrayList<>(orig.priorities);
+        this.interests = new ArrayList<>(orig.interests);
+        this.genres = new ArrayList<>(orig.genres);
+        this.times = new ArrayList<>(orig.times);
     }
 
     public int getId() {
@@ -193,7 +218,6 @@ public class UserDetail {
         return genres;
     }
 
-
 	/**
 	 * @return the priorities
 	 */
@@ -201,12 +225,21 @@ public class UserDetail {
 		return priorities;
 	}
 
-
 	/**
 	 * @param priorities the priorities to set
 	 */
 	public void setPriorities(ArrayList<String> priorities) {
-		this.priorities = priorities;
+		this.priorities.clear();
+		this.priorities.addAll(priorities);
 	}
 
+    public ArrayList<String> getTimes() {
+        return times;
+    }
+
+    public void setTimes(ArrayList<String> times) {
+        this.times.clear();
+        this.times.addAll(times);
+    }
 }
+

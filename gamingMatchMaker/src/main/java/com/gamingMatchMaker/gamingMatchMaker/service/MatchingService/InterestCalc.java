@@ -30,8 +30,8 @@ public class InterestCalc implements IMatcher {
 		for(Interest i : myints) {
 			if(theirints.contains(i)) score++;
 		}
-		//TODO normalize vs 10?
-		return score;
+		//normalize vs 10
+		return (Math.floorDiv(score, myints.size()) * 10);
 	}
 
 }

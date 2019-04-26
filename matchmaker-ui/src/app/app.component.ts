@@ -37,7 +37,10 @@ export class AppComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.goToLanding();
+    this.allGenres = [];
+    this.allInterests = [];
+    this.allPriorities = [];
+    this.allTimes = [];
   }
 
   setUrl() {
@@ -199,9 +202,7 @@ export class AppComponent implements OnInit {
 
   getAllTimes() {
 
-    const times = ['1', '2', '3']; // TODO delete
-    localStorage.setItem('times', JSON.stringify(times)); // TODO delete
-   /*
+
    return new Promise((resolve) => {
     this.httpService.getAllTimes().subscribe(data => {
       if (data) {
@@ -214,7 +215,7 @@ export class AppComponent implements OnInit {
       resolve();
       });
     });
-    */
+
   }
 
   getAllPriorities(){

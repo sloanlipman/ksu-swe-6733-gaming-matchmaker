@@ -24,11 +24,15 @@ public class RegistrationController {
 
     @PostMapping("/register")
     public ResponseEntity<CreateRegistrationResponse> createRegistration(@RequestBody CreateRegistrationRequest request) {
-        
+        UserDetail details = request.userDetail;
+
         // first create new user
         Optional<UserRec> regUser = service.createRegistration(
-                new UserRec(request.getUserDetail()),
-                request.getPassword());
+                details.getEmail(), request.getPassword(),
+                details.getFirst_name(), details.getLast_name(),
+                details.getAge(), true,
+                details.getUser_type(), details.getLocation()
+        );
 
         HttpHeaders headers = new HttpHeaders();
 
