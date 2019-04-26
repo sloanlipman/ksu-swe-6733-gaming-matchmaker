@@ -1,5 +1,9 @@
 #!/bin/bash
 
+source /home/david/.bash_profile
+PATH=$PATH:/home/david/.nvm/versions/node/v10.15.3/bin
+export PATH;
+
 ## script to deploy gamingMatchmaker project
 ## by dsantos, 04-22-19  
 ## swe6733@ksu.edu
@@ -17,31 +21,47 @@
 
 ###some declarations###
 # MAIL picks wether to just email me or the whole group after build. 
-#MAIL="everybody"; 
-MAIL="me";
+MAIL="everybody"; 
+#MAIL="me";
 BACKENDBUILDOK="no";
 FRONTENDBUILDOK="no"; 
 
-echo "Starting with backend first."
+echo "cd to ci_folder"
+logger "cd to ci_folder"
+cd /home/david/ci_folder/ 2>>/home/david/error.log
 
-echo "getting latest code from git."
-cd /home/david/ci_folder/ksu-swe-6733-gaming-matchmaker
-git checkout master
-git pull 
+echo "removing old repo altogether"
+logger "removing old repo altogether"
+rm -rf /home/david/ci_folder/ksu-swe-6733-gaming-matchmaker 2>>/home/david/error.log
+
+echo "cloning the repo"
+logger "cloning the repo"
+git clone https://github.com/sloanlipman/ksu-swe-6733-gaming-matchmaker.git 2>>/home/david/error.log
+
+echo "going into ksu-swe-6733-gaming-matchmaker folder"
+logger "going into ksu-swe-6733-gaming-matchmaker folder"
+cd /home/david/ci_folder/ksu-swe-6733-gaming-matchmaker/ 2>>/home/david/error.log
+
+echo "making sure we are on master branch."
+logger "making sure we are on master branch."
+git checkout master 2>>/home/david/error.log
+
+echo "Starting with backend first."
+logger "Starting with backend first."
 
 # used later for the email at end of build. 
-export AUTHOR=$(git log | head -n 5 | grep Author)
-export GITDATE=$(git log | head -n 10 | grep Date | head -n1) 
+export AUTHOR=$(git log | head -n 5 | grep Author) 2>>/home/david/error.log
+export GITDATE=$(git log | head -n 10 | grep Date | head -n1) 2>>/home/david/error.log
 
 # war build need special main class changes. 
 # replace GamingMatchMakerApplication.java
 echo "Making some necessary changes to code to publish war file. (GamingMatchMakerApplication.java)"
-\cp -f /home/david/ci_folder/files/GamingMatchMakerApplication.java /home/david/ci_folder/ksu-swe-6733-gaming-matchmaker/gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/GamingMatchMakerApplication.java
+\cp -f /home/david/ci_folder/files/GamingMatchMakerApplication.java /home/david/ci_folder/ksu-swe-6733-gaming-matchmaker/gamingMatchMaker/src/main/java/com/gamingMatchMaker/gamingMatchMaker/GamingMatchMakerApplication.java 2>>/home/david/error.log
 
 # same with pom, buiding a war requires pom changes to spring boot defaults. 
 # replace pom.
 echo "Replacing pom.xml file."
-cp /home/david/ci_folder/files/pom.xml /home/david/ci_folder/ksu-swe-6733-gaming-matchmaker/gamingMatchMaker/pom.xml
+cp /home/david/ci_folder/files/pom.xml /home/david/ci_folder/ksu-swe-6733-gaming-matchmaker/gamingMatchMaker/pom.xml 2>>/home/david/error.log
 
 # change path if not set to contain maven path. 
 echo "Making sure we can excecute Maven commands."
@@ -54,11 +74,11 @@ PATH_TEST=$(echo $PATH | grep "maven" | wc -l);
 echo "Path now contains maven: $PATH";
 
 # load env variables
-source /home/david/ci_folder/files/maven_env_vars.sh
+source /home/david/ci_folder/files/maven_env_vars.sh 2>>/home/david/error.log
 
 #cd to project 
 echo "Going into project dir now..."
-cd /home/david/ci_folder/ksu-swe-6733-gaming-matchmaker/gamingMatchMaker
+cd /home/david/ci_folder/ksu-swe-6733-gaming-matchmaker/gamingMatchMaker 2>>/home/david/error.log
 
 #build war, save outcome to string for later use
 echo "Building the war file..."
@@ -96,54 +116,54 @@ echo  "Dealing with the frontend now."
 
 #1 - go to folder 
 echo  "Going into frontend folder."
-cd /home/david/ci_folder/ksu-swe-6733-gaming-matchmaker/matchmaker-ui
+cd /home/david/ci_folder/ksu-swe-6733-gaming-matchmaker/matchmaker-ui 2>>/home/david/error.log
 
 #2 - checkout master branch 
 echo  "Checking out master branch."
-git checkout master
+git checkout master 2>>/home/david/error.log
 
 #3 - pull latest 
 echo  "Pulling latest on master."
-git pull 
+git pull 2>>/home/david/error.log
 
 #4
 echo  "Doing an npm link, cause I ran into issues not doing so..."
-npm link
+npm link 2>>/home/david/error.log
 
 #5 - wipe out dist/matchmaker
 echo "Wiping out dist/matchmaker folder."
-rm -rf /home/david/ci_folder/ksu-swe-6733-gaming-matchmaker/matchmaker-ui/dist
+rm -rf /home/david/ci_folder/ksu-swe-6733-gaming-matchmaker/matchmaker-ui/dist 2>>/home/david/error.log
 
 #6 - build the dist files 
 echo "running ng build --prod (building prod)"
-ng build --prod
+ng build --prod 2>>/home/david/error.log
 
-$7 - cd to dist and matchmaker
+#$7 - cd to dist and matchmaker
 echo "going into dist folder and moving stuff around..."
-cd dist/matchmaker/
+cd dist/matchmaker/ 2>>/home/david/error.log
 
 #8 move everything up. 
-mv * ../
+mv * ../ 2>>/home/david/error.log
 
 #9 cd up one folder.
-cd ../
+cd ../ 2>>/home/david/error.log
 
 #10 remove matchmaker empty folder
-rmdir matchmaker/
+rmdir matchmaker/ 2>>/home/david/error.log
 
 #11 get the current date
 echo "Getting today's date to append to file."
-fedatestring=`date +%d-%m-%Y_%H-%m`
+fedatestring=`date +%d-%m-%Y_%H-%m` 2>>/home/david/error.log
 
 #12 -- compressing code into tarball. 
 echo "tar gunzipping the dist folder into BUILT_FRONTEND_TARS folder."
-tar -zcvf /home/david/ci_folder/BUILT_FRONTEND_TARS/matchmaker_$fedatestring.tar.gz ./
+tar -zcvf /home/david/ci_folder/BUILT_FRONTEND_TARS/matchmaker_$fedatestring.tar.gz ./ 2>>/home/david/error.log
 
 #13 make a backup of the stuff in /var/www/html
 echo "Making a backup of /var/www/html"
-rm -rf /tmp/frontend_backupdir
-mkdir -p /tmp/frontend_backupdir
-cp -r /var/www/html/* /tmp/frontend_backupdir/
+rm -rf /tmp/frontend_backupdir 2>>/home/david/error.log
+mkdir -p /tmp/frontend_backupdir 2>>/home/david/error.log
+cp -r /var/www/html/* /tmp/frontend_backupdir/ 2>>/home/david/error.log
 
 # if we get here the build was sucessfull.
 echo "Building the front end was ok!!"
@@ -157,11 +177,11 @@ if [ $FRONTENDBUILDOK = "yes" ] && [ $BACKENDBUILDOK = "yes" ]; then
 		# Wipe out /var/www/html
 		echo "Wiping out /var/www/html folder."
 		#14 remove contents of /var/www/html 
-		rm -rf /var/www/html/* 
+		rm -rf /var/www/html/*  2>>/home/david/error.log
 
 		# untaring latest build into /var/www/html
 		# 14  dont do this yet, we are just testing. 
-		tar -zxvf /home/david/ci_folder/BUILT_FRONTEND_TARS/matchmaker_$fedatestring.tar.gz -C /var/www/html/
+		tar -zxvf /home/david/ci_folder/BUILT_FRONTEND_TARS/matchmaker_$fedatestring.tar.gz -C /var/www/html/ 2>>/home/david/error.log
 
 		if [ $? -ne 0 ]; then 
 			rm -rf /var/www/html/*
@@ -177,27 +197,27 @@ if [ $FRONTENDBUILDOK = "yes" ] && [ $BACKENDBUILDOK = "yes" ]; then
 	echo "doing the dangerous part of the backend build..."
 
 		# gotta go back to backend project folder.
-		cd /home/david/ci_folder/ksu-swe-6733-gaming-matchmaker/gamingMatchMaker
+		cd /home/david/ci_folder/ksu-swe-6733-gaming-matchmaker/gamingMatchMaker 2>>/home/david/error.log
 
 		#get current date
-		datestring=`date +%d-%m-%Y_%H-%m`
+		datestring=`date +%d-%m-%Y_%H-%m` 2>>/home/david/error.log
 
 		#copy war into BUILT_WARS
-		\cp -f ./target/demo-0.0.1-SNAPSHOT.war /home/david/ci_folder/BUILT_WARS/$datestring.war
+		\cp -f ./target/demo-0.0.1-SNAPSHOT.war /home/david/ci_folder/BUILT_WARS/$datestring.war 2>>/home/david/error.log
 
-		datetimestring=`date +%d-%m-%Y_%H-%m-%S`
+		datetimestring=`date +%d-%m-%Y_%H-%m-%S` 2>>/home/david/error.log
 
 		#make backup of war. 
 		echo "making backup of currently deployed war."
-		\cp -f /opt/tomcat/webapps/gamingMatchmaker.war  /home/david/ci_folder/war_backup_dated/$datetimestring.war
+		\cp -f /opt/tomcat/webapps/gamingMatchmaker.war  /home/david/ci_folder/war_backup_dated/$datetimestring.war 2>>/home/david/error.log
 
 		#remove war
 		echo "removing currently deployed war."
-		rm -f /opt/tomcat/webapps/gamingMatchmaker.war
+		rm -f /opt/tomcat/webapps/gamingMatchmaker.war 2>>/home/david/error.log
 
 		# move newly created war to webapps, last war in BUILT_WARS folder 
 		echo "move newly created war to webapps, last war in BUILT_WARS folder"
-		\cp -f /home/david/ci_folder/BUILT_WARS/$datestring.war /opt/tomcat/webapps/gamingMatchmaker.war
+		\cp -f /home/david/ci_folder/BUILT_WARS/$datestring.war /opt/tomcat/webapps/gamingMatchmaker.war 2>>/home/david/error.log
 
 		if [ $MAIL = "everybody" ]; then
 			printf "Subject: Successful build\n\nA new version of the backend has been published. \n\nLast push by: $AUTHOR\n\nLast push date:$GITDATE\n\n" | ssmtp davidsantosmail@gmail.com,sloan.lipman@gmail.com,vaid.imad@gmail.com,moffett.mckenna@gmail.com,andrewjneary@gmail.com 
