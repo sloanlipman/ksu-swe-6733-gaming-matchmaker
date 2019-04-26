@@ -15,12 +15,12 @@ export class User {
   constructor(obj?: any){
     this.id = obj && obj.id;
     this.email = obj && obj.email;
-    this.firstName = obj && obj.firstName;
-    this.lastName = obj && obj.lastName;
+    this.firstName = obj && obj.firstName || obj.first_name;
+    this.lastName = obj && obj.lastName || obj.last_name;
     this.age = obj && obj.age;
     this.location = obj && obj.location;
-    this.isActive = obj && obj.isActive;
-    this.type = obj && obj.type;
+    this.isActive = obj && obj.isActive && obj.is_active;
+    this.type = obj && obj.type || obj.user_type;
     this.interests = obj && obj.interests;
     this.genres = obj && obj.genres;
     this.times = obj && obj.times;

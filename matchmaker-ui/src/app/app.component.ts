@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material';
 import { User } from './shared/models/user';
 import { LoadingIndicator } from './shared/components/loading-indicator/loading-indicator.component';
 import { HttpService } from './shared/services/http-service/http.service';
+import { MatchmakingService } from './shared/services/matchmaking-service/matchmaking.service';
 
 /**This page will be the launch point of the app. We can use to initialize and send the user on their way
   Any HTML associated with this component will be persistent throughout the app
@@ -26,14 +27,17 @@ export class AppComponent implements OnInit {
   public allGenres = [];
   public allTimes = [];
   public allPriorities = [];
+  public matches = [];
   constructor(
     protected injector: Injector,
     protected dialog: MatDialog,
-    protected httpService?: HttpService
+    protected httpService?: HttpService,
+    protected matchmakingService?: MatchmakingService
   ) {
       this.router = this.injector.get(Router);
       this.location = this.injector.get(Location);
       this.httpService = this.injector.get(HttpService);
+      this.matchmakingService = this.injector.get(MatchmakingService);
     }
 
   ngOnInit() {
@@ -41,6 +45,7 @@ export class AppComponent implements OnInit {
     this.allInterests = [];
     this.allPriorities = [];
     this.allTimes = [];
+    console.log(this.currentUser);
   }
 
   setUrl() {
@@ -96,7 +101,7 @@ export class AppComponent implements OnInit {
   }
 
    getUser() {
-    this.currentUser =  new User(JSON.parse(localStorage.getItem('user')));
+    this.currentUser = new User(JSON.parse(localStorage.getItem('user')));
     this.httpService.getUser(this.currentUser.id).subscribe(data => {
     this.currentUser = data;
     console.log(this.currentUser);
@@ -161,8 +166,10 @@ export class AppComponent implements OnInit {
   }
 
   viewMatchmaking(){
-    this.router.navigateByUrl('/matchmaking').then(() => {
-      this.dismissLoading();
+    this.getMatches().then(() => {
+      this.router.navigateByUrl('/matchmaking').then(() => {
+        this.dismissLoading();
+      });
     });
   }
 
@@ -230,6 +237,25 @@ export class AppComponent implements OnInit {
         }
       resolve();
       });
+    });
+  }
+
+  getMatches() {
+    return new Promise((resolve) => {
+      this.showLoading();
+      this.currentUser = new User(JSON.parse(localStorage.getItem('user')));
+
+        this.matchmakingService.getMatches(this.currentUser.id).subscribe(data => {
+          if (data) {
+            for (let i = 0; i < data.length; ++i) {
+              const match = new User(data[i]);
+              this.matches.push(match);
+            }
+          }
+          localStorage.setItem('matches', JSON.stringify(this.matches));
+          console.log(this.matches);
+          resolve();
+        });
     });
   }
 }
