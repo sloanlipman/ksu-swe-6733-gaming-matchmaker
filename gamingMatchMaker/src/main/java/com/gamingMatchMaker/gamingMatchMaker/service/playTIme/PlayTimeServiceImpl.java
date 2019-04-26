@@ -1,7 +1,6 @@
-package com.gamingMatchMaker.gamingMatchMaker.service.playTIme;
+package com.gamingMatchMaker.gamingMatchMaker.service.playTime;
 
 import com.gamingMatchMaker.gamingMatchMaker.dao.PlayTimeRepository;
-import com.gamingMatchMaker.gamingMatchMaker.model.GameGenre;
 import com.gamingMatchMaker.gamingMatchMaker.model.PlayTime;
 import org.springframework.stereotype.Service;
 

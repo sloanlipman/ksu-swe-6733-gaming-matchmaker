@@ -1,15 +1,8 @@
 package com.gamingMatchMaker.gamingMatchMaker.model;
 
-import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity
 @Table(name="priorities")
@@ -17,29 +10,20 @@ public class Priority {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id", columnDefinition="int(11)")
-    private int id;
+		private int id;
+		private String priorityName;
 
-    @Column(name="name")
-    private String priorityName;
-
-    @OneToMany
+    @ManyToMany
     private Set<UserRec> users;
 
-	public Priority() {
-	}
+	public Priority() {}
+
 	public Priority(Priority original) {
 		this.id = original.id;
-		this. priorityName = original.priorityName;
+		this.priorityName = original.priorityName;
 	}
 
-//	public Priority(int id, String name) {
-//		this.id = id;
-//		this.name = name;
-//		users = new HashSet<UserRec>();
-//	}
-
-	public Priority(int id, String name, Set<UserRec> users) {
-		this.id = id;
+	public Priority(String name, Set<UserRec> users) {
 		this.priorityName = name;
 		this.users = users;
 	}

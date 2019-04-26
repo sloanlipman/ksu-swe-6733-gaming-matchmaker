@@ -44,7 +44,7 @@ public class UserRec {
     ) //map the interests table through the users_interests
     private final Set<Interest> interests;
 
-    @OneToMany
+    @ManyToMany
     private final List<Priority> priorities;
 
     @ManyToMany

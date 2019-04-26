@@ -1,4 +1,4 @@
-package com.gamingMatchMaker.gamingMatchMaker.service.playTIme;
+package com.gamingMatchMaker.gamingMatchMaker.service.playTime;
 
 import java.util.List;
 

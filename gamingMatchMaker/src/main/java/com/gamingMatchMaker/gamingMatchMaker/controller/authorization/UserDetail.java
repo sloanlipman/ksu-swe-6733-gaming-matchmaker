@@ -3,10 +3,6 @@ package com.gamingMatchMaker.gamingMatchMaker.controller.authorization;
 import java.util.ArrayList;
 
 import com.gamingMatchMaker.gamingMatchMaker.model.*;
-import com.gamingMatchMaker.gamingMatchMaker.model.GameGenre;
-import com.gamingMatchMaker.gamingMatchMaker.model.Interest;
-import com.gamingMatchMaker.gamingMatchMaker.model.Location;
-import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
 
 public class UserDetail {
     private int id;
@@ -100,6 +96,7 @@ public class UserDetail {
         this.interests = new ArrayList<>();
         this.genres = new ArrayList<>();
         this.times = new ArrayList<>();
+        this.priorities = new ArrayList<>();
 
         for (Interest i : orig.getInterests()) {
             this.interests.add(i.getActivity());
@@ -107,7 +104,7 @@ public class UserDetail {
         for(GameGenre genre: orig.getGenres()){
             this.genres.add(genre.getGenreName());
         }
-        priorities = new ArrayList<>();
+        
         for(Priority p : orig.getPriorities()) {
         	this.priorities.add(p.getName());
         }

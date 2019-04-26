@@ -70,7 +70,7 @@ public class MatchingController {
 	 * @param id The id of the player making the requests.
 	 * @return The UserDetails of the other players who meet the criteria.
 	 */
-	@GetMapping("/enginer/match/{id:[\\d]+}")
+	@GetMapping("/engine/match/{id:[\\d]+}")
 	public ResponseEntity<ArrayList<UserDetail>> GetMatches(@PathVariable Integer id) {
 		//create the return list
 		ArrayList<UserDetail> uds = new ArrayList<>();
@@ -93,15 +93,7 @@ public class MatchingController {
 		return new ResponseEntity<ArrayList<UserDetail>>(uds, HttpStatus.OK);
 	}
 	
-	/**
-	 * Read the full list of available priority plugins.
-	 * @return
-	 */
-	@GetMapping("/priority/getall")
-	public ResponseEntity<List<String>> getPriorities() {
-		List<String> priorities = service.getAllPlugins();
-		return new ResponseEntity<>(priorities,new HttpHeaders(), HttpStatus.OK);
-	}
+
 	
 	/**
 	 * Change the order in which different factors are used to match players.  Don't know why I added this, should be handled in save profile operations....
@@ -109,8 +101,8 @@ public class MatchingController {
 	 * @param priorities
 	 * @return
 	 */
-	@PostMapping("/priority/set/{id:[\\\\d]+}")
-	public ResponseEntity<String> setPriorities(@PathVariable long id, @RequestBody ArrayList<String> priorities) {
+	@PostMapping("/priority/set/{id:[\\d]+}")
+	public ResponseEntity<String> setPriorities(@PathVariable Integer id, @RequestBody ArrayList<String> priorities) {
 		//set some initial values for success
 		String err = "";
 		HttpStatus stat = HttpStatus.OK;
