@@ -1,10 +1,9 @@
 import { Location } from '@angular/common';
 import { Component, OnInit, Injector } from '@angular/core';
 import { Router } from '@angular/router';
-import { LandingPage } from '../landing-page/landing-page.component';
 import { AppComponent } from 'src/app/app.component';
 import { MatDialog } from '@angular/material';
-import { MockUsers } from 'src/app/shared/mock-users';
+import { MockUsers } from 'src/app/shared/mocks/mock-users';
 import { User } from 'src/app/shared/models/user';
 
 @Component({

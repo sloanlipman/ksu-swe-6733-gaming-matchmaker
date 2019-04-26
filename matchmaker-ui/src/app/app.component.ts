@@ -142,11 +142,11 @@ export class AppComponent implements OnInit {
       const timePromise = await Promise.resolve(this.getAllTimes());
       const priorityPromise = await Promise.resolve(this.getAllPriorities());
       const genrePromise = await Promise.resolve(this.getAllGenres());
-    Promise.all([interestPromise, timePromise, priorityPromise, genrePromise]).then(() => {
+     // Promise.all([interestPromise, timePromise, priorityPromise, genrePromise]).then(() => {
       this.router.navigateByUrl('/edit-profile').then(() => {
         this.dismissLoading();
       });
-    });
+   // });
   } else {
       this.router.navigateByUrl('/edit-profile').then(() => {
         this.dismissLoading();
@@ -182,7 +182,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  getAllGenres() {
+  async getAllGenres() {
     return new Promise((resolve) => {
       this.httpService.getAllGenres().subscribe(data => {
         if (data) {
@@ -197,8 +197,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  getAllTimes() {
-
+  async getAllTimes() {
    return new Promise((resolve) => {
     this.httpService.getAllTimes().subscribe(data => {
       if (data) {
@@ -213,7 +212,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  getAllPriorities(){
+  async getAllPriorities(){
     const priorities =  ['Location', 'Game Genres', 'Active Time', 'Interests'];
     localStorage.setItem('priorities', JSON.stringify(priorities));
 

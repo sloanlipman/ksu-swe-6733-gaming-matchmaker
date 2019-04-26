@@ -11,7 +11,7 @@ import { of } from 'rxjs';
 import { LoadingIndicator } from 'src/app/shared/components/loading-indicator/loading-indicator.component';
 import { HttpService } from 'src/app/shared/services/http-service/http.service';
 import { LoginService } from 'src/app/shared/services/login-service/login.service';
-import { MockUsers } from 'src/app/shared/mock-users';
+import { MockUsers } from 'src/app/shared/mocks/mock-users';
 
 
 describe('LoginPage', () => {

@@ -1,4 +1,4 @@
-import { User } from './models/user';
+import { User } from '../models/user';
 
 // TODO add genres and times
 export class MockUsers {
@@ -35,6 +35,18 @@ export class MockUsers {
             "Hiking",
             "Yoga",
             "Amateur radio"
+        ],
+        "priorities": [
+          "Interests",
+          "Genres",
+          "Times",
+          "Location"
+        ],
+        "genres": [
+          "RPG"
+        ],
+        "times": [
+          "Afternoon"
         ]
       }`
     );

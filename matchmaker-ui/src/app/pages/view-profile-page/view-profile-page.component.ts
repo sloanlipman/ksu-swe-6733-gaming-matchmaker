@@ -15,7 +15,7 @@ export class ViewProfilePage extends AppComponent implements OnInit {
   interests = [];
   genres = [];
   userId: string;
-  user =  JSON.parse(localStorage.getItem('clickedUser'));
+  user: any;
   constructor(
     protected router: Router,
     protected location: Location,
@@ -27,8 +27,13 @@ export class ViewProfilePage extends AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.findUser();
     console.log('USER IS:', this.user);
     this.closeDialog();
+  }
+
+  findUser() {
+    this.user = JSON.parse(localStorage.getItem('clickedUser'));
   }
 }
 
