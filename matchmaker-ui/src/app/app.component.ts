@@ -37,10 +37,6 @@ export class AppComponent implements OnInit {
     }
 
   ngOnInit() {
-<<<<<<< HEAD
-=======
-  //  this.goToLanding();
->>>>>>> remotes/origin/Sloan-misc
   }
 
   setUrl() {
@@ -183,13 +179,6 @@ export class AppComponent implements OnInit {
   }
 
   getAllGenres() {
-<<<<<<< HEAD
-  //  const genres = ['Shooters', 'RPGs', 'RTS']; // TODO delete
-  //  localStorage.setItem('genres', JSON.stringify(genres)); // TODO delete
-
-
-=======
->>>>>>> remotes/origin/Sloan-misc
     return new Promise((resolve) => {
       this.httpService.getAllGenres().subscribe(data => {
         if (data) {

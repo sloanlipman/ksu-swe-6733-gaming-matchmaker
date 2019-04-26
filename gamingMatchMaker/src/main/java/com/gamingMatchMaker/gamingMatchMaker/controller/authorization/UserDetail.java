@@ -2,14 +2,7 @@ package com.gamingMatchMaker.gamingMatchMaker.controller.authorization;
 
 import java.util.ArrayList;
 
-<<<<<<< HEAD
-import com.gamingMatchMaker.gamingMatchMaker.model.GameGenre;
-import com.gamingMatchMaker.gamingMatchMaker.model.Interest;
-import com.gamingMatchMaker.gamingMatchMaker.model.Location;
-import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
-=======
 import com.gamingMatchMaker.gamingMatchMaker.model.*;
->>>>>>> remotes/origin/Sloan-misc
 
 public class UserDetail {
     private int id;
@@ -22,33 +15,15 @@ public class UserDetail {
 
     // list of interests
     // @JsonFormat(shape=JsonFormat.Shape.ARRAY)
-<<<<<<< HEAD
-    private ArrayList<String> interests;
-    private ArrayList<String> genres;
-=======
     private final ArrayList<String> interests;
     private final ArrayList<String> genres;
     private final ArrayList<String> times;
->>>>>>> remotes/origin/Sloan-misc
 
     // TODO shouldn't the location have just the zip code - why are we sending
     // everything else to the front-end or otherwise expecting them to have it?
     private Location location;
 
     public UserDetail() {
-<<<<<<< HEAD
-        this.interests = new ArrayList<String>();
-        this.genres = new ArrayList<>();
-    }
-
-
-    public UserDetail(int id) {
-        this.id = id;
-    }
-
-    public UserDetail(int id, String email, String first_name, String last_name, int age, boolean is_active,
-                      int user_type, Location location) {
-=======
         this.interests = new ArrayList<>();
         this.genres = new ArrayList<>();
         this.times = new ArrayList<>();
@@ -64,7 +39,6 @@ public class UserDetail {
     public UserDetail(int id, String email, String first_name, String last_name,
                       int age, boolean is_active, int user_type, Location location
     ) {
->>>>>>> remotes/origin/Sloan-misc
         this.id = id;
         this.email = email;
         this.first_name = first_name;
@@ -73,21 +47,6 @@ public class UserDetail {
         this.is_active = is_active;
         this.user_type = user_type;
         this.location = location;
-<<<<<<< HEAD
-        interests = new ArrayList<>();
-        genres = new ArrayList<>();
-    }
-
-    // need this for ProfileServiceImpl.SaveProfile() unit test
-    /*
-     * public UserDetail(int id, String email, String first_name, String last_name,
-     * int age, boolean is_active, int user_type, Location location,
-     * ArrayList<String> interests ) { this.id = id; this.email = email;
-     * this.first_name = first_name; this.last_name = last_name; this.age = age;
-     * this.is_active = is_active; this.user_type = user_type; this.location =
-     * location; interests = new ArrayList<String>(); interests.addAll(interests); }
-     */
-=======
         this.interests = new ArrayList<>();
         this.genres = new ArrayList<>();
         this.times = new ArrayList<>();
@@ -109,7 +68,6 @@ public class UserDetail {
         this.times = times;
         this.location = location;
     }
->>>>>>> remotes/origin/Sloan-misc
 
     public UserDetail(UserRec orig) {
         this.id = orig.getId();
@@ -120,16 +78,6 @@ public class UserDetail {
         this.is_active = orig.isIs_active();
         this.user_type = orig.getUser_type();
         this.location = orig.getLocation();
-<<<<<<< HEAD
-        this.interests = new ArrayList<String>();
-        for (Interest i : orig.getInterests()) {
-            this.interests.add(i.getActivity());
-        }
-        this.genres = new ArrayList<String>();
-        for(GameGenre genre: orig.getGenres()){
-            this.genres.add(genre.getGenreName());
-        }
-=======
         this.interests = new ArrayList<>();
         this.genres = new ArrayList<>();
         this.times = new ArrayList<>();
@@ -144,7 +92,6 @@ public class UserDetail {
             this.times.add(time.getTimingName());
         }
 
->>>>>>> remotes/origin/Sloan-misc
     }
 
     public UserDetail(UserDetail orig) {
@@ -156,20 +103,9 @@ public class UserDetail {
         this.is_active = orig.isIs_active();
         this.user_type = orig.getUser_type();
         this.location = orig.getLocation();
-<<<<<<< HEAD
-        interests = new ArrayList<>();
-        for (String s : orig.getInterests()) {
-            this.interests.add(s);
-        }
-        genres = new ArrayList<>();
-        for(String genre: orig.getGenres()){
-            this.genres.add(genre);
-        }
-=======
         this.interests = new ArrayList<>(orig.interests);
         this.genres = new ArrayList<>(orig.genres);
         this.times = new ArrayList<>(orig.times);
->>>>>>> remotes/origin/Sloan-misc
     }
 
     public int getId() {
@@ -258,8 +194,6 @@ public class UserDetail {
         return genres;
     }
 
-<<<<<<< HEAD
-=======
     public ArrayList<String> getTimes() {
         return times;
     }
@@ -268,5 +202,4 @@ public class UserDetail {
         this.times.clear();
         this.times.addAll(times);
     }
->>>>>>> remotes/origin/Sloan-misc
 }
