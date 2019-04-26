@@ -70,8 +70,6 @@ export class HttpService {
   }
 
   public updateUser(user: any, accessToken?: any) {
-
-    user.priorities = []; // TODO delete
     this.currUser = new User({
       id: user.id,
       email: user.email,
@@ -101,7 +99,7 @@ export class HttpService {
     })).pipe(catchError(err => this.handleError(err)));
   }
 
-  public getAllGenres(): Observable<any> { // TODO confirm this is the right endpoint
+  public getAllGenres(): Observable<any> {
     return this.get('/api/gameGenres').pipe(map((resp: any) => {
       if (resp){
         return resp;
@@ -110,7 +108,7 @@ export class HttpService {
 }
 
   public getAllTimes(): Observable<any> {
-    return this.get('/api/playTimes').pipe(map((resp: any) => { // TODO add the endpoint
+    return this.get('/api/playTimes').pipe(map((resp: any) => {
       if (resp){
         return resp;
       }

@@ -152,7 +152,8 @@ public class ZipCalc implements IMatcher {
 
 		//cheesy conversion - probably a better way
 		Double dub = Math.ceil(dist/STEP);
-		Integer a = new Integer(dub.toString());
+    Integer a = (Integer) dub.intValue();
+
 		
 		//use subtraction operation for ascending to descending inversion
 		return (MAX_STEPS - a.intValue());

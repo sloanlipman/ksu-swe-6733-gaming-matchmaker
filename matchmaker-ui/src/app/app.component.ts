@@ -137,7 +137,7 @@ export class AppComponent implements OnInit {
     if (!this.isLoading) {
       this.showLoading();
     }
-    if (this.allGenres.length === 0 || this.allInterests.length === 0 || this.allPriorities.length === 0 || this.allTimes.length === 0) {
+  //  if (this.allGenres.length === 0 || this.allInterests.length === 0 || this.allPriorities.length === 0 || this.allTimes.length === 0) {
       const interestPromise = await Promise.resolve(this.getAllInterests());
       const timePromise = await Promise.resolve(this.getAllTimes());
       const priorityPromise = await Promise.resolve(this.getAllPriorities());
@@ -147,11 +147,11 @@ export class AppComponent implements OnInit {
         this.dismissLoading();
       });
     });
-  } else {
+ // } else {
       this.router.navigateByUrl('/edit-profile').then(() => {
         this.dismissLoading();
       });
-    }
+  //  }
   }
 
   viewProfile(id: any){
@@ -219,22 +219,17 @@ export class AppComponent implements OnInit {
   }
 
   getAllPriorities(){
-    const priorities =  ['Location', 'Game Genres', 'Active Time', 'Interests'];
-    localStorage.setItem('priorities', JSON.stringify(priorities));
-
-
-  /*  return new Promise((resolve) => {
+    return new Promise((resolve) => {
       this.httpService.getAllPriorities().subscribe(data => {
         if (data) {
           const priorities = [];
           for (let i = 0; i < data.length; ++i) {
             priorities.push(data[i]);
           }
-          localStorage.setItem('times', JSON.stringify(priorities));
+          localStorage.setItem('priorities', JSON.stringify(priorities));
         }
       resolve();
       });
-    }); */
+    });
   }
-
 }
