@@ -20,20 +20,27 @@ public class Priority {
     private int id;
 
     @Column(name="name")
-    private String name;
+    private String priorityName;
 
-    @OneToMany(mappedBy = "priority")
+    @OneToMany
     private Set<UserRec> users;
-       
-	public Priority(int id, String name) {
-		this.id = id;
-		this.name = name;
-		users = new HashSet<UserRec>();
+
+	public Priority() {
 	}
+	public Priority(Priority original) {
+		this.id = original.id;
+		this. priorityName = original.priorityName;
+	}
+
+//	public Priority(int id, String name) {
+//		this.id = id;
+//		this.name = name;
+//		users = new HashSet<UserRec>();
+//	}
 
 	public Priority(int id, String name, Set<UserRec> users) {
 		this.id = id;
-		this.name = name;
+		this.priorityName = name;
 		this.users = users;
 	}
 
@@ -55,14 +62,14 @@ public class Priority {
 	 * @return the name
 	 */
 	public String getName() {
-		return name;
+		return priorityName;
 	}
 
 	/**
 	 * @param name the name to set
 	 */
 	public void setName(String name) {
-		this.name = name;
+		this.priorityName = name;
 	}
 
 	/**

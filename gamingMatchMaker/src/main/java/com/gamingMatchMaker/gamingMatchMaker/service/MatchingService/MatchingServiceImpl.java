@@ -12,17 +12,18 @@ import com.gamingMatchMaker.gamingMatchMaker.dao.UserRepository;
 import com.gamingMatchMaker.gamingMatchMaker.model.Priority;
 import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
 import com.gamingMatchMaker.gamingMatchMaker.service.authService.UserException;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-
+@Service
 public class MatchingServiceImpl implements MatchingService {
 
 	//private HashMap<Integer, IMatcher> matchers;	//ordered list
-	private HashMap<String, IMatcher> plugins;		//keyed look-up of known 
-	private UserRepository phoneBook;
-	private PrioritiesRepository plugRepo;
+	private final  HashMap<String, IMatcher> plugins;		//keyed look-up of known
+	private final  UserRepository phoneBook;
+	private final PrioritiesRepository plugRepo;
 	
 	/**
 	 * Default Constructor
@@ -40,6 +41,7 @@ public class MatchingServiceImpl implements MatchingService {
 	 * @param prs The new list of priorities.
 	 * @throws PluginException
 	 */
+	@Override
 	public void setPriorities(List<String> prs) throws PluginException {
 		//create a new matchers set to load
 		HashMap<Integer, IMatcher> ms = new HashMap<>();
@@ -62,6 +64,7 @@ public class MatchingServiceImpl implements MatchingService {
 	 * @return A list of matched players.
 	 * @exception UserException The user to match could not be found.
 	 */
+	@Override
 	public List<UserRec> getMatches(Integer uid) throws UserException {
 		//get the score holder ready
 		LinkedHashMap<UserRec, Integer> scores = new LinkedHashMap<>();
@@ -121,6 +124,7 @@ public class MatchingServiceImpl implements MatchingService {
 	 * @param im The object which does the matching.
 	 * @throws PluginException If the plugin already exists.  In this case the new plugin isn't added.
 	 */
+	@Override
 	public void registerPlugin(String name, IMatcher im) throws PluginException {
 		if(plugins.containsKey(name)) 
 			throw new PluginException("Plugin " + name + " already exists." );
@@ -131,6 +135,7 @@ public class MatchingServiceImpl implements MatchingService {
 	 * Read the list of available matching plugins.
 	 * @return The list of plugins.
 	 */
+	@Override
 	public List<String> getAllPlugins() {
 		ArrayList<String> plugs = new ArrayList<>();
 		for(Priority p : plugRepo.findAll()) {

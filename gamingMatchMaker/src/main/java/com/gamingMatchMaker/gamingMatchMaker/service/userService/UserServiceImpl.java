@@ -30,11 +30,12 @@ public class UserServiceImpl implements UserService{
     private final GameGenreRepository genreDao;
 
     private final PlayTimeRepository timeDao;
+    private final PrioritiesRepository priortyDao;
 
     @Autowired
     public UserServiceImpl(UserRepository userDao, LocationRepository locDao,
                            InterestRepository interestDao, GameGenreRepository genreDao,
-                           PlayTimeRepository timeDao
+                           PlayTimeRepository timeDao, PrioritiesRepository priortyDao
 
     ) {
         this.userDao = userDao;
@@ -42,6 +43,7 @@ public class UserServiceImpl implements UserService{
         this.interestDao = interestDao;
         this.genreDao = genreDao;
         this.timeDao = timeDao;
+        this.priortyDao = priortyDao;
 }
 
     @Override
@@ -93,6 +95,9 @@ public class UserServiceImpl implements UserService{
         // Step 8 update the list of playTiming for the playtime names
         List<PlayTime> newTimeList =  this.timeDao.findByTimingNameIn(userDetail.getTimes());
         userRec.setTimings(new HashSet<>(newTimeList));
+
+        List<Priority> newpPriorityList = this.priortyDao.findByPriorityNameIn(userDetail.getPriorities());
+        userRec.setPriorities(new HashSet<>(newpPriorityList));
 
         // Finally save and return the updated record
         return Optional.of(userDao.save(userRec));

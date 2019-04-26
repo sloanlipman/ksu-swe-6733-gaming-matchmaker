@@ -2,7 +2,9 @@ package com.gamingMatchMaker.gamingMatchMaker.service.MatchingService;
 
 import com.gamingMatchMaker.gamingMatchMaker.model.PlayTime;
 import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ActiveTimeCalc implements IMatcher {
 
 	@Override

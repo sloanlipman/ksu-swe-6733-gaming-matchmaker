@@ -44,8 +44,7 @@ public class UserRec {
     ) //map the interests table through the users_interests
     private final Set<Interest> interests;
 
-    @OneToMany(mappedBy = "user")
-    @OrderBy("order")	//this may not work because it's a join table
+    @OneToMany
     private final List<Priority> priorities;
 
     @ManyToMany
@@ -246,7 +245,7 @@ public class UserRec {
 	/**
 	 * @param priorities the priorities to set
 	 */
-	public void setPriorities(List<Priority> priorities) {
+	public void setPriorities(Set<Priority> priorities) {
 		this.priorities.clear();
 		this.priorities.addAll(priorities);
 	}
