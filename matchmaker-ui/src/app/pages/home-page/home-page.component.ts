@@ -26,11 +26,7 @@ export class HomePage extends AppComponent implements OnInit {
 
   ngOnInit() {
     this.getUser();
-    this.allInterests = JSON.parse(localStorage.getItem('interests'));
-    this.allGenres = JSON.parse(localStorage.getItem('genres'));
-    this.allTimes = JSON.parse(localStorage.getItem('times'));
-    this.allPriorities = JSON.parse(localStorage.getItem('priorities'));
-    this.dismissLoading(); // We might not actually need this, but better safe than sorry
+    console.log(this.currentUser);
   }
 
   showAdminTools(){

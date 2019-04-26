@@ -27,10 +27,8 @@ export class ViewProfilePage extends AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.user);
+    console.log('USER IS:', this.user);
     this.closeDialog();
-    this.interests = this.currentUser.interests;
-    this.genres = this.currentUser.genres;
   }
 }
 

@@ -1,8 +1,5 @@
 <h1>Welcome back, {{ this.currentUser.firstName }}</h1>
-  <mat-card id="user">
   <profile-card [player]="this.currentUser"></profile-card>
-</mat-card>
-
 <mat-card  *ngIf="showAdminTools()">
   Hi, this is an admin view. Not much to see here yet!
 </mat-card>

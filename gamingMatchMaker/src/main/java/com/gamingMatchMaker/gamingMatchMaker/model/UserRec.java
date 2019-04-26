@@ -2,7 +2,6 @@ package com.gamingMatchMaker.gamingMatchMaker.model;
 
 import java.util.*;
 import javax.persistence.*;
-import java.util.*;
 
 @Entity
 @Table(name="users")
@@ -38,13 +37,10 @@ public class UserRec {
     private final Set<Interest> interests;
 
     @ManyToMany
-    private Set<GameGenre> genres;
+    private final Set<GameGenre> genres;
 
-
-
-=======
     @ManyToMany
-    private Set<PlayTime> timings;
+    private final Set<PlayTime> timings;
 
     public UserRec() {
 
@@ -63,22 +59,9 @@ public class UserRec {
         this.is_active = original.is_active;
         this.user_type = original.user_type;
 
-        if(original.getInterests() != null){
-            this.hobbies = new HashSet<>(original.getInterests());
-        }else{
-            this.hobbies = new HashSet<>();
-        }
-        if(original.getGenres() != null) {
-            this.genres = new HashSet<>(original.getGenres());
-        }else{
-            this.genres = new HashSet<>();
-        }
-        if(original.getTimings()  != null){
-            this.timings = new HashSet<>(original.getTimings());
-        }else{
-            this.timings = new HashSet<>();
-        }
-
+        this.interests = new HashSet<>(original.getInterests());
+        this.genres = new HashSet<>(original.getGenres());
+        this.timings = new HashSet<>(original.getTimings());
 
         this.location = original.location;
     }
@@ -104,7 +87,8 @@ public class UserRec {
     public UserRec(String email, String first_name, String last_name,
                    String password, int age, boolean is_active,
                    int user_type, Location location,
-                   Interest[] interests, GameGenre[] genres, PlayTime[] timings){
+                   Interest[] interests, GameGenre[] genres, PlayTime[] timings
+    ){
         this.email = email;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -113,11 +97,6 @@ public class UserRec {
         this.is_active = is_active;
         this.user_type = user_type;
         this.location = location;
-        this.hobbies.addAll(Arrays.asList(interests));
-        this.genres.addAll(Arrays.asList(genres));
-        this.timings.addAll(Arrays.asList(timings));
-
-    }
 
         this.interests = new HashSet<>(Arrays.asList(interests));
         this.genres = new HashSet<>(Arrays.asList(genres));
@@ -241,34 +220,7 @@ public class UserRec {
         return genres;
     }
 
-	/**
-	 * @param interests the interests to set
-	 */
-	public void setInterests(Set<Interest> interests) {
-		this.hobbies = interests;
-	}
-
-    public Set<GameGenre> getGenres() {
-        return genres;
-    }
-
-    public void setGenres(Set<GameGenre> genres) {
-        this.genres = genres;
-    }
-
-    public Set<Interest> getHobbies() {
-        return hobbies;
-    }
-
-    public void setHobbies(Set<Interest> hobbies) {
-        this.hobbies = hobbies;
-    }
-
     public Set<PlayTime> getTimings() {
         return timings;
-    }
-
-    public void setTimings(Set<PlayTime> timings) {
-        this.timings = timings;
     }
 }
