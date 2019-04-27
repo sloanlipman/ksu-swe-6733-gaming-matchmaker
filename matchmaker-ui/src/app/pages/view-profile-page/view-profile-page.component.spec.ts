@@ -39,7 +39,6 @@ describe('ViewProfilePage', () => {
   });
 
   it('should create', () => {
-  console.log('VIEW PROFILE USER:', component.currentUser);
     expect(component).toBeTruthy();
   });
 });

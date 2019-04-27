@@ -69,13 +69,11 @@ describe('AppComponent', () => {
   });
 
   describe('Navigation', () => {
-
     beforeEach(() => {
       mockUsers = new MockUsers();
       user1 = mockUsers.getUser1();
       component.isLoading = true;
       routerSpy = spyOn(component.router, 'navigateByUrl').and.returnValue(Promise.resolve(of()));
-
       fixture.detectChanges();
     });
 
@@ -115,26 +113,24 @@ describe('AppComponent', () => {
       expect(routerSpy).toHaveBeenCalledWith('/edit-profile');
     });
 
-    // TODO test failing because of the promises, but that is key to test
-    // It's actually making the real backend call even this is stubbed
-    xit('should go to edit profile page after resolving promises', fakeAsync(() => {
+    it('should go to edit profile page after resolving promises', fakeAsync(() => {
       spyOn(component, 'getAllInterests').and.returnValue(Promise.resolve(of()));
       spyOn(component, 'getAllTimes').and.returnValue(Promise.resolve(of()));
       spyOn(component, 'getAllPriorities').and.returnValue(Promise.resolve(of()));
       spyOn(component, 'getAllGenres').and.returnValue(Promise.resolve(of()));
-      // spyOn(component['httpService'], 'getAllGenres').and.returnValue(Promise.resolve(of()));
-      // spyOn(component['httpService'], 'getAllTimes').and.returnValue(Promise.resolve(of()));
-      // spyOn(component['httpService'], 'getAllInterests').and.returnValue(Promise.resolve(of()));
-      // spyOn(component['httpService'], 'getAllPriorities').and.returnValue(Promise.resolve(of()));
-      tick(0);
+      component.allGenres = null;
+
       component.editProfile();
+      tick(0);
       expect(routerSpy).toHaveBeenCalledWith('/edit-profile');
     }));
 
-    it('should go to matchmaking page', () => {
+    it('should go to matchmaking page', fakeAsync(() => {
+      spyOn(component, 'getMatches').and.returnValue(Promise.resolve(of()));
       component.viewMatchmaking();
+      tick(0);
       expect(routerSpy).toHaveBeenCalledWith('/matchmaking');
-    });
+    }));
   });
 
   it('should open a dialog', () => {

@@ -71,19 +71,16 @@ describe('HttpService', () => {
     });
 
     it('should store user and access token', () => {
-      service.updateUser(user3, '12345');
-      const user = (JSON.parse(localStorage.getItem('user')));
-      const auth = localStorage.getItem('auth');
-      expect(user.id).toEqual(user3.id);
-      expect(user.email).toEqual(user3.email);
-      expect(user.firstName).toEqual(user3.first_name);
-      expect(user.lastName).toEqual(user3.last_name);
-      expect(user.age).toEqual(user3.age);
-      expect(user.location).toEqual(user3.location);
-      expect(user.type).toEqual('admin');
-      expect(user.isActive).toEqual(user3.is_active);
-      expect(user.interests).toEqual(user3.interests);
-      expect(auth).toEqual('12345');
+      service.updateUser(user3);
+      expect(service.currUser.id).toEqual(user3.id);
+      expect(service.currUser.email).toEqual(user3.email);
+      expect(service.currUser.firstName).toEqual(user3.first_name);
+      expect(service.currUser.lastName).toEqual(user3.last_name);
+      expect(service.currUser.age).toEqual(user3.age);
+      expect(service.currUser.location).toEqual(user3.location);
+      expect(service.currUser.type).toEqual('admin');
+      expect(service.currUser.isActive).toEqual(user3.is_active);
+      expect(service.currUser.interests).toEqual(user3.interests);
       // TODO can add interests and time here
     });
   });

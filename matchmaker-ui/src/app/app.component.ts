@@ -41,7 +41,6 @@ export class AppComponent implements OnInit {
     }
 
   ngOnInit() {
-    console.log(this.currentUser);
   }
 
   setUrl() {
@@ -100,7 +99,6 @@ export class AppComponent implements OnInit {
     this.currentUser = new User(JSON.parse(localStorage.getItem('user')));
     this.httpService.getUser(this.currentUser.id).subscribe(data => {
     this.currentUser = data;
-    console.log(this.currentUser);
     });
   }
 
@@ -121,7 +119,6 @@ export class AppComponent implements OnInit {
     this.router.navigateByUrl('/landing-page').then(() => {
       this.dismissLoading();
     });
-    console.log('current user:', this.currentUser);
    }
 
   goBack() {
@@ -138,8 +135,9 @@ export class AppComponent implements OnInit {
     if (!this.isLoading) {
       this.showLoading();
     }
-    console.log('ALL GENRES', this.allGenres);
+    console.log('GENRES BEFORE IF', this.allGenres);
    if (!this.allGenres || !this.allInterests || !this.allPriorities || !this.allTimes) {
+     console.log('GENRES INSIDE IF', this.allGenres);
       const interestPromise = await Promise.resolve(this.getAllInterests());
       const timePromise = await Promise.resolve(this.getAllTimes());
       const priorityPromise = await Promise.resolve(this.getAllPriorities());
@@ -163,8 +161,8 @@ export class AppComponent implements OnInit {
     });
   }
 
-  viewMatchmaking(){
-    this.getMatches().then(() => {
+ async viewMatchmaking(){
+   await this.getMatches().then(() => {
       this.router.navigateByUrl('/matchmaking').then(() => {
         this.dismissLoading();
       });
@@ -235,7 +233,6 @@ export class AppComponent implements OnInit {
     return new Promise((resolve) => {
       this.showLoading();
       this.currentUser = new User(JSON.parse(localStorage.getItem('user')));
-      console.log(this.matches);
       if (!this.matches) {
         this.matches = [];
         this.matchmakingService.getMatches(this.currentUser.id).subscribe(data => {
@@ -246,12 +243,20 @@ export class AppComponent implements OnInit {
             }
           }
           localStorage.setItem('matches', JSON.stringify(this.matches));
-          console.log(this.matches);
           resolve();
         });
       } else {
         resolve();
       }
     });
+  }
+
+  clearEverything() {
+    this.httpService.logout();
+    this.allGenres = null;
+    this.allInterests = null;
+    this.allPriorities = null;
+    this.allTimes = null;
+    this.currentUser = null;
   }
 }

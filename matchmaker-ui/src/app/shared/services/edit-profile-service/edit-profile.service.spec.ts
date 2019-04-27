@@ -50,8 +50,8 @@ describe('EditProfileService', () => {
         expect(handleErrorSpy).toHaveBeenCalled();
       });
 
-      const mockReq = httpMock.expectOne(apiUrl + '/api/users/update/');
-      expect(mockReq.request.method).toEqual('PUT');
+      const mockReq = httpMock.expectOne(apiUrl + '/api/profile/save/' + id);
+      expect(mockReq.request.method).toEqual('POST');
       mockReq.flush(
         req
       );

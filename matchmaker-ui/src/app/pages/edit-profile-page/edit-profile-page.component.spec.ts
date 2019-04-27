@@ -204,7 +204,7 @@ describe('EditProfilePage', () => {
 
       component.submitChanges();
 
-      expect(saveProfileSpy).toHaveBeenCalledWith(newUser);
+      expect(saveProfileSpy).toHaveBeenCalledWith(127, newUser);
       expect(goHomeSpy).toHaveBeenCalled();
     });
     it('should dismiss loading if no data is returned', () => {

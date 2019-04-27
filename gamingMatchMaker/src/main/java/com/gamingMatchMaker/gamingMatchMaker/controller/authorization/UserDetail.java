@@ -125,10 +125,7 @@ public class UserDetail {
         this.is_active = orig.isIs_active();
         this.user_type = orig.getUser_type();
         this.location = orig.getLocation();
-<<<<<<< HEAD
         this.priorities = new ArrayList<>(orig.priorities);
-=======
->>>>>>> d2c6dfefc855f1f7db708ec8cbdfcd2f09c1bc9b
         this.interests = new ArrayList<>(orig.interests);
         this.genres = new ArrayList<>(orig.genres);
         this.times = new ArrayList<>(orig.times);

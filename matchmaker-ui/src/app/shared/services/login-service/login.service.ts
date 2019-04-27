@@ -27,7 +27,7 @@ export class LoginService extends HttpService {
     }, this.httpOptions).pipe(map((resp: any) => {
       if (resp) {
         if (resp.detail.is_active) {
-          this.updateUser(resp.detail, resp.accessToken);
+          this.updateUser(resp.detail);
           return Object.assign({}, this.currUser);
       } else { // If the user is not active, return an error
             this.currUser = null;

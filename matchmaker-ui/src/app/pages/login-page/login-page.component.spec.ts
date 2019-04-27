@@ -12,13 +12,13 @@ import { LoadingIndicator } from 'src/app/shared/components/loading-indicator/lo
 import { HttpService } from 'src/app/shared/services/http-service/http.service';
 import { LoginService } from 'src/app/shared/services/login-service/login.service';
 import { MockUsers } from 'src/app/shared/mocks/mock-users';
+import { User } from 'src/app/shared/models/user';
 
 
 describe('LoginPage', () => {
-
-const mockUsers = new MockUsers();
-const user1 = mockUsers.getUser1();
-const user2 = mockUsers.getUser2();
+  let mockUsers;
+  let user1;
+  let user2;
   let component: LoginPage;
   let fixture: ComponentFixture<LoginPage>;
   let goHomeSpy;
@@ -52,6 +52,9 @@ const user2 = mockUsers.getUser2();
   });
 
   beforeEach(() => {
+    mockUsers = new MockUsers();
+    user1 = new User(mockUsers.getUser1());
+    user2 = mockUsers.getUser2();
     fixture = TestBed.createComponent(LoginPage);
     component = fixture.componentInstance;
     spyOn<any>(component, 'showLoading').and.stub();
@@ -78,14 +81,16 @@ const user2 = mockUsers.getUser2();
       expect(component['loginService'].handleError).toHaveBeenCalled();
     });
 
-    it('should call goHome() on server response for a user who has listed interests', () => {
+    it('should call goHome() on server response for a user who has completed the profile', () => {
+      component.allPriorities = ['Active Times', 'Game Genres', 'Location', 'Interests'];
       spyOnProperty(component.userLoginForm, 'invalid').and.returnValue(false);
       spyOn(component['loginService'], 'login').and.returnValue(of(user1));
+      console.log('USER 1 IS', user1);
       component.onSubmit();
       expect(goHomeSpy).toHaveBeenCalled();
     });
 
-    it('should call editProfile() on server response for a user without interests', () => {
+    it('should call editProfile() on server response for a user with incomplete profile', () => {
       spyOnProperty(component.userLoginForm, 'invalid').and.returnValue(false);
       spyOn(component['loginService'], 'login').and.returnValue(of(user2));
       component.onSubmit();

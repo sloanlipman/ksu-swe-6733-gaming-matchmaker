@@ -29,6 +29,7 @@ export class LoginPage extends AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.clearEverything();
     this.userLoginForm = this.formBuilder.group({
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required])
