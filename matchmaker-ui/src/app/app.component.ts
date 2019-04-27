@@ -41,10 +41,6 @@ export class AppComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.allGenres = [];
-    this.allInterests = [];
-    this.allPriorities = [];
-    this.allTimes = [];
     console.log(this.currentUser);
   }
 
@@ -142,7 +138,8 @@ export class AppComponent implements OnInit {
     if (!this.isLoading) {
       this.showLoading();
     }
-  //  if (this.allGenres.length === 0 || this.allInterests.length === 0 || this.allPriorities.length === 0 || this.allTimes.length === 0) {
+    console.log('ALL GENRES', this.allGenres);
+   if (!this.allGenres || !this.allInterests || !this.allPriorities || !this.allTimes) {
       const interestPromise = await Promise.resolve(this.getAllInterests());
       const timePromise = await Promise.resolve(this.getAllTimes());
       const priorityPromise = await Promise.resolve(this.getAllPriorities());
@@ -152,11 +149,11 @@ export class AppComponent implements OnInit {
         this.dismissLoading();
       });
     });
- // } else {
+ } else {
       this.router.navigateByUrl('/edit-profile').then(() => {
         this.dismissLoading();
       });
-  //  }
+   }
   }
 
   viewProfile(id: any){
@@ -242,20 +239,25 @@ export class AppComponent implements OnInit {
 
   getMatches() {
     return new Promise((resolve) => {
-      this.showLoading();
-      this.currentUser = new User(JSON.parse(localStorage.getItem('user')));
-
-        this.matchmakingService.getMatches(this.currentUser.id).subscribe(data => {
-          if (data) {
-            for (let i = 0; i < data.length; ++i) {
-              const match = new User(data[i]);
-              this.matches.push(match);
-            }
-          }
-          localStorage.setItem('matches', JSON.stringify(this.matches));
-          console.log(this.matches);
-          resolve();
-        });
+      // this.showLoading();
+      // this.currentUser = new User(JSON.parse(localStorage.getItem('user')));
+      // console.log(this.matches);
+      // if (!this.matches) {
+      //   this.matches = [];
+      //   this.matchmakingService.getMatches(this.currentUser.id).subscribe(data => {
+      //     if (data) {
+      //       for (let i = 0; i < data.length; ++i) {
+      //         const match = new User(data[i]);
+      //         this.matches.push(match);
+      //       }
+      //     }
+      //     localStorage.setItem('matches', JSON.stringify(this.matches));
+      //     console.log(this.matches);
+      //     resolve();
+      //   });
+      // } else {
+        resolve();
+    //   }
     });
   }
 }

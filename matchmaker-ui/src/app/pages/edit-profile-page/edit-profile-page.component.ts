@@ -147,6 +147,7 @@ export class EditProfilePage extends AppComponent implements OnInit {
           if (data) {
             this.currentUser = this.editProfileService.updateUser(data);
             console.log(this.prioritiesArray);
+            localStorage.removeItem('matches');
             this.goHome();
           } else {
             this.dismissLoading();
