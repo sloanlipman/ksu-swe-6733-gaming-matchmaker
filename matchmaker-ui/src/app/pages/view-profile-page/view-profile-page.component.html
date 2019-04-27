@@ -9,6 +9,7 @@
         </mat-list-item>
       </mat-list>
   </mat-grid-tile>
+
   <mat-grid-tile colspan="2" rowspan="1.5" class="genre-card">
       <mat-grid-tile-header>Favorite Genres</mat-grid-tile-header>
       <mat-list>
@@ -18,7 +19,29 @@
         </mat-list-item>
       </mat-list>
   </mat-grid-tile>
-  <mat-grid-tile colspan="2" rowspan="1.5" class="priorities-played-card">
-      <mat-grid-tile-header>Priorities</mat-grid-tile-header>
+
+
+<mat-grid-tile colspan="2" rowspan="1.5" class="priorities-card">
+  <mat-grid-tile-header>Priorities</mat-grid-tile-header>
+  <mat-list>
+  <mat-list-item *ngFor="let priority of this.user.priorities">
+    <mat-icon matListIcon>stars</mat-icon>
+    <p matLine>{{priority}}</p>
+  </mat-list-item>
+  </mat-list>
   </mat-grid-tile>
+
+
+  <mat-grid-tile colspan="2" rowspan="1.5" class="time-card">
+    <mat-grid-tile-header>Active Time</mat-grid-tile-header>
+    <mat-list>
+    <mat-list-item *ngFor="let time of this.user.times">
+      <mat-icon matListIcon>stars</mat-icon>
+      <p matLine>{{time}}</p>
+    </mat-list-item>
+    </mat-list>
+    </mat-grid-tile>
+
+
 </mat-grid-list>
+

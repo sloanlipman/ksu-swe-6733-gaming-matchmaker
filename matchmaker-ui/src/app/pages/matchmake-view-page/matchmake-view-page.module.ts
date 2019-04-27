@@ -6,6 +6,7 @@ import { AppMaterialModule } from 'src/app/app-material.module';
 import { CommonModule } from '@angular/common';
 import { ProfileCard } from 'src/app/shared/components/profile-card/profile-card.component';
 import { ProfileCardModule } from 'src/app/shared/components/profile-card/profile-card.module';
+import { MatchmakingService } from 'src/app/shared/services/matchmaking-service/matchmaking.service';
 
 @NgModule({
   declarations: [

@@ -4,7 +4,7 @@
   <button mat-raised-button (click)="goBack()" class="cancel">Go Back</button>
 </nav>
 
-<div *ngFor="let match of matchList">
+<div *ngFor="let match of matches">
   <profile-card [player]="match" class="matchmake-card"></profile-card>
   <button mat-raised-button (click)="viewProfile(match)" class="cancel">View</button>
 </div>

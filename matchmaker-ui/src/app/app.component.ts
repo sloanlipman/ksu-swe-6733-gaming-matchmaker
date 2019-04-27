@@ -144,7 +144,7 @@ export class AppComponent implements OnInit {
       const timePromise = await Promise.resolve(this.getAllTimes());
       const priorityPromise = await Promise.resolve(this.getAllPriorities());
       const genrePromise = await Promise.resolve(this.getAllGenres());
-     // Promise.all([interestPromise, timePromise, priorityPromise, genrePromise]).then(() => {
+     Promise.all([interestPromise, timePromise, priorityPromise, genrePromise]).then(() => {
       this.router.navigateByUrl('/edit-profile').then(() => {
         this.dismissLoading();
       });
@@ -233,25 +233,25 @@ export class AppComponent implements OnInit {
 
   getMatches() {
     return new Promise((resolve) => {
-      // this.showLoading();
-      // this.currentUser = new User(JSON.parse(localStorage.getItem('user')));
-      // console.log(this.matches);
-      // if (!this.matches) {
-      //   this.matches = [];
-      //   this.matchmakingService.getMatches(this.currentUser.id).subscribe(data => {
-      //     if (data) {
-      //       for (let i = 0; i < data.length; ++i) {
-      //         const match = new User(data[i]);
-      //         this.matches.push(match);
-      //       }
-      //     }
-      //     localStorage.setItem('matches', JSON.stringify(this.matches));
-      //     console.log(this.matches);
-      //     resolve();
-      //   });
-      // } else {
+      this.showLoading();
+      this.currentUser = new User(JSON.parse(localStorage.getItem('user')));
+      console.log(this.matches);
+      if (!this.matches) {
+        this.matches = [];
+        this.matchmakingService.getMatches(this.currentUser.id).subscribe(data => {
+          if (data) {
+            for (let i = 0; i < data.length; ++i) {
+              const match = new User(data[i]);
+              this.matches.push(match);
+            }
+          }
+          localStorage.setItem('matches', JSON.stringify(this.matches));
+          console.log(this.matches);
+          resolve();
+        });
+      } else {
         resolve();
-    //   }
+      }
     });
   }
 }

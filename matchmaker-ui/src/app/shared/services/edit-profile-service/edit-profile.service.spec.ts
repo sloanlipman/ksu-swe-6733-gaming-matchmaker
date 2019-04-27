@@ -42,9 +42,10 @@ describe('EditProfileService', () => {
   it('should save profile', inject(
     [EditProfileService], (service: EditProfileService) => {
       const req = {}; // TODO could add more data here
+      const id = 1;
       handleErrorSpy = spyOn(service, 'handleError').and.stub();
 
-      service.saveProfile(req).subscribe(data => {
+      service.saveProfile(id, req).subscribe(data => {
         expect(data).toEqual(req);
         expect(handleErrorSpy).toHaveBeenCalled();
       });

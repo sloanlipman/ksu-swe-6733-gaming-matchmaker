@@ -84,7 +84,6 @@ export class EditProfilePage extends AppComponent implements OnInit {
     this.infoForm.controls.email.setValue(this.currentUser.email);
     this.interestsBoxes.setValue(this.currentUser.interests);
     this.genreBoxes.setValue(this.currentUser.genres);
-    console.log('genre boxes value is', this.genreBoxes.value);
     this.timeBoxes.setValue(this.currentUser.times);
     for (let i = 0; i < this.prioritiesFormArray.length; ++i) {
       this.prioritiesFormArray.controls[i].setValue(this.currentUser.priorities[i]);
@@ -99,7 +98,6 @@ export class EditProfilePage extends AppComponent implements OnInit {
    get p() {return this.prioritiesFormArray.controls; }
 
   submitChanges() {
-    console.log('About to submit changes');
 
   // Put priorities in an array so they are ready to go
     for (let i = 0; i < this.allPriorities.length; ++i) {
@@ -147,12 +145,10 @@ export class EditProfilePage extends AppComponent implements OnInit {
           times: this.timeBoxes.value,
           priorities: this.selectedPriorities
         });
-        console.log(this.genreBoxes.value);
           this.showLoading();
           this.editProfileService.saveProfile(this.currentUser.id, profileChanges).subscribe((data) => {
           if (data) {
             this.currentUser = this.editProfileService.updateUser(data);
-            console.log(this.prioritiesArray);
             localStorage.removeItem('matches');
             this.goHome();
           } else {
