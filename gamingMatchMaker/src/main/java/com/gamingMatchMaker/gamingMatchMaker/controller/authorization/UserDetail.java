@@ -66,9 +66,6 @@ public class UserDetail {
         this.age = age;
         this.is_active = is_active;
         this.user_type = user_type;
-        this.interests = interests;
-        this.genres = genres;
-        this.times = times;
         this.location = location;
         this.priorities = new ArrayList<>(priorities);
         this.interests = new ArrayList<>(interests);
