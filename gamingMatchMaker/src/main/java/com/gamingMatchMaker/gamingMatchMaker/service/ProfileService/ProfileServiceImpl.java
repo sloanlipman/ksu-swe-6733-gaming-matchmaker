@@ -1,7 +1,7 @@
 package com.gamingMatchMaker.gamingMatchMaker.service.ProfileService;
 
-import com.gamingMatchMaker.gamingMatchMaker.dao.GameGenreRepository;
-import com.gamingMatchMaker.gamingMatchMaker.model.GameGenre;
+import com.gamingMatchMaker.gamingMatchMaker.dao.*;
+import com.gamingMatchMaker.gamingMatchMaker.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,14 +11,6 @@ import java.util.Optional;
 import java.util.Set;
 
 import com.gamingMatchMaker.gamingMatchMaker.controller.SaveChangesAttempt;
-import com.gamingMatchMaker.gamingMatchMaker.dao.InterestRepository;
-import com.gamingMatchMaker.gamingMatchMaker.dao.LocationRepository;
-import com.gamingMatchMaker.gamingMatchMaker.dao.PrioritiesRepository;
-import com.gamingMatchMaker.gamingMatchMaker.dao.UserRepository;
-import com.gamingMatchMaker.gamingMatchMaker.model.Interest;
-import com.gamingMatchMaker.gamingMatchMaker.model.Location;
-import com.gamingMatchMaker.gamingMatchMaker.model.Priority;
-import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
 import com.gamingMatchMaker.gamingMatchMaker.service.authService.UserException;
 
 @Service
@@ -29,19 +21,23 @@ public class ProfileServiceImpl implements ProfileService {
 	private InterestRepository hobbyLobby;
 	private	GameGenreRepository genreDao;
 	private PrioritiesRepository pRepo;
+	private PlayTimeRepository timeDao;
 	
 	@Autowired
 	public ProfileServiceImpl(
-			UserRepository ur, 
+			UserRepository ur,
+
 			LocationRepository lr, 
 			InterestRepository ir,
 			PrioritiesRepository pr,
-			GameGenreRepository genreDao) {
+			GameGenreRepository genreDao,
+			PlayTimeRepository timeDao) {
 		this.phoneBook = ur;
 		this.atlas = lr;
 		this.hobbyLobby = ir;
 		this.genreDao = genreDao;
 		this.pRepo = pr;
+		this.timeDao = timeDao;
 	}
 	
 	/**
@@ -123,8 +119,10 @@ public class ProfileServiceImpl implements ProfileService {
 		}
 
 		List<GameGenre> genreList = this.genreDao.findByGenreNameIn(scr.getUd().getGenres());
-
 		rec.get().setGenres(new HashSet<>(genreList));
+
+		List<PlayTime> timeList = this.timeDao.findByTimingNameIn(scr.getUd().getTimes());
+		rec.get().setTimings(new HashSet<>(timeList));
 		//save the record
 		phoneBook.save(rec.get()); //TODO do I need this?
 		
