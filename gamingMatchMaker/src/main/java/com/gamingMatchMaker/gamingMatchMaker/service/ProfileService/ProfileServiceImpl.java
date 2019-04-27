@@ -13,9 +13,11 @@ import java.util.Set;
 import com.gamingMatchMaker.gamingMatchMaker.controller.SaveChangesAttempt;
 import com.gamingMatchMaker.gamingMatchMaker.dao.InterestRepository;
 import com.gamingMatchMaker.gamingMatchMaker.dao.LocationRepository;
+import com.gamingMatchMaker.gamingMatchMaker.dao.PrioritiesRepository;
 import com.gamingMatchMaker.gamingMatchMaker.dao.UserRepository;
 import com.gamingMatchMaker.gamingMatchMaker.model.Interest;
 import com.gamingMatchMaker.gamingMatchMaker.model.Location;
+import com.gamingMatchMaker.gamingMatchMaker.model.Priority;
 import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
 import com.gamingMatchMaker.gamingMatchMaker.service.authService.UserException;
 
@@ -26,17 +28,20 @@ public class ProfileServiceImpl implements ProfileService {
 	private LocationRepository atlas;
 	private InterestRepository hobbyLobby;
 	private	GameGenreRepository genreDao;
+	private PrioritiesRepository pRepo;
 	
 	@Autowired
 	public ProfileServiceImpl(
 			UserRepository ur, 
 			LocationRepository lr, 
 			InterestRepository ir,
+			PrioritiesRepository pr,
 			GameGenreRepository genreDao) {
 		this.phoneBook = ur;
 		this.atlas = lr;
 		this.hobbyLobby = ir;
 		this.genreDao = genreDao;
+		this.pRepo = pr;
 	}
 	
 	/**
@@ -99,6 +104,21 @@ public class ProfileServiceImpl implements ProfileService {
 				//not present, we need to add the interest first
 				Interest hobby = hobbyLobby.save(new Interest(s));
 				rec.get().AddInterest(hobby);
+			}
+		}
+		
+		rec.get().getPriorities().clear();
+		for(String s : scr.getUd().getPriorities()) {
+
+			//try to get the interest
+			Optional<Priority> I = pRepo.findByPriorityName(s);
+			
+			if(I.isPresent()) {
+				//the interest exists, just tack it onto the list
+				rec.get().AddPriority(I.get());
+			}
+			else {
+				//not present - do what?  can't add a non-existant priority, no calc
 			}
 		}
 

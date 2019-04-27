@@ -1,6 +1,6 @@
 package com.gamingMatchMaker.gamingMatchMaker.controller.playTime;
 
-import com.gamingMatchMaker.gamingMatchMaker.service.playTime.PlayTimeService;
+import com.gamingMatchMaker.gamingMatchMaker.service.playTIme.PlayTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

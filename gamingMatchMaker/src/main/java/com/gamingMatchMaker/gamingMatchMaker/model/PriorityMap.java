@@ -1,11 +1,16 @@
 package com.gamingMatchMaker.gamingMatchMaker.model;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+import javax.persistence.OrderBy;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="priority_map")
 public class PriorityMap {
 
 	@EmbeddedId
@@ -13,14 +18,22 @@ public class PriorityMap {
 	
 	@ManyToOne
 	@MapsId("userID")
+//	@JoinColumn(name = "id")
 	private UserRec user;
 	
 	@ManyToOne
 	@MapsId("priorityID")
+//	@JoinColumn(name = "id")
 	private Priority priority;
 	
+	@Column(name = "the_order")
+	@OrderBy
 	private int order;
 
+	public PriorityMap() {
+		//do I need to do anything
+	}
+	
 	public PriorityMap(PriorityMapKey key, UserRec user, Priority priority, int order) {
 		this.key = key;
 		this.user = user;

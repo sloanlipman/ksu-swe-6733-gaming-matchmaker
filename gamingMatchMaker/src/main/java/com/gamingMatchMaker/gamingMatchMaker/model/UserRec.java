@@ -44,7 +44,15 @@ public class UserRec {
     ) //map the interests table through the users_interests
     private final Set<Interest> interests;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+    	name = "priority_map",
+    	joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name = "priority_id", referencedColumnName = "id")
+    )
+    @OrderColumn(name="the_order")
+//    @OneToMany
+//    @OrderBy("the_order")
     private final List<Priority> priorities;
 
     @ManyToMany
@@ -121,6 +129,12 @@ public class UserRec {
     public void AddInterest(Interest I) {
     	//TODO does this add new ones to the DB or must they already exist?
     	interests.add(I);
+    }
+    
+    public void AddPriority(Priority p) {
+    	//this should add in the same order they came in
+    	//not the most robust but should do the trick
+    	priorities.add(p);
     }
 
     @Override

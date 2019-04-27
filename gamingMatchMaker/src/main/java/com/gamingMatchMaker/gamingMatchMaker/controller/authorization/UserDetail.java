@@ -106,7 +106,7 @@ public class UserDetail {
         }
         
         for(Priority p : orig.getPriorities()) {
-        	this.priorities.add(p.getName());
+        	if(p != null) this.priorities.add(p.getName());
         }
         for(PlayTime time: orig.getTimings()){
             this.times.add(time.getTimingName());

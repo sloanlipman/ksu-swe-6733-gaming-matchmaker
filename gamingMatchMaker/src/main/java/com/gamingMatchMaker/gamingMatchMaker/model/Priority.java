@@ -10,10 +10,11 @@ public class Priority {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id", columnDefinition="int(11)")
-		private int id;
-		private String priorityName;
+	private int id;
+	private String priorityName;
 
     @ManyToMany
+//    @OneToMany
     private Set<UserRec> users;
 
 	public Priority() {}

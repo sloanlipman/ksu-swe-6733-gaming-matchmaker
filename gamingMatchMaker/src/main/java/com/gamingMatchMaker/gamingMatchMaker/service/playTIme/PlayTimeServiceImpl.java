@@ -1,4 +1,4 @@
-package com.gamingMatchMaker.gamingMatchMaker.service.playTime;
+package com.gamingMatchMaker.gamingMatchMaker.service.playTIme;
 
 import com.gamingMatchMaker.gamingMatchMaker.dao.PlayTimeRepository;
 import com.gamingMatchMaker.gamingMatchMaker.model.PlayTime;

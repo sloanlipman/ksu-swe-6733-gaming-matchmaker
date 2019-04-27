@@ -19,6 +19,11 @@ public class PriorityMapKey implements Serializable {
 	@Column(name="priorityID")
 	private long priorityID;
 
+	public PriorityMapKey() {
+		this.userID = 0;
+		this.priorityID = 0;
+	}
+	
 	public PriorityMapKey(long userID, long priorityID) {
 		this.userID = userID;
 		this.priorityID = priorityID;
