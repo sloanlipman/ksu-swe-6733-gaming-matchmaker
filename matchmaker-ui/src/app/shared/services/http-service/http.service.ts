@@ -110,6 +110,7 @@ export class HttpService {
   public getAllTimes(): Observable<any> {
     return this.get('/api/playTimes').pipe(map((resp: any) => {
       if (resp){
+        console.log('TIMES RESP', resp);
         return resp;
       }
     })).pipe(catchError(err => this.handleError(err)));

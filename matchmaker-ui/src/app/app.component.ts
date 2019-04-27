@@ -144,7 +144,7 @@ export class AppComponent implements OnInit {
       const timePromise = await Promise.resolve(this.getAllTimes());
       const priorityPromise = await Promise.resolve(this.getAllPriorities());
       const genrePromise = await Promise.resolve(this.getAllGenres());
-    Promise.all([interestPromise, timePromise, priorityPromise, genrePromise]).then(() => {
+     // Promise.all([interestPromise, timePromise, priorityPromise, genrePromise]).then(() => {
       this.router.navigateByUrl('/edit-profile').then(() => {
         this.dismissLoading();
       });
@@ -156,8 +156,9 @@ export class AppComponent implements OnInit {
    }
   }
 
-  viewProfile(id: any){
-    this.router.navigateByUrl('/view-profile/' + id).then(() => {
+  viewProfile(user: User){
+    localStorage.setItem('clickedUser', JSON.stringify(user));
+    this.router.navigateByUrl('/view-profile/' + user.id).then(() => {
       this.dismissLoading();
     });
   }
@@ -185,11 +186,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  getAllGenres() {
-  //  const genres = ['Shooters', 'RPGs', 'RTS']; // TODO delete
-  //  localStorage.setItem('genres', JSON.stringify(genres)); // TODO delete
-
-
+  async getAllGenres() {
     return new Promise((resolve) => {
       this.httpService.getAllGenres().subscribe(data => {
         if (data) {
@@ -204,9 +201,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  getAllTimes() {
-
-
+  async getAllTimes() {
    return new Promise((resolve) => {
     this.httpService.getAllTimes().subscribe(data => {
       if (data) {
@@ -219,7 +214,6 @@ export class AppComponent implements OnInit {
       resolve();
       });
     });
-
   }
 
   getAllPriorities(){

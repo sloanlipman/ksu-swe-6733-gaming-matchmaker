@@ -1,10 +1,13 @@
 import { Location } from '@angular/common';
 import { Component, OnInit, Injector } from '@angular/core';
 import { Router } from '@angular/router';
-import { LandingPage } from '../landing-page/landing-page.component';
 import { AppComponent } from 'src/app/app.component';
 import { MatDialog } from '@angular/material';
+<<<<<<< HEAD
 import { MatchmakingService } from 'src/app/shared/services/matchmaking-service/matchmaking.service';
+=======
+import { MockUsers } from 'src/app/shared/mocks/mock-users';
+>>>>>>> d2c6dfefc855f1f7db708ec8cbdfcd2f09c1bc9b
 import { User } from 'src/app/shared/models/user';
 
 @Component({

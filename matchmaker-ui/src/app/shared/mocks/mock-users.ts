@@ -1,4 +1,4 @@
-import { User } from './models/user';
+import { User } from '../models/user';
 
 // TODO add genres and times
 export class MockUsers {
@@ -35,6 +35,18 @@ export class MockUsers {
             "Hiking",
             "Yoga",
             "Amateur radio"
+        ],
+        "priorities": [
+          "Interests",
+          "Genres",
+          "Times",
+          "Location"
+        ],
+        "genres": [
+          "RPG"
+        ],
+        "times": [
+          "Afternoon"
         ]
       }`
     );
@@ -62,7 +74,7 @@ export class MockUsers {
     };
   }
 
-  getUser3() {
+  getUser3() { // for use as a back end user object
     return JSON.parse(`
       {
         "id": 75,

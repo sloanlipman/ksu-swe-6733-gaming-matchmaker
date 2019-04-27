@@ -6,7 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppMaterialModule } from 'src/app/app-material.module';
 import { HttpService } from 'src/app/shared/services/http-service/http.service';
 import { HttpClientModule } from '@angular/common/http';
-import { MockUsers } from 'src/app/shared/mock-users';
+import { MockUsers } from 'src/app/shared/mocks/mock-users';
 
 
 describe('ViewProfilePage', () => {
@@ -32,8 +32,8 @@ describe('ViewProfilePage', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ViewProfilePage);
     component = fixture.componentInstance;
-    spyOn(component, 'getUser').and.callFake(() => {
-      component.currentUser = user1;
+    spyOn(component, 'findUser').and.callFake(() => {
+      component.user = user1;
     });
     fixture.detectChanges();
   });

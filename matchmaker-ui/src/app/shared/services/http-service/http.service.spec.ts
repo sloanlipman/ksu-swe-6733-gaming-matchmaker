@@ -4,7 +4,7 @@ import { HttpService } from './http.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { MockUsers } from '../../mock-users';
+import { MockUsers } from '../../mocks/mock-users';
 import { environment } from 'src/environments/environment';
 import { User } from '../../models/user';
 

@@ -1,19 +1,8 @@
 package com.gamingMatchMaker.gamingMatchMaker.service.userService;
 
 import com.gamingMatchMaker.gamingMatchMaker.controller.authorization.UserDetail;
-
 import com.gamingMatchMaker.gamingMatchMaker.dao.*;
 import com.gamingMatchMaker.gamingMatchMaker.model.*;
-
-import com.gamingMatchMaker.gamingMatchMaker.dao.GameGenreRepository;
-import com.gamingMatchMaker.gamingMatchMaker.dao.InterestRepository;
-import com.gamingMatchMaker.gamingMatchMaker.dao.LocationRepository;
-import com.gamingMatchMaker.gamingMatchMaker.dao.UserRepository;
-import com.gamingMatchMaker.gamingMatchMaker.model.GameGenre;
-import com.gamingMatchMaker.gamingMatchMaker.model.Interest;
-import com.gamingMatchMaker.gamingMatchMaker.model.Location;
-import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +17,6 @@ public class UserServiceImpl implements UserService{
     private final LocationRepository locDao;
     private final InterestRepository interestDao;
     private final GameGenreRepository genreDao;
-
     private final PlayTimeRepository timeDao;
     private final PrioritiesRepository priorityDao;
 
@@ -90,7 +78,6 @@ public class UserServiceImpl implements UserService{
         // first load the list of genres from the genre names
         List<GameGenre> newGenreList = this.genreDao.findByGenreNameIn(userDetail.getGenres());
         userRec.setGenres(new HashSet<>(newGenreList));
-
 
         // Step 8 update the list of playTiming for the playtime names
         List<PlayTime> newTimeList =  this.timeDao.findByTimingNameIn(userDetail.getTimes());
