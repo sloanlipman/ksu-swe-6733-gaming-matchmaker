@@ -2,8 +2,8 @@ package com.gamingMatchMaker.gamingMatchMaker.controller;
 
 import static org.junit.Assume.assumeTrue;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+//import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+//import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,11 +15,11 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
+//import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.RequestBuilder;
-import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+//import org.springframework.test.web.servlet.RequestBuilder;
+//import org.springframework.test.web.servlet.ResultActions;
+//import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.gamingMatchMaker.gamingMatchMaker.model.Interest;
 import com.gamingMatchMaker.gamingMatchMaker.model.Location;
@@ -44,19 +44,18 @@ public class ProfileControllerTest extends ControllerTest {
     	ints.add(new Interest("Board/tabletop game"));
 		ints.add(new Interest("Do it yourself"));
 
+		//TODO get this working
 		//rsp.put(1, new UserRec("one@count.com", "first", "last", "asdfasdfasdfasdgd", 20, true, 1, place, ints.toArray(new Interest[0]),genre.toArray(new GameGenre[0])));
-
 		
 		ints.clear();
 		ints.add(new Interest("Homebrewing"));
 		ints.add(new Interest("Lego building"));
 		ints.add(new Interest("Woodworking"));
-
+    	
+        when(proService.GetUserProfile(1)).thenReturn(rsp.get(1));
 		//rsp.put(2, new UserRec("two@count.com", "second", "last", "asdfafffr23asdgd", 85, true, 2, place, ints.toArray(new Interest[0]),genre.toArray(new GameGenre[0])));
-
 		when(proService.GetUserProfile(1)).thenReturn(rsp.get(1));
 
-        when(proService.GetUserProfile(2)).thenReturn(rsp.get(2));
     }
     
     @Test

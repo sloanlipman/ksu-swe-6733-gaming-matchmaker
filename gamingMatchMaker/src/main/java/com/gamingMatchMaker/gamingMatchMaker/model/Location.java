@@ -3,7 +3,7 @@ package com.gamingMatchMaker.gamingMatchMaker.model;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
+//import java.util.UUID;
 
 @Entity
 @Table(name="locations")

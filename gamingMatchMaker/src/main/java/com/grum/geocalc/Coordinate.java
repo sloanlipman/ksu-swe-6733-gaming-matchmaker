@@ -50,7 +50,12 @@ import static java.lang.Math.*;
  */
 abstract public class Coordinate implements Serializable {
 
-    abstract double degrees();
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	abstract double degrees();
 
     /**
      * @return degree value

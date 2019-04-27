@@ -143,10 +143,11 @@ export class EditProfilePage extends AppComponent implements OnInit {
         });
         console.log(this.genreBoxes.value);
           this.showLoading();
-          this.editProfileService.saveProfile(profileChanges).subscribe((data) => {
+          this.editProfileService.saveProfile(this.currentUser.id, profileChanges).subscribe((data) => {
           if (data) {
             this.currentUser = this.editProfileService.updateUser(data);
             console.log(this.prioritiesArray);
+            localStorage.removeItem('matches');
             this.goHome();
           } else {
             this.dismissLoading();

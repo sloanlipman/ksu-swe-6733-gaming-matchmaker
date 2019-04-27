@@ -1,15 +1,23 @@
-package com.gamingMatchMaker.gamingMatchMaker;
+package com.gamingMatchMaker.gamingMatchMaker.service.MatchingService;
+
+import java.util.ArrayList;
+import java.math.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.gamingMatchMaker.gamingMatchMaker.model.Location;
+import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
 import com.gamingMatchMaker.gamingMatchMaker.service.LocationService.*;
 import com.grum.geocalc.*;
 
 @Component
-public class ZipCalc {
+public class ZipCalc implements IMatcher {
 	private String zip;
 	private com.grum.geocalc.Point pt;
+	
+	private static final int RADIUS = 1005840;  //about 25 miles in meters
+	private static final double STEP = 16093.44; //about 10 miles
+	private static final int MAX_STEPS = 10;  //in the scoring function only allow a max of 100 miles
 
 	//this is here for unit testing- might be removed once matchmaking app is built
 	@Autowired
@@ -17,7 +25,6 @@ public class ZipCalc {
 
 	/**
 	 * Need to create a function which takes in a second zipcode and calculates the distance.
-	 * TODO Should we cache the result in the DB - which is quicker, the DB read or the local calc?
 	 */
 
 	/**
@@ -85,8 +92,6 @@ public class ZipCalc {
 		//calc the distance
 		double distance = EarthCalc.vincentyDistance(pt, other); //in meters
 
-		//TODO convert to miles?
-
 		return distance;
 	}
 
@@ -99,6 +104,58 @@ public class ZipCalc {
 	}
 	public String GetStartingZipCode() {
 		return this.zip;
+	}
+
+	/**
+	 * Finds all the players within approximately 25 miles.
+	 * @param self The user doing the search.
+	 * @param recs The list of other users to look over.
+	 */
+	public ArrayList<UserRec> findMatches(UserRec self, ArrayList<UserRec> recs) {
+		ArrayList<UserRec> others = new ArrayList<>();
+		
+		//set the starting point
+		this.SetZip(self.getLocation().getZip());
+		
+		//check each user for a distance less than the radius
+		for(UserRec u : recs) {
+			try {
+				if(this.GetDistance(u.getLocation().getZip()) < RADIUS) others.add(u);
+			}
+			catch(UnsetStartingPointException uspe) {
+				//TODO what to with this?  log it?  still want to process the others
+			}
+			catch(BadZipException bze) {
+				//TODO what to with this?  log it?  still want to process the others
+			}
+		}
+		
+		//return the list
+		return others;
+	}
+
+	@Override
+	public int scoreUser(UserRec self, UserRec other) {
+		//set the starting point
+		this.SetZip(self.getLocation().getZip());
+		
+		double dist = 0.0;
+		
+		try {
+			//get teh distance
+			dist = this.GetDistance(other.getLocation().getZip());
+		}
+		catch(Exception e) {
+			//on error just give no points
+			return 0;
+		}
+
+		//cheesy conversion - probably a better way
+		Double dub = Math.ceil(dist/STEP);
+		Integer a = (Integer) dub.intValue();
+		
+		//use subtraction operation for ascending to descending inversion
+		return (MAX_STEPS - a.intValue());
 	}
 
 }

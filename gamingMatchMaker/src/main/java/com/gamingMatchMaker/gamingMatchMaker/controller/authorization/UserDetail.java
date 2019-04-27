@@ -3,10 +3,6 @@ package com.gamingMatchMaker.gamingMatchMaker.controller.authorization;
 import java.util.ArrayList;
 
 import com.gamingMatchMaker.gamingMatchMaker.model.*;
-import com.gamingMatchMaker.gamingMatchMaker.model.GameGenre;
-import com.gamingMatchMaker.gamingMatchMaker.model.Interest;
-import com.gamingMatchMaker.gamingMatchMaker.model.Location;
-import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
 
 public class UserDetail {
     private int id;
@@ -17,6 +13,7 @@ public class UserDetail {
     private boolean is_active;
     private int user_type;
 
+    private final ArrayList<String> priorities;
     private final ArrayList<String> interests;
     private final ArrayList<String> genres;
     private final ArrayList<String> times;
@@ -29,6 +26,7 @@ public class UserDetail {
         this.interests = new ArrayList<>();
         this.genres = new ArrayList<>();
         this.times = new ArrayList<>();
+        this.priorities = new ArrayList<>();
     }
 
     public UserDetail(int id) {
@@ -36,6 +34,7 @@ public class UserDetail {
         this.interests = new ArrayList<>();
         this.genres = new ArrayList<>();
         this.times = new ArrayList<>();
+        this.priorities = new ArrayList<>();
     }
 
     public UserDetail(int id, String email, String first_name, String last_name,
@@ -52,11 +51,13 @@ public class UserDetail {
         this.interests = new ArrayList<>();
         this.genres = new ArrayList<>();
         this.times = new ArrayList<>();
+        this.priorities = new ArrayList<>();
     }
 
     public UserDetail(int id, String email, String first_name, String last_name,
                       int age, boolean is_active, int user_type, ArrayList<String> interests,
-                      ArrayList<String> genres, ArrayList<String> times, Location location
+                      ArrayList<String> genres, ArrayList<String> times, Location location, 
+					  ArrayList<String> priorities
     ) {
         this.id = id;
         this.email = email;
@@ -66,6 +67,7 @@ public class UserDetail {
         this.is_active = is_active;
         this.user_type = user_type;
         this.location = location;
+        this.priorities = new ArrayList<>(priorities);
         this.interests = new ArrayList<>(interests);
         this.genres = new ArrayList<>(genres);
         this.times = new ArrayList<>(times);
@@ -94,6 +96,7 @@ public class UserDetail {
         this.interests = new ArrayList<>();
         this.genres = new ArrayList<>();
         this.times = new ArrayList<>();
+        this.priorities = new ArrayList<>();
 
         for (Interest i : orig.getInterests()) {
             this.interests.add(i.getActivity());
@@ -101,9 +104,14 @@ public class UserDetail {
         for(GameGenre genre: orig.getGenres()){
             this.genres.add(genre.getGenreName());
         }
+        
+        for(Priority p : orig.getPriorities()) {
+        	if(p != null) this.priorities.add(p.getName());
+        }
         for(PlayTime time: orig.getTimings()){
             this.times.add(time.getTimingName());
         }
+
     }
 
     public UserDetail(UserDetail orig) {
@@ -115,7 +123,7 @@ public class UserDetail {
         this.is_active = orig.isIs_active();
         this.user_type = orig.getUser_type();
         this.location = orig.getLocation();
-
+        this.priorities = new ArrayList<>(orig.priorities);
         this.interests = new ArrayList<>(orig.interests);
         this.genres = new ArrayList<>(orig.genres);
         this.times = new ArrayList<>(orig.times);
@@ -206,6 +214,21 @@ public class UserDetail {
     public ArrayList<String> getGenres() {
         return genres;
     }
+
+	/**
+	 * @return the priorities
+	 */
+	public ArrayList<String> getPriorities() {
+		return priorities;
+	}
+
+	/**
+	 * @param priorities the priorities to set
+	 */
+	public void setPriorities(ArrayList<String> priorities) {
+		this.priorities.clear();
+		this.priorities.addAll(priorities);
+	}
 
     public ArrayList<String> getTimes() {
         return times;

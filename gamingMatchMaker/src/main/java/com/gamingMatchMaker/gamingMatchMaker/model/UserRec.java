@@ -3,6 +3,14 @@ package com.gamingMatchMaker.gamingMatchMaker.model;
 import java.util.*;
 import javax.persistence.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+
+
 @Entity
 @Table(name="users")
 public class UserRec {
@@ -36,6 +44,17 @@ public class UserRec {
     ) //map the interests table through the users_interests
     private final Set<Interest> interests;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+    	name = "priority_map",
+    	joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name = "priority_id", referencedColumnName = "id")
+    )
+    @OrderColumn(name="the_order")
+//    @OneToMany
+//    @OrderBy("the_order")
+    private final List<Priority> priorities;
+
     @ManyToMany
     private final Set<GameGenre> genres;
 
@@ -43,10 +62,10 @@ public class UserRec {
     private final Set<PlayTime> timings;
 
     public UserRec() {
-
         this.interests = new HashSet<>();
         this.genres = new HashSet<>();
         this.timings = new HashSet<>();
+		this.priorities = new ArrayList<>();
     }
 
     public UserRec(UserRec original) {
@@ -58,7 +77,7 @@ public class UserRec {
         this.age = original.age;
         this.is_active = original.is_active;
         this.user_type = original.user_type;
-
+		this.priorities = new ArrayList<>(original.getPriorities());
         this.interests = new HashSet<>(original.getInterests());
         this.genres = new HashSet<>(original.getGenres());
         this.timings = new HashSet<>(original.getTimings());
@@ -77,7 +96,7 @@ public class UserRec {
         this.is_active = is_active;
         this.user_type = user_type;
         this.location = location;
-
+        this.priorities = new ArrayList<>();
         this.interests = new HashSet<>();
         this.genres = new HashSet<>();
         this.timings = new HashSet<>();
@@ -87,7 +106,7 @@ public class UserRec {
     public UserRec(String email, String first_name, String last_name,
                    String password, int age, boolean is_active,
                    int user_type, Location location,
-                   Interest[] interests, GameGenre[] genres, PlayTime[] timings
+                   Interest[] interests, GameGenre[] genres, PlayTime[] timings, Priority[] priorities
     ){
         this.email = email;
         this.first_name = first_name;
@@ -97,7 +116,7 @@ public class UserRec {
         this.is_active = is_active;
         this.user_type = user_type;
         this.location = location;
-
+        this.priorities = new ArrayList<>(Arrays.asList(priorities));
         this.interests = new HashSet<>(Arrays.asList(interests));
         this.genres = new HashSet<>(Arrays.asList(genres));
         this.timings = new HashSet<>(Arrays.asList(timings));
@@ -110,6 +129,12 @@ public class UserRec {
     public void AddInterest(Interest I) {
     	//TODO does this add new ones to the DB or must they already exist?
     	interests.add(I);
+    }
+    
+    public void AddPriority(Priority p) {
+    	//this should add in the same order they came in
+    	//not the most robust but should do the trick
+    	priorities.add(p);
     }
 
     @Override
@@ -223,4 +248,19 @@ public class UserRec {
     public Set<PlayTime> getTimings() {
         return timings;
     }
+    
+    /**
+	 * @return the priorities
+	 */
+	public List<Priority> getPriorities() {
+		return priorities;
+	}
+
+	/**
+	 * @param priorities the priorities to set
+	 */
+	public void setPriorities(Set<Priority> priorities) {
+		this.priorities.clear();
+		this.priorities.addAll(priorities);
+	}
 }

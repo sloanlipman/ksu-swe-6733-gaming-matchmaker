@@ -3,7 +3,12 @@ package com.gamingMatchMaker.gamingMatchMaker.service.authService;
 import com.gamingMatchMaker.gamingMatchMaker.service.ServiceException;
 
 public class UserException extends ServiceException {
-    public UserException() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public UserException() {
     }
 
     public UserException(String message) {

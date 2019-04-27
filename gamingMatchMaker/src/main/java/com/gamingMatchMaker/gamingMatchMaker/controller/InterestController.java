@@ -7,8 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.gamingMatchMaker.gamingMatchMaker.service.InterestService.EmptyInterestException;
-import com.gamingMatchMaker.gamingMatchMaker.service.InterestService.InterestExistsException;
 import com.gamingMatchMaker.gamingMatchMaker.service.InterestService.InterestService;
 
 @CrossOrigin(origins="*", allowedHeaders="*")

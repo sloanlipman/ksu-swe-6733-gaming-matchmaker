@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatchmakeViewPage } from './matchmake-view-page.component';
 import { AppMaterialModule } from 'src/app/app-material.module';
+import { MatchmakingService } from 'src/app/shared/services/matchmaking-service/matchmaking.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { AppMaterialModule } from 'src/app/app-material.module';
   exports: [
     MatchmakeViewPage
   ],
-  providers: [],
+  providers: [
+    MatchmakingService
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class MatchmakeViewPageModule{}

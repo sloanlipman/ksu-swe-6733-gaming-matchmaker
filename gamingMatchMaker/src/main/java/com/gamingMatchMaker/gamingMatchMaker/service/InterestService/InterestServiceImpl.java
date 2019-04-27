@@ -50,7 +50,7 @@ public class InterestServiceImpl implements InterestService {
 		if(!existing.isPresent()) {
 			Interest toAdd = new Interest();
 			toAdd.setActivity(name);
-			intrepo.save(toAdd); //TODO does this allow the db to create the index?
+			intrepo.save(toAdd);
 		}
 		//already exists, kick the error back
 		else {

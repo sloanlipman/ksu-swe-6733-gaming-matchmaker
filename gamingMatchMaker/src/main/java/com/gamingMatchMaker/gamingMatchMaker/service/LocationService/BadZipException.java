@@ -2,6 +2,11 @@ package com.gamingMatchMaker.gamingMatchMaker.service.LocationService;
 
 public class BadZipException extends IllegalArgumentException {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public BadZipException() {
 		super();
 	}

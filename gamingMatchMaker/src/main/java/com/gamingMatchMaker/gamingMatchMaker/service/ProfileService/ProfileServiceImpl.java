@@ -1,7 +1,7 @@
 package com.gamingMatchMaker.gamingMatchMaker.service.ProfileService;
 
-import com.gamingMatchMaker.gamingMatchMaker.dao.GameGenreRepository;
-import com.gamingMatchMaker.gamingMatchMaker.model.GameGenre;
+import com.gamingMatchMaker.gamingMatchMaker.dao.*;
+import com.gamingMatchMaker.gamingMatchMaker.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,12 +11,6 @@ import java.util.Optional;
 import java.util.Set;
 
 import com.gamingMatchMaker.gamingMatchMaker.controller.SaveChangesAttempt;
-import com.gamingMatchMaker.gamingMatchMaker.dao.InterestRepository;
-import com.gamingMatchMaker.gamingMatchMaker.dao.LocationRepository;
-import com.gamingMatchMaker.gamingMatchMaker.dao.UserRepository;
-import com.gamingMatchMaker.gamingMatchMaker.model.Interest;
-import com.gamingMatchMaker.gamingMatchMaker.model.Location;
-import com.gamingMatchMaker.gamingMatchMaker.model.UserRec;
 import com.gamingMatchMaker.gamingMatchMaker.service.authService.UserException;
 
 @Service
@@ -26,17 +20,24 @@ public class ProfileServiceImpl implements ProfileService {
 	private LocationRepository atlas;
 	private InterestRepository hobbyLobby;
 	private	GameGenreRepository genreDao;
+	private PrioritiesRepository pRepo;
+	private PlayTimeRepository timeDao;
 	
 	@Autowired
 	public ProfileServiceImpl(
-			UserRepository ur, 
+			UserRepository ur,
+
 			LocationRepository lr, 
 			InterestRepository ir,
-			GameGenreRepository genreDao) {
+			PrioritiesRepository pr,
+			GameGenreRepository genreDao,
+			PlayTimeRepository timeDao) {
 		this.phoneBook = ur;
 		this.atlas = lr;
 		this.hobbyLobby = ir;
 		this.genreDao = genreDao;
+		this.pRepo = pr;
+		this.timeDao = timeDao;
 	}
 	
 	/**
@@ -80,7 +81,12 @@ public class ProfileServiceImpl implements ProfileService {
 		rec.get().setLast_name(scr.getUd().getLast_name());
 		rec.get().setLocation(spot.get());
 
+		
 		//ok, interests gets a little more interesting (<rimshot>)
+		//first clear out all the interests
+		rec.get().getInterests().clear(); //TODO if this doesn't work add a clearInterests inside UserRec
+		
+		//then add them all - note any the user deselected are not re-added
 		for(String s : scr.getUd().getInterests()) {
 
 			//try to get the interest
@@ -96,10 +102,27 @@ public class ProfileServiceImpl implements ProfileService {
 				rec.get().AddInterest(hobby);
 			}
 		}
+		
+		rec.get().getPriorities().clear();
+		for(String s : scr.getUd().getPriorities()) {
+
+			//try to get the interest
+			Optional<Priority> I = pRepo.findByPriorityName(s);
+			
+			if(I.isPresent()) {
+				//the interest exists, just tack it onto the list
+				rec.get().AddPriority(I.get());
+			}
+			else {
+				//not present - do what?  can't add a non-existant priority, no calc
+			}
+		}
 
 		List<GameGenre> genreList = this.genreDao.findByGenreNameIn(scr.getUd().getGenres());
-
 		rec.get().setGenres(new HashSet<>(genreList));
+
+		List<PlayTime> timeList = this.timeDao.findByTimingNameIn(scr.getUd().getTimes());
+		rec.get().setTimings(new HashSet<>(timeList));
 		//save the record
 		phoneBook.save(rec.get()); //TODO do I need this?
 		

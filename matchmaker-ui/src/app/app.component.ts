@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material';
 import { User } from './shared/models/user';
 import { LoadingIndicator } from './shared/components/loading-indicator/loading-indicator.component';
 import { HttpService } from './shared/services/http-service/http.service';
+import { MatchmakingService } from './shared/services/matchmaking-service/matchmaking.service';
 
 /**This page will be the launch point of the app. We can use to initialize and send the user on their way
   Any HTML associated with this component will be persistent throughout the app
@@ -26,21 +27,21 @@ export class AppComponent implements OnInit {
   public allGenres = [];
   public allTimes = [];
   public allPriorities = [];
+  public matches = [];
   constructor(
     protected injector: Injector,
     protected dialog: MatDialog,
-    protected httpService?: HttpService
+    protected httpService?: HttpService,
+    protected matchmakingService?: MatchmakingService
   ) {
       this.router = this.injector.get(Router);
       this.location = this.injector.get(Location);
       this.httpService = this.injector.get(HttpService);
+      this.matchmakingService = this.injector.get(MatchmakingService);
     }
 
   ngOnInit() {
-    this.allGenres = [];
-    this.allInterests = [];
-    this.allPriorities = [];
-    this.allTimes = [];
+    console.log(this.currentUser);
   }
 
   setUrl() {
@@ -96,7 +97,7 @@ export class AppComponent implements OnInit {
   }
 
    getUser() {
-    this.currentUser =  new User(JSON.parse(localStorage.getItem('user')));
+    this.currentUser = new User(JSON.parse(localStorage.getItem('user')));
     this.httpService.getUser(this.currentUser.id).subscribe(data => {
     this.currentUser = data;
     console.log(this.currentUser);
@@ -137,7 +138,8 @@ export class AppComponent implements OnInit {
     if (!this.isLoading) {
       this.showLoading();
     }
-    if (this.allGenres.length === 0 || this.allInterests.length === 0 || this.allPriorities.length === 0 || this.allTimes.length === 0) {
+    console.log('ALL GENRES', this.allGenres);
+   if (!this.allGenres || !this.allInterests || !this.allPriorities || !this.allTimes) {
       const interestPromise = await Promise.resolve(this.getAllInterests());
       const timePromise = await Promise.resolve(this.getAllTimes());
       const priorityPromise = await Promise.resolve(this.getAllPriorities());
@@ -147,11 +149,11 @@ export class AppComponent implements OnInit {
         this.dismissLoading();
       });
     });
-  } else {
+ } else {
       this.router.navigateByUrl('/edit-profile').then(() => {
         this.dismissLoading();
       });
-    }
+   }
   }
 
   viewProfile(id: any){
@@ -161,8 +163,10 @@ export class AppComponent implements OnInit {
   }
 
   viewMatchmaking(){
-    this.router.navigateByUrl('/matchmaking').then(() => {
-      this.dismissLoading();
+    this.getMatches().then(() => {
+      this.router.navigateByUrl('/matchmaking').then(() => {
+        this.dismissLoading();
+      });
     });
   }
 
@@ -219,22 +223,41 @@ export class AppComponent implements OnInit {
   }
 
   getAllPriorities(){
-    const priorities =  ['Location', 'Game Genres', 'Active Time', 'Interests'];
-    localStorage.setItem('priorities', JSON.stringify(priorities));
-
-
-  /*  return new Promise((resolve) => {
+    return new Promise((resolve) => {
       this.httpService.getAllPriorities().subscribe(data => {
         if (data) {
           const priorities = [];
           for (let i = 0; i < data.length; ++i) {
             priorities.push(data[i]);
           }
-          localStorage.setItem('times', JSON.stringify(priorities));
+          localStorage.setItem('priorities', JSON.stringify(priorities));
         }
       resolve();
       });
-    }); */
+    });
   }
 
+  getMatches() {
+    return new Promise((resolve) => {
+      // this.showLoading();
+      // this.currentUser = new User(JSON.parse(localStorage.getItem('user')));
+      // console.log(this.matches);
+      // if (!this.matches) {
+      //   this.matches = [];
+      //   this.matchmakingService.getMatches(this.currentUser.id).subscribe(data => {
+      //     if (data) {
+      //       for (let i = 0; i < data.length; ++i) {
+      //         const match = new User(data[i]);
+      //         this.matches.push(match);
+      //       }
+      //     }
+      //     localStorage.setItem('matches', JSON.stringify(this.matches));
+      //     console.log(this.matches);
+      //     resolve();
+      //   });
+      // } else {
+        resolve();
+    //   }
+    });
+  }
 }
