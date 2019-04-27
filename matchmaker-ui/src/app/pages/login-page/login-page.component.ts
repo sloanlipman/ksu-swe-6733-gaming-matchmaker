@@ -29,6 +29,7 @@ export class LoginPage extends AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.clearEverything();
     this.userLoginForm = this.formBuilder.group({
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required])
@@ -46,7 +47,7 @@ export class LoginPage extends AppComponent implements OnInit {
         if (data) {
           if (
             (data.interests && data.interests.length === 0) ||
-            (data.priorities && data.priorities.length === 0) ||
+            (data.priorities && data.priorities.length < this.allPriorities.length) ||
             (data.times && data.times.length === 0) ||
             (data.genres && data.genres.length === 0)
             ) {

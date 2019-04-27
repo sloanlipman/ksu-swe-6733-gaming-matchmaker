@@ -8,11 +8,6 @@ import { environment } from 'src/environments/environment';
 
 
 describe('LoginService', () => {
-  const auth = {
-    accessToken: '12345',
-    userId: 1,
-    user_type: 2
-  };
 
   let detail;
   let err;
@@ -75,7 +70,7 @@ describe('LoginService', () => {
       const mockReq = httpMock.expectOne(apiUrl + '/api/authorizeUser');
       expect(mockReq.request.method).toEqual('POST');
       mockReq.flush({
-        auth, detail
+        detail
       });
     }));
 
@@ -103,7 +98,7 @@ describe('LoginService', () => {
       const mockReq = httpMock.expectOne(apiUrl + '/api/authorizeUser');
       expect(mockReq.request.method).toEqual('POST');
       mockReq.flush({
-        auth, detail
+        detail
       });
     }));
 
@@ -125,7 +120,7 @@ describe('LoginService', () => {
     const mockReq = httpMock.expectOne(apiUrl + '/api/authorizeUser');
     expect(mockReq.request.method).toEqual('POST');
     mockReq.flush({
-      auth, detail
+      detail
     });
   }));
 

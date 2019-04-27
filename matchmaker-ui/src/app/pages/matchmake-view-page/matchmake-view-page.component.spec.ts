@@ -6,6 +6,7 @@ import { AppMaterialModule } from 'src/app/app-material.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpService } from 'src/app/shared/services/http-service/http.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatchmakingService } from 'src/app/shared/services/matchmaking-service/matchmaking.service';
 
 describe('MatchmakeViewPage', () => {
   let component: MatchmakeViewPage;
@@ -19,7 +20,7 @@ describe('MatchmakeViewPage', () => {
         HttpClientModule
       ],
       declarations: [ MatchmakeViewPage ],
-      providers: [HttpService],
+      providers: [HttpService, MatchmakingService],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();

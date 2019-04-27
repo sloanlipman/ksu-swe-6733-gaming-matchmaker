@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnInit, Injector, ViewChild } from '@angular/core';
+import { Component, OnInit, Injector, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from '../../app.component';
 import { MatDialog, } from '@angular/material';
@@ -7,7 +7,7 @@ import { EditProfileService } from '../../shared/services/edit-profile-service/e
 import { FormGroup, FormBuilder, FormControl, Validators, FormArray } from '@angular/forms';
 
 @Component({
-  selector: 'app-edit-profile-page',
+  selector: 'edit-profile-page',
   templateUrl: './edit-profile-page.component.html',
   styleUrls: ['./edit-profile-page.component.scss']
 })
@@ -20,12 +20,12 @@ export class EditProfilePage extends AppComponent implements OnInit {
   infoForm: FormGroup;
   currentUserInterests = [];
   submitted: any;
-  allInterests = JSON.parse(localStorage.getItem('interests'));
-  allGenres = JSON.parse(localStorage.getItem('genres'));
-  allTimes = JSON.parse(localStorage.getItem('times'));
-  allPriorities = JSON.parse(localStorage.getItem('priorities'));
- // allPriorities = ['Location', 'Game Genres', 'Active Time', 'Interests'];
-  prioritiesArray: string[] = [];
+  selectedPriorities: string[] = [];
+
+  allInterests: string[];
+  allGenres: string[];
+  allPriorities: string[];
+  allTimes: string[];
 
   constructor(
     protected router: Router,
@@ -36,14 +36,24 @@ export class EditProfilePage extends AppComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     super(injector, dialog);
-    console.log('inside edit profile, all priorities are:', this.allPriorities);
+
   }
 
   ngOnInit() {
-    console.log(this.allPriorities);
-    this.getFormControls();
-    this.getUser();
-    this.setFormControls();
+    this.getAllLists();
+      this.getFormControls();
+      this.getUser();
+      setTimeout(() => {
+      this.setFormControls();
+    });
+
+  }
+
+  getAllLists() {
+    this.allInterests = JSON.parse(localStorage.getItem('interests'));
+    this.allGenres = JSON.parse(localStorage.getItem('genres'));
+    this.allTimes = JSON.parse(localStorage.getItem('times'));
+    this.allPriorities = JSON.parse(localStorage.getItem('priorities'));
   }
 
   getFormControls() {
@@ -54,7 +64,6 @@ export class EditProfilePage extends AppComponent implements OnInit {
       zip: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required]),
     });
-
     for (let i = 0; i < this.allPriorities.length; ++i) {
       this.prioritiesFormArray.push(new FormControl(this.allPriorities[i], [Validators.required]));
     }
@@ -75,7 +84,6 @@ export class EditProfilePage extends AppComponent implements OnInit {
     this.infoForm.controls.email.setValue(this.currentUser.email);
     this.interestsBoxes.setValue(this.currentUser.interests);
     this.genreBoxes.setValue(this.currentUser.genres);
-    console.log('genre boxes value is', this.genreBoxes.value);
     this.timeBoxes.setValue(this.currentUser.times);
     for (let i = 0; i < this.prioritiesFormArray.length; ++i) {
       this.prioritiesFormArray.controls[i].setValue(this.currentUser.priorities[i]);
@@ -93,19 +101,15 @@ export class EditProfilePage extends AppComponent implements OnInit {
 
   // Put priorities in an array so they are ready to go
     for (let i = 0; i < this.allPriorities.length; ++i) {
-      this.prioritiesArray.push(this.p[i].value);
+      this.selectedPriorities.push(this.p[i].value);
     }
-    console.log(this.prioritiesArray);
     let unique;
-    const distinctPriorities = new Set(this.prioritiesArray);
-    console.log(distinctPriorities);
-    console.log(distinctPriorities.size);
-    if (distinctPriorities.size === this.prioritiesArray.length) { // Check that the selections are distinct
+    const distinctPriorities = new Set(this.selectedPriorities);
+    if (distinctPriorities.size === this.selectedPriorities.length) { // Check that the selections are distinct
       unique = true;
     } else {
       unique = false;
     }
-    console.log('unique is', unique);
 
     let valid = false;
     if (this.infoForm.invalid) {
@@ -139,14 +143,12 @@ export class EditProfilePage extends AppComponent implements OnInit {
           interests: this.interestsBoxes.value,
           genres: this.genreBoxes.value,
           times: this.timeBoxes.value,
-          priorities: this.prioritiesArray
+          priorities: this.selectedPriorities
         });
-        console.log(this.genreBoxes.value);
           this.showLoading();
           this.editProfileService.saveProfile(this.currentUser.id, profileChanges).subscribe((data) => {
           if (data) {
             this.currentUser = this.editProfileService.updateUser(data);
-            console.log(this.prioritiesArray);
             localStorage.removeItem('matches');
             this.goHome();
           } else {
@@ -154,7 +156,7 @@ export class EditProfilePage extends AppComponent implements OnInit {
           }
       });
     } else {
-        this.prioritiesArray = [];
+        this.selectedPriorities = [];
     }
   }
 

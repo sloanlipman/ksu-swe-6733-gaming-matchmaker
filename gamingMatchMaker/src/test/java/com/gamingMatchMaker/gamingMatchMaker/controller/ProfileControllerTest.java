@@ -55,7 +55,6 @@ public class ProfileControllerTest extends ControllerTest {
         when(proService.GetUserProfile(1)).thenReturn(rsp.get(1));
 		//rsp.put(2, new UserRec("two@count.com", "second", "last", "asdfafffr23asdgd", 85, true, 2, place, ints.toArray(new Interest[0]),genre.toArray(new GameGenre[0])));
 		when(proService.GetUserProfile(1)).thenReturn(rsp.get(1));
-
     }
     
     @Test

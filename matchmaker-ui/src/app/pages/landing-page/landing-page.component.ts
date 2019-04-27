@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material';
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss']
 })
-export class LandingPage extends AppComponent {
+export class LandingPage extends AppComponent implements OnInit {
 
   constructor(
     protected router: Router,
@@ -18,5 +18,10 @@ export class LandingPage extends AppComponent {
     protected dialog: MatDialog
   ) {
     super(injector, dialog);
+  
+   }
+
+   ngOnInit() {
+    this.clearEverything();
    }
 }

@@ -6,7 +6,7 @@ import { AppMaterialModule } from 'src/app/app-material.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpService } from 'src/app/shared/services/http-service/http.service';
 import { HttpClientModule } from '@angular/common/http';
-import { MockUsers } from 'src/app/shared/mock-users';
+import { MockUsers } from 'src/app/shared/mocks/mock-users';
 
 describe('HomePage', () => {
   let showAdminToolsSpy;

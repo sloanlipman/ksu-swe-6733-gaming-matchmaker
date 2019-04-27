@@ -13,6 +13,7 @@ import { FormBuilder } from '@angular/forms';
 import { of } from 'rxjs';
 import { MatDialogModule } from '@angular/material';
 import { User } from 'src/app/shared/models/user';
+import { MockUsers } from 'src/app/shared/mocks/mock-users';
 
 
 describe('RegisterPage', () => {
@@ -24,6 +25,7 @@ describe('RegisterPage', () => {
   let closeDialogSpy;
   let data;
   let user;
+  let mockUsers;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -70,15 +72,10 @@ describe('RegisterPage', () => {
           email: 'test@test.com'
         }
       };
-
-      user = new User({
-        id: 1,
-        email: 'test@test.com',
-        firstName: 'First',
-        lastName: 'Name',
-        age: '55',
-        isActive: true,
-        type: 'regular'
+      mockUsers = new MockUsers();
+      user = mockUsers.getUser1();
+      spyOn(component, 'getUser').and.callFake(() => {
+        component.currentUser = user;
       });
     });
 
@@ -100,6 +97,13 @@ describe('RegisterPage', () => {
     it('should go to edit profile page on successful registration', () => {
       spyOnProperty(component.userRegisterForm, 'invalid').and.returnValue(false);
       component['userRegisterForm'].controls['email'].setValue('test@test.com');
+      component['userRegisterForm'].controls['firstName'].setValue('Test');
+      component['userRegisterForm'].controls['lastName'].setValue('User');
+      component['userRegisterForm'].controls['age'].setValue(26);
+      component['userRegisterForm'].controls['zip'].setValue(30075);
+      component['userRegisterForm'].controls['password'].setValue('pass');
+      component['userRegisterForm'].controls['confirmPassword'].setValue('pass');
+
       registerSpy = spyOn(component['registerService'], 'register').and.returnValue(of(data));
       loginSpy = spyOn(component['loginService'], 'login').and.returnValue(of(user));
       editProfileSpy = spyOn(component, 'editProfile').and.stub();

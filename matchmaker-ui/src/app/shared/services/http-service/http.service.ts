@@ -8,7 +8,6 @@ import { map, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class HttpService {
-  protected authToken: string = null;
   public currUser: User;
   protected apiUrl = environment.API_URL;
 
@@ -69,7 +68,7 @@ export class HttpService {
     })).pipe(catchError(err => this.handleError(err)));
   }
 
-  public updateUser(user: any, accessToken?: any) {
+  public updateUser(user: any) {
     this.currUser = new User({
       id: user.id,
       email: user.email,
@@ -85,9 +84,7 @@ export class HttpService {
       priorities: user.priorities
     });
     localStorage.setItem('user', JSON.stringify(this.currUser));
-    if (accessToken) {
-      localStorage.setItem('auth', accessToken);
-    }
+
     return this.currUser;
   }
 
@@ -127,7 +124,6 @@ export class HttpService {
 
   public logout() {
     this.currUser = null;
-    this.authToken = null;
     localStorage.clear();
   }
 

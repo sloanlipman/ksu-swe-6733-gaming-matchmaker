@@ -66,6 +66,9 @@ public class UserDetail {
         this.age = age;
         this.is_active = is_active;
         this.user_type = user_type;
+        this.interests = interests;
+        this.genres = genres;
+        this.times = times;
         this.location = location;
         this.priorities = new ArrayList<>(priorities);
         this.interests = new ArrayList<>(interests);
@@ -92,7 +95,6 @@ public class UserDetail {
         this.is_active = orig.isIs_active();
         this.user_type = orig.getUser_type();
         this.location = orig.getLocation();
-
         this.interests = new ArrayList<>();
         this.genres = new ArrayList<>();
         this.times = new ArrayList<>();

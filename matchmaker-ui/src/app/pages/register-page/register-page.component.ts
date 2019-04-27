@@ -30,6 +30,7 @@ export class RegisterPage extends AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.clearEverything();
     this.userRegisterForm = this.formBuilder.group({
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
