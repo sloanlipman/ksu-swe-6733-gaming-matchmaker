@@ -26,5 +26,14 @@ export class MatchmakeViewPage extends AppComponent implements OnInit {
 
   ngOnInit() {
     this.getUser();
+    this.matchmakingService.getMatches(this.currentUser.id).subscribe(data => {
+      if (data) {
+        for (let i = 0; i < data.length; ++i) {
+          const player = new User(data[i]);
+          this.matches.push(player);
+        }
+      }
+      console.log('MATCHES ARE', this.matches);
+    });
   }
 }

@@ -17,7 +17,7 @@ export class MatchmakingService extends HttpService {
   }
 
   public getMatches(id: number) {
-    return this.get('/api/enginer/match/' + id).pipe(map((resp: any) => {
+    return this.get('/api/engine/match/' + id).pipe(map((resp: any) => {
       if (resp) {
         return resp;
       }
