@@ -23,6 +23,7 @@ describe('EditProfilePage', () => {
   let saveProfileSpy;
   let dismissLoadingSpy;
   let handleErrorSpy;
+  let ngOnInitSpy;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -54,7 +55,7 @@ describe('EditProfilePage', () => {
     spyOn(component, 'getUser').and.callFake(() => {
       component.currentUser = user1;
     });
-    spyOn(component, 'ngOnInit').and.stub();
+    ngOnInitSpy = spyOn(component, 'ngOnInit').and.stub();
     component.allInterests = [];
     component.allGenres = [];
     component.allTimes = [];
@@ -102,6 +103,16 @@ describe('EditProfilePage', () => {
       expect(existing).toBe(false);
     });
   });
+describe('initialization', () => {
+  it('should set form controls',() =>{
+   component.currentUser = new User(user1);
+   component.setFormControls();
+expect(component.infoForm.controls.firstName.value).toBe(component.currentUser.firstName);
+  });
+  fit('call methods in ng on init'. () => {
+    ngOnInitSpy.and.callThrough();
+  });
+});
 
 
   describe('SubmitChanges', async() => {

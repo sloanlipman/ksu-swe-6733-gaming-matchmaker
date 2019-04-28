@@ -119,5 +119,32 @@ describe('HttpService', () => {
           interests
         });
     }));
+    it('should get all genres' , inject(
+      [HttpService], (httpService: HttpService) => {
+        httpService.getAllGenres().subscribe(data => {
+        });
+        const mockReq = httpMock.expectOne(apiUrl + '/api/gameGenres');
+        expect(mockReq.request.method).toEqual('GET');
+        mockReq.flush({
+        });
+      }));
+        it('should get all times' , inject(
+          [HttpService], (httpService: HttpService) => {
+            httpService.getAllTimes().subscribe(data => {
+            });
+            const mockReq = httpMock.expectOne(apiUrl + '/api/playTimes');
+            expect(mockReq.request.method).toEqual('GET');
+            mockReq.flush({
+            });
+          }));
+            it('should get all priorities' , inject(
+              [HttpService], (httpService: HttpService) => {
+                httpService.getAllPriorities().subscribe(data => {
+                });
+                const mockReq = httpMock.expectOne(apiUrl + '/api/priority/getall');
+                expect(mockReq.request.method).toEqual('GET');
+                mockReq.flush({
+                });
+            }));
   });
 });
