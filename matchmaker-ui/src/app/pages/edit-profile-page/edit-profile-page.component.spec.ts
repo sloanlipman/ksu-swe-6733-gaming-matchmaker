@@ -24,6 +24,11 @@ describe('EditProfilePage', () => {
   let dismissLoadingSpy;
   let handleErrorSpy;
   let ngOnInitSpy;
+  let getAllListsSpy;
+  let getFormControlsSpy;
+  let getUserSpy;
+  let setFormControlsSpy;
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -56,6 +61,7 @@ describe('EditProfilePage', () => {
       component.currentUser = user1;
     });
     ngOnInitSpy = spyOn(component, 'ngOnInit').and.stub();
+    // getAllListsSpy = spyOn(component, 'getAllLists').and.stub();
     component.allInterests = [];
     component.allGenres = [];
     component.allTimes = [];
@@ -104,16 +110,34 @@ describe('EditProfilePage', () => {
     });
   });
 describe('initialization', () => {
-  it('should set form controls',() =>{
+  it('should set form controls', () => {
    component.currentUser = new User(user1);
    component.setFormControls();
-expect(component.infoForm.controls.firstName.value).toBe(component.currentUser.firstName);
+    expect(component.infoForm.controls.firstName.value).toBe(component.currentUser.firstName);
   });
-  fit('call methods in ng on init'. () => {
+  it('call methods in ngOnInit', () => {
+    getAllListsSpy = spyOn(component, 'getAllLists');
     ngOnInitSpy.and.callThrough();
+       component.ngOnInit();
+       expect(getAllListsSpy).toHaveBeenCalled();
   });
 });
 
+// *
+describe('Get all lists', () => {
+  it('should parse lists', () => {
+   component.currentUser = new User(user1);
+   component.setFormControls();
+   expect(component.infoForm.controls.firstName.value).toBe(component.currentUser.firstName);
+  });
+  it('call methods in getAllLists', () => {
+    getAllListsSpy = spyOn(component, 'getAllLists');
+    getAllListsSpy.and.callThrough();
+       component.getAllLists();
+       expect(getAllListsSpy).toHaveBeenCalled();
+  });
+});
+// */
 
   describe('SubmitChanges', async() => {
     beforeEach(() => {
