@@ -85,7 +85,6 @@ describe('LoginPage', () => {
       component.allPriorities = ['Active Times', 'Game Genres', 'Location', 'Interests'];
       spyOnProperty(component.userLoginForm, 'invalid').and.returnValue(false);
       spyOn(component['loginService'], 'login').and.returnValue(of(user1));
-      console.log('USER 1 IS', user1);
       component.onSubmit();
       expect(goHomeSpy).toHaveBeenCalled();
     });

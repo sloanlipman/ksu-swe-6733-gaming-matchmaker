@@ -10,11 +10,12 @@ import { MockUsers } from 'src/app/shared/mocks/mock-users';
 
 
 describe('ViewProfilePage', () => {
-  const mockUsers = new MockUsers();
   let component: ViewProfilePage;
   let fixture: ComponentFixture<ViewProfilePage>;
-  const user1 = mockUsers.getUser1();
-
+  let user1;
+  let mockUsers;
+  let findUserSpy;
+  let user2;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ViewProfilePage ],
@@ -30,9 +31,13 @@ describe('ViewProfilePage', () => {
   }));
 
   beforeEach(() => {
+  mockUsers = new MockUsers();
+  user1 = mockUsers.getUser1();
+  user2 = mockUsers.getUser2();
+
     fixture = TestBed.createComponent(ViewProfilePage);
     component = fixture.componentInstance;
-    spyOn(component, 'findUser').and.callFake(() => {
+    findUserSpy = spyOn(component, 'findUser').and.callFake(() => {
       component.user = user1;
     });
     fixture.detectChanges();
@@ -40,5 +45,13 @@ describe('ViewProfilePage', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should find user', () => {
+    findUserSpy.and.callThrough();
+    localStorage.setItem('clickedUser', JSON.stringify(user2));
+    component.findUser();
+    expect(component.user).toEqual(user2);
+    localStorage.clear();
   });
 });

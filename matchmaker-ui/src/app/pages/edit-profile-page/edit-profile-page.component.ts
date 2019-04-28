@@ -114,6 +114,8 @@ export class EditProfilePage extends AppComponent implements OnInit {
     let valid = false;
     if (this.infoForm.invalid) {
       this.editProfileService.handleError('Please fill in all required fields and try again');
+    } else if (this.infoForm.controls.age.value < 18 ) {
+      this.editProfileService.handleError('You must be 18 or older to use this application');
     } else if (this.interestsBoxes.value.length === 0) {
       this.editProfileService.handleError('Please select at least one interest and try again');
     } else if (this.genreBoxes.value.length === 0) {

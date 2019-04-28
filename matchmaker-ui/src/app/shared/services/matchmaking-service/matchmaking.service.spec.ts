@@ -30,7 +30,7 @@ describe('MatchmakingServiceService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('serviceTest',() =>{
+  describe('serviceTest', () => {
     beforeEach(() => {
       httpMock = TestBed.get(HttpTestingController);
     });
@@ -38,8 +38,8 @@ describe('MatchmakingServiceService', () => {
       httpMock.verify();
     });
 it ('should get matches', inject(
-  [MatchmakingService], (matchmakingService: MatchmakingService) => {
-    matchmakingService.getMatches(5).subscribe(data =>{});
+    [MatchmakingService], (matchmakingService: MatchmakingService) => {
+    matchmakingService.getMatches(5).subscribe(data => {});
     const mockReq = httpMock.expectOne(apiUrl + '/api/engine/match/5');
     expect(mockReq.request.method).toEqual('GET');
     mockReq.flush({});

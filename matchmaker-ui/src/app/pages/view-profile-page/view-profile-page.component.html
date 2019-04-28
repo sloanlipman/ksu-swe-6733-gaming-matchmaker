@@ -1,4 +1,6 @@
 <profile-card [player]="this.user"></profile-card>
+<button mat-raised-button (click)="goBack()" class="cancel">Go Back</button>
+
   <mat-grid-list cols="6" rowHeight="25rem"  [gutterSize]="'15px'">
   <mat-grid-tile colspan="2" rowspan="1.5" class="interest-card">
     <mat-grid-tile-header>Interests</mat-grid-tile-header>
@@ -19,7 +21,6 @@
         </mat-list-item>
       </mat-list>
   </mat-grid-tile>
-
 
 <mat-grid-tile colspan="2" rowspan="1.5" class="priorities-card">
   <mat-grid-tile-header>Priorities</mat-grid-tile-header>

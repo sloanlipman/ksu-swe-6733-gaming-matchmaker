@@ -47,7 +47,9 @@ export class RegisterPage extends AppComponent implements OnInit {
   onSubmit(): void {
     if (this.userRegisterForm.invalid) {
       this.registerService.handleError('Please fill in all required fields and try again');
-    } else {
+    } else if (this.userRegisterForm.controls.age.value < 18) {
+      this.registerService.handleError('You must be 18 older to use this application');
+    }  else {
     this.showLoading();
     this.registerService.register(
       this.f.email.value,
