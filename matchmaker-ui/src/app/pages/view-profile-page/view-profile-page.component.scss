@@ -3,14 +3,49 @@ mat-card{
     background-color: rgb(70, 0, 182);
     align-content: center;
   }
-  mat-list{
+
+mat-list{
   width: 90%;
-  max-height: 400px;
+  max-height: 460px;
   overflow-y: scroll;
 }
+
 mat-grid-tile-header{
   font-size: 18px;
   font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+mat-grid-tile{
+  padding-top: 70px;
+}
+
+mat-grid-list{
+  margin-bottom: 25px;
+}
+
+mat-icon{
+  position: absolute;
+  right: 5px;
+  height: 20px;
+}
+
+#priorities-list{
+  width: 90%;
+  max-height: 190px;
+  overflow-y: scroll;
+}
+
+#time-list{
+  width: 90%;
+  max-height: 190px;
+  overflow-y: scroll;
+}
+
+#go-back{
+  background-color: rgb(39, 127, 172);
+  margin-top: 30px;
+  margin-left: 50px;
 }
 
 .logo {
@@ -39,7 +74,11 @@ mat-grid-tile-header{
 }
 
 .genre-card {
-    background: rgb(160, 192, 207);
+  background: rgb(87, 123, 139);
+}
+
+.time-card{
+  background: rgb(87, 123, 139);
 }
 
 .interest-card {

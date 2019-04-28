@@ -1,9 +1,9 @@
 <profile-card [player]="this.user"></profile-card>
-<button mat-raised-button (click)="goBack()" class="cancel">Go Back</button>
 
-  <mat-grid-list cols="6" rowHeight="25rem"  [gutterSize]="'15px'">
+
+<mat-grid-list cols="6" rowHeight="25rem"  [gutterSize]="'15px'">
   <mat-grid-tile colspan="2" rowspan="1.5" class="interest-card">
-    <mat-grid-tile-header>Interests</mat-grid-tile-header>
+    <mat-grid-tile-header>Interests<mat-icon>loyalty</mat-icon></mat-grid-tile-header>
       <mat-list>
         <mat-list-item *ngFor="let interest of this.user.interests">
           <mat-icon matListIcon>loyalty</mat-icon>
@@ -13,36 +13,35 @@
   </mat-grid-tile>
 
   <mat-grid-tile colspan="2" rowspan="1.5" class="genre-card">
-      <mat-grid-tile-header>Favorite Genres</mat-grid-tile-header>
+      <mat-grid-tile-header>Favorite Genres<mat-icon>favorite_border</mat-icon></mat-grid-tile-header>
       <mat-list>
         <mat-list-item *ngFor="let genre of this.user.genres">
-          <mat-icon matListIcon>stars</mat-icon>
+          <mat-icon matListIcon>favorite_border</mat-icon>
           <p matLine>{{genre}}</p>
         </mat-list-item>
       </mat-list>
   </mat-grid-tile>
 
-<mat-grid-tile colspan="2" rowspan="1.5" class="priorities-card">
-  <mat-grid-tile-header>Priorities</mat-grid-tile-header>
-  <mat-list>
-  <mat-list-item *ngFor="let priority of this.user.priorities">
-    <mat-icon matListIcon>stars</mat-icon>
-    <p matLine>{{priority}}</p>
-  </mat-list-item>
-  </mat-list>
+  <mat-grid-tile colspan="2" rowspan="1" class="priorities-card">
+    <mat-grid-tile-header>Priorities<mat-icon>stars</mat-icon></mat-grid-tile-header>
+    <mat-list id="priorities-list">
+    <mat-list-item *ngFor="let priority of this.user.priorities; index as i">
+      <mat-icon matListIcon>filter_{{i+1}}</mat-icon>
+      <p matLine>{{priority}}</p>
+    </mat-list-item>
+    </mat-list>
   </mat-grid-tile>
 
 
-  <mat-grid-tile colspan="2" rowspan="1.5" class="time-card">
-    <mat-grid-tile-header>Active Time</mat-grid-tile-header>
-    <mat-list>
+  <mat-grid-tile colspan="2" rowspan="1" class="time-card">
+    <mat-grid-tile-header>Active Time<mat-icon>av_timer</mat-icon></mat-grid-tile-header>
+    <mat-list id="time-list">
     <mat-list-item *ngFor="let time of this.user.times">
-      <mat-icon matListIcon>stars</mat-icon>
+      <mat-icon matListIcon>av_timer</mat-icon>
       <p matLine>{{time}}</p>
     </mat-list-item>
     </mat-list>
-    </mat-grid-tile>
-
-
+  </mat-grid-tile>
 </mat-grid-list>
+<button mat-raised-button (click)="goBack()" id="go-back">Go Back</button>
 

@@ -12,18 +12,32 @@ mat-form {
   font-size: 18px;
 }
 
+mat-grid-tile-header{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: bold; 
+}
+
 form {
   width: 80%;
   font-size: 18px;
+  margin-top: 50px;
+  font-weight: bold;
 }
 
 mat-selection-list {
-  max-height: 500px;
+  max-height: 375px;
   max-width: 1000px;
   overflow: auto;
   width: 90%;
+  margin-top: 50px;
 }
 
+mat-icon{
+  position: absolute;
+  right: 5px;
+  height: 20px;
+}
 .profile-card {
   background: rgb(145, 149, 151);
 }
@@ -33,19 +47,19 @@ mat-selection-list {
 }
 
 .interestsCard {
-  background: rgb(145, 149, 151);
+  background: rgb(87, 123, 139);
 }
 
 .preferred-times {
-  background: rgb(145, 149, 151);
+  background: rgb(87, 123, 139);
 }
 
 .priorities {
-  background: rgb(145, 149, 151);
+  background: rgb(151, 4, 73);
 }
 
 mat-grid-list {
-  margin: 5rem;
+  margin: 3rem;
 }
 
 .button{

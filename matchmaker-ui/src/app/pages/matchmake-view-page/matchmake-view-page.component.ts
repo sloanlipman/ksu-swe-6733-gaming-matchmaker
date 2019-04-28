@@ -5,6 +5,7 @@ import { AppComponent } from 'src/app/app.component';
 import { MatDialog } from '@angular/material';
 import { MatchmakingService } from 'src/app/shared/services/matchmaking-service/matchmaking.service';
 import { User } from 'src/app/shared/models/user';
+import { matchesElement } from '@angular/animations/browser/src/render/shared';
 
 @Component({
   selector: 'matchmaking',

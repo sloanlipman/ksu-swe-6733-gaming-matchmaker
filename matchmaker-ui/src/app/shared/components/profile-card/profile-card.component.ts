@@ -1,7 +1,9 @@
 
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation, Injector } from '@angular/core';
 import { User } from '../../models/user';
 import { R3TargetBinder } from '@angular/compiler';
+import { AppComponent } from 'src/app/app.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'profile-card',
@@ -10,10 +12,15 @@ import { R3TargetBinder } from '@angular/compiler';
   encapsulation: ViewEncapsulation.None
 })
 
-export class ProfileCard {
+export class ProfileCard extends AppComponent{
   @Input() player: User;
   color: number;
-  constructor() {}
+  constructor(
+    protected injector: Injector,
+    protected dialog: MatDialog,
+  ) {
+    super(injector, dialog);
+  }
 
   getRandomColor() {
     this.color = Math.floor(Math.random() * 10);
@@ -36,7 +43,7 @@ export class ProfileCard {
         break;
       case 9: return '#4e6d75';
         break;
-      case 10: return '#626d70';
+      case 10: return '#767f82';
         break;
     }
   }
