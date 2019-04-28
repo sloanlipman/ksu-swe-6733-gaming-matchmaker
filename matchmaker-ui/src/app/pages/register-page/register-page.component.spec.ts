@@ -26,6 +26,7 @@ describe('RegisterPage', () => {
   let data;
   let user;
   let mockUsers;
+  let handleErrorSpy;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -77,17 +78,25 @@ describe('RegisterPage', () => {
       spyOn(component, 'getUser').and.callFake(() => {
         component.currentUser = user;
       });
+      handleErrorSpy = spyOn<any>(component['registerService'], 'handleError').and.returnValue(of(''));
     });
 
     it('should display an error if the form is not filled in', () => {
       spyOnProperty(component.userRegisterForm, 'invalid').and.returnValue(true);
-      const handleErrorSpy = spyOn<any>(component['registerService'], 'handleError').and.returnValue(of(''));
       component.onSubmit();
-      expect(handleErrorSpy).toHaveBeenCalled();
+      expect(handleErrorSpy).toHaveBeenCalledWith('Please fill in all required fields and try again');
+    });
+
+    it('should display an error if the age is too low', () => {
+      spyOnProperty(component.userRegisterForm, 'invalid').and.returnValue(false);
+      component.userRegisterForm.controls.age.setValue(16);
+      component.onSubmit();
+      expect(handleErrorSpy).toHaveBeenCalledWith('You must be 18 older to use this application');
     });
 
     it('should close dialog when passwords do not match', () => {
       spyOnProperty(component.userRegisterForm, 'invalid').and.returnValue(false);
+      component.userRegisterForm.controls.age.setValue(18);
       registerSpy = spyOn(component['registerService'], 'register').and.returnValue(of('Password Error'));
       component.onSubmit();
       expect(registerSpy).toHaveBeenCalled();
@@ -115,6 +124,7 @@ describe('RegisterPage', () => {
 
     it('should close dialog if login fails', () => {
       spyOnProperty(component.userRegisterForm, 'invalid').and.returnValue(false);
+      component.userRegisterForm.controls.age.setValue(18);
       component['userRegisterForm'].controls['email'].setValue('test@test.com');
       registerSpy = spyOn(component['registerService'], 'register').and.returnValue(of(data));
       loginSpy = spyOn(component['loginService'], 'login').and.returnValue(of(''));
@@ -123,8 +133,9 @@ describe('RegisterPage', () => {
       expect(loginSpy).toHaveBeenCalled();
     });
 
-    it('should close dialog if registratin fails', () => {
+    it('should close dialog if registration fails', () => {
       spyOnProperty(component.userRegisterForm, 'invalid').and.returnValue(false);
+      component.userRegisterForm.controls.age.setValue(18);
       component['userRegisterForm'].controls['email'].setValue('test2@test.com');
       registerSpy = spyOn(component['registerService'], 'register').and.returnValue(of(''));
       component.onSubmit();

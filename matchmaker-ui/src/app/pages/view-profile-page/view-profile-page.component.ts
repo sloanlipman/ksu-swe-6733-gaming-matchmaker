@@ -28,7 +28,6 @@ export class ViewProfilePage extends AppComponent implements OnInit {
 
   ngOnInit() {
     this.findUser();
-    console.log('USER IS:', this.user);
     this.closeDialog();
   }
 
@@ -36,5 +35,3 @@ export class ViewProfilePage extends AppComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('clickedUser'));
   }
 }
-
-// TODO need to define a variable to hold the details for the user whose profile is being viewed

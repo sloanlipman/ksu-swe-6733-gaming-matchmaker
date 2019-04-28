@@ -57,15 +57,9 @@ describe('LoginService', () => {
           'reading'
         ]
     };
+    const updateUserSpy = spyOn(loginService, 'updateUser');
       loginService.login('bob@students.kennesaw.edu', 'alligator3').subscribe(data => {
-        expect(data.email).toEqual(detail.email);
-        expect(data.firstName).toEqual(detail.first_name);
-        expect(data.lastName).toEqual(detail.last_name);
-        expect(data.age).toEqual(detail.age);
-        expect(data.isActive).toEqual(true);
-        expect(data.id).toEqual(detail.id);
-        expect(data.type).toEqual('regular');
-        expect(data.interests).toEqual(detail.interests);
+       expect(updateUserSpy).toHaveBeenCalled();
       });
       const mockReq = httpMock.expectOne(apiUrl + '/api/authorizeUser');
       expect(mockReq.request.method).toEqual('POST');

@@ -135,9 +135,7 @@ export class AppComponent implements OnInit {
     if (!this.isLoading) {
       this.showLoading();
     }
-    console.log('GENRES BEFORE IF', this.allGenres);
    if (!this.allGenres || !this.allInterests || !this.allPriorities || !this.allTimes) {
-     console.log('GENRES INSIDE IF', this.allGenres);
       const interestPromise = await Promise.resolve(this.getAllInterests());
       const timePromise = await Promise.resolve(this.getAllTimes());
       const priorityPromise = await Promise.resolve(this.getAllPriorities());
