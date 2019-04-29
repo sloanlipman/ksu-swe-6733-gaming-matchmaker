@@ -25,7 +25,8 @@ public class RegistrationController {
     @PostMapping("/register")
     public ResponseEntity<CreateRegistrationResponse> createRegistration(@RequestBody CreateRegistrationRequest request) {
         UserDetail details = request.userDetail;
-
+        ResponseEntity re = null;
+        try {
         // first create new user
         Optional<UserRec> regUser = service.createRegistration(
                 details.getEmail(), request.getPassword(),
@@ -36,15 +37,21 @@ public class RegistrationController {
 
         HttpHeaders headers = new HttpHeaders();
 
-        if(!regUser.isPresent()) {
-            return new ResponseEntity<>(null, headers, HttpStatus.BAD_REQUEST);
-        }
-
         UserDetail newUser = new UserDetail(regUser.get());
 
         CreateRegistrationResponse response = new CreateRegistrationResponse(newUser);
 
-        return new ResponseEntity<>(response, headers, HttpStatus.OK);
+        re = new ResponseEntity<>(response, headers, HttpStatus.OK);
+    }
+    catch (Exception e) {
+
+       String message = e.getMessage();
+            re = new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+        }
+
+        return  re;
+
+
     }
 }
 
