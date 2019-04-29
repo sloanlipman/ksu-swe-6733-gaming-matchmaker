@@ -30,11 +30,11 @@ export class LoginService extends HttpService {
           this.updateUser(resp.detail);
           return Object.assign({}, this.currUser);
       } else { // If the user is not active, return an error
-            this.currUser = null;
-            const err = {
-              error: 'inactive account'
-            };
-          this.handleError(err);
+          this.currUser = null;
+          const err = {
+            error: 'inactive account'
+          };
+        this.handleError(err);
         }
       }
       return null;

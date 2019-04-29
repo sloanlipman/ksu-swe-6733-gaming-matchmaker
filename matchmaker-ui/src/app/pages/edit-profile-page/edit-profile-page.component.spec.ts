@@ -23,6 +23,12 @@ describe('EditProfilePage', () => {
   let saveProfileSpy;
   let dismissLoadingSpy;
   let handleErrorSpy;
+  let ngOnInitSpy;
+  let getAllListsSpy;
+  let getFormControlsSpy;
+  let getUserSpy;
+  let setFormControlsSpy;
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -54,7 +60,8 @@ describe('EditProfilePage', () => {
     spyOn(component, 'getUser').and.callFake(() => {
       component.currentUser = user1;
     });
-    spyOn(component, 'ngOnInit').and.stub();
+    ngOnInitSpy = spyOn(component, 'ngOnInit').and.stub();
+    // getAllListsSpy = spyOn(component, 'getAllLists').and.stub();
     component.allInterests = [];
     component.allGenres = [];
     component.allTimes = [];
@@ -93,16 +100,51 @@ describe('EditProfilePage', () => {
     it('should be an existing user', () => {
       component.currentUser = user1;
       const existing = component.isExistingUser();
-      expect(existing).toBe(true);
+      expect(existing).toEqual(true);
     });
 
     it('should be a new user', () => {
       component.currentUser.interests = [];
       const existing = component.isExistingUser();
-      expect(existing).toBe(false);
+      expect(existing).toEqual(false);
     });
   });
+describe('initialization', () => {
+  it('should set form controls', () => {
+   component.currentUser = new User(user1);
+   component.setFormControls();
+    expect(component.infoForm.controls.firstName.value).toEqual(component.currentUser.firstName);
+    expect(component.infoForm.controls.lastName.value).toEqual(component.currentUser.lastName);
+    expect(component.infoForm.controls.age.value).toEqual(component.currentUser.age);
+    expect(component.infoForm.controls.zip.value).toEqual(component.currentUser.location.zip);
+    expect(component.infoForm.controls.email.value).toEqual(component.currentUser.email);
+    expect(component.interestsBoxes.value).toEqual(component.currentUser.interests);
+    expect(component.genreBoxes.value).toEqual(component.currentUser.genres);
+    expect(component.timeBoxes.value).toEqual(component.currentUser.times);
+    expect(component.prioritiesForm.value.priorities).toEqual(component.currentUser.priorities);
 
+  });
+  it('call methods in ngOnInit', () => {
+    getAllListsSpy = spyOn(component, 'getAllLists');
+    ngOnInitSpy.and.callThrough();
+       component.ngOnInit();
+       expect(getAllListsSpy).toHaveBeenCalled();
+  });
+});
+
+describe('Get all lists', () => {
+  it('should parse lists', () => {
+   component.currentUser = new User(user1);
+   component.setFormControls();
+   expect(component.infoForm.controls.firstName.value).toEqual(component.currentUser.firstName);
+  });
+  it('call methods in getAllLists', () => {
+    getAllListsSpy = spyOn(component, 'getAllLists');
+    getAllListsSpy.and.callThrough();
+       component.getAllLists();
+       expect(getAllListsSpy).toHaveBeenCalled();
+  });
+});
 
   describe('SubmitChanges', async() => {
     beforeEach(() => {
@@ -118,8 +160,16 @@ describe('EditProfilePage', () => {
       expect(handleErrorSpy).toHaveBeenCalledWith('Please fill in all required fields and try again');
     });
 
+    it('should handle error for age', () => {
+      spyOnProperty(component.infoForm, 'invalid').and.returnValue(false);
+      component.infoForm.controls.age.setValue(16);
+      component.submitChanges();
+      expect(handleErrorSpy).toHaveBeenCalledWith('You must be 18 or older to use this application');
+    });
+
     it('should handle error for no interests selected', () => {
       component.interestsBoxes.setValue([]);
+      component.infoForm.controls.age.setValue(18);
       spyOnProperty(component.infoForm, 'invalid').and.returnValue(false);
 
       component.submitChanges();
@@ -128,6 +178,7 @@ describe('EditProfilePage', () => {
 
     it('should handle error for no genres selected', () => {
       spyOnProperty(component.infoForm, 'invalid').and.returnValue(false);
+      component.infoForm.controls.age.setValue(18);
       component.genreBoxes.setValue([]);
       component.interestsBoxes.setValue(['Hiking']);
       fixture.detectChanges();
@@ -137,6 +188,7 @@ describe('EditProfilePage', () => {
 
     it('should handle error for no times selected', () => {
       spyOnProperty(component.infoForm, 'invalid').and.returnValue(false);
+      component.infoForm.controls.age.setValue(18);
       component.timeBoxes.setValue([]);
       component.interestsBoxes.setValue(['Hiking']);
       component.genreBoxes.setValue(['RPGs']);
@@ -147,6 +199,7 @@ describe('EditProfilePage', () => {
 
     it('should handle error for no priorities selected', () => {
       spyOnProperty(component.infoForm, 'invalid').and.returnValue(false);
+      component.infoForm.controls.age.setValue(18);
       component.timeBoxes.setValue(['Afternoon']);
       component.interestsBoxes.setValue(['Hiking']);
       component.genreBoxes.setValue(['RPGs']);
@@ -158,10 +211,10 @@ describe('EditProfilePage', () => {
       expect(handleErrorSpy).toHaveBeenCalledWith('Please select your matchmaking priorities and try again');
     });
 
-  // TODO selected priorities keeps coming back as having all 4 selected - we want to duplicate at least one
-    xit('should handle error for non-unique priorities selected', () => {
+    it('should handle error for non-unique priorities selected', () => {
       spyOnProperty(component.infoForm, 'invalid').and.returnValue(false);
-      component.selectedPriorities = [];
+      component.infoForm.controls.age.setValue(18);
+      component.selectedPriorities = ['1', '1', '2', '3'];
       component.timeBoxes.setValue(['Afternoon']);
       component.interestsBoxes.setValue(['Hiking']);
       component.genreBoxes.setValue(['RPGs']);

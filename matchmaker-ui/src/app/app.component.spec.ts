@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { of } from 'rxjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MockUsers } from './shared/mocks/mock-users';
+import { User } from './shared/models/user';
 
 let fixture;
 let component;
@@ -16,6 +17,7 @@ let dialogSpy;
 let routerSpy;
 let mockUsers;
 let user1;
+let showLoadingSpy;
 
 describe('AppComponent', () => {
   beforeEach(async() => {
@@ -39,6 +41,9 @@ describe('AppComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.debugElement.componentInstance;
+    mockUsers = new MockUsers();
+    user1 = new User(mockUsers.getUser1());
+    showLoadingSpy = spyOn(component, 'showLoading').and.stub();
   });
 
   afterEach(() => {
@@ -70,8 +75,6 @@ describe('AppComponent', () => {
 
   describe('Navigation', () => {
     beforeEach(() => {
-      mockUsers = new MockUsers();
-      user1 = mockUsers.getUser1();
       component.isLoading = true;
       routerSpy = spyOn(component.router, 'navigateByUrl').and.returnValue(Promise.resolve(of()));
       fixture.detectChanges();
@@ -114,6 +117,8 @@ describe('AppComponent', () => {
     });
 
     it('should go to edit profile page after resolving promises', fakeAsync(() => {
+      component.isLoading = false;
+      showLoadingSpy.and.stub();
       spyOn(component, 'getAllInterests').and.returnValue(Promise.resolve(of()));
       spyOn(component, 'getAllTimes').and.returnValue(Promise.resolve(of()));
       spyOn(component, 'getAllPriorities').and.returnValue(Promise.resolve(of()));
@@ -123,6 +128,7 @@ describe('AppComponent', () => {
       component.editProfile();
       tick(0);
       expect(routerSpy).toHaveBeenCalledWith('/edit-profile');
+      expect(showLoadingSpy).toHaveBeenCalled();
     }));
 
     it('should go to matchmaking page', fakeAsync(() => {
@@ -135,43 +141,129 @@ describe('AppComponent', () => {
 
   it('should open a dialog', () => {
     spyOn(component.dialog, 'open');
+    showLoadingSpy.and.callThrough();
     component.showLoading();
     expect(component.dialog.open).toHaveBeenCalled();
   });
 
-  describe('home button on toolbar', () => {
+  describe('buttons', () => {
     it('should set the current url when checking for home button', () => {
      urlSpy = spyOn(component, 'setUrl').and.callThrough();
       component.showHome();
       expect(urlSpy).toHaveBeenCalled();
     });
 
-    it('should not show for landing page', () => {
+    it('should not show home for landing page', () => {
       urlSpy = spyOn(component, 'setUrl').and.callFake(() => {
         component.url = '/landing-page';
       });
-      expect(component.showHome()).toBe(false);
+      expect(component.showHome()).toEqual(false);
     });
 
-    it('should not show for login', () => {
+    it('should not show home button for login', () => {
       urlSpy = spyOn(component, 'setUrl').and.callFake(() => {
         component.url = '/login';
       });
-      expect(component.showHome()).toBe(false);
+      expect(component.showHome()).toEqual(false);
     });
 
-    it('should not show for register', () => {
+    it('should not show home button for register', () => {
       urlSpy = spyOn(component, 'setUrl').and.callFake(() => {
         component.url = '/register';
       });
-      expect(component.showHome()).toBe(false);
+      expect(component.showHome()).toEqual(false);
     });
 
-    it('should show for anything else', () => {
+    it('should show home button for anything else', () => {
       urlSpy = spyOn(component, 'setUrl').and.callFake(() => {
-        component.url = 'any-other-url';
+        component.url = '/any-other-url';
       });
-        expect(component.showHome()).toBe(true);
+        expect(component.showHome()).toEqual(true);
+    });
+
+    it('should show view button on matchmaking page', () => {
+      urlSpy = spyOn(component, 'setUrl').and.callFake(() => {
+        component.url = '/matchmaking';
+      });
+      expect(component.showViewButton()).toEqual(true);
+    });
+
+    it('should NOT show view button on other pages', () => {
+      urlSpy = spyOn(component, 'setUrl').and.callFake(() => {
+        component.url = '/view-profile/127';
+      });
+      expect(component.showViewButton()).toEqual(false);
+    });
+  });
+
+  describe('getting lists', () => {
+    beforeEach(() => {
+      localStorage.clear();
+    });
+    afterEach(() => {
+      localStorage.clear();
+    });
+
+    it('should get all interests', fakeAsync(() => {
+      const interests = ['Hiking', 'Fishing'];
+      spyOn(component['httpService'], 'getAllInterests').and.returnValue(of(interests));
+      component.getAllInterests();
+      tick(0);
+      const allInterests = JSON.parse(localStorage.getItem('interests'));
+      expect(allInterests).toEqual(interests);
+    }));
+
+    it('should get all genres', fakeAsync(() => {
+      const genres = ['RPGs', 'FPS', 'RTS'];
+      spyOn(component['httpService'], 'getAllGenres').and.returnValue(of(genres));
+      component.getAllGenres();
+      tick(0);
+      const allGenres = JSON.parse(localStorage.getItem('genres'));
+      expect(allGenres).toEqual(genres);
+    }));
+
+    it('should get all times', fakeAsync(() => {
+      const times = ['Afternoon', 'Morning', 'Evening', 'Late Night'];
+      spyOn(component['httpService'], 'getAllTimes').and.returnValue(of(times));
+      component.getAllTimes();
+      tick(0);
+      const allTimes = JSON.parse(localStorage.getItem('times'));
+      expect(allTimes).toEqual(times);
+    }));
+
+    it('should get all priorities', fakeAsync(() => {
+      const priorities = ['Location', 'Interests', 'Active Time', 'Genres'];
+      spyOn(component['httpService'], 'getAllPriorities').and.returnValue(of(priorities));
+      component.getAllPriorities();
+      tick(0);
+      const allPriorities = JSON.parse(localStorage.getItem('priorities'));
+      expect(allPriorities).toEqual(priorities);
+    }));
+
+    it('should get all matches', fakeAsync(() => {
+      component.matches = null;
+      const matches = [user1, user1, user1]; // fake data, just want an array of users, don't care about actual contents for this test
+      spyOn(component['matchmakingService'], 'getMatches').and.returnValue(of(matches));
+      localStorage.setItem('user', JSON.stringify(user1));
+      component.getMatches();
+      tick(0);
+      expect(component.matches).toEqual(matches);
+      component.getMatches();
+      tick(0);
+      expect(component.matches).toEqual(matches);
+    }));
+    it('should already have matches', fakeAsync(() => {
+      component.matches = [user1];
+      component.getMatches();
+      tick(0);
+      expect(component.matches).toEqual([user1]);
+    }));
+
+    it('should get user', () => {
+      localStorage.setItem('user', JSON.stringify(user1));
+      spyOn(component['httpService'], 'getUser').and.returnValue(of(user1));
+      component.getUser();
+      expect(component.currentUser).toEqual(user1);
     });
   });
 });
