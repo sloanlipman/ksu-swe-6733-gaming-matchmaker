@@ -146,39 +146,53 @@ describe('AppComponent', () => {
     expect(component.dialog.open).toHaveBeenCalled();
   });
 
-  describe('home button on toolbar', () => {
+  describe('buttons', () => {
     it('should set the current url when checking for home button', () => {
      urlSpy = spyOn(component, 'setUrl').and.callThrough();
       component.showHome();
       expect(urlSpy).toHaveBeenCalled();
     });
 
-    it('should not show for landing page', () => {
+    it('should not show home for landing page', () => {
       urlSpy = spyOn(component, 'setUrl').and.callFake(() => {
         component.url = '/landing-page';
       });
       expect(component.showHome()).toEqual(false);
     });
 
-    it('should not show for login', () => {
+    it('should not show home button for login', () => {
       urlSpy = spyOn(component, 'setUrl').and.callFake(() => {
         component.url = '/login';
       });
       expect(component.showHome()).toEqual(false);
     });
 
-    it('should not show for register', () => {
+    it('should not show home button for register', () => {
       urlSpy = spyOn(component, 'setUrl').and.callFake(() => {
         component.url = '/register';
       });
       expect(component.showHome()).toEqual(false);
     });
 
-    it('should show for anything else', () => {
+    it('should show home button for anything else', () => {
       urlSpy = spyOn(component, 'setUrl').and.callFake(() => {
-        component.url = 'any-other-url';
+        component.url = '/any-other-url';
       });
         expect(component.showHome()).toEqual(true);
+    });
+
+    it('should show view button on matchmaking page', () => {
+      urlSpy = spyOn(component, 'setUrl').and.callFake(() => {
+        component.url = '/matchmaking';
+      });
+      expect(component.showViewButton()).toEqual(true);
+    });
+
+    it('should NOT show view button on other pages', () => {
+      urlSpy = spyOn(component, 'setUrl').and.callFake(() => {
+        component.url = '/view-profile/127';
+      });
+      expect(component.showViewButton()).toEqual(false);
     });
   });
 

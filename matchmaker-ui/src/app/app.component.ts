@@ -60,6 +60,18 @@ export class AppComponent implements OnInit {
       return true;
     }
   }
+
+  showViewButton() {
+    this.setUrl();
+    if (
+        this.url === '/matchmaking'
+      ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   showAbout() {
     this.dialog.open(AboutPage, {
       height: '30rem',

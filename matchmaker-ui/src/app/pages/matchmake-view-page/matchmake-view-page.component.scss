@@ -1,5 +1,38 @@
-profile-card {
-  .matchmake-card {
-    background-color: red !important;
-  }
+.matchmake-card {
+    width: 100%;
+    border-radius:  0px 0px 5px 5px;
+}
+
+#match-grid{
+  margin: 2rem;
+}
+
+#match-back-button{
+  background-color: rgb(0, 153, 255);
+  margin: 10px;
+}
+
+#match-title{
+  font-family: Arial, Helvetica, sans-serif;
+  color: azure;
+  font-size: 40px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+#rank-title{
+  font-family: Arial, Helvetica, sans-serif;
+  color: azure;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 5px 5px 0px 0px;
+ // background-color: rgb(144, 145, 247);
+}
+
+#match-length{
+  font-family: Arial, Helvetica, sans-serif;
+  color: azure;
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 10px;
 }

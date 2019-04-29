@@ -1,26 +1,55 @@
-
 mat-card{
     background-color: rgb(70, 0, 182);
     align-content: center;
   }
-  mat-list{
+
+mat-list{
   width: 90%;
-  max-height: 400px;
+  max-height: 460px;
   overflow-y: scroll;
 }
+
 mat-grid-tile-header{
   font-size: 18px;
   font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+mat-grid-tile{
+  padding-top: 70px;
+}
+
+mat-grid-list{
+  margin-bottom: 25px;
+}
+
+mat-icon{
+  position: absolute;
+  right: 5px;
+  height: 20px;
+}
+
+#priorities-list{
+  width: 90%;
+  max-height: 190px;
+  overflow-y: scroll;
+}
+
+#time-list{
+  width: 90%;
+  max-height: 190px;
+  overflow-y: scroll;
+}
+
+#go-back{
+  background-color: rgb(39, 127, 172);
+  margin-top: 30px;
+  margin-left: 50px;
 }
 
 .logo {
   background-image: url('src/assets/skull.png');
   background-size: cover;
-}
-
-.view-profile-card{ // TODO these margins mess up really long names
-//  margin-left: 200px;
-//  margin-right: 200px;
 }
 
 .view-profile-title{
@@ -31,22 +60,19 @@ mat-grid-tile-header{
   font-size: 20px;
 }
 
-#xp{
-    font-size: 33px;
-    position: absolute;
-    right: 18px;
-     
+.genre-card {
+  background: rgb(230, 125, 56);
 }
 
-.genre-card {
-    background: rgb(160, 192, 207);
+.time-card{
+  background: rgb(87, 139, 90)
 }
 
 .interest-card {
-    background: rgb(145, 149, 151);
+  background: rgb(87, 123, 139);
 }
 .priorities-card {
-    background: rgb(145, 149, 151);
+  background: rgb(151, 4, 73);
 }
 mat-grid-list {
     margin: 5rem;

@@ -1,7 +1,7 @@
 
-mat-card{
- // background-color: rgb(70, 0, 182);
+#profile-mat-card{
   align-content: center;
+  max-height: 85px;
 }
 
 .logo {
@@ -9,16 +9,10 @@ background-image: url('src/assets/skull.png');
 background-size: cover;
 }
 
-.view-profile-card{ // TODO these margins mess up really long names
-//  margin-left: 200px;
-//  margin-right: 200px;
-}
-
-.view-profile-title{
-font-size: 33px;
-}
-
-.view-profile-content{
-font-size: 20px;
+#view-button{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background-color: rgb(102, 102, 102);
 }
 
