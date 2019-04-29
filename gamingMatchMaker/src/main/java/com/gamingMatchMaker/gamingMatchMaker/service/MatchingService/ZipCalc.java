@@ -152,10 +152,10 @@ public class ZipCalc implements IMatcher {
 
 		//cheesy conversion - probably a better way
 		Double dub = Math.ceil(dist/STEP);
-		Integer a = (Integer) dub.intValue();
-		
+
+		//0 score for negative values and those too far away
+		return (dub.intValue() > MAX_STEPS ? 0 : MAX_STEPS - dub.intValue() );
 		//use subtraction operation for ascending to descending inversion
-		return (MAX_STEPS - a.intValue());
 	}
 
 }

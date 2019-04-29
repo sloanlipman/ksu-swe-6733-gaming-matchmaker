@@ -31,7 +31,11 @@ public class InterestCalc implements IMatcher {
 			if(theirints.contains(i)) score++;
 		}
 		//normalize vs 10
-		return (Math.floorDiv(score, myints.size()) * 10);
+		if(score > 0) {
+			score = Math.floorDiv(score, myints.size()) * 10;
+			return (score > 0 ? score: 1);
+		}
+		else return 0;
 	}
 
 }

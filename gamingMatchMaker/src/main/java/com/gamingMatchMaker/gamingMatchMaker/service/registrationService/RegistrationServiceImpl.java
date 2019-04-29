@@ -68,7 +68,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 
         //check for duplicate emails
         if(userDao.findByEmail(newUserRecDetails.getEmail()).isPresent()){
-            throw new UserException("email already exists");
+            throw new UserException("Email already in use. Please try again.");
         }
 
         zip = zip.trim().substring(0, 5);
