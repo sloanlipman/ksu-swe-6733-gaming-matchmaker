@@ -14,7 +14,12 @@ public class GenreCalc implements IMatcher {
 			if(other.getGenres().contains(gg)) score++;
 		}
 		//normalize vs 10
-		return (Math.floorDiv(score, self.getGenres().size()) * 10);
+		if(score > 0) {
+			score = Math.floorDiv(score, self.getGenres().size()) * 10;
+			return (score > 0 ? score : 1);
+		}
+		else return 0;
+		//return (Math.floorDiv(score, self.getGenres().size()) * 10);
 	}
 
 }

@@ -81,22 +81,28 @@ public class MatchingServiceImpl implements MatchingService {
 		users.addAll(phoneBook.findAll());
 		users.remove(self.get());
 			//little nervous not checking the return value, but if it's not found the findById above failed first
-		
+
+		//get the calculators
+		List<Priority> matchers = self.get().getPriorities();
+
+		int a = 0;
 		//run on a per user basis
 		for(UserRec ur : users) {
-			//if the user id isn't in the list add it
-			if(!scores.containsKey(ur)) scores.put(ur, 0);
-			List<Priority> matchers = self.get().getPriorities();
+			if(ur.getUser_type() != 2) continue; //skip admins
+			if(ur.getId() == 262) 
+				a = 0;
+			int tally = 0;
 			
 			//go through the plugins, highest priority firt
 			for(int i = 0; i < self.get().getPriorities().size(); i++) {
 				
 				//calculate the score for this matcher - use the index for weighting
-				int score = plugins.get(matchers.get(i).getName()).scoreUser(self.get(), ur) * (i); //so the earlier ones will have higher values
+				tally += plugins.get(matchers.get(i).getName()).scoreUser(self.get(), ur) * (i+1); //so the earlier ones will have higher values
 							//could I have been anymore convoluted?
-				
-				//update the score for this other user
-				scores.computeIfPresent(ur, (k,v) -> v + score);
+			}
+			if(tally != 0)  {
+				//if the user id isn't in the list add it
+				scores.put(ur, tally);
 			}
 		}
 		
