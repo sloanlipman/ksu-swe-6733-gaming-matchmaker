@@ -4,8 +4,7 @@ import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { MatDialog } from '@angular/material';
 import { MatchmakingService } from 'src/app/shared/services/matchmaking-service/matchmaking.service';
-import { User } from 'src/app/shared/models/user';
-import { matchesElement } from '@angular/animations/browser/src/render/shared';
+
 
 @Component({
   selector: 'matchmaking',
@@ -25,5 +24,6 @@ export class MatchmakeViewPage extends AppComponent implements OnInit {
 
   ngOnInit() {
     this.matches = JSON.parse(localStorage.getItem('matches'));
+    console.log('MATCHES', this.matches);
   }
 }
