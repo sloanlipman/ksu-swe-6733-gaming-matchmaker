@@ -2,6 +2,7 @@ package com.gamingMatchMaker.gamingMatchMaker.model;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 //import java.util.UUID;
 
@@ -63,6 +64,19 @@ public class Location {
         this.lat = original.lat;
         this.lng = original.lng;
         this.locationString = original.locationString;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Location location = (Location) o;
+        return Objects.equals(zip, location.zip);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(zip);
     }
 
     public int getId() {

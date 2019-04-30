@@ -9,8 +9,12 @@ import com.gamingMatchMaker.gamingMatchMaker.service.LocationService.LocationSer
 import com.gamingMatchMaker.gamingMatchMaker.service.authService.UserAuthRecPair;
 import com.gamingMatchMaker.gamingMatchMaker.service.authService.UserAuthService;
 import com.gamingMatchMaker.gamingMatchMaker.service.registrationService.RegistrationService;
+import com.gamingMatchMaker.gamingMatchMaker.service.userService.UserService;
+import com.sun.javaws.exceptions.InvalidArgumentException;
 import org.junit.Before;
 import org.junit.runner.RunWith;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +26,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -51,6 +56,9 @@ public abstract class ControllerTest {
 
     @MockBean
     private LocationService locationService;
+
+    @MockBean
+    private UserService userService;
 
     @Before
     public void setupUserAuthService() {
@@ -96,6 +104,45 @@ public abstract class ControllerTest {
                         eq(1), eq(mockLocation)
                 )
         ).thenReturn(Optional.of(response));
+    }
+
+    @Before
+    public void setupUserService() {
+        when(this.userService.update(any()))
+                .thenAnswer(new Answer<Optional<UserRec>>() {
+                    @Override
+                    public Optional<UserRec> answer(InvocationOnMock invocation) throws Throwable {
+                        Object param1 = invocation.getArgument(0);
+                        if(!(param1 instanceof UserDetail)) {
+                            throw  new IllegalArgumentException("userRec was null");
+                        }
+
+                        // validate the input userRec here
+                        UserDetail inputDetails = (UserDetail) param1;
+
+                        // return an optional copy of the userRec
+                        return Optional.of(userRecFromDetail(inputDetails));
+                    }
+                });
+    }
+
+    protected UserRec userRecFromDetail(UserDetail inputDetails) {
+        if(inputDetails == null) {
+            return null;
+        }
+        UserRec newUserRec = new UserRec(
+                inputDetails.getEmail(),
+                inputDetails.getFirst_name(),
+                inputDetails.getLast_name(),
+                TEST_PASSWORD,
+                inputDetails.getAge(),
+                inputDetails.isIs_active(),
+                inputDetails.getUser_type(),
+                inputDetails.getLocation()
+        );
+        newUserRec.setId(inputDetails.getId());
+
+        return newUserRec;
     }
 
     protected String readFileFromResources(Class c, String fileName) throws Exception {
