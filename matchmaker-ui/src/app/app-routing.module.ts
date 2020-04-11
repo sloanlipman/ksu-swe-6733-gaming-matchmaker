@@ -13,31 +13,31 @@ const routes: Routes = [
   }, */
   {
     path: 'edit-profile',
-    loadChildren: './pages/edit-profile-page/edit-profile-page.module#EditProfilePageModule'
+    loadChildren: () => import('./pages/edit-profile-page/edit-profile-page.module').then((m) => m.EditProfilePageModule)
   },
   {
     path: 'home',
-    loadChildren: './pages/home-page/home-page.module#HomePageModule'
+    loadChildren: () => import('./pages/home-page/home-page.module').then((m) => m.HomePageModule)
   },
   {
     path: 'landing-page',
-    loadChildren: './pages/landing-page/landing-page.module#LandingPageModule'
+    loadChildren: () => import('./pages/landing-page/landing-page.module').then((m) => m.LandingPageModule)
   },
   {
     path: 'login',
-    loadChildren: './pages/login-page/login-page.module#LoginPageModule'
+    loadChildren: () => import('./pages/login-page/login-page.module').then((m) => m.LoginPageModule)
   },
   {
     path: 'matchmaking',
-    loadChildren: './pages/matchmake-view-page/matchmake-view-page.module#MatchmakeViewPageModule'
+    loadChildren: () => import('./pages/matchmake-view-page/matchmake-view-page.module').then((m) => m.MatchmakeViewPageModule)
   },
   {
     path: 'register',
-    loadChildren: './pages/register-page/register-page.module#RegisterPageModule'
+    loadChildren: () => import('./pages/register-page/register-page.module').then((m) => m.RegisterPageModule)
   },
   {
     path: 'view-profile/:id',
-    loadChildren: './pages/view-profile-page/view-profile-page.module#ViewProfilePageModule'
+    loadChildren: () => import('./pages/view-profile-page/view-profile-page.module').then((m) => m.ViewProfilePageModule)
   }
 ];
 

@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnInit, Injector, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from '../../app.component';
 import { MatDialog } from '@angular/material';

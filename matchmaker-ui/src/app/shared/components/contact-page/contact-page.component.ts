@@ -11,7 +11,7 @@ import { take } from 'rxjs/operators';
 export class ContactPage {
   constructor(public dialogRef: MatDialogRef<ContactPage>, private ngZone: NgZone) {}
 
-  @ViewChild('autosize') autosize: CdkTextareaAutosize;
+  @ViewChild('autosize', { static: true }) autosize: CdkTextareaAutosize;
 
   triggerResize() {
     // Wait for changes to be applied, then trigger textarea resize.

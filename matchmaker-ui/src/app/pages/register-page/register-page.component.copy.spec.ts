@@ -34,7 +34,7 @@ describe('RegisterPage', () => {
     // spyOnProperty(spectator.component.userRegisterForm, 'invalid').and.returnValue(true);
 
     // const formBuilder
-    const registerService = spectator.inject<RegisterService>(RegisterService, true);
+    const registerService = spectator.get<RegisterService>(RegisterService, true);
     registerService.register.andReturn(
       of({
         detail: {
