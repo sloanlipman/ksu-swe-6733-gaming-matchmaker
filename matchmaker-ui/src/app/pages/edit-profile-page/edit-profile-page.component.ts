@@ -104,68 +104,34 @@ export class EditProfilePage extends AppComponent implements OnInit {
     for (let i = 0; i < this.allPriorities.length; ++i) {
       this.selectedPriorities.push(this.p[i].value);
     }
-    let unique;
-    const distinctPriorities = new Set(this.selectedPriorities);
-    if (distinctPriorities.size === this.selectedPriorities.length) {
-      // Check that the selections are distinct
-      unique = true;
-    } else {
-      unique = false;
-    }
 
-    let valid = false;
-    if (this.infoForm.invalid) {
-      this.editProfileService.handleError('Please fill in all required fields and try again');
-    } else if (this.infoForm.controls.age.value < 18) {
-      this.editProfileService.handleError('You must be 18 or older to use this application');
-    } else if (this.interestsBoxes.value.length === 0) {
-      this.editProfileService.handleError('Please select at least one interest and try again');
-    } else if (this.genreBoxes.value.length === 0) {
-      this.editProfileService.handleError('Please select at least one game genre and try again');
-    } else if (this.timeBoxes.value.length === 0) {
-      this.editProfileService.handleError('Please select at least one active time and try again');
-    } else if (this.prioritiesForm.invalid) {
-      this.editProfileService.handleError('Please select your matchmaking priorities and try again');
-    } else if (this.prioritiesForm.valid && !unique) {
-      this.editProfileService.handleError('Please make unique selections for your matchmaking priorities and try again');
-    } else {
-      valid = true;
-    }
-
-    if (valid) {
-      const profileChanges = JSON.stringify({
-        id: this.currentUser.id,
-        email: this.f.email.value,
-        first_name: this.f.firstName.value,
-        last_name: this.f.lastName.value,
-        age: this.f.age.value,
-        is_active: true,
-        user_type: this.editProfileService.stringToType(this.currentUser.type),
-        location: {
-          zip: this.f.zip.value
-        },
-        interests: this.interestsBoxes.value,
-        genres: this.genreBoxes.value,
-        times: this.timeBoxes.value,
-        priorities: this.selectedPriorities
-      });
-      this.showLoading();
-      this.editProfileService.saveProfile(this.currentUser.id, profileChanges).subscribe((data) => {
-        if (data) {
-          this.currentUser = this.editProfileService.updateUser(data);
-          localStorage.removeItem('matches');
-          this.goHome();
-        } else {
-          this.dismissLoading();
-        }
-      });
-    } else {
-      this.selectedPriorities = [];
-    }
+    const profileChanges = JSON.stringify({
+      id: this.currentUser.id,
+      email: this.f.email.value,
+      first_name: this.f.firstName.value,
+      last_name: this.f.lastName.value,
+      age: this.f.age.value,
+      is_active: true,
+      user_type: this.editProfileService.stringToType(this.currentUser.type),
+      location: {
+        zip: this.f.zip.value
+      },
+      interests: this.interestsBoxes.value,
+      genres: this.genreBoxes.value,
+      times: this.timeBoxes.value,
+      priorities: this.selectedPriorities
+    });
+    this.editProfileService.saveProfile(this.currentUser.id, profileChanges).subscribe((data) => {
+      if (data) {
+        this.currentUser = this.editProfileService.updateUser(data);
+        localStorage.removeItem('matches');
+        this.goHome();
+      }
+    });
   }
 
   isExistingUser() {
-    if (
+    return (
       this.currentUser.interests &&
       this.currentUser.interests.length > 0 &&
       this.currentUser.priorities &&
@@ -174,10 +140,6 @@ export class EditProfilePage extends AppComponent implements OnInit {
       this.currentUser.genres.length > 0 &&
       this.currentUser.times &&
       this.currentUser.times.length > 0
-    ) {
-      return true;
-    } else {
-      return false;
-    }
+    );
   }
 }

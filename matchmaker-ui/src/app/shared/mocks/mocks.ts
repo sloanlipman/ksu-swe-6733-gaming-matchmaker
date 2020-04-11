@@ -1,4 +1,13 @@
 import { HttpHeaders } from '@angular/common/http';
+import { of } from 'rxjs';
+
+export class MatDialogMock {
+  open() {
+    return {
+      afterClosed: () => of(true)
+    };
+  }
+}
 
 export class HttpServiceMock {
   httpOptions = new HttpHeaders();
@@ -18,17 +27,29 @@ export class HttpServiceMock {
 }
 
 export class EditProfileServiceMock extends HttpServiceMock {
+  constructor() {
+    super();
+  }
   saveProfile(id: number, request: any) {}
 }
 
 export class LoginServiceMock extends HttpServiceMock {
+  constructor() {
+    super();
+  }
   login(email, password) {}
 }
 
 export class MatchmakingServiceMock extends HttpServiceMock {
+  constructor() {
+    super();
+  }
   getMatches(id: number) {}
 }
 
 export class RegisterServiceMock extends HttpServiceMock {
+  constructor() {
+    super();
+  }
   register(email: string, firstName: string, lastName: string, age: string, zip: string, password: string, confirmPassword: string) {}
 }

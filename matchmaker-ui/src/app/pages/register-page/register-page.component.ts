@@ -46,7 +46,6 @@ export class RegisterPage extends AppComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.showLoading();
     this.registerService
       .register(
         this.f.email.value,

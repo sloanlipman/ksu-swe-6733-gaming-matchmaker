@@ -43,7 +43,6 @@ export class LoginPage extends AppComponent implements OnInit {
     if (this.userLoginForm.invalid) {
       this.loginService.handleError('Please fill in all required fields and try again');
     } else {
-      this.showLoading();
       this.loginService.login(this.f.email.value, this.f.password.value).subscribe((data) => {
         if (data) {
           if (

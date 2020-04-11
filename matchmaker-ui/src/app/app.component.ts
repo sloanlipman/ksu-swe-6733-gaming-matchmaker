@@ -77,24 +77,6 @@ export class AppComponent implements OnInit {
       width: '100rem'
     });
   }
-
-  protected showLoading() {
-    this.dialog.open(LoadingIndicator, {
-      height: '20rem',
-      width: '60rem',
-      disableClose: true
-    });
-    this.isLoading = true;
-  }
-
-  protected dismissLoading() {
-    if (this.isLoading) {
-      this.dialog.closeAll();
-      this.isLoading = false;
-    }
-    return Promise.resolve();
-  }
-
   protected closeDialog() {
     this.dialog.closeAll();
   }
@@ -107,22 +89,16 @@ export class AppComponent implements OnInit {
   }
 
   goToLoginPage() {
-    this.router.navigateByUrl('/login').then(() => {
-      this.dismissLoading();
-    });
+    this.router.navigateByUrl('/login').then(() => {});
   }
 
   register() {
-    this.router.navigateByUrl('/register').then(() => {
-      this.dismissLoading();
-    });
+    this.router.navigateByUrl('/register').then(() => {});
   }
 
   goToLanding() {
     this.httpService.logout();
-    this.router.navigateByUrl('/landing-page').then(() => {
-      this.dismissLoading();
-    });
+    this.router.navigateByUrl('/landing-page').then(() => {});
   }
 
   goBack() {
@@ -130,14 +106,11 @@ export class AppComponent implements OnInit {
   }
 
   goHome() {
-    this.router.navigateByUrl('/home').then(() => {
-      this.dismissLoading();
-    });
+    this.router.navigateByUrl('/home').then(() => {});
   }
 
   async editProfile() {
     if (!this.isLoading) {
-      this.showLoading();
     }
     if (!this.allGenres || !this.allInterests || !this.allPriorities || !this.allTimes) {
       const interestPromise = await Promise.resolve(this.getAllInterests());
@@ -145,29 +118,21 @@ export class AppComponent implements OnInit {
       const priorityPromise = await Promise.resolve(this.getAllPriorities());
       const genrePromise = await Promise.resolve(this.getAllGenres());
       Promise.all([interestPromise, timePromise, priorityPromise, genrePromise]).then(() => {
-        this.router.navigateByUrl('/edit-profile').then(() => {
-          this.dismissLoading();
-        });
+        this.router.navigateByUrl('/edit-profile').then(() => {});
       });
     } else {
-      this.router.navigateByUrl('/edit-profile').then(() => {
-        this.dismissLoading();
-      });
+      this.router.navigateByUrl('/edit-profile').then(() => {});
     }
   }
 
   viewProfile(user: User) {
     localStorage.setItem('clickedUser', JSON.stringify(user));
-    this.router.navigateByUrl('/view-profile/' + user.id).then(() => {
-      this.dismissLoading();
-    });
+    this.router.navigateByUrl('/view-profile/' + user.id).then(() => {});
   }
 
   async viewMatchmaking() {
     await this.getMatches().then(() => {
-      this.router.navigateByUrl('/matchmaking').then(() => {
-        this.dismissLoading();
-      });
+      this.router.navigateByUrl('/matchmaking').then(() => {});
     });
   }
 
@@ -233,7 +198,6 @@ export class AppComponent implements OnInit {
 
   getMatches() {
     return new Promise((resolve) => {
-      this.showLoading();
       this.currentUser = new User(JSON.parse(localStorage.getItem('user')));
       if (!this.matches) {
         this.matches = [];

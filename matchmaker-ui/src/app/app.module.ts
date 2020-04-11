@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,9 +13,7 @@ import { LoadingIndicator } from './shared/components/loading-indicator/loading-
 import { AboutPage } from './shared/components/about/about.component';
 import { ContactPage } from './shared/components/contact-page/contact-page.component';
 import { HttpService } from './shared/services/http-service/http.service';
-import { ProfileCard } from './shared/components/profile-card/profile-card.component';
 import { ProfileCardModule } from './shared/components/profile-card/profile-card.module';
-// import { ProfileCardModule } from './shared/components/profile-card/profile-card.module';
 
 @NgModule({
   declarations: [AppComponent, LoadingIndicator, AboutPage, ContactPage],

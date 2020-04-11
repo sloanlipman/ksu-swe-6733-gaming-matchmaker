@@ -26,8 +26,6 @@ export class HomePage extends AppComponent implements OnInit {
     this.allTimes = JSON.parse(localStorage.getItem('times'));
     this.allPriorities = JSON.parse(localStorage.getItem('priorities'));
     this.matches = JSON.parse(localStorage.getItem('matches'));
-
-    this.dismissLoading(); // We might not actually need this, but better safe than sorry
   }
 
   showAdminTools() {
