@@ -27,6 +27,7 @@ describe('RegisterPage', () => {
   let user;
   let mockUsers;
   let handleErrorSpy;
+  let handleRegistrationSpy;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -52,16 +53,14 @@ describe('RegisterPage', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(RegisterPage);
     component = fixture.componentInstance;
+
+    handleRegistrationSpy = spyOn(component, 'handleRegistration').and.stub();
     fixture.detectChanges();
   });
 
   afterEach(() => {
     component['httpService'].snackBar.dismiss();
     fixture.destroy();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 
   describe('submit registration', () => {
@@ -105,14 +104,6 @@ describe('RegisterPage', () => {
 
     it('should go to edit profile page on successful registration', () => {
       spyOnProperty(component.userRegisterForm, 'invalid').and.returnValue(false);
-      component['userRegisterForm'].controls['email'].setValue('test@test.com');
-      component['userRegisterForm'].controls['firstName'].setValue('Test');
-      component['userRegisterForm'].controls['lastName'].setValue('User');
-      component['userRegisterForm'].controls['age'].setValue(26);
-      component['userRegisterForm'].controls['zip'].setValue(30075);
-      component['userRegisterForm'].controls['password'].setValue('pass');
-      component['userRegisterForm'].controls['confirmPassword'].setValue('pass');
-
       registerSpy = spyOn(component['registerService'], 'register').and.returnValue(of(data));
       loginSpy = spyOn(component['loginService'], 'login').and.returnValue(of(user));
       editProfileSpy = spyOn(component, 'editProfile').and.stub();
@@ -122,15 +113,14 @@ describe('RegisterPage', () => {
       expect(editProfileSpy).toHaveBeenCalled();
     });
 
-    it('should close dialog if login fails', () => {
-      spyOnProperty(component.userRegisterForm, 'invalid').and.returnValue(false);
-      component.userRegisterForm.controls.age.setValue(18);
-      component['userRegisterForm'].controls['email'].setValue('test@test.com');
+    it('Should call the register service to register and then handle a successful registration', () => {
+      // spyOnProperty(component.userRegisterForm, 'invalid').and.returnValue(false);
+      // component.userRegisterForm.controls.age.setValue(18);
+      // component['userRegisterForm'].controls['email'].setValue('test@test.com');
       registerSpy = spyOn(component['registerService'], 'register').and.returnValue(of(data));
-      loginSpy = spyOn(component['loginService'], 'login').and.returnValue(of(''));
       component.onSubmit();
       expect(registerSpy).toHaveBeenCalled();
-      expect(loginSpy).toHaveBeenCalled();
+      expect(handleRegistrationSpy).toHaveBeenCalled();
     });
 
     it('should close dialog if registration fails', () => {

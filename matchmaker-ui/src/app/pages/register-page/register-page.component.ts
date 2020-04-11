@@ -27,10 +27,6 @@ export class RegisterPage extends AppComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     super(injector, dialog);
-  }
-
-  ngOnInit() {
-    this.clearEverything();
     this.userRegisterForm = this.formBuilder.group({
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
@@ -40,42 +36,45 @@ export class RegisterPage extends AppComponent implements OnInit {
       password: new FormControl('', [Validators.required]),
       confirmPassword: new FormControl('', [Validators.required])
     });
+  }
+
+  ngOnInit() {
+    this.clearEverything();
+
 
     }
   get f() { return this.userRegisterForm.controls; }
 
   onSubmit(): void {
-    if (this.userRegisterForm.invalid) {
-      this.registerService.handleError('Please fill in all required fields and try again');
-    } else if (this.userRegisterForm.controls.age.value < 18) {
-      this.registerService.handleError('You must be 18 older to use this application');
-    }  else {
-    this.showLoading();
-    this.registerService.register(
-      this.f.email.value,
-      this.f.firstName.value,
-      this.f.lastName.value,
-      this.f.age.value,
-      this.f.zip.value,
-      this.f.password.value,
-      this.f.confirmPassword.value).subscribe(data => {
-      if (data) {
-        if (data === 'Password Error') {
-          this.closeDialog();
-        } else if (data.detail.email === this.f.email.value) {
-          this.loginService.login(data.detail.email, this.f.password.value).subscribe(result => {
-            if (result) {
-              this.getUser();
-              this.editProfile();
-            } else {
-                this.closeDialog();
-              }
-          });
+      this.showLoading();
+      this.registerService.register(
+        this.f.email.value,
+        this.f.firstName.value,
+        this.f.lastName.value,
+        this.f.age.value,
+        this.f.zip.value,
+        this.f.password.value,
+        this.f.confirmPassword.value).subscribe(data => {
+          if (data) {
+            this.handleRegistration(data);
+          } else {
+            this.closeDialog();
         }
-      } else {
-          this.closeDialog();
+      });
+    }
+
+  handleRegistration(data: any) {
+      if (data === 'Password Error') {
+        this.closeDialog();
+      } else if (data.detail.email === this.f.email.value) {
+        this.loginService.login(data.detail.email, this.f.password.value).subscribe(result => {
+          if (result) {
+            this.getUser();
+            this.editProfile();
+          } else {
+              this.closeDialog();
+            }
+        });
       }
-    });
-  }
-}
+    }
 }
