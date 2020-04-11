@@ -1,0 +1,34 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Spectator, createComponentFactory } from '@ngneat/spectator';
+import { of } from 'rxjs';
+import { HttpService } from 'src/app/shared/services/http-service/http.service';
+import { EditProfilePage } from './edit-profile-page.component';
+import { EditProfileService } from 'src/app/shared/services/edit-profile-service/edit-profile.service';
+import { MockUsers } from 'src/app/shared/mocks/mock-users';
+
+describe('RegisterPage', () => {
+  let spectator: Spectator<EditProfilePage>;
+  const user1 = MockUsers.prototype.getUser1();
+  const createComponent = createComponentFactory({
+    component: EditProfilePage,
+    componentMocks: [EditProfileService, HttpService],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    detectChanges: false
+  });
+
+  beforeEach(() => {
+    spectator = createComponent();
+    spectator.component.currentUser = user1;
+    spyOn(spectator.component, 'goHome');
+  });
+
+  it('Should call the register service to register and then handle a successful registration', () => {
+    const editProfileService = spectator.get<EditProfileService>(EditProfileService, true);
+    editProfileService.saveProfile.andReturn(of('MockResponse'));
+
+    spectator.component.submitChanges(user1);
+
+    expect(editProfileService.updateUser).toHaveBeenCalledWith('MockResponse');
+    expect(spectator.component.goHome).toHaveBeenCalled();
+  });
+});

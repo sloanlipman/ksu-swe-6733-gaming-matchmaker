@@ -5,6 +5,7 @@ import { AppComponent } from '../../app.component';
 import { MatDialog } from '@angular/material';
 import { EditProfileService } from '../../shared/services/edit-profile-service/edit-profile.service';
 import { FormGroup, FormBuilder, FormControl, Validators, FormArray } from '@angular/forms';
+import { User } from 'src/app/shared/models/user';
 
 @Component({
   selector: 'edit-profile-page',
@@ -99,29 +100,10 @@ export class EditProfilePage extends AppComponent implements OnInit {
     return this.prioritiesFormArray.controls;
   }
 
-  submitChanges() {
+  submitChanges(user: User) {
     // Put priorities in an array so they are ready to go
-    for (let i = 0; i < this.allPriorities.length; ++i) {
-      this.selectedPriorities.push(this.p[i].value);
-    }
 
-    const profileChanges = JSON.stringify({
-      id: this.currentUser.id,
-      email: this.f.email.value,
-      first_name: this.f.firstName.value,
-      last_name: this.f.lastName.value,
-      age: this.f.age.value,
-      is_active: true,
-      user_type: this.editProfileService.stringToType(this.currentUser.type),
-      location: {
-        zip: this.f.zip.value
-      },
-      interests: this.interestsBoxes.value,
-      genres: this.genreBoxes.value,
-      times: this.timeBoxes.value,
-      priorities: this.selectedPriorities
-    });
-    this.editProfileService.saveProfile(this.currentUser.id, profileChanges).subscribe((data) => {
+    this.editProfileService.saveProfile(this.currentUser.id, JSON.stringify(user)).subscribe((data) => {
       if (data) {
         this.currentUser = this.editProfileService.updateUser(data);
         localStorage.removeItem('matches');
