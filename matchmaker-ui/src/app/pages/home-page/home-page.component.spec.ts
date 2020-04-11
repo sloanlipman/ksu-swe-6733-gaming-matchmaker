@@ -17,16 +17,11 @@ describe('HomePage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        AppMaterialModule,
-        RouterTestingModule,
-        HttpClientModule
-      ],
-      declarations: [ HomePage ],
+      imports: [AppMaterialModule, RouterTestingModule, HttpClientModule],
+      declarations: [HomePage],
       providers: [HttpService],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

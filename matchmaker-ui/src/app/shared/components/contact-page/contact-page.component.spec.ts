@@ -11,14 +11,13 @@ describe('ContactPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ AppMaterialModule, BrowserAnimationsModule ],
-      declarations: [ ContactPage ],
+      imports: [AppMaterialModule, BrowserAnimationsModule],
+      declarations: [ContactPage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
-        { provide: MatDialogRef, useValue: {}} // TODO this is a workaround. It needs MatDialogRef because it's in the constructor
+        { provide: MatDialogRef, useValue: {} } // TODO this is a workaround. It needs MatDialogRef because it's in the constructor
       ]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

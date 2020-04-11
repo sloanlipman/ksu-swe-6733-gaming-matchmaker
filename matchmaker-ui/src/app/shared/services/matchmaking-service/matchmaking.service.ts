@@ -8,19 +8,19 @@ import { map, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class MatchmakingService extends HttpService {
-
-  constructor(
-    protected http: HttpClient,
-    public snackBar: MatSnackBar,
-  ) {
+  constructor(protected http: HttpClient, public snackBar: MatSnackBar) {
     super(http, snackBar);
   }
 
   public getMatches(id: number) {
-    return this.get('/api/engine/match/' + id).pipe(map((resp: any) => {
-      if (resp) {
-        return resp;
-      }
-    })).pipe(catchError(err => this.handleError(err)));
+    return this.get('/api/engine/match/' + id)
+      .pipe(
+        map((resp: any) => {
+          if (resp) {
+            return resp;
+          }
+        })
+      )
+      .pipe(catchError((err) => this.handleError(err)));
   }
- }
+}

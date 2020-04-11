@@ -15,12 +15,7 @@ import { MatDialog } from '@angular/material';
   encapsulation: ViewEncapsulation.None
 })
 export class HomePage extends AppComponent implements OnInit {
-  constructor(
-    protected router: Router,
-    protected location: Location,
-    protected injector: Injector,
-    protected dialog: MatDialog
-  ) {
+  constructor(protected router: Router, protected location: Location, protected injector: Injector, protected dialog: MatDialog) {
     super(injector, dialog);
   }
 
@@ -35,10 +30,9 @@ export class HomePage extends AppComponent implements OnInit {
     this.dismissLoading(); // We might not actually need this, but better safe than sorry
   }
 
-  showAdminTools(){
+  showAdminTools() {
     if (this.currentUser.type === 'admin') {
       return true;
     }
   }
-
 }

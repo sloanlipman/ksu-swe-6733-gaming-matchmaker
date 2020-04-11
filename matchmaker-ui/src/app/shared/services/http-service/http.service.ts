@@ -11,15 +11,12 @@ export class HttpService {
   public currUser: User;
   protected apiUrl = environment.API_URL;
 
-  constructor(
-    protected http: HttpClient,
-    public snackBar: MatSnackBar,
-    ) {}
+  constructor(protected http: HttpClient, public snackBar: MatSnackBar) {}
 
   protected httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Access-Control': 'Access-Control-Allow-Headers',
+      'Content-Type': 'application/json',
+      'Access-Control': 'Access-Control-Allow-Headers'
     })
   };
 
@@ -27,7 +24,7 @@ export class HttpService {
     if (type === 1) {
       return 'admin';
     } else if (type === 2) {
-        return 'regular';
+      return 'regular';
     }
   }
 
@@ -54,11 +51,15 @@ export class HttpService {
   }
 
   public getUser(id: any): Observable<User> {
-    return this.get('/api/profile/get/' + id).pipe(map((resp: any) => {
-      if (resp) {
-        return this.updateUser(resp);
-      }
-    })).pipe(catchError(err => this.handleError(err)));
+    return this.get('/api/profile/get/' + id)
+      .pipe(
+        map((resp: any) => {
+          if (resp) {
+            return this.updateUser(resp);
+          }
+        })
+      )
+      .pipe(catchError((err) => this.handleError(err)));
   }
 
   public updateUser(user: any) {
@@ -81,39 +82,53 @@ export class HttpService {
     return this.currUser;
   }
 
-  public getAllInterests(): Observable<any>{
-      return this.get('/api/interests/getall').pipe(map((resp: any) => {
-        if (resp){
-          return resp;
-        }
-    })).pipe(catchError(err => this.handleError(err)));
+  public getAllInterests(): Observable<any> {
+    return this.get('/api/interests/getall')
+      .pipe(
+        map((resp: any) => {
+          if (resp) {
+            return resp;
+          }
+        })
+      )
+      .pipe(catchError((err) => this.handleError(err)));
   }
 
   public getAllGenres(): Observable<any> {
-    return this.get('/api/gameGenres').pipe(map((resp: any) => {
-      if (resp){
-        return resp;
-      }
-  })).pipe(catchError(err => this.handleError(err)));
-}
-
-  public getAllTimes(): Observable<any> {
-    return this.get('/api/playTimes').pipe(map((resp: any) => {
-      if (resp){
-        return resp;
-      }
-    })).pipe(catchError(err => this.handleError(err)));
+    return this.get('/api/gameGenres')
+      .pipe(
+        map((resp: any) => {
+          if (resp) {
+            return resp;
+          }
+        })
+      )
+      .pipe(catchError((err) => this.handleError(err)));
   }
 
-  public getAllPriorities(): Observable<any>{
-    return this.get('/api/priority/getall').pipe(map((resp: any) => {
-      if (resp){
-        return resp;
-      }
-  })).pipe(catchError(err => this.handleError(err)));
-}
+  public getAllTimes(): Observable<any> {
+    return this.get('/api/playTimes')
+      .pipe(
+        map((resp: any) => {
+          if (resp) {
+            return resp;
+          }
+        })
+      )
+      .pipe(catchError((err) => this.handleError(err)));
+  }
 
-
+  public getAllPriorities(): Observable<any> {
+    return this.get('/api/priority/getall')
+      .pipe(
+        map((resp: any) => {
+          if (resp) {
+            return resp;
+          }
+        })
+      )
+      .pipe(catchError((err) => this.handleError(err)));
+  }
 
   public logout() {
     this.currUser = null;
@@ -127,9 +142,10 @@ export class HttpService {
     } else if (!err.error) {
       errorMessage = err;
     }
-    this.snackBar.open(errorMessage, '', { // Display error to the user
+    this.snackBar.open(errorMessage, '', {
+      // Display error to the user
       duration: 3000,
-      verticalPosition: 'top',
+      verticalPosition: 'top'
     });
     console.log('Message is', err); // original error message, using this to define new errors to display
     return of(null);

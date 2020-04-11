@@ -19,17 +19,11 @@ describe('MatchmakeViewPage', () => {
     mockUsers = new MockUsers();
     user1 = mockUsers.getUser1();
     TestBed.configureTestingModule({
-      imports: [
-        AppMaterialModule,
-        RouterTestingModule,
-        HttpClientModule
-      ],
-      declarations: [ MatchmakeViewPage ],
+      imports: [AppMaterialModule, RouterTestingModule, HttpClientModule],
+      declarations: [MatchmakeViewPage],
       providers: [HttpService, MatchmakingService],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    })
-    .compileComponents();
-
+    }).compileComponents();
   }));
 
   beforeEach(() => {

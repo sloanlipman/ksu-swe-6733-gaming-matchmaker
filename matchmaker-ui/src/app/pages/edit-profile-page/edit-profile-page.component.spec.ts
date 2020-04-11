@@ -29,27 +29,13 @@ describe('EditProfilePage', () => {
   let getUserSpy;
   let setFormControlsSpy;
 
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        AppMaterialModule,
-        RouterTestingModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        ReactiveFormsModule
-      ],
-      declarations: [
-        EditProfilePage
-      ],
-      providers: [
-        HttpService,
-        EditProfileService,
-        FormBuilder
-      ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    })
-    .compileComponents();
+      imports: [AppMaterialModule, RouterTestingModule, BrowserAnimationsModule, HttpClientModule, ReactiveFormsModule],
+      declarations: [EditProfilePage],
+      providers: [HttpService, EditProfileService, FormBuilder],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -66,7 +52,7 @@ describe('EditProfilePage', () => {
     component.allGenres = [];
     component.allTimes = [];
     component.allPriorities = [];
-    component.allInterests =  [
+    component.allInterests = [
       'Animation',
       'Video gaming',
       '3D printing',
@@ -85,12 +71,10 @@ describe('EditProfilePage', () => {
     component.getFormControls();
     component.currentUser = user1;
     component.selectedPriorities = [];
-   // setTimeout(() => component.setFormControls());
+    // setTimeout(() => component.setFormControls());
     spyOn<any>(component, 'showLoading').and.stub();
     fixture.detectChanges();
-
   });
-
 
   it('should create', () => {
     expect(component).toBeTruthy();
@@ -109,44 +93,43 @@ describe('EditProfilePage', () => {
       expect(existing).toEqual(false);
     });
   });
-describe('initialization', () => {
-  it('should set form controls', () => {
-   component.currentUser = new User(user1);
-   component.setFormControls();
-    expect(component.infoForm.controls.firstName.value).toEqual(component.currentUser.firstName);
-    expect(component.infoForm.controls.lastName.value).toEqual(component.currentUser.lastName);
-    expect(component.infoForm.controls.age.value).toEqual(component.currentUser.age);
-    expect(component.infoForm.controls.zip.value).toEqual(component.currentUser.location.zip);
-    expect(component.infoForm.controls.email.value).toEqual(component.currentUser.email);
-    expect(component.interestsBoxes.value).toEqual(component.currentUser.interests);
-    expect(component.genreBoxes.value).toEqual(component.currentUser.genres);
-    expect(component.timeBoxes.value).toEqual(component.currentUser.times);
-    expect(component.prioritiesForm.value.priorities).toEqual(component.currentUser.priorities);
+  describe('initialization', () => {
+    it('should set form controls', () => {
+      component.currentUser = new User(user1);
+      component.setFormControls();
+      expect(component.infoForm.controls.firstName.value).toEqual(component.currentUser.firstName);
+      expect(component.infoForm.controls.lastName.value).toEqual(component.currentUser.lastName);
+      expect(component.infoForm.controls.age.value).toEqual(component.currentUser.age);
+      expect(component.infoForm.controls.zip.value).toEqual(component.currentUser.location.zip);
+      expect(component.infoForm.controls.email.value).toEqual(component.currentUser.email);
+      expect(component.interestsBoxes.value).toEqual(component.currentUser.interests);
+      expect(component.genreBoxes.value).toEqual(component.currentUser.genres);
+      expect(component.timeBoxes.value).toEqual(component.currentUser.times);
+      expect(component.prioritiesForm.value.priorities).toEqual(component.currentUser.priorities);
+    });
+    it('call methods in ngOnInit', () => {
+      getAllListsSpy = spyOn(component, 'getAllLists');
+      ngOnInitSpy.and.callThrough();
+      component.ngOnInit();
+      expect(getAllListsSpy).toHaveBeenCalled();
+    });
+  });
 
+  describe('Get all lists', () => {
+    it('should parse lists', () => {
+      component.currentUser = new User(user1);
+      component.setFormControls();
+      expect(component.infoForm.controls.firstName.value).toEqual(component.currentUser.firstName);
+    });
+    it('call methods in getAllLists', () => {
+      getAllListsSpy = spyOn(component, 'getAllLists');
+      getAllListsSpy.and.callThrough();
+      component.getAllLists();
+      expect(getAllListsSpy).toHaveBeenCalled();
+    });
   });
-  it('call methods in ngOnInit', () => {
-    getAllListsSpy = spyOn(component, 'getAllLists');
-    ngOnInitSpy.and.callThrough();
-       component.ngOnInit();
-       expect(getAllListsSpy).toHaveBeenCalled();
-  });
-});
 
-describe('Get all lists', () => {
-  it('should parse lists', () => {
-   component.currentUser = new User(user1);
-   component.setFormControls();
-   expect(component.infoForm.controls.firstName.value).toEqual(component.currentUser.firstName);
-  });
-  it('call methods in getAllLists', () => {
-    getAllListsSpy = spyOn(component, 'getAllLists');
-    getAllListsSpy.and.callThrough();
-       component.getAllLists();
-       expect(getAllListsSpy).toHaveBeenCalled();
-  });
-});
-
-  describe('SubmitChanges', async() => {
+  describe('SubmitChanges', async () => {
     beforeEach(() => {
       goHomeSpy = spyOn(component, 'goHome').and.stub();
       updateUserSpy = spyOn(component['editProfileService'], 'updateUser').and.stub();
@@ -223,7 +206,7 @@ describe('Get all lists', () => {
       expect(handleErrorSpy).toHaveBeenCalledWith('Please make unique selections for your matchmaking priorities and try again');
     });
 
-    it('should submit the user\'s changes when forms are correctly filled out', () => {
+    it("should submit the user's changes when forms are correctly filled out", () => {
       component.f.email.setValue('NewEmail@123.com');
       component.f.firstName.setValue('Thor');
       component.f.lastName.setValue('Odinson');
@@ -250,7 +233,7 @@ describe('Get all lists', () => {
         interests: ['Drinking', 'Fighting', 'Flying with a hammer'],
         genres: ['RPGs'],
         times: ['Morning'],
-        priorities: ['1', '2', '3', '4'],
+        priorities: ['1', '2', '3', '4']
       });
 
       saveProfileSpy = spyOn(component['editProfileService'], 'saveProfile').and.returnValue(of(JSON.parse(newUser)));
@@ -274,7 +257,7 @@ describe('Get all lists', () => {
       component.prioritiesFormArray.controls[1].setValue('2');
       component.prioritiesFormArray.controls[2].setValue('3');
       component.prioritiesFormArray.controls[3].setValue('4');
-       const newUser = JSON.stringify({
+      const newUser = JSON.stringify({
         id: 127,
         email: 'NewEmail@123.com',
         first_name: 'Thor',
@@ -289,13 +272,11 @@ describe('Get all lists', () => {
       });
       component.submitChanges();
       expect(dismissLoadingSpy).toHaveBeenCalled();
-      });
-
+    });
   });
 
   describe('Compare', () => {
-    beforeEach(() => {
-    });
+    beforeEach(() => {});
     it('should return true for matches', () => {
       const comparison = component.compare('a', 'a');
       expect(comparison).toEqual(true);
@@ -306,5 +287,4 @@ describe('Get all lists', () => {
       expect(comparison).toEqual(false);
     });
   });
-
 });

@@ -20,21 +20,12 @@ let user1;
 let showLoadingSpy;
 
 describe('AppComponent', () => {
-  beforeEach(async() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [
-        BrowserAnimationsModule,
-        RouterTestingModule,
-        AppMaterialModule,
-        HttpClientModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-      providers: [
-        HttpService
-      ],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+      imports: [BrowserAnimationsModule, RouterTestingModule, AppMaterialModule, HttpClientModule],
+      declarations: [AppComponent],
+      providers: [HttpService],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   });
 
@@ -96,11 +87,9 @@ describe('AppComponent', () => {
     });
 
     it('should go to view profile page', () => {
-
       component.viewProfile(user1);
       expect(routerSpy).toHaveBeenCalledWith('/view-profile/127');
     });
-
 
     it('should go to home page', () => {
       component.goHome();
@@ -148,7 +137,7 @@ describe('AppComponent', () => {
 
   describe('buttons', () => {
     it('should set the current url when checking for home button', () => {
-     urlSpy = spyOn(component, 'setUrl').and.callThrough();
+      urlSpy = spyOn(component, 'setUrl').and.callThrough();
       component.showHome();
       expect(urlSpy).toHaveBeenCalled();
     });
@@ -178,7 +167,7 @@ describe('AppComponent', () => {
       urlSpy = spyOn(component, 'setUrl').and.callFake(() => {
         component.url = '/any-other-url';
       });
-        expect(component.showHome()).toEqual(true);
+      expect(component.showHome()).toEqual(true);
     });
 
     it('should show view button on matchmaking page', () => {
@@ -267,4 +256,3 @@ describe('AppComponent', () => {
     });
   });
 });
-

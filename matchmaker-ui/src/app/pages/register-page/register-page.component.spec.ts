@@ -15,7 +15,6 @@ import { MatDialogModule } from '@angular/material';
 import { User } from 'src/app/shared/models/user';
 import { MockUsers } from 'src/app/shared/mocks/mock-users';
 
-
 describe('RegisterPage', () => {
   let component: RegisterPage;
   let fixture: ComponentFixture<RegisterPage>;
@@ -31,23 +30,11 @@ describe('RegisterPage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        AppMaterialModule,
-        MatDialogModule,
-        RouterTestingModule,
-        BrowserAnimationsModule,
-        HttpClientModule
-      ],
-      declarations: [ RegisterPage ],
+      imports: [AppMaterialModule, MatDialogModule, RouterTestingModule, BrowserAnimationsModule, HttpClientModule],
+      declarations: [RegisterPage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [
-        RegisterService,
-        LoginService,
-        FormBuilder,
-        HttpService
-      ]
-    })
-    .compileComponents();
+      providers: [RegisterService, LoginService, FormBuilder, HttpService]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

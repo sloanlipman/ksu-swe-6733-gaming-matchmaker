@@ -1,11 +1,12 @@
-<mat-card  [ngStyle]="{'background-color': getRandomColor()}" id="profile-mat-card">
-    <mat-card-header>
-      <div mat-card-avatar class="logo"  [ngStyle]="{'background-color': getRandomColor()}"></div>
-      <mat-card-title>{{ player.firstName }} {{ player.lastName}}</mat-card-title>
-    </mat-card-header>
-    <hr>
-    <h2>Age: {{ this.player.age }}<br>
-      Location: {{ this.player.location.city }}, {{ this.player.location.state}}
-    </h2>
-    <button mat-raised-button  *ngIf="showViewButton()" (click)="viewProfile(this.player)" id="view-button">View Profile</button>
+<mat-card [ngStyle]="{ 'background-color': getRandomColor() }" id="profile-mat-card">
+  <mat-card-header>
+    <div mat-card-avatar class="logo" [ngStyle]="{ 'background-color': getRandomColor() }"></div>
+    <mat-card-title>{{ player.firstName }} {{ player.lastName }}</mat-card-title>
+  </mat-card-header>
+  <hr />
+  <h2>
+    Age: {{ this.player.age }}<br />
+    Location: {{ this.player.location.city }}, {{ this.player.location.state }}
+  </h2>
+  <button mat-raised-button *ngIf="showViewButton()" (click)="viewProfile(this.player)" id="view-button">View Profile</button>
 </mat-card>

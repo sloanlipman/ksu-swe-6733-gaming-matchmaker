@@ -12,7 +12,7 @@ import { MatchmakingService } from './shared/services/matchmaking-service/matchm
 /**This page will be the launch point of the app. We can use to initialize and send the user on their way
   Any HTML associated with this component will be persistent throughout the app
 */
- @Component({
+@Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
@@ -34,14 +34,13 @@ export class AppComponent implements OnInit {
     protected httpService?: HttpService,
     protected matchmakingService?: MatchmakingService
   ) {
-      this.router = this.injector.get(Router);
-      this.location = this.injector.get(Location);
-      this.httpService = this.injector.get(HttpService);
-      this.matchmakingService = this.injector.get(MatchmakingService);
-    }
-
-  ngOnInit() {
+    this.router = this.injector.get(Router);
+    this.location = this.injector.get(Location);
+    this.httpService = this.injector.get(HttpService);
+    this.matchmakingService = this.injector.get(MatchmakingService);
   }
+
+  ngOnInit() {}
 
   setUrl() {
     this.url = this.router.url;
@@ -49,12 +48,7 @@ export class AppComponent implements OnInit {
 
   showHome() {
     this.setUrl();
-    if (
-        this.url === '/landing-page' ||
-        this.url === '/login' ||
-        this.url === '/register' ||
-        this.url === '/edit-profile'
-      ) {
+    if (this.url === '/landing-page' || this.url === '/login' || this.url === '/register' || this.url === '/edit-profile') {
       return false;
     } else {
       return true;
@@ -63,9 +57,7 @@ export class AppComponent implements OnInit {
 
   showViewButton() {
     this.setUrl();
-    if (
-        this.url === '/matchmaking'
-      ) {
+    if (this.url === '/matchmaking') {
       return true;
     } else {
       return false;
@@ -75,14 +67,14 @@ export class AppComponent implements OnInit {
   showAbout() {
     this.dialog.open(AboutPage, {
       height: '30rem',
-      width: '100rem',
+      width: '100rem'
     });
   }
 
   showContact() {
     this.dialog.open(ContactPage, {
       height: '60rem',
-      width: '100rem',
+      width: '100rem'
     });
   }
 
@@ -107,10 +99,10 @@ export class AppComponent implements OnInit {
     this.dialog.closeAll();
   }
 
-   getUser() {
+  getUser() {
     this.currentUser = new User(JSON.parse(localStorage.getItem('user')));
-    this.httpService.getUser(this.currentUser.id).subscribe(data => {
-    this.currentUser = data;
+    this.httpService.getUser(this.currentUser.id).subscribe((data) => {
+      this.currentUser = data;
     });
   }
 
@@ -131,7 +123,7 @@ export class AppComponent implements OnInit {
     this.router.navigateByUrl('/landing-page').then(() => {
       this.dismissLoading();
     });
-   }
+  }
 
   goBack() {
     this.location.back();
@@ -147,32 +139,32 @@ export class AppComponent implements OnInit {
     if (!this.isLoading) {
       this.showLoading();
     }
-   if (!this.allGenres || !this.allInterests || !this.allPriorities || !this.allTimes) {
+    if (!this.allGenres || !this.allInterests || !this.allPriorities || !this.allTimes) {
       const interestPromise = await Promise.resolve(this.getAllInterests());
       const timePromise = await Promise.resolve(this.getAllTimes());
       const priorityPromise = await Promise.resolve(this.getAllPriorities());
       const genrePromise = await Promise.resolve(this.getAllGenres());
-     Promise.all([interestPromise, timePromise, priorityPromise, genrePromise]).then(() => {
+      Promise.all([interestPromise, timePromise, priorityPromise, genrePromise]).then(() => {
+        this.router.navigateByUrl('/edit-profile').then(() => {
+          this.dismissLoading();
+        });
+      });
+    } else {
       this.router.navigateByUrl('/edit-profile').then(() => {
         this.dismissLoading();
       });
-    });
- } else {
-      this.router.navigateByUrl('/edit-profile').then(() => {
-        this.dismissLoading();
-      });
-   }
+    }
   }
 
-  viewProfile(user: User){
+  viewProfile(user: User) {
     localStorage.setItem('clickedUser', JSON.stringify(user));
     this.router.navigateByUrl('/view-profile/' + user.id).then(() => {
       this.dismissLoading();
     });
   }
 
- async viewMatchmaking(){
-   await this.getMatches().then(() => {
+  async viewMatchmaking() {
+    await this.getMatches().then(() => {
       this.router.navigateByUrl('/matchmaking').then(() => {
         this.dismissLoading();
       });
@@ -181,14 +173,14 @@ export class AppComponent implements OnInit {
 
   async getAllInterests() {
     return new Promise((resolve) => {
-      this.httpService.getAllInterests().subscribe(data => {
+      this.httpService.getAllInterests().subscribe((data) => {
         if (data) {
           const interests = [];
           for (let i = 0; i < data.length; ++i) {
             interests.push(data[i]);
           }
           localStorage.setItem('interests', JSON.stringify(interests));
-          }
+        }
         resolve();
       });
     });
@@ -196,37 +188,37 @@ export class AppComponent implements OnInit {
 
   async getAllGenres() {
     return new Promise((resolve) => {
-      this.httpService.getAllGenres().subscribe(data => {
+      this.httpService.getAllGenres().subscribe((data) => {
         if (data) {
           const genres = [];
           for (let i = 0; i < data.length; ++i) {
             genres.push(data[i]);
           }
           localStorage.setItem('genres', JSON.stringify(genres));
-          }
+        }
         resolve();
       });
     });
   }
 
   async getAllTimes() {
-   return new Promise((resolve) => {
-    this.httpService.getAllTimes().subscribe(data => {
-      if (data) {
-        const times = [];
-        for (let i = 0; i < data.length; ++i) {
-          times.push(data[i]);
+    return new Promise((resolve) => {
+      this.httpService.getAllTimes().subscribe((data) => {
+        if (data) {
+          const times = [];
+          for (let i = 0; i < data.length; ++i) {
+            times.push(data[i]);
+          }
+          localStorage.setItem('times', JSON.stringify(times));
         }
-        localStorage.setItem('times', JSON.stringify(times));
-        }
-      resolve();
+        resolve();
       });
     });
   }
 
-  getAllPriorities(){
+  getAllPriorities() {
     return new Promise((resolve) => {
-      this.httpService.getAllPriorities().subscribe(data => {
+      this.httpService.getAllPriorities().subscribe((data) => {
         if (data) {
           const priorities = [];
           for (let i = 0; i < data.length; ++i) {
@@ -234,7 +226,7 @@ export class AppComponent implements OnInit {
           }
           localStorage.setItem('priorities', JSON.stringify(priorities));
         }
-      resolve();
+        resolve();
       });
     });
   }
@@ -245,7 +237,7 @@ export class AppComponent implements OnInit {
       this.currentUser = new User(JSON.parse(localStorage.getItem('user')));
       if (!this.matches) {
         this.matches = [];
-        this.matchmakingService.getMatches(this.currentUser.id).subscribe(data => {
+        this.matchmakingService.getMatches(this.currentUser.id).subscribe((data) => {
           if (data) {
             for (let i = 0; i < data.length; ++i) {
               const match = new User(data[i]);

@@ -11,7 +11,6 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],
   encapsulation: ViewEncapsulation.None
-
 })
 export class LoginPage extends AppComponent implements OnInit {
   userLoginForm: FormGroup;
@@ -25,39 +24,41 @@ export class LoginPage extends AppComponent implements OnInit {
     protected loginService: LoginService,
     private formBuilder: FormBuilder
   ) {
-     super(injector, dialog);
+    super(injector, dialog);
   }
 
   ngOnInit() {
     this.clearEverything();
     this.userLoginForm = this.formBuilder.group({
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required])
-  });
+      email: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
+    });
   }
 
-  get f() { return this.userLoginForm.controls; }
+  get f() {
+    return this.userLoginForm.controls;
+  }
 
   onSubmit(): void {
     if (this.userLoginForm.invalid) {
       this.loginService.handleError('Please fill in all required fields and try again');
     } else {
       this.showLoading();
-      this.loginService.login(this.f.email.value, this.f.password.value).subscribe(data => {
+      this.loginService.login(this.f.email.value, this.f.password.value).subscribe((data) => {
         if (data) {
           if (
             (data.interests && data.interests.length === 0) ||
             (data.priorities && data.priorities.length === 0) ||
             (data.times && data.times.length === 0) ||
             (data.genres && data.genres.length === 0)
-            ) {
+          ) {
             this.editProfile();
           } else {
             this.goHome();
           }
         } else {
-            this.closeDialog();
-          }
+          this.closeDialog();
+        }
       });
     }
   }

@@ -7,9 +7,7 @@ import { CommonModule } from '@angular/common';
 import { ProfileCardModule } from 'src/app/shared/components/profile-card/profile-card.module';
 
 @NgModule({
-  declarations: [
-    HomePage
-  ],
+  declarations: [HomePage],
   imports: [
     AppMaterialModule,
     CommonModule,
@@ -21,10 +19,8 @@ import { ProfileCardModule } from 'src/app/shared/components/profile-card/profil
       }
     ])
   ],
-  exports: [
-    HomePage
-  ],
+  exports: [HomePage],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class HomePageModule{}
+export class HomePageModule {}

@@ -9,9 +9,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    RegisterPage
-  ],
+  declarations: [RegisterPage],
   imports: [
     AppMaterialModule,
     CommonModule,
@@ -23,13 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
       }
     ])
   ],
-  exports: [
-    RegisterPage
-  ],
-  providers: [
-    LoginService,
-    RegisterService
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  exports: [RegisterPage],
+  providers: [LoginService, RegisterService],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class RegisterPageModule{}
+export class RegisterPageModule {}

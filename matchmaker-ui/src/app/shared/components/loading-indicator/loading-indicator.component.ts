@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialogRef} from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'loading-indicator',
@@ -7,7 +7,5 @@ import { MatDialogRef} from '@angular/material';
   styleUrls: ['./loading-indicator.component.scss']
 })
 export class LoadingIndicator {
-  constructor(
-    public dialogRef: MatDialogRef<LoadingIndicator>
-  ) {}
+  constructor(public dialogRef: MatDialogRef<LoadingIndicator>) {}
 }

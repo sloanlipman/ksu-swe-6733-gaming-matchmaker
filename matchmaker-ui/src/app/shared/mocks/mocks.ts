@@ -30,13 +30,5 @@ export class MatchmakingServiceMock extends HttpServiceMock {
 }
 
 export class RegisterServiceMock extends HttpServiceMock {
-  register(
-    email: string,
-    firstName: string,
-    lastName: string,
-    age: string,
-    zip: string,
-    password: string,
-    confirmPassword: string
-    ) {}
+  register(email: string, firstName: string, lastName: string, age: string, zip: string, password: string, confirmPassword: string) {}
 }

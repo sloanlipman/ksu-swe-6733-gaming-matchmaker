@@ -14,7 +14,6 @@ import { LoginService } from 'src/app/shared/services/login-service/login.servic
 import { MockUsers } from 'src/app/shared/mocks/mock-users';
 import { User } from 'src/app/shared/models/user';
 
-
 describe('LoginPage', () => {
   let mockUsers;
   let user1;
@@ -25,26 +24,13 @@ describe('LoginPage', () => {
   let editProfileSpy;
   let closeDialogSpy;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [
-        AppMaterialModule,
-        RouterTestingModule,
-        BrowserAnimationsModule,
-        HttpClientModule
-      ],
-      declarations: [
-        LoginPage,
-        LoadingIndicator
-      ],
-      providers: [
-        FormBuilder,
-        HttpService,
-        LoginService
-      ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    })
-    .compileComponents();
+      imports: [AppMaterialModule, RouterTestingModule, BrowserAnimationsModule, HttpClientModule],
+      declarations: [LoginPage, LoadingIndicator],
+      providers: [FormBuilder, HttpService, LoginService],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    }).compileComponents();
   });
 
   afterEach(() => {

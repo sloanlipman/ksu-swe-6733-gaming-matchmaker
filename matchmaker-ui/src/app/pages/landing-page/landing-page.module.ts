@@ -5,9 +5,7 @@ import { RouterModule } from '@angular/router';
 import { AppMaterialModule } from 'src/app/app-material.module';
 import { LoadingIndicator } from 'src/app/shared/components/loading-indicator/loading-indicator.component';
 @NgModule({
-  declarations: [
-    LandingPage,
-  ],
+  declarations: [LandingPage],
   imports: [
     AppMaterialModule,
     RouterModule.forChild([
@@ -17,11 +15,9 @@ import { LoadingIndicator } from 'src/app/shared/components/loading-indicator/lo
       }
     ])
   ],
-  exports: [
-    LandingPage
-  ],
+  exports: [LandingPage],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: []
 })
-export class LandingPageModule{}
+export class LandingPageModule {}

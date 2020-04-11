@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
-
 describe('EditProfileService', () => {
   let httpMock;
   let handleErrorSpy;
@@ -14,14 +13,8 @@ describe('EditProfileService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule,
-        MatSnackBarModule,
-        BrowserAnimationsModule
-      ],
-      providers: [
-        EditProfileService,
-      ],
+      imports: [HttpClientTestingModule, MatSnackBarModule, BrowserAnimationsModule],
+      providers: [EditProfileService],
       schemas: []
     });
   });
@@ -39,21 +32,18 @@ describe('EditProfileService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should save profile', inject(
-    [EditProfileService], (service: EditProfileService) => {
-      const req = {}; // TODO could add more data here
-      const id = 1;
-      handleErrorSpy = spyOn(service, 'handleError').and.stub();
+  it('should save profile', inject([EditProfileService], (service: EditProfileService) => {
+    const req = {}; // TODO could add more data here
+    const id = 1;
+    handleErrorSpy = spyOn(service, 'handleError').and.stub();
 
-      service.saveProfile(id, req).subscribe(data => {
-        expect(data).toEqual(req);
-        expect(handleErrorSpy).toHaveBeenCalled();
-      });
+    service.saveProfile(id, req).subscribe((data) => {
+      expect(data).toEqual(req);
+      expect(handleErrorSpy).toHaveBeenCalled();
+    });
 
-      const mockReq = httpMock.expectOne(apiUrl + '/api/profile/save/' + id);
-      expect(mockReq.request.method).toEqual('POST');
-      mockReq.flush(
-        req
-      );
-    }));
+    const mockReq = httpMock.expectOne(apiUrl + '/api/profile/save/' + id);
+    expect(mockReq.request.method).toEqual('POST');
+    mockReq.flush(req);
+  }));
 });

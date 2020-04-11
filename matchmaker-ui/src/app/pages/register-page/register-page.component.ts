@@ -40,41 +40,44 @@ export class RegisterPage extends AppComponent implements OnInit {
 
   ngOnInit() {
     this.clearEverything();
-
-
-    }
-  get f() { return this.userRegisterForm.controls; }
+  }
+  get f() {
+    return this.userRegisterForm.controls;
+  }
 
   onSubmit(): void {
-      this.showLoading();
-      this.registerService.register(
+    this.showLoading();
+    this.registerService
+      .register(
         this.f.email.value,
         this.f.firstName.value,
         this.f.lastName.value,
         this.f.age.value,
         this.f.zip.value,
         this.f.password.value,
-        this.f.confirmPassword.value).subscribe(data => {
-          if (data) {
-            this.handleRegistration(data);
-          } else {
-            this.closeDialog();
+        this.f.confirmPassword.value
+      )
+      .subscribe((data) => {
+        if (data) {
+          this.handleRegistration(data);
+        } else {
+          this.closeDialog();
+        }
+      });
+  }
+
+  handleRegistration(data: any) {
+    if (data === 'Password Error') {
+      this.closeDialog();
+    } else if (data.detail.email === this.f.email.value) {
+      this.loginService.login(data.detail.email, this.f.password.value).subscribe((result) => {
+        if (result) {
+          this.getUser();
+          this.editProfile();
+        } else {
+          this.closeDialog();
         }
       });
     }
-
-  handleRegistration(data: any) {
-      if (data === 'Password Error') {
-        this.closeDialog();
-      } else if (data.detail.email === this.f.email.value) {
-        this.loginService.login(data.detail.email, this.f.password.value).subscribe(result => {
-          if (result) {
-            this.getUser();
-            this.editProfile();
-          } else {
-              this.closeDialog();
-            }
-        });
-      }
-    }
+  }
 }

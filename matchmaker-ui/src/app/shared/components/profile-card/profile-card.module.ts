@@ -5,17 +5,9 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [
-    ProfileCard
-  ],
-  imports: [
-    AppMaterialModule,
-    CommonModule
-  ],
-  exports: [
-    ProfileCard
-  ],
+  declarations: [ProfileCard],
+  imports: [AppMaterialModule, CommonModule],
+  exports: [ProfileCard],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-
-export class ProfileCardModule{}
+export class ProfileCardModule {}

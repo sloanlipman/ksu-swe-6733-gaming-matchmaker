@@ -10,9 +10,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    LoginPage
-  ],
+  declarations: [LoginPage],
   imports: [
     AppMaterialModule,
     CommonModule,
@@ -24,10 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
       }
     ])
   ],
-  exports: [
-    LoginPage
-  ],
-  providers: [ LoginService ],
+  exports: [LoginPage],
+  providers: [LoginService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class LoginPageModule{}
+export class LoginPageModule {}

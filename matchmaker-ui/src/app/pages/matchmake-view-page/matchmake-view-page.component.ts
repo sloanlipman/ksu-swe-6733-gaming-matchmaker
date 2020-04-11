@@ -5,7 +5,6 @@ import { AppComponent } from 'src/app/app.component';
 import { MatDialog } from '@angular/material';
 import { MatchmakingService } from 'src/app/shared/services/matchmaking-service/matchmaking.service';
 
-
 @Component({
   selector: 'matchmaking',
   templateUrl: './matchmake-view-page.component.html',

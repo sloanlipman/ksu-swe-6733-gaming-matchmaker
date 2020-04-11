@@ -1,4 +1,4 @@
-#temp{
+#temp {
   font-size: 19px;
 }
 
@@ -11,10 +11,10 @@ mat-form {
   font-size: 18px;
 }
 
-mat-grid-tile-header{
+mat-grid-tile-header {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
-  font-weight: bold; 
+  font-weight: bold;
 }
 
 form {
@@ -32,7 +32,7 @@ mat-selection-list {
   margin-top: 50px;
 }
 
-mat-icon{
+mat-icon {
   position: absolute;
   right: 5px;
   height: 20px;
@@ -50,7 +50,7 @@ mat-icon{
 }
 
 .preferred-times {
-  background: rgb(87, 139, 90)
+  background: rgb(87, 139, 90);
 }
 
 .priorities {
@@ -61,16 +61,16 @@ mat-grid-list {
   margin: 3rem;
 }
 
-.button{
+.button {
   padding-left: 50px;
 }
 
-.cancel{
+.cancel {
   margin-right: 7px;
 }
 
 .radio-button-group {
-   max-height: 200px;
+  max-height: 200px;
   overflow: auto;
   width: 90%;
 }

@@ -1,18 +1,16 @@
-
-#profile-mat-card{
+#profile-mat-card {
   align-content: center;
   max-height: 85px;
 }
 
 .logo {
-background-image: url('src/assets/skull.png');
-background-size: cover;
+  background-image: url('src/assets/skull.png');
+  background-size: cover;
 }
 
-#view-button{
+#view-button {
   position: absolute;
   right: 10px;
   bottom: 10px;
   background-color: rgb(102, 102, 102);
 }
-

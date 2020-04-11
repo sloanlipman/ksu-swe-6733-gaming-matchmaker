@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
-import { MatDialogRef} from '@angular/material';
-
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'about',
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss'],
+  styleUrls: ['./about.component.scss']
 })
 export class AboutPage {
-  constructor(
-    public dialogRef: MatDialogRef<AboutPage>
-  ) {}
+  constructor(public dialogRef: MatDialogRef<AboutPage>) {}
 }

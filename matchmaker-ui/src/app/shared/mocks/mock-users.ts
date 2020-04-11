@@ -4,7 +4,8 @@ import { User } from '../models/user';
 export class MockUsers {
   constructor() {}
 
-  getUser1(){ // For use as a frontend user object
+  getUser1() {
+    // For use as a frontend user object
     return JSON.parse(
       `{
         "id": 127,
@@ -52,7 +53,8 @@ export class MockUsers {
     );
   }
 
-  getUser2() { // For use as a front end user object
+  getUser2() {
+    // For use as a front end user object
     return {
       id: 74,
       email: 'admin@aaa.com',
@@ -70,11 +72,12 @@ export class MockUsers {
         lng: -84.35,
         locationString: null
       },
-        interests: []
+      interests: []
     };
   }
 
-  getUser3() { // for use as a back end user object
+  getUser3() {
+    // for use as a back end user object
     return JSON.parse(`
       {
         "id": 75,
@@ -94,7 +97,6 @@ export class MockUsers {
             "locationString": null
         },
         "interests": []
-      }`
-    );
+      }`);
   }
 }

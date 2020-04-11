@@ -20,14 +20,8 @@ describe('HttpService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule,
-        MatSnackBarModule,
-        BrowserAnimationsModule
-      ],
-      providers: [
-        HttpService
-      ],
+      imports: [HttpClientTestingModule, MatSnackBarModule, BrowserAnimationsModule],
+      providers: [HttpService],
       schemas: []
     });
     httpMock = TestBed.get(HttpTestingController);
@@ -37,8 +31,6 @@ describe('HttpService', () => {
     localStorage.clear();
   });
 
-
-
   it('should be created', () => {
     const service: HttpService = TestBed.get(HttpService);
     expect(service).toBeTruthy();
@@ -47,7 +39,7 @@ describe('HttpService', () => {
   describe('non-service tests', () => {
     let service;
     beforeEach(() => {
-       service = TestBed.get(HttpService);
+      service = TestBed.get(HttpService);
     });
 
     it('should return admin', () => {
@@ -88,63 +80,51 @@ describe('HttpService', () => {
   describe('Service tests', () => {
     afterEach(() => {
       httpMock.verify();
-     });
+    });
 
-    it('should get user', inject(
-      [HttpService], (httpService: HttpService) => {
-        updateUserSpy = spyOn(httpService, 'updateUser').and.stub();
+    it('should get user', inject([HttpService], (httpService: HttpService) => {
+      updateUserSpy = spyOn(httpService, 'updateUser').and.stub();
 
-        httpService.getUser(user1.id).subscribe(data => {
-        });
-        const mockReq = httpMock.expectOne(apiUrl + '/api/profile/get/' + user1.id);
-        expect(mockReq.request.method).toEqual('GET');
-        mockReq.flush({
-          user1
-        });
+      httpService.getUser(user1.id).subscribe((data) => {});
+      const mockReq = httpMock.expectOne(apiUrl + '/api/profile/get/' + user1.id);
+      expect(mockReq.request.method).toEqual('GET');
+      mockReq.flush({
+        user1
+      });
     }));
 
     // it('should return an error for getUser') //TODO write this case
 
-    it('should get all interests' , inject(
-      [HttpService], (httpService: HttpService) => {
-        const interests = ['Hiking', 'Yoga', 'Jogging', 'Biking'];
+    it('should get all interests', inject([HttpService], (httpService: HttpService) => {
+      const interests = ['Hiking', 'Yoga', 'Jogging', 'Biking'];
 
-        httpService.getAllInterests().subscribe(data => {
-          expect(data).toEqual({interests});
-          // expect(data.data.length).toEqual(3);
-        });
-        const mockReq = httpMock.expectOne(apiUrl + '/api/interests/getall');
-        expect(mockReq.request.method).toEqual('GET');
-        mockReq.flush({
-          interests
-        });
+      httpService.getAllInterests().subscribe((data) => {
+        expect(data).toEqual({ interests });
+        // expect(data.data.length).toEqual(3);
+      });
+      const mockReq = httpMock.expectOne(apiUrl + '/api/interests/getall');
+      expect(mockReq.request.method).toEqual('GET');
+      mockReq.flush({
+        interests
+      });
     }));
-    it('should get all genres' , inject(
-      [HttpService], (httpService: HttpService) => {
-        httpService.getAllGenres().subscribe(data => {
-        });
-        const mockReq = httpMock.expectOne(apiUrl + '/api/gameGenres');
-        expect(mockReq.request.method).toEqual('GET');
-        mockReq.flush({
-        });
-      }));
-        it('should get all times' , inject(
-          [HttpService], (httpService: HttpService) => {
-            httpService.getAllTimes().subscribe(data => {
-            });
-            const mockReq = httpMock.expectOne(apiUrl + '/api/playTimes');
-            expect(mockReq.request.method).toEqual('GET');
-            mockReq.flush({
-            });
-          }));
-            it('should get all priorities' , inject(
-              [HttpService], (httpService: HttpService) => {
-                httpService.getAllPriorities().subscribe(data => {
-                });
-                const mockReq = httpMock.expectOne(apiUrl + '/api/priority/getall');
-                expect(mockReq.request.method).toEqual('GET');
-                mockReq.flush({
-                });
-            }));
+    it('should get all genres', inject([HttpService], (httpService: HttpService) => {
+      httpService.getAllGenres().subscribe((data) => {});
+      const mockReq = httpMock.expectOne(apiUrl + '/api/gameGenres');
+      expect(mockReq.request.method).toEqual('GET');
+      mockReq.flush({});
+    }));
+    it('should get all times', inject([HttpService], (httpService: HttpService) => {
+      httpService.getAllTimes().subscribe((data) => {});
+      const mockReq = httpMock.expectOne(apiUrl + '/api/playTimes');
+      expect(mockReq.request.method).toEqual('GET');
+      mockReq.flush({});
+    }));
+    it('should get all priorities', inject([HttpService], (httpService: HttpService) => {
+      httpService.getAllPriorities().subscribe((data) => {});
+      const mockReq = httpMock.expectOne(apiUrl + '/api/priority/getall');
+      expect(mockReq.request.method).toEqual('GET');
+      mockReq.flush({});
+    }));
   });
 });

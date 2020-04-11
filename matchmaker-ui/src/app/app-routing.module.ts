@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: 'landing-page', pathMatch: 'full' },
- /* {
+  /* {
   path: 'about',
   loadChildren: './shared/components/about/about.module#AboutPageModule'
   }, */
@@ -43,6 +43,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

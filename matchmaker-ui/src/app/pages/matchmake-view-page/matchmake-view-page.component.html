@@ -1,8 +1,8 @@
 <h1 id="match-title">Match Results:</h1>
-<h2 id="match-length">You have {{this.matches.length}} Matches</h2>
-<mat-grid-list cols="3" rowHeight="20rem"  [gutterSize]="'15px'" id="">
+<h2 id="match-length">You have {{ this.matches.length }} Matches</h2>
+<mat-grid-list cols="3" rowHeight="20rem" [gutterSize]="'15px'" id="">
   <mat-grid-tile *ngFor="let match of this.matches; index as i" colspan="1" rowspan="1">
-    <mat-grid-tile-header id="rank-title">Match Rank: {{i+1}}</mat-grid-tile-header>
+    <mat-grid-tile-header id="rank-title">Match Rank: {{ i + 1 }}</mat-grid-tile-header>
     <profile-card [player]="match" class="matchmake-card"></profile-card>
   </mat-grid-tile>
 </mat-grid-list>

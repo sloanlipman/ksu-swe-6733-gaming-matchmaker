@@ -1,10 +1,6 @@
 {
   "extends": "../tslint.json",
   "rules": {
-    "directive-selector": [
-      true,
-      "attribute",
-      "camelCase"
-    ]
+    "directive-selector": [true, "attribute", "camelCase"]
   }
 }

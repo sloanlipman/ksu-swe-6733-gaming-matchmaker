@@ -1,6 +1,6 @@
 <h1>Welcome back, {{ this.currentUser.firstName }}</h1>
-  <profile-card [player]="this.currentUser" id="home-profile-card"></profile-card>
-<mat-card  *ngIf="showAdminTools()">
+<profile-card [player]="this.currentUser" id="home-profile-card"></profile-card>
+<mat-card *ngIf="showAdminTools()">
   Hi, this is an admin view. Not much to see here yet!
 </mat-card>
 <!--TODO look into using grid instead of card-->
@@ -8,6 +8,8 @@
 <nav>
   <button mat-raised-button (click)="goToLanding()" class="cancel" id="buttonCSS">Log out</button>
   <button mat-raised-button (click)="editProfile()" color="primary" id="buttonCSS">Edit Profile</button>
-  <button mat-raised-button (click)="viewProfile(this.currentUser)" style="background-color: #f44336" id="buttonCSS">View Your Profile</button>
+  <button mat-raised-button (click)="viewProfile(this.currentUser)" style="background-color: #f44336;" id="buttonCSS">
+    View Your Profile
+  </button>
   <button mat-raised-button (click)="viewMatchmaking()" color="accent" id="buttonCSS">Matchmaking</button>
 </nav>

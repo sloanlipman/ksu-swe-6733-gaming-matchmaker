@@ -10,18 +10,11 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPage extends AppComponent implements OnInit {
-
-  constructor(
-    protected router: Router,
-    protected location: Location,
-    protected injector: Injector,
-    protected dialog: MatDialog
-  ) {
+  constructor(protected router: Router, protected location: Location, protected injector: Injector, protected dialog: MatDialog) {
     super(injector, dialog);
-  
-   }
+  }
 
-   ngOnInit() {
+  ngOnInit() {
     this.clearEverything();
-   }
+  }
 }

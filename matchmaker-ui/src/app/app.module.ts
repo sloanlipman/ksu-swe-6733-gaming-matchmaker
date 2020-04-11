@@ -18,31 +18,11 @@ import { ProfileCardModule } from './shared/components/profile-card/profile-card
 // import { ProfileCardModule } from './shared/components/profile-card/profile-card.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoadingIndicator,
-    AboutPage,
-    ContactPage,
-  ],
-  imports: [
-    AppMaterialModule,
-    AppRoutingModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    ProfileCardModule
-  ],
-  providers: [
-    HttpService
-  ],
+  declarations: [AppComponent, LoadingIndicator, AboutPage, ContactPage],
+  imports: [AppMaterialModule, AppRoutingModule, BrowserModule, BrowserAnimationsModule, FormsModule, HttpClientModule, ProfileCardModule],
+  providers: [HttpService],
   bootstrap: [AppComponent],
-  entryComponents: [
-    AppComponent,
-    LoadingIndicator,
-    AboutPage,
-    ContactPage
-  ],
+  entryComponents: [AppComponent, LoadingIndicator, AboutPage, ContactPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule { }
+export class AppModule {}

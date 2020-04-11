@@ -1,7 +1,7 @@
-import { Component,  NgZone, ViewChild } from '@angular/core';
-import {CdkTextareaAutosize} from '@angular/cdk/text-field';
+import { Component, NgZone, ViewChild } from '@angular/core';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { MatDialogRef } from '@angular/material/';
-import {take} from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'contact-page',
@@ -9,16 +9,12 @@ import {take} from 'rxjs/operators';
   styleUrls: ['./contact-page.component.scss']
 })
 export class ContactPage {
-  constructor(
-    public dialogRef: MatDialogRef<ContactPage>,
-    private ngZone: NgZone
-  ) {}
+  constructor(public dialogRef: MatDialogRef<ContactPage>, private ngZone: NgZone) {}
 
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
 
   triggerResize() {
-      // Wait for changes to be applied, then trigger textarea resize.
-      this.ngZone.onStable.pipe(take(1))
-          .subscribe(() => this.autosize.resizeToFitContent(true));
+    // Wait for changes to be applied, then trigger textarea resize.
+    this.ngZone.onStable.pipe(take(1)).subscribe(() => this.autosize.resizeToFitContent(true));
   }
 }

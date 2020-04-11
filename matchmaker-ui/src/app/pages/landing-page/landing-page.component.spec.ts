@@ -7,24 +7,17 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpService } from 'src/app/shared/services/http-service/http.service';
 import { HttpClientModule } from '@angular/common/http';
 
-
 describe('LandingPage', () => {
   let component: LandingPage;
   let fixture: ComponentFixture<LandingPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        AppMaterialModule,
-        RouterTestingModule,
-        HttpClientModule
-      ],
-      declarations: [ LandingPage ],
+      imports: [AppMaterialModule, RouterTestingModule, HttpClientModule],
+      declarations: [LandingPage],
       providers: [HttpService],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
-
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

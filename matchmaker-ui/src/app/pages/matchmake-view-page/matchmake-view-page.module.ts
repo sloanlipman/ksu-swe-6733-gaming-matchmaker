@@ -9,9 +9,7 @@ import { ProfileCardModule } from 'src/app/shared/components/profile-card/profil
 import { MatchmakingService } from 'src/app/shared/services/matchmaking-service/matchmaking.service';
 
 @NgModule({
-  declarations: [
-    MatchmakeViewPage,
-  ],
+  declarations: [MatchmakeViewPage],
   imports: [
     AppMaterialModule,
     CommonModule,
@@ -23,12 +21,8 @@ import { MatchmakingService } from 'src/app/shared/services/matchmaking-service/
       }
     ])
   ],
-  exports: [
-    MatchmakeViewPage
-  ],
-  providers: [
-    MatchmakingService
-  ],
+  exports: [MatchmakeViewPage],
+  providers: [MatchmakingService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class MatchmakeViewPageModule{}
+export class MatchmakeViewPageModule {}

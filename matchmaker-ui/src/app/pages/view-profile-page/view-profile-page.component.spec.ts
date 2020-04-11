@@ -8,7 +8,6 @@ import { HttpService } from 'src/app/shared/services/http-service/http.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MockUsers } from 'src/app/shared/mocks/mock-users';
 
-
 describe('ViewProfilePage', () => {
   let component: ViewProfilePage;
   let fixture: ComponentFixture<ViewProfilePage>;
@@ -18,22 +17,17 @@ describe('ViewProfilePage', () => {
   let user2;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewProfilePage ],
-      imports: [
-        RouterTestingModule,
-        AppMaterialModule,
-        HttpClientModule
-      ],
+      declarations: [ViewProfilePage],
+      imports: [RouterTestingModule, AppMaterialModule, HttpClientModule],
       providers: [HttpService],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
-    })
-    .compileComponents();
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
-  mockUsers = new MockUsers();
-  user1 = mockUsers.getUser1();
-  user2 = mockUsers.getUser2();
+    mockUsers = new MockUsers();
+    user1 = mockUsers.getUser1();
+    user2 = mockUsers.getUser2();
 
     fixture = TestBed.createComponent(ViewProfilePage);
     component = fixture.componentInstance;

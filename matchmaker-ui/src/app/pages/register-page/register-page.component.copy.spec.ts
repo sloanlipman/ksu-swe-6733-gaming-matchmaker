@@ -3,7 +3,7 @@ import { Spectator, createComponentFactory } from '@ngneat/spectator';
 import { RegisterPage } from './register-page.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatDialog } from '@angular/material';
-import {  ReactiveFormsModule,  FormGroup } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { LoginService } from 'src/app/shared/services/login-service/login.service';
 import { RegisterService } from 'src/app/shared/services/register-service/register.service';
 import { of } from 'rxjs';
@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 describe('RegisterPage', () => {
   let spectator: Spectator<RegisterPage>;
-  const createComponent  = createComponentFactory({
+  const createComponent = createComponentFactory({
     component: RegisterPage,
     imports: [RouterTestingModule, ReactiveFormsModule, HttpClientModule],
     providers: [],
@@ -33,13 +33,15 @@ describe('RegisterPage', () => {
     spyOn<any>(spectator.component, 'showLoading');
     // spyOnProperty(spectator.component.userRegisterForm, 'invalid').and.returnValue(true);
 
-    // const formBuilder 
-      const registerService = spectator.inject<RegisterService>(RegisterService, true);
-      registerService.register.andReturn(of({
-      detail: {
-        email: 'mockEmail'
-      }
-    }));
+    // const formBuilder
+    const registerService = spectator.inject<RegisterService>(RegisterService, true);
+    registerService.register.andReturn(
+      of({
+        detail: {
+          email: 'mockEmail'
+        }
+      })
+    );
 
     spyOn(spectator.component, 'handleRegistration');
 
@@ -47,7 +49,7 @@ describe('RegisterPage', () => {
 
     expect(spectator.component.handleRegistration).toHaveBeenCalledWith({
       detail: {
-        email :'mockEmail'
+        email: 'mockEmail'
       }
     });
   });

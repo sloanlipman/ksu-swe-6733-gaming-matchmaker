@@ -12,7 +12,7 @@ export class User {
   times?: string[];
   priorities?: string[];
 
-  constructor(obj?: any){
+  constructor(obj?: any) {
     this.id = obj && obj.id;
     this.email = obj && obj.email;
     this.firstName = obj && (obj.firstName || obj.first_name);

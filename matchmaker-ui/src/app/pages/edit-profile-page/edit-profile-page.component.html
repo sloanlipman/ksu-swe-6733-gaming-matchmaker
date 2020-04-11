@@ -1,59 +1,90 @@
-
 <mat-grid-list cols="8" rowHeight="22rem" [gutterSize]="'15px'">
   <mat-grid-tile colspan="2" rowspan="1.5" class="profile-card">
     <mat-grid-tile-header>General Info<mat-icon>info</mat-icon></mat-grid-tile-header>
     <form [formGroup]="infoForm">
-          <mat-form-field id="firstName">
-            <input matInput placeholder="First Name" type="text" formControlName="firstName" required
-              class="form-control" [ngClass]=" { 'is-invalid': submitted && f.firstName.errors}" >
-          </mat-form-field>
-          <mat-form-field id="lastName">
-            <input matInput placeholder="Last Name" type="text" formControlName="lastName" required
-              class="form-control" [ngClass]=" { 'is-invalid': submitted && f.lastName.errors}" >
-          </mat-form-field>
-          <mat-form-field id="age">
-            <input matInput placeholder="Age" type="text" formControlName="age" required
-            class="form-control" [ngClass]=" { 'is-invalid': submitted && f.age.errors}" >
-          </mat-form-field>
-          <mat-form-field id="zip">
-            <input matInput placeholder="ZIP Code" type="text" formControlName="zip" required
-            class="form-control" [ngClass]=" { 'is-invalid': submitted && f.zip.errors}">
-          </mat-form-field>
-          <mat-form-field id="email">
-            <input matInput placeholder="E-mail Address" type="text" formControlName="email" required
-            class="form-control" [ngClass]=" { 'is-invalid': submitted && f.email.errors}">
-          </mat-form-field>
-      </form>
+      <mat-form-field id="firstName">
+        <input
+          matInput
+          placeholder="First Name"
+          type="text"
+          formControlName="firstName"
+          required
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+        />
+      </mat-form-field>
+      <mat-form-field id="lastName">
+        <input
+          matInput
+          placeholder="Last Name"
+          type="text"
+          formControlName="lastName"
+          required
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
+        />
+      </mat-form-field>
+      <mat-form-field id="age">
+        <input
+          matInput
+          placeholder="Age"
+          type="text"
+          formControlName="age"
+          required
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.age.errors }"
+        />
+      </mat-form-field>
+      <mat-form-field id="zip">
+        <input
+          matInput
+          placeholder="ZIP Code"
+          type="text"
+          formControlName="zip"
+          required
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.zip.errors }"
+        />
+      </mat-form-field>
+      <mat-form-field id="email">
+        <input
+          matInput
+          placeholder="E-mail Address"
+          type="text"
+          formControlName="email"
+          required
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+        />
+      </mat-form-field>
+    </form>
   </mat-grid-tile>
 
   <mat-grid-tile class="interestsCard" colspan="2" rowspan="1.5">
     <mat-grid-tile-header>What are your hobbies?<mat-icon>loyalty</mat-icon></mat-grid-tile-header>
-        <mat-selection-list #interestsSelectionList [compareWith]="compare" [formControl]="interestsBoxes">
-          <mat-list-option *ngFor="let interest of allInterests" [value]="interest">
-            {{interest}}
-          </mat-list-option>
-        </mat-selection-list>
+    <mat-selection-list #interestsSelectionList [compareWith]="compare" [formControl]="interestsBoxes">
+      <mat-list-option *ngFor="let interest of allInterests" [value]="interest">
+        {{ interest }}
+      </mat-list-option>
+    </mat-selection-list>
   </mat-grid-tile>
-
 
   <mat-grid-tile class="genres" colspan="2" rowspan="1.5">
     <mat-grid-tile-header>What kinds of games do you like?<mat-icon>favorite_border</mat-icon></mat-grid-tile-header>
     <mat-selection-list #genreSelectionList [compareWith]="compare" [formControl]="genreBoxes" id="genre-list">
-        <mat-list-option *ngFor="let genre of allGenres" [value]="genre">
-          {{genre}}
-        </mat-list-option>
-      </mat-selection-list>
-  </mat-grid-tile> 
+      <mat-list-option *ngFor="let genre of allGenres" [value]="genre">
+        {{ genre }}
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-grid-tile>
 
-
-  
   <mat-grid-tile class="preferred-times" colspan="2" rowspan="1.5">
     <mat-grid-tile-header>When do you like to play games?<mat-icon>av_timer</mat-icon></mat-grid-tile-header>
     <mat-selection-list #timeSelectionList [compareWith]="compare" [formControl]="timeBoxes">
-        <mat-list-option *ngFor="let time of allTimes" [value]="time">
-          {{time}}
-        </mat-list-option>
-      </mat-selection-list>
+      <mat-list-option *ngFor="let time of allTimes" [value]="time">
+        {{ time }}
+      </mat-list-option>
+    </mat-selection-list>
   </mat-grid-tile>
   <mat-grid-tile colspan="2" rowspan="0.5"></mat-grid-tile>
 
@@ -61,15 +92,15 @@
     <mat-grid-tile-header>What's important to you?<mat-icon>stars</mat-icon></mat-grid-tile-header>
     <form [formGroup]="prioritiesForm">
       <div formArrayName="priorities" *ngFor="let priorities of prioritiesFormArray.controls; index as i">
-      <mat-form-field> 
-        <mat-label>#{{i+1}} Priority</mat-label>
-        <mat-select [formControlName]="i" [value] ="i.value">
-        <mat-option *ngFor="let priority of allPriorities" [value]="priority">
-          {{priority}}
-        </mat-option>
-      </mat-select>
-      </mat-form-field>
-    </div>
+        <mat-form-field>
+          <mat-label>#{{ i + 1 }} Priority</mat-label>
+          <mat-select [formControlName]="i" [value]="i.value">
+            <mat-option *ngFor="let priority of allPriorities" [value]="priority">
+              {{ priority }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </form>
   </mat-grid-tile>
 </mat-grid-list>

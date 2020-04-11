@@ -6,9 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
-
 describe('LoginService', () => {
-
   let detail;
   let err;
   let handleErrorSpy;
@@ -17,14 +15,8 @@ describe('LoginService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule,
-        MatSnackBarModule,
-        BrowserAnimationsModule
-      ],
-      providers: [
-        LoginService,
-      ],
+      imports: [HttpClientTestingModule, MatSnackBarModule, BrowserAnimationsModule],
+      providers: [LoginService],
       schemas: []
     });
   });
@@ -41,63 +33,57 @@ describe('LoginService', () => {
     localStorage.clear();
   });
 
-
-  it('should return a regular user', inject(
-    [LoginService], (loginService: LoginService) => {
-      detail = {
-        email: 'bob@students.kennesaw.edu',
-        first_name: 'Bob',
-        last_name: 'Johnson',
-        age: 26,
-        is_active: true,
-        user_type: 2,
-        id: 1,
-        interests: [
-          'hiking',
-          'reading'
-        ]
+  it('should return a regular user', inject([LoginService], (loginService: LoginService) => {
+    detail = {
+      email: 'bob@students.kennesaw.edu',
+      first_name: 'Bob',
+      last_name: 'Johnson',
+      age: 26,
+      is_active: true,
+      user_type: 2,
+      id: 1,
+      interests: ['hiking', 'reading']
     };
     const updateUserSpy = spyOn(loginService, 'updateUser');
-      loginService.login('bob@students.kennesaw.edu', 'alligator3').subscribe(data => {
-       expect(updateUserSpy).toHaveBeenCalled();
-      });
-      const mockReq = httpMock.expectOne(apiUrl + '/api/authorizeUser');
-      expect(mockReq.request.method).toEqual('POST');
-      mockReq.flush({
-        detail
-      });
-    }));
+    loginService.login('bob@students.kennesaw.edu', 'alligator3').subscribe((data) => {
+      expect(updateUserSpy).toHaveBeenCalled();
+    });
+    const mockReq = httpMock.expectOne(apiUrl + '/api/authorizeUser');
+    expect(mockReq.request.method).toEqual('POST');
+    mockReq.flush({
+      detail
+    });
+  }));
 
-  it('should return an admin', inject(
-    [LoginService], (loginService: LoginService) => {
-      detail = { // TODO switch to one of the MockUser users if time allows
-        email: 'slipman@students.kennesaw.edu',
-        first_name: 'Sloan',
-        last_name: 'Lipman',
-        age: 26,
-        is_active: true,
-        user_type: 1,
-        id: 2
+  it('should return an admin', inject([LoginService], (loginService: LoginService) => {
+    detail = {
+      // TODO switch to one of the MockUser users if time allows
+      email: 'slipman@students.kennesaw.edu',
+      first_name: 'Sloan',
+      last_name: 'Lipman',
+      age: 26,
+      is_active: true,
+      user_type: 1,
+      id: 2
     };
-      loginService.login('slipman@students.kennesaw.edu', 'myPassword').subscribe(data => {
-        expect(data.email).toEqual(detail.email);
-        expect(data.firstName).toEqual(detail.first_name);
-        expect(data.lastName).toEqual(detail.last_name);
-        expect(data.age).toEqual(detail.age);
-        expect(data.isActive).toEqual(true);
-        expect(data.id).toEqual(detail.id);
-        expect(data.type).toEqual('admin');
-        // TODO can add interests, genres, and times here
-      });
-      const mockReq = httpMock.expectOne(apiUrl + '/api/authorizeUser');
-      expect(mockReq.request.method).toEqual('POST');
-      mockReq.flush({
-        detail
-      });
-    }));
+    loginService.login('slipman@students.kennesaw.edu', 'myPassword').subscribe((data) => {
+      expect(data.email).toEqual(detail.email);
+      expect(data.firstName).toEqual(detail.first_name);
+      expect(data.lastName).toEqual(detail.last_name);
+      expect(data.age).toEqual(detail.age);
+      expect(data.isActive).toEqual(true);
+      expect(data.id).toEqual(detail.id);
+      expect(data.type).toEqual('admin');
+      // TODO can add interests, genres, and times here
+    });
+    const mockReq = httpMock.expectOne(apiUrl + '/api/authorizeUser');
+    expect(mockReq.request.method).toEqual('POST');
+    mockReq.flush({
+      detail
+    });
+  }));
 
-  it('should return an error for an inactive user', inject(
-    [LoginService], (loginService: LoginService) => {
+  it('should return an error for an inactive user', inject([LoginService], (loginService: LoginService) => {
     handleErrorSpy = spyOn<any>(loginService, 'handleError').and.callThrough();
     detail = {
       email: 'rob@students.kennesaw.edu',
@@ -108,7 +94,7 @@ describe('LoginService', () => {
       user_type: 2,
       id: 3
     };
-    loginService.login('rob@students.kennesaw.edu', 'myPassword').subscribe(data => {
+    loginService.login('rob@students.kennesaw.edu', 'myPassword').subscribe((data) => {
       expect(handleErrorSpy).toHaveBeenCalled();
     });
     const mockReq = httpMock.expectOne(apiUrl + '/api/authorizeUser');
@@ -118,46 +104,45 @@ describe('LoginService', () => {
     });
   }));
 
-  it('should return an error for nonexistent users', inject(
-    [LoginService], (loginService: LoginService) => {
+  it('should return an error for nonexistent users', inject([LoginService], (loginService: LoginService) => {
     handleErrorSpy = spyOn<any>(loginService, 'handleError').and.callThrough();
     err = {
-        message: 'UserRec not found'
+      message: 'UserRec not found'
     };
     loginService.login('rob@students.kennesaw.edu', 'myPassword').subscribe(
-      data => {},
-      (error: HttpErrorResponse) => {
-    });
+      (data) => {},
+      (error: HttpErrorResponse) => {}
+    );
     const mockReq = httpMock.expectOne(apiUrl + '/api/authorizeUser');
     const mockError = new ErrorEvent('UserRec not found error', err);
     mockReq.error(mockError);
     expect(handleErrorSpy).toHaveBeenCalled();
   }));
 
-  it('should return an error for an incorrect password', inject(
-    [LoginService], (loginService: LoginService) => {
+  it('should return an error for an incorrect password', inject([LoginService], (loginService: LoginService) => {
     handleErrorSpy = spyOn<any>(loginService, 'handleError').and.callThrough();
     err = {
-        message: 'Password not match'
+      message: 'Password not match'
     };
     loginService.login('rob@students.kennesaw.edu', 'myPassword').subscribe(
-      data => {},
-      (error: HttpErrorResponse) => {});
+      (data) => {},
+      (error: HttpErrorResponse) => {}
+    );
     const mockReq = httpMock.expectOne(apiUrl + '/api/authorizeUser');
     const mockError = new ErrorEvent('Password not match error', err);
     mockReq.error(mockError);
     expect(handleErrorSpy).toHaveBeenCalled();
   }));
 
-  it('should return a generic server error for any other error', inject(
-    [LoginService], (loginService: LoginService) => {
+  it('should return a generic server error for any other error', inject([LoginService], (loginService: LoginService) => {
     handleErrorSpy = spyOn<any>(loginService, 'handleError').and.callThrough();
     err = {
-        message: ''
+      message: ''
     };
     loginService.login('rob@students.kennesaw.edu', 'myPassword').subscribe(
-      data => {},
-      (error: HttpErrorResponse) => {});
+      (data) => {},
+      (error: HttpErrorResponse) => {}
+    );
     const mockReq = httpMock.expectOne(apiUrl + '/api/authorizeUser');
     const mockError = new ErrorEvent('Generic server error', err); // TODO I don't think this is working
     mockReq.error(mockError);

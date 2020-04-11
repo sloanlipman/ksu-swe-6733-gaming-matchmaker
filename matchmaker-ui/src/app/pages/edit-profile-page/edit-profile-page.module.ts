@@ -8,9 +8,7 @@ import { EditProfileService } from 'src/app/shared/services/edit-profile-service
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    EditProfilePage
-  ],
+  declarations: [EditProfilePage],
   imports: [
     AppMaterialModule,
     CommonModule,
@@ -22,10 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
       }
     ])
   ],
-  exports: [
-    EditProfilePage
-  ],
+  exports: [EditProfilePage],
   providers: [EditProfileService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class EditProfilePageModule{}
+export class EditProfilePageModule {}

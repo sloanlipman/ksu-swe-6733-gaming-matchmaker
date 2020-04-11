@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit, Injector, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from '../../app.component';
-import { MatDialog, } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { EditProfileService } from '../../shared/services/edit-profile-service/edit-profile.service';
 import { FormGroup, FormBuilder, FormControl, Validators, FormArray } from '@angular/forms';
 
@@ -36,17 +36,15 @@ export class EditProfilePage extends AppComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     super(injector, dialog);
-
   }
 
   ngOnInit() {
     this.getAllLists();
-      this.getFormControls();
-      this.getUser();
-      setTimeout(() => {
+    this.getFormControls();
+    this.getUser();
+    setTimeout(() => {
       this.setFormControls();
     });
-
   }
 
   getAllLists() {
@@ -62,7 +60,7 @@ export class EditProfilePage extends AppComponent implements OnInit {
       lastName: new FormControl('', [Validators.required]),
       age: new FormControl('', [Validators.required]),
       zip: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required])
     });
     for (let i = 0; i < this.allPriorities.length; ++i) {
       this.prioritiesFormArray.push(new FormControl(this.allPriorities[i], [Validators.required]));
@@ -94,18 +92,22 @@ export class EditProfilePage extends AppComponent implements OnInit {
     return c1 && c2 && c1 === c2;
   }
 
-   get f() { return this.infoForm.controls; }
-   get p() {return this.prioritiesFormArray.controls; }
+  get f() {
+    return this.infoForm.controls;
+  }
+  get p() {
+    return this.prioritiesFormArray.controls;
+  }
 
   submitChanges() {
-
-  // Put priorities in an array so they are ready to go
+    // Put priorities in an array so they are ready to go
     for (let i = 0; i < this.allPriorities.length; ++i) {
       this.selectedPriorities.push(this.p[i].value);
     }
     let unique;
     const distinctPriorities = new Set(this.selectedPriorities);
-    if (distinctPriorities.size === this.selectedPriorities.length) { // Check that the selections are distinct
+    if (distinctPriorities.size === this.selectedPriorities.length) {
+      // Check that the selections are distinct
       unique = true;
     } else {
       unique = false;
@@ -114,62 +116,65 @@ export class EditProfilePage extends AppComponent implements OnInit {
     let valid = false;
     if (this.infoForm.invalid) {
       this.editProfileService.handleError('Please fill in all required fields and try again');
-    } else if (this.infoForm.controls.age.value < 18 ) {
+    } else if (this.infoForm.controls.age.value < 18) {
       this.editProfileService.handleError('You must be 18 or older to use this application');
     } else if (this.interestsBoxes.value.length === 0) {
       this.editProfileService.handleError('Please select at least one interest and try again');
     } else if (this.genreBoxes.value.length === 0) {
-     this.editProfileService.handleError('Please select at least one game genre and try again');
+      this.editProfileService.handleError('Please select at least one game genre and try again');
     } else if (this.timeBoxes.value.length === 0) {
-       this.editProfileService.handleError('Please select at least one active time and try again');
+      this.editProfileService.handleError('Please select at least one active time and try again');
     } else if (this.prioritiesForm.invalid) {
       this.editProfileService.handleError('Please select your matchmaking priorities and try again');
-    } else if (this.prioritiesForm.valid && !unique)  {
-        this.editProfileService.handleError('Please make unique selections for your matchmaking priorities and try again');
+    } else if (this.prioritiesForm.valid && !unique) {
+      this.editProfileService.handleError('Please make unique selections for your matchmaking priorities and try again');
     } else {
-        valid = true;
+      valid = true;
     }
 
     if (valid) {
-        const profileChanges = JSON.stringify({
-          id: this.currentUser.id,
-          email: this.f.email.value,
-          first_name: this.f.firstName.value,
-          last_name: this.f.lastName.value,
-          age: this.f.age.value,
-          is_active: true,
-          user_type: this.editProfileService.stringToType(this.currentUser.type),
-          location: {
-            zip: this.f.zip.value,
-          },
-          interests: this.interestsBoxes.value,
-          genres: this.genreBoxes.value,
-          times: this.timeBoxes.value,
-          priorities: this.selectedPriorities
-        });
-          this.showLoading();
-          this.editProfileService.saveProfile(this.currentUser.id, profileChanges).subscribe((data) => {
-          if (data) {
-            this.currentUser = this.editProfileService.updateUser(data);
-            localStorage.removeItem('matches');
-            this.goHome();
-          } else {
-            this.dismissLoading();
-          }
+      const profileChanges = JSON.stringify({
+        id: this.currentUser.id,
+        email: this.f.email.value,
+        first_name: this.f.firstName.value,
+        last_name: this.f.lastName.value,
+        age: this.f.age.value,
+        is_active: true,
+        user_type: this.editProfileService.stringToType(this.currentUser.type),
+        location: {
+          zip: this.f.zip.value
+        },
+        interests: this.interestsBoxes.value,
+        genres: this.genreBoxes.value,
+        times: this.timeBoxes.value,
+        priorities: this.selectedPriorities
+      });
+      this.showLoading();
+      this.editProfileService.saveProfile(this.currentUser.id, profileChanges).subscribe((data) => {
+        if (data) {
+          this.currentUser = this.editProfileService.updateUser(data);
+          localStorage.removeItem('matches');
+          this.goHome();
+        } else {
+          this.dismissLoading();
+        }
       });
     } else {
-        this.selectedPriorities = [];
+      this.selectedPriorities = [];
     }
   }
 
-
   isExistingUser() {
     if (
-        (this.currentUser.interests && this.currentUser.interests.length > 0) &&
-        (this.currentUser.priorities && this.currentUser.priorities.length === this.allPriorities.length) &&
-        (this.currentUser.genres && this.currentUser.genres.length > 0) &&
-        (this.currentUser.times && this.currentUser.times.length > 0)
-      ) {
+      this.currentUser.interests &&
+      this.currentUser.interests.length > 0 &&
+      this.currentUser.priorities &&
+      this.currentUser.priorities.length === this.allPriorities.length &&
+      this.currentUser.genres &&
+      this.currentUser.genres.length > 0 &&
+      this.currentUser.times &&
+      this.currentUser.times.length > 0
+    ) {
       return true;
     } else {
       return false;
