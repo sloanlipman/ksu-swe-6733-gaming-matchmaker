@@ -39,26 +39,20 @@ export class LoginPage extends AppComponent implements OnInit {
     return this.userLoginForm.controls;
   }
 
-  onSubmit(): void {
-    if (this.userLoginForm.invalid) {
-      this.loginService.handleError('Please fill in all required fields and try again');
-    } else {
-      this.loginService.login(this.f.email.value, this.f.password.value).subscribe((data) => {
-        if (data) {
-          if (
-            (data.interests && data.interests.length === 0) ||
-            (data.priorities && data.priorities.length === 0) ||
-            (data.times && data.times.length === 0) ||
-            (data.genres && data.genres.length === 0)
-          ) {
-            this.editProfile();
-          } else {
-            this.goHome();
-          }
+  onSubmit(email: string, password: string): void {
+    this.loginService.login(email, password).subscribe((data) => {
+      if (data) {
+        if (
+          (data.interests && data.interests.length === 0) ||
+          (data.priorities && data.priorities.length === 0) ||
+          (data.times && data.times.length === 0) ||
+          (data.genres && data.genres.length === 0)
+        ) {
+          this.editProfile();
         } else {
-          this.closeDialog();
+          this.goHome();
         }
-      });
-    }
+      }
+    });
   }
 }

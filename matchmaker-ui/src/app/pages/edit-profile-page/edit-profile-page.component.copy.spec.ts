@@ -7,6 +7,7 @@ import { EditProfileService } from 'src/app/shared/services/edit-profile-service
 import { MockUsers } from 'src/app/shared/mocks/mock-users';
 
 describe('RegisterPage', () => {
+  let editProfileService;
   let spectator: Spectator<EditProfilePage>;
   const user1 = MockUsers.prototype.getUser1();
   const createComponent = createComponentFactory({
@@ -20,10 +21,10 @@ describe('RegisterPage', () => {
     spectator = createComponent();
     spectator.component.currentUser = user1;
     spyOn(spectator.component, 'goHome');
+    editProfileService = spectator.get<EditProfileService>(EditProfileService, true);
   });
 
   it('Should call the register service to register and then handle a successful registration', () => {
-    const editProfileService = spectator.get<EditProfileService>(EditProfileService, true);
     editProfileService.saveProfile.andReturn(of('MockResponse'));
 
     spectator.component.submitChanges(user1);
