@@ -131,6 +131,7 @@ export class AppComponent {
     return new Promise((resolve) => {
       this.httpService.getAllInterests().subscribe((data) => {
         if (data) {
+          this.matchmakingService.interests = [];
           for (let i = 0; i < data.length; ++i) {
             this.matchmakingService.interests.push(data[i]);
           }
@@ -144,6 +145,7 @@ export class AppComponent {
     return new Promise((resolve) => {
       this.httpService.getAllGenres().subscribe((data) => {
         if (data) {
+          this.matchmakingService.genres = [];
           for (let i = 0; i < data.length; ++i) {
             this.matchmakingService.genres.push(data[i]);
           }
@@ -157,6 +159,7 @@ export class AppComponent {
     return new Promise((resolve) => {
       this.httpService.getAllTimes().subscribe((data) => {
         if (data) {
+          this.matchmakingService.times = [];
           for (let i = 0; i < data.length; ++i) {
             this.matchmakingService.times.push(data[i]);
           }
@@ -170,6 +173,7 @@ export class AppComponent {
     return new Promise((resolve) => {
       this.httpService.getAllPriorities().subscribe((data) => {
         if (data) {
+          this.matchmakingService.priorities = [];
           for (let i = 0; i < data.length; ++i) {
             this.matchmakingService.priorities.push(data[i]);
           }
