@@ -1,5 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
 import { of } from 'rxjs';
+import { User } from '../models/user';
 
 export class MatDialogMock {
   open() {
@@ -41,6 +42,13 @@ export class LoginServiceMock extends HttpServiceMock {
 }
 
 export class MatchmakingServiceMock extends HttpServiceMock {
+  interests: string[] = [];
+  genres: string[] = [];
+  times: string[] = [];
+  priorities: string[] = [];
+  matches: any[] = [];
+  currentUser: User;
+
   constructor() {
     super();
   }

@@ -17,17 +17,15 @@ import { MatchmakingService } from './shared/services/matchmaking-service/matchm
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   protected router: Router;
   protected location: Location;
   public currentUser: User;
   public url: string;
-  isLoading = false;
   public allInterests = [];
   public allGenres = [];
   public allTimes = [];
   public allPriorities = [];
-  public matches = [];
   constructor(
     protected injector: Injector,
     protected dialog: MatDialog,
@@ -39,8 +37,6 @@ export class AppComponent implements OnInit {
     this.httpService = this.injector.get(HttpService);
     this.matchmakingService = this.injector.get(MatchmakingService);
   }
-
-  ngOnInit() {}
 
   setUrl() {
     this.url = this.router.url;
@@ -77,6 +73,7 @@ export class AppComponent implements OnInit {
       width: '100rem'
     });
   }
+
   protected closeDialog() {
     this.dialog.closeAll();
   }
@@ -110,19 +107,13 @@ export class AppComponent implements OnInit {
   }
 
   async editProfile() {
-    if (!this.isLoading) {
-    }
-    if (!this.allGenres || !this.allInterests || !this.allPriorities || !this.allTimes) {
-      const interestPromise = await Promise.resolve(this.getAllInterests());
-      const timePromise = await Promise.resolve(this.getAllTimes());
-      const priorityPromise = await Promise.resolve(this.getAllPriorities());
-      const genrePromise = await Promise.resolve(this.getAllGenres());
-      Promise.all([interestPromise, timePromise, priorityPromise, genrePromise]).then(() => {
-        this.router.navigateByUrl('/edit-profile').then(() => {});
-      });
-    } else {
-      this.router.navigateByUrl('/edit-profile').then(() => {});
-    }
+    const interestPromise = await Promise.resolve(this.getAllInterests());
+    const timePromise = await Promise.resolve(this.getAllTimes());
+    const priorityPromise = await Promise.resolve(this.getAllPriorities());
+    const genrePromise = await Promise.resolve(this.getAllGenres());
+    Promise.all([interestPromise, timePromise, priorityPromise, genrePromise]).then(() => {
+      this.router.navigateByUrl('/edit-profile');
+    });
   }
 
   viewProfile(user: User) {
@@ -140,11 +131,9 @@ export class AppComponent implements OnInit {
     return new Promise((resolve) => {
       this.httpService.getAllInterests().subscribe((data) => {
         if (data) {
-          const interests = [];
           for (let i = 0; i < data.length; ++i) {
-            interests.push(data[i]);
+            this.matchmakingService.interests.push(data[i]);
           }
-          localStorage.setItem('interests', JSON.stringify(interests));
         }
         resolve();
       });
@@ -155,11 +144,9 @@ export class AppComponent implements OnInit {
     return new Promise((resolve) => {
       this.httpService.getAllGenres().subscribe((data) => {
         if (data) {
-          const genres = [];
           for (let i = 0; i < data.length; ++i) {
-            genres.push(data[i]);
+            this.matchmakingService.genres.push(data[i]);
           }
-          localStorage.setItem('genres', JSON.stringify(genres));
         }
         resolve();
       });
@@ -170,11 +157,9 @@ export class AppComponent implements OnInit {
     return new Promise((resolve) => {
       this.httpService.getAllTimes().subscribe((data) => {
         if (data) {
-          const times = [];
           for (let i = 0; i < data.length; ++i) {
-            times.push(data[i]);
+            this.matchmakingService.times.push(data[i]);
           }
-          localStorage.setItem('times', JSON.stringify(times));
         }
         resolve();
       });
@@ -185,11 +170,9 @@ export class AppComponent implements OnInit {
     return new Promise((resolve) => {
       this.httpService.getAllPriorities().subscribe((data) => {
         if (data) {
-          const priorities = [];
           for (let i = 0; i < data.length; ++i) {
-            priorities.push(data[i]);
+            this.matchmakingService.priorities.push(data[i]);
           }
-          localStorage.setItem('priorities', JSON.stringify(priorities));
         }
         resolve();
       });
@@ -198,17 +181,14 @@ export class AppComponent implements OnInit {
 
   getMatches() {
     return new Promise((resolve) => {
-      this.currentUser = new User(JSON.parse(localStorage.getItem('user')));
-      if (!this.matches) {
-        this.matches = [];
-        this.matchmakingService.getMatches(this.currentUser.id).subscribe((data) => {
+      if (!this.matchmakingService.matches.length) {
+        this.matchmakingService.getMatches(this.matchmakingService.currentUser.id).subscribe((data) => {
           if (data) {
             for (let i = 0; i < data.length; ++i) {
               const match = new User(data[i]);
-              this.matches.push(match);
+              this.matchmakingService.matches.push(match);
             }
           }
-          localStorage.setItem('matches', JSON.stringify(this.matches));
           resolve();
         });
       } else {
