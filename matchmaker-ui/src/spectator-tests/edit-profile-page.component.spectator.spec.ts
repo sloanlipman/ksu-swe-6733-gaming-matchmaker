@@ -6,7 +6,7 @@ import { EditProfileService } from 'src/app/shared/services/edit-profile-service
 import { MockUsers } from 'src/app/shared/mocks/mock-users';
 import { EditProfilePage } from 'src/app/pages/edit-profile-page/edit-profile-page.component';
 
-describe('EditProfilePage (Spectator Tests)', () => {
+fdescribe('EditProfilePage (Spectator Tests)', () => {
   let editProfileService;
   let spectator: Spectator<EditProfilePage>;
   const user1 = MockUsers.prototype.getUser1();

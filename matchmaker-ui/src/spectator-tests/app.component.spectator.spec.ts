@@ -8,7 +8,7 @@ import { MatchmakingService } from '../app/shared/services/matchmaking-service/m
 import { fakeAsync, tick } from '@angular/core/testing';
 import { User } from '../app/shared/models/user';
 
-describe('AppComponent (Spectator Tests)', () => {
+fdescribe('AppComponent (Spectator Tests)', () => {
   let httpService;
   let matchmakingService;
   let spectator: Spectator<AppComponent>;

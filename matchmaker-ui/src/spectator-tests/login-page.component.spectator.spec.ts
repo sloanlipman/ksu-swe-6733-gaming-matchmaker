@@ -7,7 +7,7 @@ import { LoginService } from 'src/app/shared/services/login-service/login.servic
 import { User } from 'src/app/shared/models/user';
 import { LoginPage } from 'src/app/pages/login-page/login-page.component';
 
-describe('LoginPage (Spectator Tests)', () => {
+fdescribe('LoginPage (Spectator Tests)', () => {
   let mockUsers;
   let user1;
   let user2;

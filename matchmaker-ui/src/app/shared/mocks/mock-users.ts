@@ -76,30 +76,6 @@ export class MockUsers {
     };
   }
 
-  getUser3() {
-    // for use as a back end user object
-    return JSON.parse(`
-      {
-        "id": 75,
-        "email": "testJon2@test.com",
-        "first_name": "Jon",
-        "last_name": "Doe",
-        "age": 37,
-        "is_active": true,
-        "user_type": 1,
-        "location": {
-            "id": 83697,
-            "zip": "30047",
-            "city": "LILBURN",
-            "state": "GA",
-            "lat": 33.88,
-            "lng": -84.13,
-            "locationString": null
-        },
-        "interests": []
-      }`);
-  }
-
   getNewUser() {
     return new User({
       email: 'test123@test.com',

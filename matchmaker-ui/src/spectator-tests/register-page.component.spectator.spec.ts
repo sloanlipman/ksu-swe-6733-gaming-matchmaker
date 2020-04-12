@@ -7,7 +7,7 @@ import { HttpService } from 'src/app/shared/services/http-service/http.service';
 import { MockUsers } from 'src/app/shared/mocks/mock-users';
 import { RegisterPage } from 'src/app/pages/register-page/register-page.component';
 
-describe('RegisterPage (Spectator Tests)', () => {
+fdescribe('RegisterPage (Spectator Tests)', () => {
   let spectator: Spectator<RegisterPage>;
   let registerSpy;
   let loginSpy;
