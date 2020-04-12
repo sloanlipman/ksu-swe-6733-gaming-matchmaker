@@ -99,4 +99,16 @@ export class MockUsers {
         "interests": []
       }`);
   }
+
+  getNewUser() {
+    return new User({
+      email: 'test123@test.com',
+      firstName: 'Test',
+      lastName: 'User',
+      age: 24,
+      location: {
+        zip: 99999
+      }
+    });
+  }
 }

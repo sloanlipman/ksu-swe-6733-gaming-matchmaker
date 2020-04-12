@@ -7,6 +7,7 @@ import { RegisterService } from '../../shared/services/register-service/register
 import { LoginService } from '../../shared/services/login-service/login.service';
 import { HttpService } from '../../shared/services/http-service/http.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { User } from 'src/app/shared/models/user';
 
 @Component({
   selector: 'register',
@@ -23,19 +24,9 @@ export class RegisterPage extends AppComponent implements OnInit {
     protected injector: Injector,
     protected dialog: MatDialog,
     protected loginService: LoginService,
-    protected registerService: RegisterService,
-    private formBuilder: FormBuilder
+    protected registerService: RegisterService
   ) {
     super(injector, dialog);
-    this.userRegisterForm = this.formBuilder.group({
-      firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
-      age: new FormControl('', [Validators.required]),
-      zip: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
-      confirmPassword: new FormControl('', [Validators.required])
-    });
   }
 
   ngOnInit() {
@@ -45,38 +36,26 @@ export class RegisterPage extends AppComponent implements OnInit {
     return this.userRegisterForm.controls;
   }
 
-  onSubmit(): void {
-    this.registerService
-      .register(
-        this.f.email.value,
-        this.f.firstName.value,
-        this.f.lastName.value,
-        this.f.age.value,
-        this.f.zip.value,
-        this.f.password.value,
-        this.f.confirmPassword.value
-      )
-      .subscribe((data) => {
-        if (data) {
-          this.handleRegistration(data);
-        } else {
-          this.closeDialog();
-        }
-      });
+  onSubmit(user: User, password: string, confirmPassword: string): void {
+    if (password === confirmPassword) {
+      this.registerService
+        .register(user.email, user.firstName, user.lastName, user.age, user.location.zip, password, confirmPassword)
+        .subscribe((data) => {
+          if (data) {
+            this.handleRegistration(data, password);
+          }
+        });
+    } else {
+      this.closeDialog();
+    }
   }
 
-  handleRegistration(data: any) {
-    if (data === 'Password Error') {
-      this.closeDialog();
-    } else if (data.detail.email === this.f.email.value) {
-      this.loginService.login(data.detail.email, this.f.password.value).subscribe((result) => {
-        if (result) {
-          this.getUser();
-          this.editProfile();
-        } else {
-          this.closeDialog();
-        }
-      });
-    }
+  handleRegistration(data: any, password: string) {
+    this.loginService.login(data.detail.email, password).subscribe((result) => {
+      if (result) {
+        this.getUser();
+        this.editProfile();
+      }
+    });
   }
 }

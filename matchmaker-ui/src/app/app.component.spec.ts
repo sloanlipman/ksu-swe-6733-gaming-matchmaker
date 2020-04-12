@@ -19,7 +19,7 @@ let mockUsers;
 let user1;
 let showLoadingSpy;
 
-describe('AppComponent', () => {
+xdescribe('AppComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [BrowserAnimationsModule, RouterTestingModule, AppMaterialModule, HttpClientModule],
