@@ -7,7 +7,7 @@ import { HttpService } from 'src/app/shared/services/http-service/http.service';
 import { MockUsers } from 'src/app/shared/mocks/mock-users';
 import { RegisterPage } from 'src/app/pages/register-page/register-page.component';
 
-fdescribe('RegisterPage (Spectator Tests)', () => {
+describe('RegisterPage (Spectator Tests)', () => {
   let spectator: Spectator<RegisterPage>;
   let registerSpy;
   let loginSpy;
@@ -42,7 +42,7 @@ fdescribe('RegisterPage (Spectator Tests)', () => {
     registerService = spectator.get<RegisterService>(RegisterService, true);
     loginService = spectator.get<LoginService>(LoginService, true);
 
-    registerSpy = registerService.register.andReturn(of(user));
+    registerSpy = registerService.register.andReturn(of(data));
     loginSpy = loginService.login.andReturn(of(data));
   });
 
