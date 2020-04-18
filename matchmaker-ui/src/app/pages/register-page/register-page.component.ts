@@ -1,13 +1,13 @@
-import { Component, OnInit, Injector, Inject } from '@angular/core';
-import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { AppComponent } from '../../app.component';
+import { Component, Injector, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
-import { RegisterService } from '../../shared/services/register-service/register.service';
-import { LoginService } from '../../shared/services/login-service/login.service';
-import { HttpService } from '../../shared/services/http-service/http.service';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/shared/models/user';
+
+import { AppComponent } from '../../app.component';
+import { LoginService } from '../../shared/services/login-service/login.service';
+import { RegisterService } from '../../shared/services/register-service/register.service';
 
 @Component({
   selector: 'register',

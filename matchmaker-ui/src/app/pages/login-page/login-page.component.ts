@@ -1,10 +1,10 @@
 import { Location } from '@angular/common';
-import { Component, OnInit, ViewEncapsulation, Injector } from '@angular/core';
+import { Component, Injector, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
-import { MatDialog } from '@angular/material';
 import { LoginService } from 'src/app/shared/services/login-service/login.service';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'login',

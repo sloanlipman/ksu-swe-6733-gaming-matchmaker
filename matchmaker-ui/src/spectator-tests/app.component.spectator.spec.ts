@@ -1,12 +1,13 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { Spectator, createComponentFactory } from '@ngneat/spectator';
+import { fakeAsync, tick } from '@angular/core/testing';
+import { createComponentFactory, Spectator } from '@ngneat/spectator';
 import { of } from 'rxjs';
+
 import { AppComponent } from '../app/app.component';
 import { MockUsers } from '../app/shared/mocks/mock-users';
+import { User } from '../app/shared/models/user';
 import { HttpService } from '../app/shared/services/http-service/http.service';
 import { MatchmakingService } from '../app/shared/services/matchmaking-service/matchmaking.service';
-import { fakeAsync, tick } from '@angular/core/testing';
-import { User } from '../app/shared/models/user';
 
 fdescribe('AppComponent (Spectator Tests)', () => {
   let httpService;

@@ -1,17 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RegisterPage } from './register-page.component';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { RouterTestingModule } from '@angular/router/testing';
-import { AppMaterialModule } from 'src/app/app-material.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpService } from 'src/app/shared/services/http-service/http.service';
-import { RegisterService } from 'src/app/shared/services/register-service/register.service';
-import { LoginService } from 'src/app/shared/services/login-service/login.service';
 import { HttpClientModule } from '@angular/common/http';
-import { of } from 'rxjs';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
+import { AppMaterialModule } from 'src/app/app-material.module';
 import { MockUsers } from 'src/app/shared/mocks/mock-users';
-import { RegisterServiceMock, LoginServiceMock, HttpServiceMock, MatDialogMock } from 'src/app/shared/mocks/mocks';
+import { HttpServiceMock, LoginServiceMock, MatDialogMock, RegisterServiceMock } from 'src/app/shared/mocks/mocks';
+import { HttpService } from 'src/app/shared/services/http-service/http.service';
+import { LoginService } from 'src/app/shared/services/login-service/login.service';
+import { RegisterService } from 'src/app/shared/services/register-service/register.service';
+
+import { RegisterPage } from './register-page.component';
 
 describe('RegisterPage', () => {
   let component: RegisterPage;

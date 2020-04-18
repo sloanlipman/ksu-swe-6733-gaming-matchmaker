@@ -1,11 +1,11 @@
-import { Component, Injector, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { Component, Injector } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
+
 import { AboutPage } from './shared/components/about/about.component';
 import { ContactPage } from './shared/components/contact-page/contact-page.component';
-import { MatDialog } from '@angular/material';
 import { User } from './shared/models/user';
-import { LoadingIndicator } from './shared/components/loading-indicator/loading-indicator.component';
 import { HttpService } from './shared/services/http-service/http.service';
 import { MatchmakingService } from './shared/services/matchmaking-service/matchmaking.service';
 

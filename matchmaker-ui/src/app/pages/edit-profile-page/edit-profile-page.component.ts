@@ -1,11 +1,12 @@
 import { Location } from '@angular/common';
-import { Component, OnInit, Injector } from '@angular/core';
-import { Router } from '@angular/router';
-import { AppComponent } from '../../app.component';
+import { Component, Injector, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
-import { EditProfileService } from '../../shared/services/edit-profile-service/edit-profile.service';
-import { FormGroup, FormBuilder, FormControl, Validators, FormArray } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/shared/models/user';
+
+import { AppComponent } from '../../app.component';
+import { EditProfileService } from '../../shared/services/edit-profile-service/edit-profile.service';
 
 @Component({
   selector: 'edit-profile-page',

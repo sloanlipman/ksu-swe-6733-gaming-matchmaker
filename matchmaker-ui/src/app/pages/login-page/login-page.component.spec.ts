@@ -1,18 +1,19 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { LoginPage } from './login-page.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { AppMaterialModule } from 'src/app/app-material.module';
-import { RouterTestingModule } from '@angular/router/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
+import { AppMaterialModule } from 'src/app/app-material.module';
 import { LoadingIndicator } from 'src/app/shared/components/loading-indicator/loading-indicator.component';
+import { MockUsers } from 'src/app/shared/mocks/mock-users';
+import { HttpServiceMock, LoginServiceMock } from 'src/app/shared/mocks/mocks';
+import { User } from 'src/app/shared/models/user';
 import { HttpService } from 'src/app/shared/services/http-service/http.service';
 import { LoginService } from 'src/app/shared/services/login-service/login.service';
-import { MockUsers } from 'src/app/shared/mocks/mock-users';
-import { User } from 'src/app/shared/models/user';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { HttpServiceMock, LoginServiceMock } from 'src/app/shared/mocks/mocks';
+
+import { LoginPage } from './login-page.component';
 
 describe('LoginPage', () => {
   let mockUsers;

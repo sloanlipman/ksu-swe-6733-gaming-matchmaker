@@ -1,11 +1,11 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { Spectator, createComponentFactory } from '@ngneat/spectator';
+import { createComponentFactory, Spectator } from '@ngneat/spectator';
 import { of } from 'rxjs';
-import { HttpService } from 'src/app/shared/services/http-service/http.service';
-import { MockUsers } from 'src/app/shared/mocks/mock-users';
-import { LoginService } from 'src/app/shared/services/login-service/login.service';
-import { User } from 'src/app/shared/models/user';
 import { LoginPage } from 'src/app/pages/login-page/login-page.component';
+import { MockUsers } from 'src/app/shared/mocks/mock-users';
+import { User } from 'src/app/shared/models/user';
+import { HttpService } from 'src/app/shared/services/http-service/http.service';
+import { LoginService } from 'src/app/shared/services/login-service/login.service';
 
 fdescribe('LoginPage (Spectator Tests)', () => {
   let mockUsers;

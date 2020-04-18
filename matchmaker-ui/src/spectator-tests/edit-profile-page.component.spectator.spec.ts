@@ -1,10 +1,10 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { Spectator, createComponentFactory } from '@ngneat/spectator';
+import { createComponentFactory, Spectator } from '@ngneat/spectator';
 import { of } from 'rxjs';
-import { HttpService } from 'src/app/shared/services/http-service/http.service';
-import { EditProfileService } from 'src/app/shared/services/edit-profile-service/edit-profile.service';
-import { MockUsers } from 'src/app/shared/mocks/mock-users';
 import { EditProfilePage } from 'src/app/pages/edit-profile-page/edit-profile-page.component';
+import { MockUsers } from 'src/app/shared/mocks/mock-users';
+import { EditProfileService } from 'src/app/shared/services/edit-profile-service/edit-profile.service';
+import { HttpService } from 'src/app/shared/services/http-service/http.service';
 
 fdescribe('EditProfilePage (Spectator Tests)', () => {
   let editProfileService;

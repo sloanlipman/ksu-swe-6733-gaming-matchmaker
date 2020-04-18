@@ -1,16 +1,17 @@
-import { TestBed, tick, fakeAsync } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { AppComponent } from './app.component';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { AppMaterialModule } from './app-material.module';
-import { HttpService } from './shared/services/http-service/http.service';
 import { HttpClientModule } from '@angular/common/http';
-import { of } from 'rxjs';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
+
+import { AppMaterialModule } from './app-material.module';
+import { AppComponent } from './app.component';
 import { MockUsers } from './shared/mocks/mock-users';
 import { HttpServiceMock, MatchmakingServiceMock } from './shared/mocks/mocks';
-import { MatchmakingService } from './shared/services/matchmaking-service/matchmaking.service';
 import { User } from './shared/models/user';
+import { HttpService } from './shared/services/http-service/http.service';
+import { MatchmakingService } from './shared/services/matchmaking-service/matchmaking.service';
 
 let fixture;
 let component;
